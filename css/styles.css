@@ -4,13 +4,27 @@
 }
 
 body {
-            display: flex;/*
-            justify-content: center;
-            align-items: center;*/
+            
             height: 100vh;
             background-image: url('img/fondo.png'); /* Asegúrate de que la ruta coincida con la ubicación del archivo */
             background-size: cover; /* Hace que el fondo cubra todo el área */
             background-position: center; /* Centra la imagen de fondo */
             background-repeat: no-repeat; /* Evita que la imagen se repita */
             font-family: "Ovo", serif;
+}
+
+.inicio{
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    font-family: 'Old English Five', sans-serif;
+}
+.titulo{
+    margin-top: -10px;
+    font-size: 30px;
+}
+.titulo2{
+    margin-top: -10px;
+    font-family: "Ovo", serif;
 }
