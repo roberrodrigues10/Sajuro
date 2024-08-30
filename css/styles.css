@@ -21,10 +21,10 @@ body {
     font-family: 'Old English Five', sans-serif;
 }
 .titulo{
-    margin-top: -10px;
-    font-size: 30px;
+    font-size: clamp(40px, 45px, 50px);
+    margin-bottom: clamp(5%, 14%, 30%); 
+    overflow: hidden;
 }
 .titulo2{
-    margin-top: -10px;
     font-family: "Ovo", serif;
 }
