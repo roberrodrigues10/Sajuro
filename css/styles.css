@@ -1,0 +1,16 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+            display: flex;/*
+            justify-content: center;
+            align-items: center;*/
+            height: 100vh;
+            background-image: url('img/fondo.png'); /* Asegúrate de que la ruta coincida con la ubicación del archivo */
+            background-size: cover; /* Hace que el fondo cubra todo el área */
+            background-position: center; /* Centra la imagen de fondo */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            font-family: "Ovo", serif;
+}
