@@ -52,6 +52,130 @@ body {
     overflow: hidden;
     filter: blur(0.4px);
 }
+.titulo4{
+    position: relative;
+    bottom: 63%;
+    font-family: 'Old English Text MT', serif;
+    font-size: clamp(10px, 65px, 150px); 
+
+}
+.usuario{
+    position: relative;
+    bottom: 57%;
+    margin-left: -10%;
+
+}
+
+.usuario input {
+    width: 170%;
+    padding: 10px;
+    font-size: 16px;
+    background: transparent; /* Hace el fondo del input transparente */
+    border: none; /* Elimina el borde */
+    border-bottom: 1px solid #000000; /* Añade un borde inferior para la línea */
+    color: #333; /* Color del texto dentro del input */
+    outline: none; /* Elimina el borde azul por defecto al hacer clic */
+}
+.usuario label {
+    position: absolute;
+    font-family: 'Old English Text MT', serif;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+.usuario input:focus + label,
+        .usuario input:not(:placeholder-shown) + label {
+            top: -20px;
+            left: 10px;
+            font-size: 12px;
+            color: #333;
+}
+.usuario input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: #333; /* Asegura que el texto tenga el color correcto */
+}
+.contrasena{
+    position: relative;
+    bottom: 53%;
+    margin-left: -10%;
+
+}
+
+.contrasena input {
+    width: 170%;
+    padding: 10px;
+    font-size: 16px;
+    background: transparent; /* Hace el fondo del input transparente */
+    border: none; /* Elimina el borde */
+    border-bottom: 1px solid #000000; /* Añade un borde inferior para la línea */
+    color: #333; /* Color del texto dentro del input */
+    outline: none; /* Elimina el borde azul por defecto al hacer clic */
+}
+.contrasena label {
+    position: absolute;
+    font-family: 'Old English Text MT', serif;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+.contrasena input:focus + label,
+        .contrasena input:not(:placeholder-shown) + label {
+            top: -20px;
+            left: 10px;
+            font-size: 12px;
+            color: #333;
+}
+.contrasena input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: #333; /* Asegura que el texto tenga el color correcto */
+}
+.email{
+    position: relative;
+    bottom: 49%;
+    margin-left: -10%;
+
+}
+
+.email input {
+    width: 170%;
+    padding: 10px;
+    font-size: 16px;
+    background: transparent; /* Hace el fondo del input transparente */
+    border: none; /* Elimina el borde */
+    border-bottom: 1px solid #000000; /* Añade un borde inferior para la línea */
+    color: #333; /* Color del texto dentro del input */
+    outline: none; /* Elimina el borde azul por defecto al hacer clic */
+}
+.email label {
+    position: absolute;
+    font-family: 'Old English Text MT', serif;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+.email input:focus + label,
+        .email input:not(:placeholder-shown) + label {
+            top: -20px;
+            left: 10px;
+            font-size: 12px;
+            color: #333;
+}
+.email input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: #333; /* Asegura que el texto tenga el color correcto */
+}
 .iniciar{
     color: aliceblue;
     text-decoration: none; 
