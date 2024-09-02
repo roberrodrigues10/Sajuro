@@ -1,0 +1,195 @@
+@font-face {
+    font-family: 'Old English Text MT';
+    src: url('fonts/OldEnglishTextMT.woff2') format('woff2'),
+         url('fonts/OldEnglishTextMT.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ovo';
+    src: url('fonts/Ovo.woff2') format('woff2'),
+         url('fonts/Ovo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    height: 100vh;
+    background-image: url('img/fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: "Ovo", serif;
+}
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.sajuro {
+    color: black;
+    text-decoration: none;
+}
+
+.sajurolink {
+    position: relative;
+    font-family: 'Old English Text MT', serif;
+    font-size: clamp(2rem, 6vw, 8rem); /* Adapta el tamaño del texto a la pantalla */
+    overflow: hidden;
+    text-align: center;
+}
+
+.transparente-cuadro {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    width: 480px;
+    height: 430px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 550px) {
+    .transparente-cuadro {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.usuario {
+    position: relative;
+    bottom: 57%;
+    margin-left: -10%;
+}
+
+.usuario input {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    color: #333;
+    outline: none;
+}
+
+.usuario label {
+    position: absolute;
+    font-family: 'Old English Text MT', serif;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.usuario input:focus + label,
+.usuario input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    font-size: 12px;
+    color: #333;
+}
+
+.usuario input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: #333;
+}
+
+.contrasena {
+    position: relative;
+    bottom: 53%;
+    margin-left: -10%;
+}
+
+.contrasena input {
+    width: 170%;
+    padding: 10px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    color: #333;
+    outline: none;
+}
+
+.contrasena label {
+    position: absolute;
+    font-family: 'Old English Text MT', serif;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.contrasena input:focus + label,
+.contrasena input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    font-size: 12px;
+    color: #333;
+}
+
+.contrasena input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: #333;
+}
+
+.email {
+    position: relative;
+    bottom: 49%;
+    margin-left: -10%;
+}
+
+.email input {
+    width: 170%;
+    padding: 10px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    color: #333;
+    outline: none;
+}
+
+.email label {
+    position: absolute;
+    font-family: 'Old English Text MT', serif;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.email input:focus + label,
+.email input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    font-size: 12px;
+    color: #333;
+}
+
+.email input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: #333;
+}

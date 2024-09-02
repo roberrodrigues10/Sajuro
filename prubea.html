@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .custom-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px; /* Ajusta la distancia entre el texto y el subrayado */
+            width: 100%;
+            height: 2px; /* Ajusta el grosor del subrayado */
+            background-color: red; /* Ajusta el color del subrayado */
+        }
+    </style>
+</head>
+<body>
+    <p class="custom-underline">Este texto tiene un subrayado personalizado.</p>
+</body>
+</html>
