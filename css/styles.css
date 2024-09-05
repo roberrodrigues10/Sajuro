@@ -27,14 +27,12 @@ body {
             height: 100vh;
             padding: 20px;
             overflow: hidden;
-
 }
 .titulo{
     position: relative;
     bottom: 6%; 
     font-family: 'Canterbury', serif;
     font-size: clamp(10px, 65px, 150px); 
-    overflow: hidden;
 }
 .titulo2{
     position: relative;
@@ -42,7 +40,6 @@ body {
     font-family: "Ovo", serif;
     font-size: clamp(10px, 30px, 150px); 
     color: aliceblue;
-    overflow: hidden;
     filter: blur(0.4px);
 }
 .titulo3{
@@ -51,7 +48,6 @@ body {
     font-family: "Ovo", serif;
     font-size: clamp(10px, 30px, 150px); 
     color: aliceblue;
-    overflow: hidden;
     filter: blur(0.4px);
 }
 .iniciar{
@@ -69,7 +65,6 @@ body {
     position: relative;
     font-family: 'Old English Text MT', serif;
     font-size: clamp(10px, 50px, 150px); 
-    overflow: hidden;
     text-align: center;
 }
 .transparente-cuadro {
