@@ -13,6 +13,7 @@
 
 </header>
 <body>
+    <script src="js/jugador.js"></script>
     <div class="inicio">
         <div class="imagensesion"></div>
         <div class="transparente-cuadro">
@@ -20,16 +21,17 @@
             <a href="inicio.html" class="sajuro">SAJURO</a>
         </div>
             <div class="login-container">
-                <form action="your-login-script.php" method="POST">
-                    <input type="text" name="username" placeholder="Usuario" required>
+                <form action="jugador.html" method="POST">
+                    <input type="text" name="username" placeholder="Usuario" >
                     <br>
-                    <input type="password" class="contrasena" name="password" placeholder="Contraseña" required>
+                    <input type="password" class="contrasena" name="password" placeholder="Contraseña" >
                     <br>
-                    <input type="submit" value="Login">
+                    <button onclick="jugador()">Iniciar Sesión</button>
                 </form>
             </div>
         </div>
     </div>
+    
 </body>
 <footer>
 
