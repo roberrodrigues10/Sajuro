@@ -35,7 +35,7 @@ body {
 .sajurolink {
     position: relative;
     font-family: 'Canterbury', serif;
-    font-size: clamp(2rem, 6vw, 8rem); /* Adapta el tamaño del texto a la pantalla */
+    font-size: clamp(2rem, 4.5vw, 8rem); /* Adapta el tamaño del texto a la pantalla */
     overflow: hidden;
     text-align: center;
     top: 1%;
