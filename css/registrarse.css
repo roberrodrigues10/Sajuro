@@ -39,6 +39,7 @@ body {
     font-size: clamp(2rem, 6vw, 8rem); /* Adapta el tamaño del texto a la pantalla */
     overflow: hidden;
     text-align: center;
+    bottom: 8%;
 }
 
 .transparente-cuadro {
@@ -60,12 +61,12 @@ body {
 
 .usuario {
     position: relative;
-    bottom: 57%;
-    margin-left: -10%;
+    bottom: 10%;
+    margin-left: -1%;
 }
 
 .usuario input {
-    width: 50%;
+    width: 100%;
     padding: 10px;
     font-size: 16px;
     background: transparent;
@@ -102,12 +103,12 @@ body {
 
 .contrasena {
     position: relative;
-    bottom: 53%;
-    margin-left: -10%;
+    bottom: 4%;
+    margin-left: -1%;
 }
 
 .contrasena input {
-    width: 170%;
+    width: 100%;
     padding: 10px;
     font-size: 16px;
     background: transparent;
@@ -144,12 +145,12 @@ body {
 
 .email {
     position: relative;
-    bottom: 49%;
-    margin-left: -10%;
+    bottom: -3%;
+    margin-left: -1%;
 }
 
 .email input {
-    width: 170%;
+    width: 100%;
     padding: 10px;
     font-size: 16px;
     background: transparent;
@@ -182,4 +183,23 @@ body {
     -webkit-box-shadow: 0 0 0 1000px transparent inset;
     box-shadow: 0 0 0 1000px transparent inset;
     -webkit-text-fill-color: #333;
+}
+.registrar{
+    position: relative;
+    bottom: -15%;
+    margin-left: 32%;
+    font-family: "Ovo", serif;
+    font-size: clamp(10px, 30px, 150px); 
+    color: aliceblue;
+    overflow: hidden;
+    filter: blur(0.4px);
+}
+
+.registrarse{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.registrarse:hover{
+    color: rgb(71, 7, 66);
 }
