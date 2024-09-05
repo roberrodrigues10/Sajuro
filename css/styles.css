@@ -3,6 +3,11 @@
     margin: 0px;
 }
 
+@font-face {
+    font-family: 'Canterbury';
+    src: url('fonts/Canterbury.ttf') format('truetype');
+  }
+
 body {
             
             height: 100vh;
@@ -26,7 +31,7 @@ body {
 .titulo{
     position: relative;
     bottom: 6%; 
-    font-family: 'Old English Text MT', serif;
+    font-family: 'Canterbury', serif;
     font-size: clamp(10px, 65px, 150px); 
 }
 .titulo2{
