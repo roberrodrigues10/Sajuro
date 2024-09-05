@@ -1,23 +1,13 @@
-@font-face {
-    font-family: 'Old English Text MT';
-    src: url('fonts/OldEnglishTextMT.woff2') format('woff2'),
-         url('fonts/OldEnglishTextMT.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Ovo';
-    src: url('fonts/Ovo.woff2') format('woff2'),
-         url('fonts/Ovo.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 
 * {
     padding: 0px;
     margin: 0px;
 }
+@font-face {
+    font-family: 'Canterbury';
+    src: url('fonts/Canterbury.ttf') format('truetype');
+  }
+  
 
 body {
     height: 100vh;
@@ -44,8 +34,9 @@ body {
 
 .sajurolink {
     position: relative;
-    font-family: 'Old English Text MT', serif;
-    font-size: clamp(20px, 50px, 180px); /* Adapta el tamaño del texto a la pantalla */
+    font-family: 'Canterbury', serif;
+    font-size: clamp(2rem, 6vw, 8rem); /* Adapta el tamaño del texto a la pantalla */
+    overflow: hidden;
     text-align: center;
     top: 1%;
 }
@@ -88,7 +79,8 @@ body {
 
 .usuario label {
     position: absolute;
-    font-family: 'Old English Text MT', serif;
+    font-family: 'Canterbury', serif;
+    top: 10px;
     left: 10px;
     font-size: 16px;
     color: #000000;
