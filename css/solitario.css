@@ -1,13 +1,37 @@
-.inicio {
+
+
+.container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row wrap;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 20px;
+    height: 70vh;
+    width: 100vh;
+}
+@media(max-width: 414px){
+    .container{ 
+        flex-direction: column;
+        overflow-y: scroll;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-left: -18px ;
+    }
 }
 
-.imgsolitario{
-    position: relative;
+.imgSolitario{
+    display: flex;
+    background-repeat: no-repeat;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.imgMultijugador{
+    display: flex;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.imgs{
     
+    width: 350px;
 }
