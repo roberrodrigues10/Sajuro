@@ -2,26 +2,33 @@
 
 .container{
     display: flex;
-    flex-direction: row wrap;
     justify-content: center;
     height: 70vh;
-    width: 100vh;
+    width: 140%;
+    gap: 12vw;
 }
-@media(max-width: 414px){
+@media(max-width: 500px){
     .container{ 
         flex-direction: column;
         overflow-y: scroll;
-        display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        margin-left: -18px ;
+    }
+    
+}
+@media(max-width: 390px){
+    .container{ 
+        flex-direction: column;
+        overflow-y: scroll;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0px;
     }
 }
 
 .imgSolitario{
     display: flex;
     background-repeat: no-repeat;
-    justify-content: space-evenly;
     align-items: center;
 }
 .imgMultijugador{
@@ -32,6 +39,5 @@
     margin-bottom: 40px;
 }
 .imgs{
-    
     width: 350px;
 }
