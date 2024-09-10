@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="css/img/Diseño_sin_título-removebg-preview.png">
     <title>Sajuro</title>
-    <link rel="stylesheet" href="bootstrap-5.2.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/bootstrap-5.2.1-dist/css/bootstrap.css">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/jugador/css/solitario.css">
+    <link rel="stylesheet" href="/jugador/css/solita.css">
     <link href="https://fonts.cdnfonts.com/css/old-english-five" rel="stylesheet">
 </head>
 <header>
@@ -18,15 +19,30 @@
         <div class="titulo">
             SAJURO
         </div>
+        <div class="perfil">
+            <button class="boton" type="button"  >
+              <img src="/css/img/perfil.png" alt="">
+            </button>
+          </div>
         <div class="container">
-        <div class="imgSolitario">
-            <img src="/jugador/img/solitario.png" alt="" class="imgs">
+        <div class="imgSolitario" id="img1">
+            <img src="/jugador/img/solitario.png" alt="" class="img" >
         </div>
         <div class="imgMultijugador">
-            <img src="/jugador/img/multijugador.png" alt="" class="imgs">
+            <img src="/jugador/img/multijugador.png" alt="" class="img">
+        </div>
+        <div class="containerJugadores" id="imgJugadores">
+
+            <img src="/jugador/img/niños.png" alt="" class="img">
+
+
+            <img src="/jugador/img/jovenes.png" alt="" class="img">
+
+            <img src="/jugador/img/Mayores.png" alt="" class="img">
+
         </div>
     </div>
-    </div>
+    <script src="/jugador/js/jugador.js"></script>
 </body>
 <footer>
 
