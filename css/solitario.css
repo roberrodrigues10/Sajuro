@@ -15,6 +15,9 @@
     }
     
 }
+.me{
+    
+}
 @media(max-width: 390px){
     .container{ 
         flex-direction: column;
