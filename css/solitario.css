@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    width: 140%;
+    gap: 12vw;
+}
+@media(max-width: 500px){
+    .container{ 
+        flex-direction: column;
+        overflow-y: scroll;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }    
+}
+@media(max-width: 390px){
+    .container{ 
+        flex-direction: column;
+        overflow-y: scroll;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0px;
+    }
+}
+
+.imgSolitario{
+    display: flex;
+    align-items: center;
+}
+.imgMultijugador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.imgs{
+    width: 350px;
+}
