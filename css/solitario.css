@@ -15,9 +15,6 @@
     }
     
 }
-.me{
-    
-}
 @media(max-width: 390px){
     .container{ 
         flex-direction: column;
@@ -39,7 +36,4 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 40px;
-}
-.imgs{
-    width: 350px;
 }
