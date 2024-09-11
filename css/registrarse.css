@@ -59,6 +59,7 @@ body {
 }
 
 .usuario {
+    font-family: "Segoe UI", sans-serif;
     position: relative;
     top: 10%;
     margin-left: 12%;

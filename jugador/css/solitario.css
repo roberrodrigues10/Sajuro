@@ -14,7 +14,10 @@
         justify-content: flex-start;
         align-items: flex-start;
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/rober
 }
 @media(max-width: 390px){
     .container{ 
@@ -39,5 +42,20 @@
     margin-bottom: 40px;
 }
 .imgs{
+<<<<<<< HEAD
     width: 350px;
 }
+=======
+    width: 400px;
+}
+@media(max-width:500px){
+    .imgs{
+        width: 360px;
+    }
+}
+@media(max-width:400px){
+    .imgs{
+        width: 340px;
+    }
+}
+>>>>>>> origin/rober

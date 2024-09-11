@@ -10,8 +10,10 @@
         flex-direction: column;
         overflow-y: scroll;
         justify-content: flex-start;
-        align-items: flex-start;
-    }    
+        align-items: center;
+        margin: 0;
+    }
+    
 }
 @media(max-width: 390px){
     .container{ 
@@ -25,14 +27,13 @@
 
 .imgSolitario{
     display: flex;
+    background-repeat: no-repeat;
     align-items: center;
 }
 .imgMultijugador{
     display: flex;
+    background-repeat: no-repeat;
     justify-content: center;
     align-items: center;
     margin-bottom: 40px;
-}
-.imgs{
-    width: 350px;
 }
