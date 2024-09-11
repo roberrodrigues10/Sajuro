@@ -1,59 +1,32 @@
 .content{
     display: flex;
     justify-content: center;
+    width: 100vw;
     height: 100vh;
     align-items: center;
     overflow: hidden;
 }
-.sajurolink{
-    position: relative;
+.sajurolinks{
+    display: flex;
     font-family: 'Old English Text MT', serif;
-    text-align: center;
-    font-size: 3.5vw;
-    margin-top: 3vh;
+    font-size: 50px;
+    height: 15vh;
+    justify-content: center;
+    align-items: flex-end;
+    max-width: 700px;
 }
 .transparente-cuadro {
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(3px);
     border-radius: 40px;
-    padding: 20px;
     width: 380px;
     height: 340px;
     box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
 }
-@media (max-width: 750px) {
-    .transparente-cuadro {
-        width: 300px;
-        height: 300px;
-    }
-}
-
-.login-container input[type="text"],.login-container input[type="password"] {
-    font-family: "Ovo", serif"Segoe UI", sans-serif;
+input[type="text"], input[type="password"]{
     background-color: transparent;
-    outline: none; 
-    border:none ;
-    background-color: transparent;
-    outline: none; 
-    border:none ;
-    width: 30vw;
-    font-size: 20px;
-    border-bottom: 2px solid black;
-    color: #202124;
-}
-.usuario{
-    display: flex;
-    width: 20vw;
-    height: 4vh;
-    margin: 5vh 2vw;
-    color: #5f6368;
-}
-
-.contra{
-    display: flex;
-    margin: -1vh 2vw 2vh;
-    width: 20vw;
-    height: 5vh;   
+    border: none;
+    outline: none;
 }
 ::placeholder{
     color: black;
@@ -69,4 +42,7 @@
     height: 10vh;
     justify-content: center;
     align-items: center;
+}
+.pass{
+    position: absolute;
 }
