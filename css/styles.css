@@ -3,6 +3,11 @@
     margin: 0px;
 }
 
+@font-face {
+    font-family: 'Canterbury';
+    src: url('fonts/Canterbury.ttf') format('truetype');
+  }
+
 body {
             
             height: 100vh;
@@ -21,18 +26,13 @@ body {
             align-items: center;
             height: 100vh;
             padding: 20px;
-            box-sizing: border-box;
             overflow: hidden;
-
 }
 .titulo{
     position: relative;
     bottom: 6%; 
-    font-family: 'Old English Text MT', serif;
+    font-family: 'Canterbury', serif;
     font-size: clamp(10px, 65px, 150px); 
-    overflow: hidden;
-
-
 }
 .titulo2{
     position: relative;
@@ -40,7 +40,6 @@ body {
     font-family: "Ovo", serif;
     font-size: clamp(10px, 30px, 150px); 
     color: aliceblue;
-    overflow: hidden;
     filter: blur(0.4px);
 }
 .titulo3{
@@ -49,7 +48,6 @@ body {
     font-family: "Ovo", serif;
     font-size: clamp(10px, 30px, 150px); 
     color: aliceblue;
-    overflow: hidden;
     filter: blur(0.4px);
 }
 .titulo4{
@@ -186,11 +184,51 @@ body {
 .sajuro{
     color: black;
     text-decoration: none; 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 }
 =======
 }
 
+=======
+}
+.sajurolink{
+    position: relative;
+    font-family: 'Old English Text MT', serif;
+    font-size: clamp(10px, 50px, 150px); 
+    text-align: center;
+}
+.transparente-cuadro {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    width: 480px;
+    height: 430px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 550px) {
+    .transparente-cuadro {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    background-color: transparent;
+    outline: none; 
+    border:none ;
+}
+.contrasena{
+    margin-left: 15%;    
+}
+::placeholder{
+    color: black;
+    font-size: clamp(10px, 25px, 30px);
+    font-family: "Ovo", serif;
+}
+>>>>>>> main
 /* Estilo para el input que muestra las sugerencias */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -226,4 +264,7 @@ input::-webkit-autofill {
         padding: 20px;
     }
 }
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> main

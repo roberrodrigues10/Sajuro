@@ -1,0 +1,205 @@
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+@font-face {
+    font-family: 'Canterbury';
+    src: url('fonts/Canterbury.ttf') format('truetype');
+  }
+  
+
+body {
+    height: 100vh;
+    background-image: url('img/fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: "Ovo", serif;
+}
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sajuro {
+    color: black;
+    text-decoration: none;
+}
+
+.sajurolink {
+    position: relative;
+    font-family: 'Canterbury', serif;
+    font-size: clamp(2rem, 4.5vw, 8rem); /* Adapta el tamaño del texto a la pantalla */
+    overflow: hidden;
+    text-align: center;
+    top: 1%;
+}
+
+.transparente-cuadro {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    padding: 20px;
+    width: 460px;
+    height: 450px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 550px) {
+    .transparente-cuadro {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.usuario {
+    position: relative;
+    top: 10%;
+    margin-left: 12%;
+}
+
+.usuario input {
+    position: relative;
+    width: 85%;
+    padding: 10px;
+    font-size: 25px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    color: #333;
+    outline: none;
+    top: -30px;
+}
+
+.usuario label {
+    position: absolute;
+    font-family: 'Canterbury', serif;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.usuario input:focus + label,
+.usuario input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    font-size: 12px;
+    color: #333;
+}
+
+.usuario input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: #333;
+}
+
+.contrasena {
+    position: relative;
+    top: 14%;
+    margin-left: -1%;
+}
+
+.contrasena input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    color: #333;
+    outline: none;
+}
+
+.contrasena label {
+    position: absolute;
+    font-family: 'Old English Text MT', serif;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.contrasena input:focus + label,
+.contrasena input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    font-size: 12px;
+    color: #333;
+}
+
+.contrasena input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: #333;
+}
+
+.email {
+    position: relative;
+    bottom: -3%;
+    margin-left: -1%;
+}
+
+.email input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    color: #333;
+    outline: none;
+}
+
+.email label {
+    position: absolute;
+    font-family: 'Old English Text MT', serif;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: #000000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.email input:focus + label,
+.email input:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 10px;
+    font-size: 12px;
+    color: #333;
+}
+
+.email input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: #333;
+}
+.registrar{
+    position: relative;
+    bottom: -15%;
+    margin-left: 32%;
+    font-family: "Ovo", serif;
+    font-size: clamp(10px, 30px, 150px); 
+    color: aliceblue;
+    filter: blur(0.4px);
+}
+
+.registrarse{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.registrarse:hover{
+    color: rgb(71, 7, 66);
+}
