@@ -1,4 +1,14 @@
-.content{
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+@font-face {
+    font-family: 'Canterbury';
+    src: url('fonts/Canterbury.ttf') format('truetype');
+  }
+  
+.content {
     display: flex;
     justify-content: center;
     width: 100vw;
@@ -6,43 +16,140 @@
     align-items: center;
     overflow: hidden;
 }
-.sajurolinks{
+.sajurolinks {
     display: flex;
-    font-family: 'Old English Text MT', serif;
-    font-size: 50px;
-    height: 15vh;
+    margin-top: 30px;
+    font-family: 'Canterbury';
+    font-size: 45px;
     justify-content: center;
     align-items: flex-end;
-    max-width: 700px;
+    padding-bottom: 5px;
 }
 .transparente-cuadro {
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(3px);
-    border-radius: 40px;
+    backdrop-filter: blur(0.5px);
+    border-radius: 50px;
     width: 380px;
-    height: 340px;
-    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+    height: 330px;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.8);
 }
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"] {
+    font-family: "Ovo", serif;
     background-color: transparent;
     border: none;
     outline: none;
+    font-size: 16px;
+    margin: 8px 0;
+    
 }
-::placeholder{
-    color: black;
-    font-family: "Ovo", serif;
-}
-.boton-inicio{
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
-    color: white;
+.input-container {
+    position: relative;
     display: flex;
-    width: 25vw;
-    height: 10vh;
     justify-content: center;
-    align-items: center;
+    margin: 20px 0;
 }
-.pass{
+.login-container{
+    margin: 0;
+}
+.input-container input {
+    border: 2px solid black;
+    width: 75%;
+    height: 30px;
+    border-radius: 30px;
+    padding: 0 15px 0 15px;
+}
+
+.input-container label {
+    font-family: "Ovo", serif;
     position: absolute;
+    left: 45px;
+    top: 48%;
+    transform: translateY(-50%);
+    color: black;
+    font-size: 20px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -2px;
+    font-size: 16px;
+}
+
+.login-button {
+    font-family: "Ovo", serif;
+    width: 42%;
+    height: 45px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+    margin-top: -12px;
+    border-radius: 20px;
+    background-color: rgb(0, 0, 0); 
+    margin-left: 29%;
+}
+.login-button:hover{
+    /*color: rgb(246, 11, 246);*/
+}
+.icon{
+    position: absolute;
+    left: 92%;
+    top: 20%;
+    width: 25px;
+}
+.icon-2{
+    position: absolute;
+    left: 91.5%;
+    top: 20%;
+    width: 28px;
+}
+
+@media (max-width: 400px) {
+    .transparente-cuadro {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(3px);
+        border-radius: 50px;
+        width: 340px;
+        box-shadow: 0 0px 5px rgba(0, 0, 0, 0.8);
+    }
+    .login-container {
+        margin-top: -20px;
+    }
+    .input-container label {
+        left: 32px;
+    }
+    .input-container input {
+        border: 2px solid black;
+        width: 75%;
+        height: 30px;
+        border-radius: 30px;
+        padding: 0 15px 0 15px;
+    }
+    .login-button {
+        width: 55%;
+        height: 40px;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        box-sizing: border-box;
+        margin-top: -10px;
+        border-radius: 20px;
+        background-color: rgb(0, 0, 0); 
+        margin-left: 22%;
+    }
+    .icon{
+        left: 93%;
+    }
+    .icon-2{
+        left: 92.3%;
+    }
+    
 }

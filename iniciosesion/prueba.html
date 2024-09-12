@@ -3,89 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login sin Responsivo</title>
+    <title>Login</title>
     <style>
-        body {
-            margin: 0;
+        * {
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        @font-face {
+            font-family: 'Canterbury';
+            src: url('fonts/Canterbury.ttf') format('truetype');
+        }
+
+        .content {
             display: flex;
             justify-content: center;
-            align-items: center;
+            width: 100vw;
             height: 100vh;
+            align-items: center;
+            overflow: hidden;
+            background-color: #f0f0f0; /* Ajustar el color de fondo si es necesario */
         }
 
-        .login-container {
-            width: 400px;
-            padding: 40px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
+        .transparente-cuadro {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(0.5px);
+            border-radius: 50px;
+            width: 380px;
+            height: 380px;
+            box-shadow: 0 0px 5px rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .input-container {
             position: relative;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
-        .input-container input {
+        input[type="email"], input[type="password"] {
+            font-family: "Ovo", serif;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            margin: 8px 0;
             width: 100%;
+            border-bottom: 2px solid black;
             padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
         }
 
-        .input-container i {
+        .input-container label {
+            font-family: "Ovo", serif;
             position: absolute;
-            right: 10px;
+            left: 47px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 18px;
-            color: #888;
+            color: black;
+            font-size: 20px;
+            pointer-events: none;
+            transition: 0.6s;
+            background: #ffffff;
+            padding: 0 5px;
         }
 
-        button {
-            width: 100%;
-            padding: 12px;
+        
+input:focus ~ label,
+input:valid ~ label  {
+            top: -10px;
             font-size: 16px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            color: #007BFF;
         }
 
-        button:hover {
-            background-color: #0056b3;
+        .login-button {
+            font-family: "Ovo", serif;
+            width: 100%;
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .login-button:hover {
+            color: rgb(71, 7, 66);
+        }
+
+        @media (max-width: 400px) {
+            .transparente-cuadro {
+                width: 340px;
+                backdrop-filter: blur(3px);
+            }
+
+            .input-container label {
+                left: 23px;
+            }
+
+            input[type="email"], input[type="password"] {
+                width: 85%;
+            }
         }
     </style>
 </head>
 <body>
-
-<div class="login-container">
-    <h2>Login</h2>
-    <form>
-        <!-- Campo de Usuario -->
-        <div class="input-container">
-            <input type="text" placeholder="Usuario" required>
-            <i class="fa fa-user"></i> <!-- Coloca un ícono personalizado aquí si lo tienes -->
+    <div class="content">
+        <div class="transparente-cuadro">
+            <form class="login-container">
+                <div class="input-container">
+                    <input type="email" id="email">
+                    <label for="email">Correo Electrónico</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="password" placeholder=" ">
+                    <label for="password">Contraseña</label>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
         </div>
-        <!-- Campo de Contraseña -->
-        <div class="input-container">
-            <input type="password" placeholder="Contraseña" required>
-            <i class="fa fa-lock"></i> <!-- Coloca un ícono personalizado aquí si lo tienes -->
-        </div>
-        <!-- Botón de Login -->
-        <button type="submit">Ingresar</button>
-    </form>
-</div>
-
+    </div>
 </body>
 </html>

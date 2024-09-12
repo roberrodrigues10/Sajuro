@@ -10,36 +10,41 @@
     <link rel="stylesheet" href="/css/sesion.css">
     <link href="https://fonts.cdnfonts.com/css/old-english-five" rel="stylesheet">
 </head>
-<header>
-
-</header>
 <body>
     <script src="js/jugador.js"></script>
     <div class="content">
         <div class="transparente-cuadro">
             <div class="sajurolinks">
-            <a href="/iniciar/inicio.html" class="sajuro">SAJURO</a>
-        </div>
+                <a href="/iniciar/inicio.html" class="sajuro">SAJURO</a>
+            </div>
             <div class="login-container">
                 <form action="" method="POST">
-                    <div class="usuario">
-                    <input type="text" name="username" placeholder="Usuario">
+                    <div class="input-container">
+                        <input type="text" required>
+                        <label>Usuario</label>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                          </svg>
                     </div>
-                    <div class="contra">
-                    <input type="password" class="contrasena" name="password" placeholder="Contraseña" >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="" height="16" fill="currentColor" class="pass" viewBox="0 0 16 16">
-                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1"/>
-                      </svg>
+                    <div class="input-container">
+                        <input type="password" class="contrasena" name="password" required>
+                        <label>Contraseña</label>    
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-2">
+                            <rect x="6" y="12" width="12" height="8" rx="2" fill="black" stroke="black" stroke-width="2"/>
+                            <path d="M12 2C9.8 2 8 3.8 8 6v4h8V6c0-2.2-1.8-4-4-4z" fill="black" stroke="none"/>
+                            <rect x="11" y="14" width="2" height="4" rx="1" fill="black"/>
+                          </svg>                                              
                     </div>
                     <br>
-                    <button type="button" onclick="jugador()" class="boton-inicio">Iniciar Sesión</button>
+                    <button class="login-button" onclick="jugador()" type="button">Iniciar sesión</button>
                 </form>
             </div>
         </div>
     </div>
-    
+    <script>
+        function jugador() {
+            window.location.href = '/jugador/jugador.html'
+        }
+    </script>
 </body>
-<footer>
-
-</footer>
 </html>
