@@ -1,0 +1,77 @@
+@font-face {
+    font-family: 'Canterbury';
+    src: url('fonts/Canterbury.ttf') format('truetype');
+  }
+
+body{
+    position: absolute;
+    background-image: url('img/escri.png');
+    width: 100vw;
+    background-size: cover;
+    background-position: center;  /* Se centra la imagen */
+    background-repeat: no-repeat;  /* Evita que la imagen se repita */
+    background-color: #000;  /* Fondo de color en caso de que queden espacios vacíos */
+    overflow: hidden;
+    background-attachment: fixed;
+}
+@media(max-width: 500px){
+    body{
+        background-image: url(img/movil.png);
+        height: 100%;        
+        background-size: cover;
+        background-position: center;  /* Se centra la imagen */
+        background-repeat: no-repeat;  /* Evita que la imagen se repita */
+        background-color: #000;  /* Fondo de color en caso de que queden espacios vacíos */
+        overflow: hidden;
+        background-attachment: fixed;
+    }
+}
+.inicio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 30px;
+}
+.titulo{
+    font-family: 'Canterbury';
+    color: #F2CE84;
+    font-size: 80px;
+    margin-bottom: 240px;
+}
+.bloques{
+    border: 2px solid white;
+    border-radius: 120px;
+    background-color: #000;
+    width: 230px;
+    height: 55px;
+    top: 50px;
+    margin-top: 15px;
+
+}
+.inicio-botones{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 30px;
+}
+.botones{
+    position: absolute;
+    margin-top: 10px;
+}
+.pajaro{
+    position: absolute;
+    z-index: 0;
+}
+
+.img{
+    display: flex;
+    position: absolute;
+    height: 90vh;
+    justify-content: start;
+    width: 65vw;
+}

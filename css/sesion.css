@@ -52,24 +52,22 @@ input[type="text"], input[type="password"] {
     margin: 0;
 }
 .input-container input {
-    border: 2px solid black;
-    width: 75%;
+    border-bottom: 2px solid black;
+    width: 70%;
     height: 30px;
-    border-radius: 30px;
-    padding: 0 15px 0 15px;
 }
 
 .input-container label {
     font-family: "Ovo", serif;
     position: absolute;
-    left: 45px;
-    top: 48%;
+    left: 57px;
+    top: 55%;
     transform: translateY(-50%);
     color: black;
     font-size: 20px;
     pointer-events: none;
     transition: 0.5s;
-}
+}   
 
 input:focus ~ label,
 input:valid ~ label {
@@ -84,13 +82,13 @@ input:valid ~ label {
     color: #fff;
     border: none;
     border-radius: 4px;
-    font-size: 25px;
+    font-size: 26px;
     cursor: pointer;
     transition: background-color 0.3s;
     box-sizing: border-box;
     margin-top: -12px;
     border-radius: 20px;
-    background-color: rgb(0, 0, 0); 
+    background-color:transparent; 
     margin-left: 29%;
 }
 .login-button:hover{
@@ -98,14 +96,14 @@ input:valid ~ label {
 }
 .icon{
     position: absolute;
-    left: 92%;
-    top: 20%;
+    left: 87%;
+    top: 28%;
     width: 25px;
 }
 .icon-2{
     position: absolute;
-    left: 91.5%;
-    top: 20%;
+    left: 86.5%;
+    top: 24%;
     width: 28px;
 }
 
@@ -121,31 +119,30 @@ input:valid ~ label {
         margin-top: -20px;
     }
     .input-container label {
-        left: 32px;
+        left: 25px;
     }
     .input-container input {
-        border: 2px solid black;
+        border-bottom: 2px solid black;
         width: 75%;
         height: 30px;
-        border-radius: 30px;
         padding: 0 15px 0 15px;
+        border-radius: 0px;
     }
     .login-button {
         width: 55%;
         height: 40px;
         color: #fff;
         border: none;
-        border-radius: 4px;
         font-size: 25px;
         cursor: pointer;
-        transition: background-color 0.3s;
         box-sizing: border-box;
         margin-top: -10px;
         border-radius: 20px;
-        background-color: rgb(0, 0, 0); 
+        background-color: transparent; 
         margin-left: 22%;
     }
     .icon{
+        top: 30%;
         left: 93%;
     }
     .icon-2{
