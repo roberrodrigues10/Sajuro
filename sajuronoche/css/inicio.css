@@ -5,7 +5,7 @@
 
 body{
     position: absolute;
-    background-image: url('img/escri.png');
+    background-image: url('img/escritorio\ \(2\).gif');
     width: 100vw;
     background-size: cover;
     background-position: center;  /* Se centra la imagen */
@@ -14,18 +14,7 @@ body{
     overflow: hidden;
     background-attachment: fixed;
 }
-@media(max-width: 500px){
-    body{
-        background-image: url(img/movil.png);
-        height: 100%;        
-        background-size: cover;
-        background-position: center;  /* Se centra la imagen */
-        background-repeat: no-repeat;  /* Evita que la imagen se repita */
-        background-color: #000;  /* Fondo de color en caso de que queden espacios vacíos */
-        overflow: hidden;
-        background-attachment: fixed;
-    }
-}
+
 .inicio{
     display: flex;
     justify-content: center;
@@ -49,8 +38,11 @@ body{
     height: 55px;
     top: 50px;
     margin-top: 15px;
-
+    transition: transform 0.3s ease; /* Suaviza la transición del zoom */
 }
+.bloques:hover {
+    transform: scale(1.2); /* Aumenta el tamaño del botón al 120% */
+  }
 .inicio-botones{
     display: flex;
     color: white;
@@ -65,13 +57,44 @@ body{
 }
 .pajaro{
     position: absolute;
-    z-index: 0;
+    width: 100px;
 }
 
 .img{
-    display: flex;
     position: absolute;
-    height: 90vh;
+    display: flex;
+    height: 0vh;
     justify-content: start;
-    width: 65vw;
+    width: 99vw;
+}
+.pruebas{
+}
+@media(max-width: 500px){
+    body{
+        background-image: url(img/movil.png);
+        height: 100vh;
+        width: 100vw;     
+        background-size: cover;
+        background-position: center;  /* Se centra la imagen */
+        background-repeat: no-repeat;  /* Evita que la imagen se repita */
+        background-color: #000;  /* Fondo de color en caso de que queden espacios vacíos */
+        overflow: hidden;
+        background-attachment: fixed;
+    }
+    .pruebas{
+        display: none;
+    }
+}
+@media(max-width: 800px){
+    .pruebas{
+        display: none;
+    }
+}
+@media(max-width: 800px){
+    .pruebas{
+        display: none;
+    }
+}
+a{
+   text-decoration: none; 
 }

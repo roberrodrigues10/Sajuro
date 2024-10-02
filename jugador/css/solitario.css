@@ -142,4 +142,18 @@
         justify-content: center;
    }
 }
+.menuJugadores {
+    position: absolute;
+    height: 95vh;
+    display: flex;
+    align-items: end;
+}   
+.contenido{
+    background-image:
+        linear-gradient(rgb(0, 247, 255), rgb(34, 184, 1)),
+        linear-gradient(rgb(0, 173, 29), rgb(0, 242, 255));
+    border-radius: 100px;
+    width: 40vw;
+    height: 45px;
 
+}
