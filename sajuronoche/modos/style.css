@@ -1,0 +1,96 @@
+body {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #bb1515;
+}
+@font-face {
+    font-family: 'Canterbury';
+    src: url('/css/fonts/Canterbury.ttf') format('truetype');
+    }   
+
+.carousel {
+    width: 400px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(-300px) rotateY(0deg);
+    transition: transform 1s ease;
+}
+
+.carousel-item {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    background: rgba(36, 21, 11, 0.977);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: #fcfcfc;
+    border-radius: 10px;
+    transition: transform 1s ease, opacity 1s ease;
+    overflow: hidden;
+}
+
+.carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(300px); }
+.carousel-item:nth-child(2) { transform: rotateY(60deg) translateZ(300px); }
+.carousel-item:nth-child(3) { transform: rotateY(120deg) translateZ(300px); }
+.carousel-item:nth-child(4) { transform: rotateY(180deg) translateZ(300px); }
+.carousel-item:nth-child(5) { transform: rotateY(240deg) translateZ(300px); }
+.carousel-item:nth-child(6) { transform: rotateY(300deg) translateZ(300px); }
+
+.model-container {
+    width: 150px; /* Ajusta el tamaño del modelo */
+    height: 200px; /* Ajusta el tamaño del modelo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent; /* Establece el fondo como transparente */
+}
+
+.carousel-line {
+    width: 100%;
+    height: 5px; /* Grosor de la línea */
+    background-color: transparent; /* Hace que el contenedor de la línea sea transparente */
+    position: relative; /* Asegura que la línea se posicione en relación al item */
+    overflow: hidden; /* Asegura que la línea no sobresalga */
+}
+
+.carousel-item::after {
+    content: '';
+    position: absolute;
+    width: 100%; /* Ajusta el ancho según sea necesario */
+    height: 5px; /* Grosor de la línea */
+    background-color: #ffbb00; /* Color de la línea */
+    bottom: 0; /* Posición en la parte inferior */
+    left: -100%; /* Comienza fuera de vista */
+    animation: moveLine 2s linear infinite; /* Animación continua */
+}
+
+@keyframes moveLine {
+    0% {
+        left: -100%; /* Comienza fuera de la vista */
+    }
+    10% {
+        left: 0; /* Llega al borde izquierdo del item */
+    }
+    100% {
+        left: 100%; /* Desaparece al borde derecho del item */
+    }
+}
+
+.item-text {
+    color: rgb(112, 89, 28); /* Color del texto */
+    font-size: 20px; /* Tamaño del texto */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Sombra para mejorar legibilidad */
+    margin-bottom: 10px; /* Espaciado desde el modelo */
+    text-align: center; /* Centrar el texto */
+}
