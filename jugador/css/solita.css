@@ -35,7 +35,11 @@
     justify-content: end;
     align-items: flex-start;
 
+
 }
+
+
+
 .boton{
     background-color: transparent;
     border: 0px transparent;
@@ -57,4 +61,9 @@
     .img-3{
         width: 190px;
     }
+}
+
+.boton{
+    background-color: transparent;
+    border: 0px transparent;
 }
