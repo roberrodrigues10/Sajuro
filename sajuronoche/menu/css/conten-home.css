@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
+}
+
+@font-face {
+    font-family: 'Metal Mania';
+    src: url('/sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+}
+html{
+    background-color: #4C3A28;
+    touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
+
+}
+.contenido-general-menu {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para mejor control del layout */
+    align-items: center;
+}
+
+.contenido-home-oculto {
+    display: grid;
+}
+
+.contenido-home {
+    display: flex;
+    align-items: flex-end; /* Cambiado a flex-end para alinear el contenido al fondo */
+    justify-content: center;
+    position: fixed;
+    height: 30vh; /* Ajustado para mejor espacio */
+    width: 100%;
+}
+.imagen-css{
+    height: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 33.3%);
+    width: 800px;
+}
+
+.friend{
+    display: flex;
+    border: 3px solid #8b6946;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, #4C3A28 100%);
+    justify-content: center;
+    align-items: center;
+}
+.casa{
+    display: flex;
+    border-top: 3px solid #8b6946;
+    border-bottom: 3px solid #8b6946;
+    border-right: 3px solid #8b6946;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, #4C3A28 100%);
+    justify-content: center;
+    align-items: center;
+}
+.adjust{
+    display: flex;
+    border-bottom: 3px solid #8b6946;
+    border-top: 3px solid #8b6946;
+    border-right: 3px solid #8b6946;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, #4C3A28 100%);
+    justify-content: center;
+    align-items: center;
+}
+.icono-friend, .icono-home, .icono-adjust {
+    color: white;
+    cursor: pointer;
+    width: 50px; /* Ajuste proporcional */
+    height: 50px;
+}
+
+.ranking {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 10vh;
+}
+
+.icono-ranking {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.img-solitario, .img-multi {
+    width: 380px;
+}
+
+.contenido-home-modalidad {
+    display: grid;
+    top: 20vh;
+    width: 98.5vw;
+    height: 58vh;
+    grid-template-columns: repeat(2, 1fr); /* Se mantiene la responsividad */
+    
+}
+
+.solitario {
+    display: grid;
+    justify-self: end;
+    align-self: center;
+}
+
+.multijugador {
+    display: grid;
+    justify-self: start;
+    align-self: center;
+}
+
+.perfil-logo, .ranking-logo {
+    width: 100px; /* Se ajusta proporcionalmente al ancho de la pantalla */
+    height: 100px; /* Se ajusta proporcionalmente al ancho de la pantalla */
+}
+
+.ranking-conte {
+    display: grid;
+    position: fixed;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100vw;
+}
+
+.logo-ranking {
+    display: grid;
+    justify-items: end;
+}
+
+.nuevo-contenido-home {
+    opacity: 100%;
+}
+
+@media(max-width: 389px){
+    .contenido-home{
+        position: fixed;
+        height: 0;
+        top: 100%;
+    }
+    .contenido-home-modalidad{
+        display: grid;
+        grid-template-columns: 100%;
+        overflow: scroll;
+        height: 60vh;
+        margin-top: 5vh;
+    }
+    .img-solitario, .img-multi{
+        width: 280px;
+    }
+    .solitario{
+        display: grid;
+        justify-self: center;
+    }
+    .multijugador{
+        display: grid;
+        justify-self: center;
+    }
+}
+
+@media(min-width: 390px) and (max-width: 769px){
+    body{
+        overflow: scroll;
+    }
+    .contenido-home{
+        position: fixed;
+        height: 0;
+        top: 100%;
+    }
+    .contenido-home-modalidad{
+        display: grid;
+        grid-template-columns: 100%;
+        overflow: scroll;
+        height: 60vh;
+        margin-top: 5vh;
+    }
+    .img-solitario, .img-multi{
+        width: 300px;
+    }
+    .solitario{
+        display: grid;
+        justify-self: center;
+    }
+    .multijugador{
+        display: grid;
+        justify-self: center;
+    }
+}
+
+
+

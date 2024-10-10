@@ -1,0 +1,30 @@
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1; /* Aparece encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.656); /* Fondo semi-transparente */
+}
+.contenido-ranking-todo{
+    position: relative;
+    height: 340px;
+    width: 240px;
+    background-size: cover; /* Hace que el fondo cubra todo el área */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    overflow: hidden;
+    border-radius: 30px;
+    z-index: 101;
+}
+/* Contenido del modal */
+.modal-content {    
+    width: 98vw;
+    display: flex;
+    justify-content: end;
+    z-index: 101;
+    margin-top: 14vh;
+    max-width: 100%;
+}

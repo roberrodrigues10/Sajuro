@@ -1,0 +1,20 @@
+.container-verificacion{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+.cuadro-veri{
+    background-color: #4C3A28;
+    height: 20vh;
+    width: 30vw;
+    border-radius: 30px;
+}
+.Titulo{
+    color: white;
+    text-align: center;
+}
+.message{
+    text-align: center;
+    color: whitesmoke;
+}
