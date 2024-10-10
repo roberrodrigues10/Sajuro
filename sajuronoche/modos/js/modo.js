@@ -44,6 +44,16 @@ document.addEventListener('mouseup', () => {
     isDragging = false;
 });
 
+// Detectar teclas para mover el carrusel
+document.addEventListener('keydown', (e) => {
+    const rotationStep = 15; // Grados de rotación por tecla
+    if (e.key === 'ArrowRight') {
+        rotateCarousel(-rotationStep); // Rotar a la derecha
+    } else if (e.key === 'ArrowLeft') {
+        rotateCarousel(rotationStep); // Rotar a la izquierda
+    }
+});
+
 // Cargar el modelo en cada elemento del carrusel
 items.forEach((item) => {
     loader.load('3d.gltf', (gltf) => {

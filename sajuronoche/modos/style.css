@@ -40,6 +40,10 @@ body {
     overflow: hidden;
 }
 
+.carousel-item .item-text {
+    margin-top: 20px;
+}
+
 .carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(300px); }
 .carousel-item:nth-child(2) { transform: rotateY(60deg) translateZ(300px); }
 .carousel-item:nth-child(3) { transform: rotateY(120deg) translateZ(300px); }
@@ -69,10 +73,10 @@ body {
     position: absolute;
     width: 100%; /* Ajusta el ancho según sea necesario */
     height: 5px; /* Grosor de la línea */
-    background-color: #ffbb00; /* Color de la línea */
+    background-color: #725a17; /* Color de la línea */
     bottom: 0; /* Posición en la parte inferior */
     left: -100%; /* Comienza fuera de vista */
-    animation: moveLine 2s linear infinite; /* Animación continua */
+    animation: moveLine 3s linear infinite; /* Animación continua */
 }
 
 @keyframes moveLine {
@@ -88,9 +92,21 @@ body {
 }
 
 .item-text {
-    color: rgb(112, 89, 28); /* Color del texto */
+    color: rgb(228, 186, 61); /* Color del texto */
     font-size: 20px; /* Tamaño del texto */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Sombra para mejorar legibilidad */
-    margin-bottom: 10px; /* Espaciado desde el modelo */
+    text-shadow: 7px 7px 1px rgba(0, 0, 0, 0.840); /* Sombra para mejorar legibilidad */
+    margin-bottom: -30px; /* Espaciado desde el modelo */
     text-align: center; /* Centrar el texto */
+}
+
+.gif-container {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    margin-top: 5px; /* Ajustar el margen si es necesario */
+    margin-left: 20px;
+}
+
+.gif-container img {
+    width: 55vw; 
+    height: 65vh; 
 }
