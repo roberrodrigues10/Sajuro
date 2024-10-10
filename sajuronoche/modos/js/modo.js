@@ -4,63 +4,64 @@ let isDragging = false;
 
 const carousel = document.querySelector('.carousel');
 const items = document.querySelectorAll('.carousel-item');
-const loader = new THREE.GLTFLoader(); // Cargar el modelo GLTF
+const audios = {
+    'model-1': document.getElementById('audio-deportes'),
+    'model-2': document.getElementById('audio-ropa'),
+    'model-3': document.getElementById('audio-musica'),
+    'model-4': document.getElementById('audio-cultura'),
+    'model-5': document.getElementById('audio-animales'),
+    'model-6': document.getElementById('audio-comida')
+};
 
-// Función para rotar el carrusel
-function rotateCarousel(rotation) { 
+function stopAllMusic() {
+    for (let key in audios) {
+        audios[key].pause();
+        audios[key].currentTime = 0; // Reinicia la canción
+    }
+}
+
+// Función para rotar el carrusel y gestionar la música
+function rotateCarousel(rotation) {
     angle += rotation;
     carousel.style.transform = `translateZ(-300px) rotateY(${angle}deg)`;
 
-    // Aplicar la distorsión a los elementos
     items.forEach((item, index) => {
-        const currentAngle = (index * 60 + angle) % 360; // Cambia 90 por 60
-        if (Math.abs(currentAngle) === 0) {
-            item.classList.remove('distorted');
-        } else {
-            item.classList.add('distorted');
+        const currentAngle = (index * 60 + angle) % 360;
+
+        // Si el ángulo es cercano a 0, la tarjeta está en el centro
+        if (Math.abs(currentAngle) < 30) {
+            stopAllMusic();
+            let audioId = item.id;
+            audios[audioId].play();  // Reproducir la música asociada a la tarjeta activa
         }
     });
 }
 
-// Iniciar el arrastre con el mouse
+// Arrastre con el mouse
 carousel.addEventListener('mousedown', (e) => {
     isDragging = true;
     startX = e.clientX;
 });
 
-// Detectar el movimiento del mouse
 document.addEventListener('mousemove', (e) => {
     if (isDragging) {
         let currentX = e.clientX;
         let deltaX = currentX - startX;
-        let rotation = deltaX * 0.3; // Ajusta el factor para controlar la sensibilidad
+        let rotation = deltaX * 0.3;
         rotateCarousel(rotation);
-        startX = currentX; // Actualizar la posición inicial
+        startX = currentX;
     }
 });
 
-// Terminar el arrastre
 document.addEventListener('mouseup', () => {
     isDragging = false;
 });
 
-// Detectar teclas para mover el carrusel
+// Teclas para rotar
 document.addEventListener('keydown', (e) => {
-    const rotationStep = 15; // Grados de rotación por tecla
-    if (e.key === 'ArrowRight') {
-        rotateCarousel(-rotationStep); // Rotar a la derecha
-    } else if (e.key === 'ArrowLeft') {
-        rotateCarousel(rotationStep); // Rotar a la izquierda
+    if (e.key === 'ArrowLeft') {
+        rotateCarousel(-10);
+    } else if (e.key === 'ArrowRight') {
+        rotateCarousel(10);
     }
-});
-
-// Cargar el modelo en cada elemento del carrusel
-items.forEach((item) => {
-    loader.load('3d.gltf', (gltf) => {
-        const model = gltf.scene;
-        model.scale.set(0.5, 0.5, 0.5); // Ajusta la escala si es necesario
-        item.appendChild(model);
-    }, undefined, (error) => {
-        console.error('Error al cargar el modelo:', error);
-    });
 });
