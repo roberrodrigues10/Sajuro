@@ -1,0 +1,574 @@
+body {
+    height: 100vh;
+    background-image: url('DALL·E-2024-09-19-16.52.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'CloisterBlack';
+    src: url('CloisterBlack.ttf') format('truetype'),
+}
+/*CSS INDEX*/
+.generalIndex {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 22vh;
+}
+.tituloIndex {
+    min-width: 325px;
+    max-width: 20%;
+    margin: 0 auto;
+}
+.SajurotituloIndex {
+    padding: 10px;
+    font-size: 50px;
+    font-family: 'CloisterBlack';
+    background-image:
+        linear-gradient(rgb(0, 247, 255), rgb(128, 0, 255)),
+        linear-gradient(rgb(180, 18, 255), rgb(0, 242, 255));
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: normal;
+    letter-spacing: 5px;
+}
+a {
+    text-decoration: none;
+}
+.loginIndex {
+    min-width: 270px;
+    max-width: 25%;
+    margin: 0 auto;
+    padding-bottom: 20vh;
+}
+.IniciarSesionCuadro {
+    width: 85%;
+    background-image:
+        linear-gradient(rgb(0, 247, 255), rgb(34, 184, 1)),
+        linear-gradient(rgb(0, 173, 29), rgb(0, 242, 255));
+    border: 4px solid #000;
+    border-radius: 100px;
+    margin: 10px auto;
+}
+.loginIndexIniciarSesion {
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: "Ovo", serif;
+    font-weight: normal;
+    font-size: 30px;
+    color: #fff;
+    box-sizing: border-box;
+    margin: 0;
+}
+.RegistrarseCuadro {
+    width: 85%;
+    background: #fff;
+    border: 4px solid #000;
+    border-radius: 100px;
+    margin: 10px auto;
+}
+.loginIndexRegistrarse {
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: "Ovo", serif;
+    font-weight: normal;
+    font-size: 30px;
+    background-image:
+    linear-gradient(rgb(0, 247, 255), rgb(34, 184, 1)),
+    linear-gradient(rgb(0, 173, 29), rgb(0, 242, 255));
+    -webkit-background-clip: text;
+    color: transparent;
+    margin: 0;
+}
+@media screen and (min-height: 0px) {
+    .loginIndexIniciarSesion {
+        font-size: 15px;
+    }
+    .loginIndexRegistrarse {
+        font-size: 15px;
+    }
+    .SajurotituloIndex {
+        font-size: 30px;
+    }
+    .IniciarSesionCuadro {
+        width: 50%;
+    }
+    .RegistrarseCuadro {
+        width: 50%;
+    }
+    body {
+        height: 120vh;
+    } 
+}
+@media screen and (min-width: 320px) {
+    .loginIndexIniciarSesion {
+        font-size: 20px;
+    }
+    .loginIndexRegistrarse {
+        font-size: 20px;
+    }
+    .SajurotituloIndex {
+        font-size: 35px;
+    }
+    .IniciarSesionCuadro {
+        width: 60%;
+    }
+    .RegistrarseCuadro {
+        width: 60%;
+    }
+}
+@media  (min-width: 480px) {
+    .loginIndexIniciarSesion {
+        font-size: 25px;
+    }
+    .loginIndexRegistrarse {
+        font-size: 25px;
+    }
+    .SajurotituloIndex {
+        font-size: 40px;
+    }
+    .IniciarSesionCuadro {
+        width: 70%;
+    }
+    .RegistrarseCuadro {
+        width: 70%;
+    }
+}
+@media (min-width: 768px) {
+    .loginIndexIniciarSesion {
+        font-size: 30px;
+    }
+    .loginIndexRegistrarse {
+        font-size: 30px;
+    }
+    .SajurotituloIndex {
+        font-size: 50px;
+    }
+    .IniciarSesionCuadro {
+        width: 80%;
+    }
+    .RegistrarseCuadro {
+        width: 80%;
+    }
+}
+@media (min-width: 960px) {
+    .loginIndexIniciarSesion {
+        font-size: 32.5px;
+    }
+    .loginIndexRegistrarse {
+        font-size: 32.5px;
+    }
+    .SajurotituloIndex {
+        font-size: 55px;
+    }
+    .IniciarSesionCuadro {
+        width: 85%;
+    }
+    .RegistrarseCuadro {
+        width: 85%;
+    }
+}
+@media (min-width: 1024px) {
+    .loginIndexIniciarSesion {
+        font-size: 35px;
+    }
+    .loginIndexRegistrarse {
+        font-size: 35px;
+    }
+    .SajurotituloIndex {
+        font-size: 60px;
+    }
+    .IniciarSesionCuadro {
+        width: 90%;
+    }
+    .RegistrarseCuadro {
+        width: 90%;
+    }
+}
+@media (min-width: 1328px) {
+    .loginIndexIniciarSesion {
+        font-size: 37.5px;
+    }
+    .loginIndexRegistrarse {
+        font-size: 37.5px;
+    }
+    .SajurotituloIndex {
+        font-size: 65px;
+    }
+    .IniciarSesionCuadro {
+        width: 95%;
+    }
+    .RegistrarseCuadro {
+        width: 95%;
+    }
+}
+/*CSS INGRESAR*/
+.contenedorIngresar {
+    max-width: 21rem;
+    min-width: 395px;
+    border-radius: 50px;
+    margin: 0 auto;
+    margin-top: 28vh;
+    border: 5px solid transparent;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.60), rgba(255, 255, 255, 0.60 )),
+        linear-gradient(to top, rgba(0, 217, 255, 0.729), rgba(161, 16, 228, 0.885));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.tituloIngresar {
+    margin: 0 auto;
+    padding: 12px;
+}
+.SajuroTituloIngresar {
+    font-size: 50px;
+    text-align: center;
+    font-family: 'CloisterBlack';
+    background-image:
+        linear-gradient(rgb(0, 247, 255), rgb(128, 0, 255)),
+        linear-gradient(rgb(180, 18, 255), rgb(0, 242, 255));
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: normal;
+    letter-spacing: 5px;
+}
+.campoLogin {
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+#usuario::placeholder, #contraseña::placeholder {
+    color: rgb(255, 255, 255);
+    font-family: "Ovo", serif;
+}
+#usuario {
+    border-bottom: 2px solid rgb(255, 255, 255);
+    font-size: 20px;
+    font-family: "Ovo", serif;
+}
+#contraseña {
+    border-bottom: 2px solid rgb(255, 255, 255);
+    font-size: 20px;
+    font-family: "Ovo", serif;
+}
+input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.contraseña {
+    padding-right: 70px;
+    padding-top: 5px;
+}
+.OlvideContraseñaIngresar {
+    text-align: right;
+    text-decoration: underline;
+    color: rgb(255, 255, 255);
+    margin: 0%;
+    font-size: 10px;
+}
+.botonIngresar {
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px;
+}
+.botonIngresar h3 {
+    color: #fff;
+    font-family: "Ovo", serif;
+    font-size: 23px;
+    font-weight: normal;
+}
+@media screen and (min-height: 0px) {
+    .contenedorIngresar {
+        min-width: 280px;
+    }
+    .SajuroTituloIngresar {
+        font-size: 35px;
+    }
+    .campoLogin {
+        padding: 12px;
+    }
+    #usuario {
+        font-size: 12px;
+    }
+    #contraseña {
+        font-size: 12px;
+    }
+    .botonIngresar h3 {
+        font-size: 14px;
+    }
+}
+@media screen and (min-width: 320px) {
+    .contenedorIngresar {
+        min-width: 300px;
+    }
+    .tituloIngresar {
+        padding: 9px;
+    }
+    .SajuroTituloIngresar {
+        font-size: 40px;
+    }
+    .campoLogin {
+        padding: 14px;
+    }
+    #usuario {
+        font-size: 14px;
+    }
+    #contraseña {
+        font-size: 14px;
+    }
+    .botonIngresar h3 {
+        font-size: 16px;
+    }
+}
+@media screen and (min-width: 480px) {
+    .contenedorIngresar {
+        min-width: 355px;
+    }
+    .tituloIngresar {
+        padding: 10px;
+    }
+    .SajuroTituloIngresar {
+        font-size: 45px;
+    }
+    .campoLogin {
+        padding: 15px;
+    }
+    #usuario {
+        font-size: 15px;
+    }
+    #contraseña {
+        font-size: 15px;
+    }
+    .botonIngresar h3 {
+        font-size: 17px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .contenedorIngresar {
+        min-width: 365px;
+    }
+    .tituloIngresar {
+        padding: 10px;
+    }
+    .SajuroTituloIngresar {
+        font-size: 50px;
+    }
+    .campoLogin {
+        padding: 17px;
+    }
+    #usuario {
+        font-size: 17px;
+    }
+    #contraseña {
+        font-size: 17px;
+    }
+    .botonIngresar h3 {
+        font-size: 19px;
+    }
+}
+@media screen and (min-width: 960px) {
+    .contenedorIngresar {
+        min-width: 375px;
+    }
+    .SajuroTituloIngresar {
+        font-size: 55px;
+    }
+    .campoLogin {
+        padding: 18px;
+    }
+    #usuario {
+        font-size: 19px;
+    }
+    #contraseña {
+        font-size: 19px;
+    }
+    .botonIngresar h3 {
+        font-size: 21px;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .contenedorIngresar {
+        min-width: 390px;
+    }
+    .SajuroTituloIngresar {
+        font-size: 60px;
+    }
+    .campoLogin {
+        padding: 20px;
+    }
+    #usuario {
+        font-size: 21px;
+    }
+    #contraseña {
+        font-size: 21px;
+    }
+    .botonIngresar h3 {
+        font-size: 24px;
+    }
+}
+@media screen and (min-width: 1328px) {
+    .contenedorIngresar {
+        min-width: 400px;
+    }
+    .SajuroTituloIngresar {
+        font-size: 65px;
+    }
+    .campoLogin {
+        padding: 22px;
+    }
+    #usuario {
+        font-size: 23px;
+    }
+    #contraseña {
+        font-size: 23px;
+    }
+    .botonIngresar h3 {
+        font-size: 27px;
+    }
+}
+/*CSS REGISTRARSE */
+.contenedorRegistrarse {
+    max-width: 21rem;
+    min-width: 395px;
+    border-radius: 50px;
+    margin: 0 auto;
+    margin-top: 28vh;
+    border: 5px solid transparent;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.60), rgba(255, 255, 255, 0.60 )),
+        linear-gradient(to top, rgba(0, 217, 255, 0.729), rgba(161, 16, 228, 0.885));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.tituloRegistrar {
+    margin: 0 auto;
+    padding: 12px;
+}
+.SajurotituloRegistrar {
+    font-size: 50px;
+    text-align: center;
+    font-family: 'CloisterBlack';
+    background-image:
+        linear-gradient(rgb(0, 247, 255), rgb(128, 0, 255)),
+        linear-gradient(rgb(180, 18, 255), rgb(0, 242, 255));
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: normal;
+    letter-spacing: 5px;
+}
+.botonRegistrar {
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px;
+}
+.botonRegistrar h3{
+    color: #fff;
+    font-family: "Ovo", serif;
+    font-size: 23px;
+    font-weight: normal;
+}
+@media screen and (min-width: 320px) {
+    .contenedorRegistrarse {
+        min-width: 300px;
+    }
+    .tituloRegistrar {
+        padding: 9px;
+    }
+    .SajurotituloRegistrar {
+        font-size: 30px;
+    }
+    .campoLogin {
+        padding: 14px;
+    }
+    .botonRegistrar h3 {
+        font-size: 16px;
+    }
+}
+@media screen and (min-width: 480px) {
+    .contenedorRegistrarse {
+        min-width: 330px;
+    }
+    .tituloRegistrar {
+        padding: 10px;
+    }
+    .SajurotituloRegistrar {
+        font-size: 35px;
+    }
+    .campoLogin {
+        padding: 15px;
+    }
+    .botonRegistrar h3 {
+        font-size: 17px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .contenedorRegistrarse {
+        min-width: 365px;
+    }
+    .tituloRegistrar {
+        padding: 10px;
+    }
+    .SajurotituloRegistrar {
+        font-size: 40px;
+    }
+    .campoLogin {
+        padding: 17px;
+    }
+    #usuario {
+        font-size: 17px;
+    }
+    #contraseña {
+        font-size: 17px;
+    }
+    .botonRegistrar h3 {
+        font-size: 19px;
+    }
+}
+@media screen and (min-width: 960px) {
+    .contenedorRegistrarse {
+        min-width: 375px;
+    }
+    .SajurotituloRegistrar {
+        font-size: 45px;
+    }
+    .campoLogin {
+        padding: 18px;
+    }
+    .botonRegistrar h3 {
+        font-size: 21px;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .contenedorRegistrarse {
+        min-width: 380px;
+    }
+    .SajurotituloRegistrar {
+        font-size: 50px;
+    }
+    .campoLogin {
+        padding: 19px;
+    }
+    .botonRegistrar h3 {
+        font-size: 23px;
+    }
+}
+@media screen and (min-width: 1328px) {
+    .contenedorRegistrarse {
+        min-width: 385px;
+    }
+    .SajurotituloRegistrar {
+        font-size: 55px;
+    }
+    .campoLogin {
+        padding: 20px;
+    }
+    .botonRegistrar h3 {
+        font-size: 25px;
+    }
+}
+.input {
+    margin-bottom: 20px;
+}
