@@ -1,0 +1,43 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333; /* Fondo oscuro para resaltar las piezas */
+}
+
+.puzzle-container {
+  position: relative; 
+  width: 400px; 
+  height: 200px; 
+  margin-top: -20vh;
+}
+.puzzle-piece {
+  position: absolute; 
+  display: none; /* Ocultamos inicialmente las piezas */
+  transition: opacity 0.5s ease; /* Transición para hacer más suave la aparición */
+}
+/* Asegúrate de ajustar las posiciones de las piezas según necesites */
+#piece1 {
+  width: 295px;
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+#piece2 {
+  width: 150px;
+  top: 75.5%; 
+  right: 13.5%; 
+  transform: translateY(-50%); 
+}
+#piece3 {
+  width: 286px;
+  top: 92%; 
+  left: 50.3%; 
+  transform: translateX(-50%); 
+}
+#piece4 {
+  top: 58%; 
+  left: 14%; 
+  width: 140px;
+}

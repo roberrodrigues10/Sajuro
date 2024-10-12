@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contrasena = $_POST['contrasena'];
 
     // Preparar la consulta SQL para verificar el usuario
-    $sql = "SELECT id, contrasena, is_verified FROM registrarse WHERE usuario = ? LIMIT 1";
+    $sql = "SELECT id, contrasena, is_verified FROM registrarse WHERE usuario  = ? LIMIT 1";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $usuario);
     $stmt->execute();

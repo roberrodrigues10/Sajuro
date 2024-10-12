@@ -60,7 +60,6 @@ input[type="text"] {
 }
 .user{
     color: white;
-    cursor: pointer;
 }
 .contenido-sugerencias{
     display: grid;
@@ -71,7 +70,6 @@ input[type="text"] {
     display: grid;
     width: 40px;
     justify-self: end;
-    cursor: pointer;
 }
 .nombre-suge{
     font-size: 20px;
@@ -109,7 +107,6 @@ input[type="text"] {
     height: 62px;
 }
 .icono-adjust, .icono-friend{
-    cursor: pointer;
     color: white;
 }
 .cuadro-solicitudes{
@@ -127,4 +124,7 @@ input[type="text"] {
     display: flex;
     justify-content: center;
     margin: -71vh 0px 0px 30%;
+}
+a{
+    cursor: url('../../css/img/cursor.png'), auto;
 }
