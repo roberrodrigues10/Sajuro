@@ -8,7 +8,7 @@ body{
 .modal {
     display: none; /* Oculto por defecto */
     position: fixed;
-    z-index: 1; /* Aparece encima de otros elementos */
+    z-index: 101; /* Aparece encima de otros elementos */
     left: 0;
     top: 0;
     width: 100%;
@@ -36,7 +36,7 @@ body{
     display: flex;
     justify-content: end;
     z-index: 101;
-    margin-top: 14vh;
+    margin-top: 17vh;
     margin-left: 2.8vw;
     max-width: 100%;
 }

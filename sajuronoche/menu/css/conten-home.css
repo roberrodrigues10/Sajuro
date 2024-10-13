@@ -139,6 +139,7 @@ html{
     margin: 60px 165px;
     color: rgb(143, 102, 68);
     font-size: 17px;
+    font-family: 'New Rocker';
 }
 .perfil-logo, .ranking-logo {
 }
@@ -163,26 +164,75 @@ html{
 .campos{
     display: grid;
     position: fixed;
-    top: 34vh;
+    top: 38vh;
     gap: 0;
 }
 .titulo-solitario{
     font-family: 'New Rocker';
     position: fixed;
-    margin: 35px 80px;
+    margin: -70px 72px;
     color: rgb(52, 42, 34);
     font-size: 30px;
     font-weight: bold;
+    letter-spacing: 1px;
 }
 .titulo-multijugador{
     font-family: 'New Rocker';
     position: fixed;
-    margin: 35px 55px;
+    margin: 30.5px 44px;
     color: rgb(52, 42, 34);
     font-size: 30px;
     font-weight: bold;
+    letter-spacing: 0.5px;
 }
-
+.contenido-amigos-activos{
+    position: fixed;
+    height: 100vh;
+    top: 8vh;
+    display: flex;
+    align-items: center;
+}
+.contenido-activos{
+    display: grid;
+    gap: 10px;
+}
+.logo-usuario-conectado{
+    position: fixed;
+    margin: -69px 15px;
+}
+.usuario-conectado{
+    position: fixed;
+    margin: -62px 57px;
+    font-family: 'New Rocker';
+    transform: rotate(-3deg); /* Rota 45 grados hacia arriba */
+    font-size: 18px;
+}
+.point-conectados{
+    position: fixed;
+    margin: -74px 125px;
+}
+.point-color-conectados{
+    color: rgb(0, 0, 0);
+    font-size: 11px;
+    transform: rotate(-2.5deg); /* Rota 45 grados hacia arriba */
+}
+.puntajes{
+    position: fixed;
+    margin: -3px 20px;
+}
+.estado{
+    position: fixed;
+    margin: -26px 80px;
+    z-index: 1000;
+}
+.logo-enlinea{
+    position: fixed;
+}
+.amigos-titulo{
+    position: fixed;
+    top: 20vh;
+    left: 1vw;
+}
 .nuevo-contenido-home {
     opacity: 100%;
 }
