@@ -8,16 +8,24 @@ function verificarCuenta(email, token) {
     fetch(`php/validacion.php?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`)
         .then(response => response.json())
         .then(data => {
-            // Mostrar el mensaje correspondiente
             const messageElement = document.getElementById('message');
+            const loadingElement = document.getElementById('loading');
+            const successDetails = document.getElementById('success-details');
+
             if (data.status === 'success') {
                 messageElement.textContent = data.message;
                 messageElement.classList.add('success'); // Agrega clase de éxito
+                successDetails.style.display = 'block'; // Mostrar detalles de éxito
+
+                // Redirigir tras unos segundos
+                setTimeout(() => {
+                    window.location.href = "../iniciosesion/iniciarsesion.php";
+                }, 3000);
             } else {
                 messageElement.textContent = data.message;
                 messageElement.classList.add('error'); // Agrega clase de error
             }
-            document.getElementById('loading').style.display = 'none'; // Oculta el mensaje de carga
+            loadingElement.style.display = 'none'; // Oculta el mensaje de carga
         })
         .catch(error => {
             console.error('Error:', error);

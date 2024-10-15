@@ -6,32 +6,28 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #bb1515;
-    background-size: cover;
-    background-position: center;
 }
-
 @font-face {
     font-family: 'Canterbury';
     src: url('/css/fonts/Canterbury.ttf') format('truetype');
-}
+    }   
 
 .carousel {
-    width: 100px;  /* Agrandamos el carrusel */
-    height: 450px;
+    width: 400px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     transform-style: preserve-3d;
-    transform: translateZ(-500px) rotateY(0deg); /* Ajustamos para ver más los elementos en 3D */
+    transform: translateZ(-300px) rotateY(0deg);
     transition: transform 1s ease;
-    scale: 1.2; /* Aumenta el tamaño general */
 }
 
 .carousel-item {
     position: absolute;
-    width: 250px;  /* Hacemos los items más grandes */
-    height: 400px;
+    width: 20vw;
+    height: 68vh;
     background: rgba(36, 21, 11, 0.977);
     display: flex;
     flex-direction: column;
@@ -48,16 +44,16 @@ body {
     margin-top: 20px;
 }
 
-.carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(400px); }
-.carousel-item:nth-child(2) { transform: rotateY(60deg) translateZ(400px); }
-.carousel-item:nth-child(3) { transform: rotateY(120deg) translateZ(400px); }
-.carousel-item:nth-child(4) { transform: rotateY(180deg) translateZ(400px); }
-.carousel-item:nth-child(5) { transform: rotateY(240deg) translateZ(400px); }
-.carousel-item:nth-child(6) { transform: rotateY(300deg) translateZ(400px); }
+.carousel-item:nth-child(1) { transform: rotateY(0deg) translateZ(300px); }
+.carousel-item:nth-child(2) { transform: rotateY(60deg) translateZ(300px); }
+.carousel-item:nth-child(3) { transform: rotateY(120deg) translateZ(300px); }
+.carousel-item:nth-child(4) { transform: rotateY(180deg) translateZ(300px); }
+.carousel-item:nth-child(5) { transform: rotateY(240deg) translateZ(300px); }
+.carousel-item:nth-child(6) { transform: rotateY(300deg) translateZ(300px); }
 
 .model-container {
-    width: 400px;  /* Ajuste en las dimensiones de los modelos */
-    height: 300px; 
+    width: 150px; 
+    height: 200px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +65,7 @@ body {
     height: 5px;
     background-color: transparent; 
     position: relative; 
-    overflow: hidden;
+    overflow: hidden; /* Asegura que la línea no sobresalga */
 }
 
 .carousel-item::after {
@@ -78,26 +74,26 @@ body {
     width: 100%; 
     height: 5px; 
     background-color: #725a17; 
-    bottom: 0;
-    left: -100%;
-    animation: moveLine 3s linear infinite;
+    bottom: 0; /* Posición en la parte inferior */
+    left: -100%; /* Comienza fuera de vista */
+    animation: moveLine 3s linear infinite; 
 }
 
 @keyframes moveLine {
     0% {
-        left: -100%;
+        left: -100%; /* Comienza fuera de la vista */
     }
     10% {
-        left: 0;
+        left: 0; /* Llega al borde izquierdo del item */
     }
     100% {
-        left: 100%;
+        left: 100%; /* Desaparece al borde derecho del item */
     }
 }
 
 .item-text {
     color: rgb(228, 186, 61); 
-    font-size: 24px;  /* Ajustamos el tamaño del texto */
+    font-size: 20px; 
     text-shadow: 7px 7px 1px rgba(0, 0, 0, 0.840); 
     margin-bottom: -30px;
     text-align: center; 
@@ -106,10 +102,11 @@ body {
 .gif-container {
     display: flex;
     justify-content: center; 
+    margin-top: 5px; 
+    margin-left: 20px;
 }
 
 .gif-container img {
-    margin-top: -20px;
-    width: 1000px;  /* Ajustamos el tamaño de las imágenes */
-    height: 500px; 
+    width: 85vw; 
+    height: 70vh; 
 }
