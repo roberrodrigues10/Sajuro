@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION["id_usuario"])) {
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,34 +16,33 @@
     <link rel="stylesheet" href="../menu/css/conten-home.css">
     <link rel="stylesheet" href="../css/inicio.css">
     <style>
-        
-
-
+        /* Aquí puedes agregar estilos personalizados si es necesario */
     </style>
 </head>
 <body>
     <div class="contenido-general" id="afuera">
         <div class="contenido-home-oculto" id="home-aparecer">
-            
             <div class="ranking">
                 <div class="ranking-conte">
-                <div class="logo-perfi">
-                    <a href="inicio-menu.html">
-                        <img src="css/img/logo-perfil-pi.png" alt="" width="130px">
-                    </a>
-                </div>  
-                <div class="bienvenido">
-                    <div class="content-bienvenido">
-                    <img src="css/img/biemvenido.png" alt="" class="bienvenido-img" > 
-                    <div class="titulo-bienvenido">BIENVENIDO</div>
-                    <div class="titulo-user">username</div>
-                    </div>           
-                </div>  
-                <div class="logo-ranking" >
-                    <img src="css/img/ranking-logoEspada.png" id="openModalBtn" alt="" class="ranking-logo" width="120px">
-                </div>  
+                    <div class="logo-perfi">
+                        <a href="inicio-menu.html">
+                            <img src="css/img/logo-perfil-pi.png" alt="" width="130px">
+                        </a>
+                    </div>
+                    <div class="bienvenido">
+                        <div class="content-bienvenido">
+                            <img src="css/img/biemvenido.png" alt="" class="bienvenido-img"> 
+                            <div class="titulo-bienvenido">BIENVENIDO</div>
+                            <div class="titulo-user"><?php echo $_SESSION["nombre_usuario"] ; ?></div>
+                        </div>           
+                    </div>
+                    <div class="logo-ranking">
+                        <img src="css/img/ranking-logoEspada.png" id="openModalBtn" alt="" class="ranking-logo" width="120px">
+                    </div>  
                 </div>
             </div>
+        </div>
+    </div>
             <div class="nuevo-contenido-home">
                 <div class="contenido-home-modalidad">
                     <div class="campos">
@@ -55,85 +60,9 @@
                 </div>
             </div>
         </div>
-        <div class="contenido-amigos-activos">
-            <div class="contenido-activos">
-            <div class="usuarios">
-                <img src="css/img/conectado.png" alt="" width="270px">
-                <div class="logo-usuario-conectado">
-                    <img src="css/img/avatar.png" alt="" class="cala">
-                </div>
-                <div class="usuario-conectado">username</div>
-                <div class="point-general point-conectados">
-                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
-                    <div class="contenido-points point-color-conectados puntajes">1080</div>
-                    <div class="estado">
-                        <div class="en-linea" id="en-linea">
-                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
-                        </div>
-                        <div class="onflinne" id="ofline">
-                            <img src="css/img/ofline.png"   alt="" width="40px" class="logo-enlinea ofline">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="usuarios">
-                <img src="css/img/conectado.png" alt="" width="270px">
-                <div class="logo-usuario-conectado">
-                    <img src="css/img/avatar.png" alt="" class="cala">
-                </div>
-                <div class="usuario-conectado">username</div>
-                <div class="point-general point-conectados">
-                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
-                    <div class="contenido-points point-color-conectados puntajes">1800</div>
-                    <div class="estado">
-                        <div class="en-linea">
-                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
-                        </div>
-                        <div class="onflinne">
-                            <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="usuarios">
-                <img src="css/img/conectado.png" alt="" width="270px">
-                <div class="logo-usuario-conectado">
-                    <img src="css/img/avatar.png" alt="" class="cala">
-                </div>
-                <div class="usuario-conectado">username</div>
-                <div class="point-general point-conectados">
-                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
-                    <div class="contenido-points point-color-conectados puntajes">2000</div>
-                    <div class="estado">
-                        <div class="en-linea">
-                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
-                        </div>
-                        <div class="onflinne">
-                            <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="usuarios">
-                <img src="css/img/conectado.png" alt="" width="270px">
-                <div class="logo-usuario-conectado">
-                    <img src="css/img/avatar.png" alt="" class="cala">
-                </div>
-                <div class="usuario-conectado">username</div>
-                <div class="point-general point-conectados">
-                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
-                    <div class="contenido-points point-color-conectados puntajes">100</div>
-                    <div class="estado">
-                        <div class="en-linea">
-                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
-                        </div>
-                        <div class="onflinne">
-                            <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="contenido-amigos-activos" id="amigos-activos">
+    
+            
         </div>
         <div class="contenido-amigos" id="amigos-aparecer">
             <div id='rectangle234' class='rectangle234'>
@@ -344,5 +273,6 @@
       </script>
     <script src="js/menu-conte.js"></script>
     <script src="js/modal-menu.js"></script>
+    <script src="js/amigos.js"></script>
 </body>
 </html>

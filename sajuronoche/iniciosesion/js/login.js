@@ -23,7 +23,7 @@ function inicioSesion(event) {
             // Si el inicio de sesión es exitoso
             messageContainer.style.color = 'green';
             messageContainer.textContent = data.message;
-            window.location.href = '../../../../Sajuro/sajuronoche/iniciosesion/cargando.html'; // Redirigir a otra página
+            window.location.href = '../iniciosesion/cargando.php'; // Redirigir a otra página
         } else {
             // Si hubo un error (usuario o contraseña incorrectos)
             messageContainer.style.color = 'rgb(224, 183, 106)';

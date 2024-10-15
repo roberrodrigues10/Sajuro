@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nuevaContrasena = $data['nuevaContrasena'];
 
     // Verificar el token y obtener el email
-    $sql_check = "SELECT email FROM registrarse WHERE token = ?";
+    $sql_check = "SELECT email FROM usuario WHERE token = ?";
     $stmt_check = $conn->prepare($sql_check);
     $stmt_check->bind_param('s', $token);
     $stmt_check->execute();
@@ -28,25 +28,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Encriptar la nueva contraseña
     $hashed_contrasena = password_hash($nuevaContrasena, PASSWORD_DEFAULT);
 
-    // Actualizar la contraseña en la tabla registrarse
-    $sql_update_registrarse = "UPDATE registrarse SET contrasena = ?, token = NULL WHERE token = ?";
-    $stmt_update_registrarse = $conn->prepare($sql_update_registrarse);
-    $stmt_update_registrarse->bind_param('ss', $hashed_contrasena, $token);
+    // Actualizar la contraseña y resetear el token
+    $sql_update = "UPDATE usuario SET contrasena = ?, token = NULL WHERE token = ?";
+    $stmt_update = $conn->prepare($sql_update);
+    $stmt_update->bind_param('ss', $hashed_contrasena, $token);
     
-    // Actualizar la contraseña en la tabla iniciarsesion
-    $sql_update_iniciarsesion = "UPDATE iniciarsesion SET contrasena = ? WHERE usuario_id = (SELECT id FROM registrarse WHERE email = ?)";
-    $stmt_update_iniciarsesion = $conn->prepare($sql_update_iniciarsesion);
-    $stmt_update_iniciarsesion->bind_param('ss', $hashed_contrasena, $email);
-
-    // Ejecutar las actualizaciones
+    // Ejecutar la actualización
     $conn->begin_transaction();
     try {
-        if (!$stmt_update_registrarse->execute()) {
-            throw new Exception('Error al actualizar la contraseña en la tabla registrarse.');
-        }
-
-        if (!$stmt_update_iniciarsesion->execute()) {
-            throw new Exception('Error al actualizar la contraseña en la tabla iniciarsesion.');
+        if (!$stmt_update->execute()) {
+            throw new Exception('Error al actualizar la contraseña.');
         }
 
         $conn->commit();
@@ -58,9 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Cerrar los statements
     $stmt_check->close();
-    $stmt_update_registrarse->close();
-    $stmt_update_iniciarsesion->close();
+    $stmt_update->close();
 }
 
 $conn->close();
 ?>
+

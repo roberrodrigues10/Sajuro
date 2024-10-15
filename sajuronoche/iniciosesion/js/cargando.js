@@ -9,7 +9,7 @@ function showPiece() {
     currentPieceIndex++;
   } else {
     clearInterval(intervalId); // Detiene el intervalo después de mostrar todas las piezas
-    window.location.href = '../menu/amigos-suge.html'
+    window.location.href = '../menu/amigos-suge.php'
   }
 }
 
