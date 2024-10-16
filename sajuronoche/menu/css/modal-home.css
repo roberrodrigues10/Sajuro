@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'New Rocker';
-    src: url('/sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+    font-family: 'Metal Mania';
+    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
 }
 body{
     cursor: url('../../css/img/cursor.png'), auto;
@@ -49,7 +49,7 @@ body{
 }
 .ranking-superior{
     display: grid;
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
     color: burlywood;
     font-size: 30px;
     height: 100%;
@@ -69,7 +69,7 @@ body{
 
 .semanal, .mundial{
     display: flex;
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
     border: 1px solid rgb(185, 136, 95);
     height: 20px;  
     background-color: rgba(143, 102, 68, 0.871);
@@ -87,7 +87,7 @@ body{
     margin-top: 3px;
 }
 .numero{
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
     font-size: 50px;
     color: rgba(143, 102, 68, 0.871);
     display: grid;
@@ -135,7 +135,7 @@ body{
     margin-right: 7px;
 }
 .usuario{
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
     display: grid;
     color: rgb(185, 136, 95);
     align-items: center;
@@ -143,7 +143,7 @@ body{
     margin-left: -5px;
 }
 .sajuro-points{
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
     display: grid;
     font-size: 12px;
     justify-self: start;
@@ -151,7 +151,7 @@ body{
     margin-top: 7px;
 }
 .contenido-points{
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
     display: flex;
     font-size: 12px;
     justify-content: center;

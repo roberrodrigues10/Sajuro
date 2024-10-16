@@ -1,16 +1,14 @@
 * {
     margin: 0;
     box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
-}
-
+}   
 @font-face {
     font-family: 'Metal Mania';
-    src: url('/sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
 }
 html{
     background-color: #4C3A28;
     touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
-
 }
 .contenido-general-menu {
     height: 100vh;
@@ -35,48 +33,6 @@ html{
     cursor: url('../../css/img/cursor.png'), auto;
 
 }
-.imagen-css{
-    height: 70px;
-    display: grid;
-    grid-template-columns: repeat(3, 33.3%);
-    width: 800px;
-}
-
-.friend{
-    display: flex;
-    border: 3px solid #8b6946;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, #4C3A28 100%);
-    justify-content: center;
-    align-items: center;
-}
-.casa{
-    display: flex;
-    border-top: 3px solid #8b6946;
-    border-bottom: 3px solid #8b6946;
-    border-right: 3px solid #8b6946;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, #4C3A28 100%);
-    justify-content: center;
-    align-items: center;
-}
-.adjust{
-    display: flex;
-    border-bottom: 3px solid #8b6946;
-    border-top: 3px solid #8b6946;
-    border-right: 3px solid #8b6946;
-    border-bottom-right-radius: 15px;
-    border-top-right-radius: 15px;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, #4C3A28 100%);
-    justify-content: center;
-    align-items: center;
-}
-.icono-friend, .icono-home, .icono-adjust {
-    color: white;
-    width: 50px; /* Ajuste proporcional */
-    height: 50px;
-}
-
 .ranking {
     display: flex;
     width: 100%;
@@ -132,14 +88,14 @@ html{
     margin: 37px 146px;
     color: rgb(143, 102, 68);
     font-size: 25px;
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
 }
 .titulo-user{
     position: fixed;
     margin: 60px 165px;
     color: rgb(143, 102, 68);
     font-size: 17px;
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
 }
 .perfil-logo, .ranking-logo {
 }
@@ -154,9 +110,14 @@ html{
 }
 
 .logo-ranking {
+    position: fixed;
     display: grid;
     justify-items: end;
     height: 10px;
+    margin: 0px 92vw;
+}
+.logo-perfi{
+    margin: 0px 1.5vw;
 }
 .modalidad-juego{
     width: 330px;
@@ -168,7 +129,7 @@ html{
     gap: 0;
 }
 .titulo-solitario{
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
     position: fixed;
     margin: -70px 72px;
     color: rgb(52, 42, 34);
@@ -177,7 +138,7 @@ html{
     letter-spacing: 1px;
 }
 .titulo-multijugador{
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
     position: fixed;
     margin: 30.5px 44px;
     color: rgb(52, 42, 34);
@@ -187,8 +148,7 @@ html{
 }
 .contenido-amigos-activos{
     position: fixed;
-    height: 100vh;
-    top: 8vh;
+    top: 23vh;
     display: flex;
     align-items: center;
 }
@@ -203,7 +163,7 @@ html{
 .usuario-conectado{
     position: fixed;
     margin: -62px 57px;
-    font-family: 'New Rocker';
+    font-family: 'Metal Mania';
     transform: rotate(-3deg); /* Rota 45 grados hacia arriba */
     font-size: 18px;
 }
@@ -233,6 +193,48 @@ html{
     top: 20vh;
     left: 1vw;
 }
+.objetos{
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+.cerrar-sesion{
+    position: fixed;
+    top: 95vh;
+    color: #8b6946;
+    font-family: 'Metal Mania';
+    font-size: 22px;
+    background-color: #e4c5a5;
+    width: 130px;
+    text-align: center;
+    border: 2px solid #8b6946;
+}
+.objetos-logo{
+    position: fixed;
+    width: 70px;
+    animation: rotar360 3s linear infinite; /* Cambia 3s para ajustar la velocidad */
+    margin: 1vh -2vw;
+}
+.nombre{
+    position: fixed;
+    margin: -6.5vh 3.3vw ;
+    font-family: 'Metal Mania';
+    font-size: 20px;
+}
+.titulo-friend{
+    margin: 0px 2vw;
+}
+@keyframes rotar360 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .nuevo-contenido-home {
     opacity: 100%;
 }
