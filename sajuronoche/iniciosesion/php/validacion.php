@@ -1,11 +1,10 @@
 <?php
 require 'conexion.php'; // Incluir la configuración de la base de datos
-
-// Crear una instancia de la clase Database y obtener la conexión
-$db = new Database();
-$conn = $db->getConnection();
+session_start(); 
 
 // Verificar la conexión
+$db = new Database();
+$conn = $db->getConnection();
 if ($conn === null) {
     echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos.']);
     exit;
@@ -13,7 +12,6 @@ if ($conn === null) {
 
 // Verificar si la solicitud es de tipo POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verificar que se reciban los parámetros esperados
     if (!isset($_POST['usuario']) || !isset($_POST['contrasena'])) {
         echo json_encode(['status' => 'error', 'message' => 'Faltan parámetros en la solicitud.']);
         exit;
@@ -23,22 +21,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
 
-    // Preparar la consulta SQL para verificar el usuario
-    $sql = "SELECT id, contrasena, is_verified FROM registrarse WHERE usuario  = ? LIMIT 1";
+    // Preparar la consulta SQL
+    $sql = "SELECT id_usuario, contrasena, nombre_usuario, is_verified FROM usuario WHERE nombre_usuario = ? LIMIT 1";
     $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        echo json_encode(['status' => 'error', 'message' => 'Error en la consulta SQL: ' . $conn->error]);
+        exit;
+    }
+
+    // Enlazar el parámetro
     $stmt->bind_param('s', $usuario);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
         // Obtener los datos del usuario
-        $stmt->bind_result($user_id, $hashed_contrasena, $is_verified);
+        $stmt->bind_result($user_id, $hashed_contrasena, $nombre_usuario, $is_verified);
         $stmt->fetch();
-
-        // Verificar si la contraseña es correcta
+    
+        // Verificar la contraseña
         if (password_verify($contrasena, $hashed_contrasena)) {
             // Verificar si la cuenta está verificada
             if ($is_verified == 1) {
+                // Establecer el nombre de usuario en la sesión
+                $_SESSION['nombre_usuario'] = $nombre_usuario;
+
+                // No mezclar echo con JSON si se espera que fetch lo maneje correctamente
                 echo json_encode(['status' => 'success', 'message' => 'Inicio de sesión exitoso.']);
             } else {
                 echo json_encode(['status' => 'error', 'message' => 'La cuenta no está verificada.']);
@@ -59,3 +68,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Cerrar la conexión
 $conn->close();
 ?>
+

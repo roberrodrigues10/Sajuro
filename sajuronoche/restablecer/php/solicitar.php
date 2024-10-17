@@ -3,7 +3,6 @@ require 'conexion.php'; // Incluir la configuración de la base de datos
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Asegúrate de que la ruta sea correcta donde tengas las librerías PHPMailer
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/Exception.php';
@@ -16,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $data['email'];
 
     // Verificar si el email existe
-    $sql_check = "SELECT usuario FROM registrarse WHERE email = ?";
+    $sql_check = "SELECT nombre_usuario FROM usuario WHERE email = ?";
     $stmt_check = $conn->prepare($sql_check);
     $stmt_check->bind_param('s', $email);
     $stmt_check->execute();
@@ -27,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Generar un token
-    $token = uniqid('', true);
+    // Generar un token único
+    $token = bin2hex(random_bytes(16));
     $expiration_time = date('Y-m-d H:i:s', strtotime('+1 hour')); // Establecer expiración
-    $sql_token = "UPDATE registrarse SET token = ? WHERE email = ?";
+    $sql_token = "UPDATE usuario SET token = ? WHERE email = ?";
     $stmt_token = $conn->prepare($sql_token);
     $stmt_token->bind_param('ss', $token, $email);
     $stmt_token->execute();
@@ -41,14 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'roberrodrigues300@gmail.com'; // Tu dirección de correo electrónico
-        $mail->Password = 'flhk dmrq nrlv bzqe'; // Tu contraseña de Gmail
+        $mail->Username = 'roberrodrigues300@gmail.com'; // Dirección de correo electrónico
+        $mail->Password = 'flhk dmrq nrlv bzqe'; // Contraseña de la cuenta de Gmail
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
         $mail->setFrom('roberrodrigues300@gmail.com', 'Tu Nombre');
         $mail->addAddress($email);
-        $mail->CharSet = 'UTF-8'; // Asegúrate de usar UTF-8
+        $mail->CharSet = 'UTF-8';
 
         $mail->isHTML(true);
         $mail->Subject = "Restablecer contraseña";
@@ -57,9 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->send();
         echo json_encode(['status' => 'success', 'message' => 'Revisa tu correo para restablecer la contraseña.']);
     } catch (Exception $e) {
-        echo json_encode(['status' => 'error', 'message' => 'No se pudo enviar el correo: ' . $mail->ErrorInfo]);
+        echo json_encode(['status' => 'error', 'message' => 'No se pudo enviar el correo.']);
     }
+
+    // Cerrar el statement
+    $stmt_check->close();
+    $stmt_token->close();
 }
 
 $conn->close();
 ?>
+
