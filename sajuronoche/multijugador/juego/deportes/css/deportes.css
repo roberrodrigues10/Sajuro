@@ -71,19 +71,14 @@ html{
 .img-tamaPortero{
     width: 70px;
 }
-.jugadores-A{
+.jugadores-A, .jugadores-B , .jugadores-C{
     display: grid;
     width: 350px;
     grid-template-columns: repeat(4,25%);
     justify-content: center;
     margin-top: -100px;
 }
-.jugadores-B{
-    display: grid;
-    width: 350px;
-    grid-template-columns: repeat(4,25%);
-    margin-top: -100px;
-}
+
 .img-ajustes{
     position: fixed;
     left: 95vw;

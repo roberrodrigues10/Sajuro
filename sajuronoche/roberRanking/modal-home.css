@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'Metal Mania';
-    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+    font-family: 'New Rocker';
+    src: url('/sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
 }
 body{
     cursor: url('../../css/img/cursor.png'), auto;
@@ -49,7 +49,7 @@ body{
 }
 .ranking-superior{
     display: grid;
-    font-family: 'Metal Mania';
+    font-family: 'New Rocker';
     color: burlywood;
     font-size: 30px;
     height: 100%;
@@ -69,7 +69,7 @@ body{
 
 .semanal, .mundial{
     display: flex;
-    font-family: 'Metal Mania';
+    font-family: 'New Rocker';
     border: 1px solid rgb(185, 136, 95);
     height: 20px;  
     background-color: rgba(143, 102, 68, 0.871);
@@ -87,7 +87,7 @@ body{
     margin-top: 3px;
 }
 .numero{
-    font-family: 'Metal Mania';
+    font-family: 'New Rocker';
     font-size: 50px;
     color: rgba(143, 102, 68, 0.871);
     display: grid;
@@ -111,25 +111,15 @@ body{
     height: 270px;
     overflow-y: auto;
     overflow-x: hidden;
-    grid-template-rows: repeat(4, 25%);
 }
 .ranking-dentroMundial{
-    top: 25.8vh;
-    left: 0.5vw;
     display: grid;
     gap: 12px;
+    margin-top: 5px;    
     height: 270px;
     overflow-y: auto;
     overflow-x: hidden;
-    position: fixed;
-    grid-template-rows: repeat(4, 25%);
-
-}
-#ranking-mundial{
-    opacity: 0;
-}
-#ranking-semanal{
-    opacity: 1;
+    display: none;
 }
 .ranking-dentro::-webkit-scrollbar, .ranking-dentroMundial::-webkit-scrollbar {
     display: none; /* Para Chrome, Safari y Opera */
@@ -145,7 +135,7 @@ body{
     margin-right: 7px;
 }
 .usuario{
-    font-family: 'Metal Mania';
+    font-family: 'New Rocker';
     display: grid;
     color: rgb(185, 136, 95);
     align-items: center;
@@ -153,7 +143,7 @@ body{
     margin-left: -5px;
 }
 .sajuro-points{
-    font-family: 'Metal Mania';
+    font-family: 'New Rocker';
     display: grid;
     font-size: 12px;
     justify-self: start;
@@ -161,7 +151,7 @@ body{
     margin-top: 7px;
 }
 .contenido-points{
-    font-family: 'Metal Mania';
+    font-family: 'New Rocker';
     display: flex;
     font-size: 12px;
     justify-content: center;
