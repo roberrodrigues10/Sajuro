@@ -38,10 +38,6 @@ html{
     align-self: end;
     margin-left: 2.5vw;
 }
-.defensas{
-    display: grid;
-    margin-left: 2.5vw;
-}
 .mediocampo{
     display: grid;
     align-self: flex-end;
@@ -71,7 +67,7 @@ html{
 .img-tamaPortero{
     width: 70px;
 }
-.jugadores-A, .jugadores-B , .jugadores-C{
+.jugadores-A, .jugadores-B , .jugadores-C, .jugadores-D{
     display: grid;
     width: 350px;
     grid-template-columns: repeat(4,25%);
