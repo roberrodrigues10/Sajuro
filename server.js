@@ -6,8 +6,8 @@ const app = express();
 
 // Configuración de la conexión a MySQL
 const connection = mysql.createConnection({
-  host: 'localhost',  // Cambia esto si tu base de datos está en otro host
-  user: 'root',       // Cambia esto por tu usuario de MySQL
+  host: 'localhost',
+  user: 'root',
   password: '', // Cambia esto por tu contraseña de MySQL
   database: 'sajuro' // Cambia esto por tu nombre de base de datos
 });
@@ -26,10 +26,15 @@ app.use(express.static(path.join(__dirname, 'sajuronoche')));
 
 // Ruta principal que sirve el archivo 'index.html'
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'sajuronoche', 'index.html'));
+  res.sendFile(path.join(__dirname, 'sajuronoche', 'index.html'), (err) => {
+    if (err) {
+      console.error('Error al enviar el archivo:', err); // Agrega esta línea
+      res.status(err.status).end();
+    }
+  });
 });
 
-// Ejemplo de ruta para obtener datos de una tabla 'usuarios'
+// Ruta para obtener datos de la base de datos
 app.get('/usuario', (req, res) => {
   connection.query('SELECT * FROM usuario', (err, results) => {
     if (err) {
