@@ -17,19 +17,19 @@ document.addEventListener('click', (e) => {
 });
 
 const rankingMundial = document.getElementById('ranking-Mundial')
-const rankingSemanal = document.getElementById('rankingSemanal')
+const rankingSemanal = document.getElementById('ranking-semanal')
 const clickMundial = document.getElementById('clickMundial')
 const clickSemanal = document.getElementById('clickSemanal')
 
 clickMundial.addEventListener('click', () => {
-    rankingMundial.style.display = 'grid';
-    rankingSemanal.style.display = 'none';
+    rankingMundial.style.opacity = '1';
+    rankingSemanal.style.opacity = '0';
     clickMundial.style.color = 'red';
     clickSemanal.style.color = 'rgb(238, 173, 119)';
 });
 clickSemanal.addEventListener('click', () => {
-    rankingMundial.style.display = 'none';
-    rankingSemanal.style.display = 'grid';
+    rankingMundial.style.opacity = '0';
+    rankingSemanal.style.opacity = '1';
     clickSemanal.style.color = 'red';
     clickMundial.style.color = '';
 

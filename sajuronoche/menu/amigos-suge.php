@@ -24,6 +24,7 @@ if (empty($_SESSION["id_usuario"])) {
         <div class="contenido-home-oculto" id="home-aparecer">
             <div class="ranking">
                 <div class="ranking-conte">
+<<<<<<< HEAD:sajuronoche/menu/amigos-suge.php
                     <div class="logo-perfi">
                         <a href="inicio-menu.html">
                             <img src="css/img/logo-perfil-pi.png" alt="" width="130px">
@@ -39,6 +40,23 @@ if (empty($_SESSION["id_usuario"])) {
                     <div class="logo-ranking">
                         <img src="css/img/ranking-logoEspada.png" id="openModalBtn" alt="" class="ranking-logo" width="120px">
                     </div>  
+=======
+                <div class="logo-perfi">
+                    <a href="inicio-menu.html">
+                        <img src="css/img/DALL·E 2024-10-14 07.20.08 - A pirate skull with crossed bones behind it, similar to the original skull and bones pirate flag. The skull should wear a red bandana with small decor-Photoroom.png " alt="" width="120px">
+                    </a>
+                </div>  
+                <div class="bienvenido">
+                    <div class="content-bienvenido">
+                    <img src="css/img/biemvenido.png" alt="" class="bienvenido-img" > 
+                    <div class="titulo-bienvenido">BIENVENIDO</div>
+                    <div class="titulo-user">username</div>
+                    </div>           
+                </div>  
+                <div class="logo-ranking" >
+                    <img src="css/img/DALL·E 2024-10-14 07.18.01 - A shield with swords behind it, in the same rugged style as the cracked wooden sign. The shield should be heavily cracked, with gashes and more wear, -Photoroom.png" id="openModalBtn" alt="" class="ranking-logo" width="120px">
+                </div   >  
+>>>>>>> rober:sajuronoche/menu/amigos-suge.html
                 </div>
             </div>
         </div>
@@ -60,9 +78,101 @@ if (empty($_SESSION["id_usuario"])) {
                 </div>
             </div>
         </div>
+<<<<<<< HEAD:sajuronoche/menu/amigos-suge.php
         <div class="contenido-amigos-activos" id="amigos-activos">
     
             
+=======
+        <div class="contenido-amigos-activos">
+            <div class="contenido-activos">
+                <div class="titulo-friend">
+                <img src="css/img/conectado.png" alt="" width="180px">
+                 <div class="nombre">AMIGOS</div>
+            </div>
+            <div class="usuarios">
+                <img src="css/img/conectado.png" alt="" width="270px">
+                <div class="logo-usuario-conectado">
+                    <img src="css/img/avatar.png" alt="" class="cala">
+                </div>
+                <div class="usuario-conectado">username</div>
+                <div class="point-general point-conectados">
+                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
+                    <div class="contenido-points point-color-conectados puntajes">1080</div>
+                    <div class="estado">
+                        <div class="en-linea" id="en-linea">
+                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
+                        </div>
+                        <div class="onflinne" id="ofline">
+                            <img src="css/img/ofline.png"   alt="" width="40px" class="logo-enlinea ofline">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="usuarios">
+                <img src="css/img/conectado.png" alt="" width="270px">
+                <div class="logo-usuario-conectado">
+                    <img src="css/img/avatar.png" alt="" class="cala">
+                </div>
+                <div class="usuario-conectado">username</div>
+                <div class="point-general point-conectados">
+                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
+                    <div class="contenido-points point-color-conectados puntajes">1800</div>
+                    <div class="estado">
+                        <div class="en-linea">
+                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
+                        </div>
+                        <div class="onflinne">
+                            <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="usuarios">
+                <img src="css/img/conectado.png" alt="" width="270px">
+                <div class="logo-usuario-conectado">
+                    <img src="css/img/avatar.png" alt="" class="cala">
+                </div>
+                <div class="usuario-conectado">username</div>
+                <div class="point-general point-conectados">
+                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
+                    <div class="contenido-points point-color-conectados puntajes">2000</div>
+                    <div class="estado">
+                        <div class="en-linea">
+                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
+                        </div>
+                        <div class="onflinne">
+                            <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="usuarios">
+                <img src="css/img/conectado.png" alt="" width="270px">
+                <div class="logo-usuario-conectado">
+                    <img src="css/img/avatar.png" alt="" class="cala">
+                </div>
+                <div class="usuario-conectado">username</div>
+                <div class="point-general point-conectados">
+                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
+                    <div class="contenido-points point-color-conectados puntajes">100</div>
+                    <div class="estado">
+                        <div class="en-linea">
+                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
+                        </div>
+                        <div class="onflinne">
+                            <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> rober:sajuronoche/menu/amigos-suge.html
+        </div>
+        <div class="objetos">
+            <div class="cerrar-sesion">cerrar sesión</div>
+            <div class="objetos-espada">
+            <img src="css/img/objetos.png" alt="" width="120px" class="objetos-logo">
+            </div>
         </div>
         <div class="contenido-amigos" id="amigos-aparecer">
             <div id='rectangle234' class='rectangle234'>
@@ -136,121 +246,10 @@ if (empty($_SESSION["id_usuario"])) {
                             <div class="mundial" id="clickMundial">Mundial</div>
                         </div>
                     </div>
-                    <div class="ranking-dentro" id="rankingSemanal">
-                        <div class="usuario-ranking">
-                            <div class="numero">1.</div>
-                            <div class="calabera">
-                                <img src="css/img/avatar.png" alt="" class="cala">
-                            </div>
-                            <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                             </div>
-                            </div>
-                            <div class="usuario-ranking">
-                                <div class="numero">2.</div>
-                                <div class="calabera">
-                                    <img src="css/img/avatar.png" alt="" class="cala">
-                                </div>
-                                <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                             </div>
-                            </div>
-                            <div class="usuario-ranking">
-                                <div class="numero">3.</div>
-                                <div class="calabera">
-                                    <img src="css/img/avatar.png" alt="" class="cala">
-                                </div>
-                                <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                            </div>
-                        </div>
-                        <div class="usuario-ranking">
-                            <div class="numero">4.</div>
-                            <div class="calabera">
-                                <img src="css/img/avatar.png" alt="" class="cala">
-                            </div>
-                            <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                            </div>
-                        </div>
-                        <div class="usuario-ranking">
-                            <div class="numero">5.</div>
-                            <div class="calabera">
-                                <img src="css/img/avatar.png" alt="" class="cala">
-                            </div>
-                            <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                            </div>
-                        </div>
+                    <div class="ranking-dentro" id="ranking-semanal">
                     </div>
                     <div class="ranking-dentroMundial" id="ranking-Mundial">
-                        <div class="usuario-ranking">
-                            <div class="numero">1.</div>
-                            <div class="calabera">
-                                <img src="css/img/avatar.png" alt="" class="cala">
-                            </div>
-                            <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                             </div>
-                            </div>
-                            <div class="usuario-ranking">
-                                <div class="numero">2.</div>
-                                <div class="calabera">
-                                    <img src="css/img/avatar.png" alt="" class="cala">
-                                </div>
-                                <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                             </div>
-                            </div>
-                            <div class="usuario-ranking">
-                                <div class="numero">3.</div>
-                                <div class="calabera">
-                                    <img src="css/img/avatar.png" alt="" class="cala">
-                                </div>
-                                <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                            </div>
-                        </div>
-                        <div class="usuario-ranking">
-                            <div class="numero">4.</div>
-                            <div class="calabera">
-                                <img src="css/img/avatar.png" alt="" class="cala">
-                            </div>
-                            <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                            </div>
-                        </div>
-                        <div class="usuario-ranking">
-                            <div class="numero">5.</div>
-                            <div class="calabera">
-                                <img src="css/img/avatar.png" alt="" class="cala">
-                            </div>
-                            <div class="usuario">Username</div>
-                            <div class="point-general">
-                                <div class="sajuro-points">SajuroPoints</div>
-                                <div class="contenido-points">1000</div>
-                            </div>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -273,6 +272,10 @@ if (empty($_SESSION["id_usuario"])) {
       </script>
     <script src="js/menu-conte.js"></script>
     <script src="js/modal-menu.js"></script>
+<<<<<<< HEAD:sajuronoche/menu/amigos-suge.php
     <script src="js/amigos.js"></script>
+=======
+    <script src="ranking.js"></script>
+>>>>>>> rober:sajuronoche/menu/amigos-suge.html
 </body>
 </html>

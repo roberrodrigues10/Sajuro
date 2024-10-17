@@ -2,11 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
-}
-
+}   
 @font-face {
     font-family: 'Metal Mania';
-    src: url('/sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
 }
 
 html {
@@ -37,6 +36,7 @@ html {
     width: 100%;
     cursor: url('../../css/img/cursor.png'), auto;
 }
+<<<<<<< HEAD
 
 .imagen-css {
     height: 70px;
@@ -71,6 +71,8 @@ html {
     height: 50px;
 }
 
+=======
+>>>>>>> rober
 .ranking {
     display: flex;
     width: 100%;
@@ -118,11 +120,21 @@ html {
 .titulo-bienvenido {
     margin: 37px 146px;
     font-size: 25px;
+<<<<<<< HEAD
+=======
+    font-family: 'Metal Mania';
+>>>>>>> rober
 }
 
 .titulo-user {
     margin: 60px 165px;
     font-size: 17px;
+<<<<<<< HEAD
+=======
+    font-family: 'Metal Mania';
+}
+.perfil-logo, .ranking-logo {
+>>>>>>> rober
 }
 
 .perfil-logo, .ranking-logo {}
@@ -135,7 +147,21 @@ html {
     z-index: 101;
 }
 
+<<<<<<< HEAD
 .modalidad-juego {
+=======
+.logo-ranking {
+    position: fixed;
+    display: grid;
+    justify-items: end;
+    height: 10px;
+    margin: 0px 92vw;
+}
+.logo-perfi{
+    margin: 0px 1.5vw;
+}
+.modalidad-juego{
+>>>>>>> rober
     width: 330px;
 }
 
@@ -145,10 +171,15 @@ html {
     top: 38vh;
     gap: 0;
 }
+<<<<<<< HEAD
 
 .titulo-solitario, .titulo-multijugador {
     font-family: 'New Rocker';
     font-weight: bold;
+=======
+.titulo-solitario{
+    font-family: 'Metal Mania';
+>>>>>>> rober
     position: fixed;
     color: rgb(52, 42, 34);
 }
@@ -157,13 +188,25 @@ html {
     margin: -70px 72px;
     font-size: 30px;
 }
+<<<<<<< HEAD
 
 .titulo-multijugador {
+=======
+.titulo-multijugador{
+    font-family: 'Metal Mania';
+    position: fixed;
+>>>>>>> rober
     margin: 30.5px 44px;
     font-size: 30px;
 }
+<<<<<<< HEAD
 
 .contenido-amigos-activos {
+=======
+.contenido-amigos-activos{
+    position: fixed;
+    top: 23vh;
+>>>>>>> rober
     display: flex;
     flex-direction: column; /* Asegúrate de que los amigos se apilen verticalmente */
     width: 100%;
@@ -186,9 +229,17 @@ html {
     margin-right: 15px;
 }
 
+<<<<<<< HEAD
 .usuario-conectado {
     font-family: 'New Rocker';
     color: rgb(143, 102, 68);
+=======
+.usuario-conectado{
+    position: fixed;
+    margin: -62px 57px;
+    font-family: 'Metal Mania';
+    transform: rotate(-3deg); /* Rota 45 grados hacia arriba */
+>>>>>>> rober
     font-size: 18px;
 }
 
@@ -220,6 +271,50 @@ html {
     top: 20vh;
     left: 1vw;
 }
+<<<<<<< HEAD
+=======
+.objetos{
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+.cerrar-sesion{
+    position: fixed;
+    top: 95vh;
+    color: #8b6946;
+    font-family: 'Metal Mania';
+    font-size: 22px;
+    background-color: #e4c5a5;
+    width: 130px;
+    text-align: center;
+    border: 2px solid #8b6946;
+}
+.objetos-logo{
+    position: fixed;
+    width: 70px;
+    animation: rotar360 3s linear infinite; /* Cambia 3s para ajustar la velocidad */
+    margin: 1vh -2vw;
+}
+.nombre{
+    position: fixed;
+    margin: -6.5vh 3.3vw ;
+    font-family: 'Metal Mania';
+    font-size: 20px;
+}
+.titulo-friend{
+    margin: 0px 2vw;
+}
+@keyframes rotar360 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+>>>>>>> rober
 
 .nuevo-contenido-home {
     opacity: 100%;
