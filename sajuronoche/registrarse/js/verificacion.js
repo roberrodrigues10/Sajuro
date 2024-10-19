@@ -19,11 +19,7 @@ function verificarCuenta(email, token) {
 
                 // Redirigir tras unos segundos
                 setTimeout(() => {
-<<<<<<< HEAD
-                    window.location.href = "../iniciosesion/iniciarsesion.php";
-=======
                     window.location.href = "../iniciosesion/iniciarsesion.html";
->>>>>>> rober
                 }, 3000);
             } else {
                 messageElement.textContent = data.message;

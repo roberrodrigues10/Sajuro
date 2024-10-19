@@ -33,11 +33,7 @@ function registrarUsuario(event) {
             mensajeCorreoOusuario.textContent = data.correoUsuariomessage;
         } else {
             document.getElementById('registro-form').reset(); // Reiniciar el formulario
-<<<<<<< HEAD
-            window.location.href = "../iniciosesion/iniciarsesion.php"; // Redirigir
-=======
             window.location.href = "../iniciosesion/iniciarsesion.html"; // Redirigir
->>>>>>> rober
         }
     })
     .catch(error => {
