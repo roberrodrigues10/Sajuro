@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (empty($_SESSION["id_usuario"])) {
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,12 +10,15 @@ if (empty($_SESSION["id_usuario"])) {
     <link rel="stylesheet" href="../menu/css/conten-home.css">
     <link rel="stylesheet" href="../css/inicio.css">
     <style>
-        /* Aquí puedes agregar estilos personalizados si es necesario */
+        
+
+
     </style>
 </head>
 <body>
     <div class="contenido-general" id="afuera">
         <div class="contenido-home-oculto" id="home-aparecer">
+            
             <div class="ranking">
                 <div class="ranking-conte">
                 <div class="logo-perfi">
@@ -38,11 +35,9 @@ if (empty($_SESSION["id_usuario"])) {
                 </div>  
                 <div class="logo-ranking" >
                     <img src="css/img/DALL·E 2024-10-14 07.18.01 - A shield with swords behind it, in the same rugged style as the cracked wooden sign. The shield should be heavily cracked, with gashes and more wear, -Photoroom.png" id="openModalBtn" alt="" class="ranking-logo" width="120px">
-                </div   >  
+                </div>  
                 </div>
             </div>
-        </div>
-    </div>
             <div class="nuevo-contenido-home">
                 <div class="contenido-home-modalidad">
                     <div class="campos">
@@ -53,8 +48,10 @@ if (empty($_SESSION["id_usuario"])) {
                         </a>
                         </div>
                         <div class="multijugador">
+                            <a href="../multijugador/multijugador.html" class="multijugador-a">
                             <img src="css/img/campo-modalidad.png" alt="" width="270px">
                             <div class="titulo-multijugador">MULTIJUGADOR</div>
+                        </a>
                         </div>
                     </div>
                 </div>

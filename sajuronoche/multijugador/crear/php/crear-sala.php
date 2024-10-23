@@ -1,31 +1,35 @@
 <?php
 header('Content-Type: application/json');
+// conectar a la base de datos
+require '../iniciosesion/php/conexion.php'; // Asegúrate de tener tu archivo de conexión a la base de datos
 
-// Conectar a la base de datos
-$conexion = new mysqli('localhost', 'root', '', 'sajuro');
+session_start(); // Inicia la sesión para acceder a las variables de sesión
 
-if ($conexion->connect_error) {
-    echo json_encode(['success' => false, 'error' => 'Error de conexión a la base de datos']);
-    exit;
-}
+if (isset($_SESSION['id_usuario'])) {
+    $id_anfitrion = $_SESSION['id_usuario']; // Obtiene el ID del usuario que está creando la sala
+    $codigo_sala = generarCodigoSala(); // Llama a la función para generar un código de sala
 
-// Obtener datos de la solicitud
-$data = json_decode(file_get_contents('php://input'), true);
-$codigo_sala = $data['codigo_sala'];
-$id_anfitrion = $data['id_anfitrion'];
-$estado = $data['estado'];
+    // Prepara la consulta para insertar la sala en la base de datos
+    $sql = "INSERT INTO sala (codigo_sala, id_anfitrion, estado) VALUES (?, ?, 'espera')";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $codigo_sala, $id_anfitrion);
 
-// Insertar sala en la base de datos
-$sql = "INSERT INTO sala (codigo_sala, id_anfitrion, estado) VALUES (?, ?, ?)";
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("sis", $codigo_sala, $id_anfitrion, $estado);
+    if ($stmt->execute()) {
+        // La sala se creó correctamente
+        echo json_encode(['success' => true, 'codigo_sala' => $codigo_sala]);
+    } else {
+        // Hubo un error al crear la sala
+        echo json_encode(['success' => false, 'error' => 'Error al crear la sala']);
+    }
 
-if ($stmt->execute()) {
-    echo json_encode(['success' => true, 'codigo_sala' => $codigo_sala]);
+    $stmt->close();
 } else {
-    echo json_encode(['success' => false, 'error' => 'Error al crear la sala']);
+    // El usuario no está autenticado
+    echo json_encode(['success' => false, 'error' => 'Usuario no autenticado']);
 }
 
-$stmt->close();
-$conexion->close();
+$conn->close();
 ?>
+<script> 
+    const usuarioNombre = <?php echo $_SESSION['id_usuario']; ?>; // Obtiene el ID del usuario que está creando la sala
+</script>
