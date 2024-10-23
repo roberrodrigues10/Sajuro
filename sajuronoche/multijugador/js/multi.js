@@ -7,7 +7,7 @@ socket.onopen = () => {
 
 // Función para generar un código de sala aleatorio
 function generarCodigoSala() {
-    return Math.random().toString(36).substring(2, 8).toUpperCase();
+    return Math.floor(1000 + Math.random() * 9000).toString();
 }
 
 // Lógica para crear la sala y mostrar el código generado

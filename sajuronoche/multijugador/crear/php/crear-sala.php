@@ -1,35 +1,49 @@
 <?php
-header('Content-Type: application/json');
-// conectar a la base de datos
-require '../iniciosesion/php/conexion.php'; // Asegúrate de tener tu archivo de conexión a la base de datos
 
-session_start(); // Inicia la sesión para acceder a las variables de sesión
+session_start();
 
-if (isset($_SESSION['id_usuario'])) {
-    $id_anfitrion = $_SESSION['id_usuario']; // Obtiene el ID del usuario que está creando la sala
-    $codigo_sala = generarCodigoSala(); // Llama a la función para generar un código de sala
-
-    // Prepara la consulta para insertar la sala en la base de datos
-    $sql = "INSERT INTO sala (codigo_sala, id_anfitrion, estado) VALUES (?, ?, 'espera')";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $codigo_sala, $id_anfitrion);
-
-    if ($stmt->execute()) {
-        // La sala se creó correctamente
-        echo json_encode(['success' => true, 'codigo_sala' => $codigo_sala]);
-    } else {
-        // Hubo un error al crear la sala
-        echo json_encode(['success' => false, 'error' => 'Error al crear la sala']);
-    }
-
-    $stmt->close();
-} else {
-    // El usuario no está autenticado
-    echo json_encode(['success' => false, 'error' => 'Usuario no autenticado']);
+// Verificar si el id_anfitrion está disponible en la sesión
+if (!isset($_SESSION['id_anfitrion'])) {
+    die(json_encode(['success' => false, 'error' => 'El usuario no ha iniciado sesión']));
 }
 
+$id_anfitrion = $_SESSION['id_anfitrion']; // Obtener el ID del anfitrión desde la sesión
+
+
+// Conectar a la base de datos
+$servername = "localhost"; // Cambia esto según tu servidor
+$username = "root"; // Cambia esto por tu usuario de MySQL
+$password = ""; // Cambia esto por tu contraseña de MySQL
+$dbname = "sajuro"; // Cambia esto por el nombre de tu base de datos
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die(json_encode(['success' => false, 'error' => 'Error de conexión a la base de datos']));
+}
+
+// Obtener los datos enviados desde el fetch (en formato JSON)
+$data = json_decode(file_get_contents('php://input'), true);
+$codigo_sala = $data['codigo_sala'];
+$id_anfitrion = $data['id_anfitrion'];
+$estado = $data['estado'];
+
+// Validar que los datos no estén vacíos
+if (empty($codigo_sala) || empty($id_anfitrion)) {
+    die(json_encode(['success' => false, 'error' => 'Datos faltantes']));
+}
+
+// Insertar en la base de datos
+$stmt = $conn->prepare("INSERT INTO sala (codigo_sala, id_anfitrion, estado) VALUES (?, ?, ?)");
+$stmt->bind_param("sis", $codigo_sala, $id_anfitrion, $estado);
+
+if ($stmt->execute()) {
+    echo json_encode(['success' => true, 'codigo_sala' => $codigo_sala]);
+} else {
+    echo json_encode(['success' => false, 'error' => 'Error al crear la sala']);
+}
+
+$stmt->close();
 $conn->close();
 ?>
-<script> 
-    const usuarioNombre = <?php echo $_SESSION['id_usuario']; ?>; // Obtiene el ID del usuario que está creando la sala
-</script>
+
