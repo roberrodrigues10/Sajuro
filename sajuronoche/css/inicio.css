@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Canterbury';
+    src: url('fonts/Canterbury.ttf') format('truetype');
+  }
+
+body{
+    background-image: url('img/nuevo-fondo.png') ;
+    height: 100vh;
+    background-size: cover; /* Hace que el fondo cubra todo el área */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    overflow: hidden;
+    background-attachment: fixed;
+}
+
+.inicio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+}
+.titulo{
+    font-family: 'Canterbury';
+    color: #F2CE84;
+    font-size: 80px;
+    margin-bottom: 240px;
+    margin: 0;
+}
+.bloques{
+    border: 2px solid white;
+    border-radius: 120px;
+    background-color: #000;
+    width: 230px;
+    height: 55px;
+    top: 50px;
+    margin-top: 15px;
+    transition: transform 0.3s ease; /* Suaviza la transición del zoom */
+}
+.bloques:hover {
+    transform: scale(1.2); /* Aumenta el tamaño del botón al 120% */
+  }
+.inicio-botones{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 30px;
+}
+.botones{
+    margin-bottom: 100px;
+}
+
+a{
+    text-decoration: none;
+}

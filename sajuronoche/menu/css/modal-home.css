@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'Metal Mania';
+    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+}
+body{
+    cursor: url('../../css/img/cursor.png'), auto;
+}
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 101; /* Aparece encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.656); /* Fondo semi-transparente */
+}
+.contenido-ranking-todo{
+    position: fixed;
+    background-image: url('img/pngegg\ \(4\).png');
+    position: relative;
+    height: 500px;
+    width: 430px;
+    background-size: cover; /* Hace que el fondo cubra todo el área */
+    background-position: center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    overflow: hidden;
+    border-radius: 30px;
+    z-index: 1000;
+    top: -50px;
+
+}
+/* Contenido del modal */
+.modal-content {    
+    width: 98vw;
+    display: flex;
+    justify-content: end;
+    z-index: 101;
+    margin-top: 17vh;
+    margin-left: 2.8vw;
+    max-width: 100%;
+}
+.contenidoSuperior-ranking{
+    width: 80%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    margin-top: 58px;
+}
+.ranking-superior{
+    display: grid;
+    font-family: 'Metal Mania';
+    color: burlywood;
+    font-size: 30px;
+    height: 100%;
+    align-items: end;
+    margin: 0px 90px;
+    justify-self: start;
+}
+.diario-semana{
+    display: grid;
+    grid-template-columns: 50px 50px; 
+    align-self: center;
+    margin-left: -5px;
+    justify-self: end;
+    z-index: 101;
+
+}
+
+.semanal, .mundial{
+    display: flex;
+    font-family: 'Metal Mania';
+    border: 1px solid rgb(185, 136, 95);
+    height: 20px;  
+    background-color: rgba(143, 102, 68, 0.871);
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    color: rgb(238, 173, 119);
+    font-size: 14px;
+}
+.logo-ranking-dentro{
+    color: white;
+}
+.user-logo{
+    width: 50px;
+    margin-top: 3px;
+}
+.numero{
+    font-family: 'Metal Mania';
+    font-size: 50px;
+    color: rgba(143, 102, 68, 0.871);
+    display: grid;
+    justify-self: center;
+}
+.usuario-ranking{
+    width: 58%;
+    height: 60px;
+    margin: 0px 98px;
+    display: grid;
+    grid-template-columns: 20% 15% 35% 23%;
+    border: 2px solid rgba(65, 53, 38, 0.947);
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    background-color: rgba(65, 53, 38, 0.625);
+}
+.ranking-dentro{
+    display: grid;
+    gap: 12px;
+    margin-top: 5px;
+    height: 270px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    grid-template-rows: repeat(4, 25%);
+}
+.ranking-dentroMundial{
+    top: 25.8vh;
+    left: 0.5vw;
+    display: grid;
+    gap: 12px;
+    height: 270px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: fixed;
+    grid-template-rows: repeat(4, 25%);
+
+}
+#ranking-mundial{
+    opacity: 0;
+}
+#ranking-semanal{
+    opacity: 1;
+}
+.ranking-dentro::-webkit-scrollbar, .ranking-dentroMundial::-webkit-scrollbar {
+    display: none; /* Para Chrome, Safari y Opera */
+}
+.calabera{
+    display: grid;
+    justify-self: end;
+    align-self: center;
+}
+.cala{
+    width: 40px;
+    height: 40px;
+    margin-right: 7px;
+}
+.usuario{
+    font-family: 'Metal Mania';
+    display: grid;
+    color: rgb(185, 136, 95);
+    align-items: center;
+    font-size: 22px ;
+    margin-left: -5px;
+}
+.sajuro-points{
+    font-family: 'Metal Mania';
+    display: grid;
+    font-size: 12px;
+    justify-self: start;
+    color: rgb(185, 136, 95);
+    margin-top: 7px;
+}
+.contenido-points{
+    font-family: 'Metal Mania';
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+    color: rgb(185, 136, 95);
+}
+.point-general{
+    margin-top: 5px;
+}
+.contenido-superior-ranking{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.semanal{
+    color: red;
+
+}
+a{
+    cursor: url('../../css/img/cursor.png'), auto;
+}

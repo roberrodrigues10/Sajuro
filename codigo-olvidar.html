@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="css/img/logo.png">
+    <title>Sajuro</title>
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="css/codigo-olvide.css">
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="tarjeta">
+            <div class="conten">
+                <div class="logo-login">
+                    <a href="index.html">
+                        <img src="css/img/logo-login.png" alt="" width="150px">
+                    |</a>                    
+                </div>
+                <div class="conten-sesion">
+                <div class="lineas-codigo">
+                    <div class="linea-1">
+                        <input class="codigo-1" type="text" maxlength="1" onkeypress="return isNumber(event)" />
+                    </div>
+                    <div class="linea-2">
+                        <input type="text" class="codigo-2" maxlength="1" onkeypress="return isNumber(event)" >
+                    </div>
+                    <div class="linea-3">
+                        <input type="text" class="codigo-3" maxlength="1" onkeypress="return isNumber(event)" >
+                    </div>
+                    <div class="linea-1">
+                        <input type="text" class="codigo-4" maxlength="1" onkeypress="return isNumber(event)" >
+                    </div>
+                </div>
+                <div class="recuperar-titulo"></div>
+                    <div class="contenido">Escribe el codigo de 4 digitos</div>
+                </div>
+                <div class="recuperar-titulo-2"></div>
+                    <div class="contenido-2">Enviado al correo registrado</div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <a href="codigo-olvidar.html"><button class="login-button" onclick="jugador()" type="button">Enviar codigo</button></a>
+
+    <script>
+        function isNumber(event) {
+            const key = event.key;
+            // Solo permite números del 0 al 9
+            if (!/[0-9]/.test(key) && key !== 'Backspace') {
+                event.preventDefault();
+            }
+        }
+    </script>
+</body>
+</html>
