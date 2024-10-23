@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+font-family: 'Canterbury';
+src: url('/css/fonts/Canterbury.ttf') format('truetype');
+}   
+
+.contenedor {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta {
+    height: 380px;
+    width: 380px;
+    border-radius: 50px;
+    box-shadow: 16px 14px 20px #0000008c;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta::before {
+    content: "";
+    position: absolute;
+    height: 480px;
+    width: 480px;
+    background-image: conic-gradient(rgba(120, 66, 31, 0.882) 20deg, transparent 120deg);
+    animation: rotar 1.5s linear infinite;
+}
+
+@keyframes rotar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.tarjeta::after {
+    content: "";
+    position: absolute;
+    height: 370px;
+    width: 370px;
+    background: rgba(36, 21, 11, 0.977);
+    border-radius: 50px;
+    box-shadow: inset 16px 14px 20px #35281e;
+    border: 1px solid #5f4d41c0;
+}
+.conten{
+    width: 100%;
+    z-index: 101;
+    background-color: transparent;
+    text-align: center;
+}
+.conten-sesion, .input-container, label{
+    background-color: transparent;
+    color: white;
+}
+.conten-sesion{
+    margin-top: 100px;
+}
+.logo-login{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    bottom: 60%;
+}
+.recuperar-titulo{
+    width: 100%;
+}
+.contenido{
+    color: #d4c0a1;
+    font-family: "Ovo", serif;
+    font-size: 22px;
+    padding: 15px;
+}
+.digitar-sesion{
+    color: #d4c0a1;
+    font-family: "Ovo", serif;
+    font-size: 15px;
+    width: 100%;
+    padding-bottom: 0px;
+}
+input[type="email"] {
+    font-family: "Ovo", serif;
+    background: rgba(65, 43, 25, 0.733);
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin: 8px 0;
+    color: #d4c0a1;
+    border: 1px solid #5f4d41;
+    padding-left: 10px;
+}
+.input-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    
+}
+.input-container label {
+    font-family: "Ovo", serif;
+    position: absolute;
+    left: 60px;
+    top: -2%;
+    transform: translateY(-50%);
+    color: #d4c0a1;
+    font-size: 15px;
+    pointer-events: none;
+    transition: 0.3s ease; /* Acorté el tiempo de transición */
+}
+.input-container input {
+    width: 70%;
+    height: 30px;
+}   
+.user, .pass{
+    position: absolute;
+    width: 100%;
+    background-color: transparent;
+    left: 41%;
+    top: 28%;
+}
+.login-button {
+    width: 70%;
+    background: #7e6d42;
+    border: 1px solid #c19a67;
+    color: #d4c0a1;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    height: 40px;
+}
+.login-button:hover {
+    background: #9e8852;
+}   

@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+font-family: 'Canterbury';
+src: url('/css/fonts/Canterbury.ttf') format('truetype');
+}   
+
+.contenedor {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta {
+    height: 380px;
+    width: 380px;
+    border-radius: 50px;
+    box-shadow: 16px 14px 20px #0000008c;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta::before {
+    content: "";
+    position: absolute;
+    height: 480px;
+    width: 480px;
+    background-image: conic-gradient(#8B5E3C 20deg, transparent 120deg);
+    animation: rotar 1.5s linear infinite;
+}
+
+@keyframes rotar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.tarjeta::after {
+    content: "";
+    position: absolute;
+    height: 370px;
+    width: 370px;
+    background-color: #4C3A28;
+    border-radius: 50px;
+    box-shadow: inset 16px 14px 20px #35281e;
+}
+.conten{
+    width: 100%;
+    z-index: 101;
+    background-color: transparent;
+    text-align: center;
+}
+.conten-sesion, .input-container, label{
+    background-color: transparent;
+    color: white;
+}
+.conten-sesion{
+    margin-top: 30px;
+}
+.logo-login{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    bottom: 60%;
+}
+.recuperar-titulo{
+    width: 100%;
+}
+.contenido{
+    color: white;
+    font-family: "Ovo", serif;
+    font-size: 22px;
+    padding: 15px;
+}
+.digitar-sesion{
+    color: white;
+    font-family: "Ovo", serif;
+    font-size: 15px;
+    width: 100%;
+    padding-bottom: 0px;
+}
+input[type="text"] {
+    font-family: "Ovo", serif;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin: 0px 0;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+}
+.linea-1,.linea-2,.linea-3,.linea-4 input {
+    padding-bottom: 16px;
+    border-bottom: 2px solid white;
+    width: 40px;
+    height: 10px;
+}   
+input:focus ~ label,
+input:valid ~ label {
+    top: -2px;
+    font-size: 16px;
+    color: white;
+}
+.user, .pass{
+    position: absolute;
+    width: 100%;
+    background-color: transparent;
+    left: 41%;
+    top: 28%;
+}
+.login-button {
+    font-family: "Ovo", serif;
+    width: 50%;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    font-size: 26px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+    margin-top: 0px;
+    border-radius: 20px;
+    background-color: transparent; 
+}
+.line32
+{
+width:30px;
+border:1px solid #ffffff;
+}
+.lineas-codigo{
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    margin-left: 20%;
+    padding-bottom: 10px;
+    gap: 5px;    
+}
+.recuperar-titulo-2{
+    margin-top: -10px;
+}
+.contenido-2{
+    font-size: 12px;
+    color: white;
+}
+.codigo{
+    text-align: center;
+}
+.codigo-1{
+    text-align: center;
+}
+.verificar{
+    z-index: 101;
+    color: black;
+}
