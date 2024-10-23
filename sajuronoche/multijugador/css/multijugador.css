@@ -277,6 +277,15 @@ html{
     margin-top: -20.5px;
     border: 1px solid salmon;
 }
+.button-crear{
+    background-color: transparent;
+    border: none;
+}
+
+.button-unirse{
+    background-color: transparent;
+    border: none;
+}
 
 /* Finalizo crear sala*/
 

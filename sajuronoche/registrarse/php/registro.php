@@ -87,13 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Contenido del correo
         $mail->isHTML(true); // Establecer el formato de correo como HTML
         $mail->Subject = "Verificación de cuenta"; // Asunto del correo
-<<<<<<< HEAD
-        $mail->Body = 'Haz clic en el siguiente enlace para verificar tu cuenta: <a href="http://localhost/sajuro/sajuronoche/registrarse/verificacion.php?email=' . $email . '&token=' . $token . '">Verificar cuenta</a>'; // Contenido en HTML del correo
-        $mail->AltBody = 'Haz clic en el siguiente enlace para verificar tu cuenta: http://localhost/Sajuro/sajuronoche/registrarse/verificacion.php?email=' . $email . '&token=' . $token; // Contenido alternativo en texto plano
-=======
         $mail->Body = 'Haz clic en el siguiente enlace para verificar tu cuenta: <a href="http://localhost/sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '">Verificar cuenta</a>'; // Contenido en HTML del correo
         $mail->AltBody = 'Haz clic en el siguiente enlace para verificar tu cuenta: http://localhost/Sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token; // Contenido alternativo en texto plano
->>>>>>> rober
 
         // Enviar el correo
         if (!$mail->send()) {

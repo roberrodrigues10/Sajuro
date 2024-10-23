@@ -60,8 +60,6 @@ if (numeroCodigoElement) {
     } else {
         numeroCodigoElement.textContent = 'No se generó ningún código';
     }
-} else {
-    console.error('Elemento con ID "numero-codigo" no encontrado.');
 }
 
 
