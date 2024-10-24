@@ -1,0 +1,216 @@
+@font-face {
+    font-family: 'Canterbury';
+    src: url('/css/fonts/Canterbury.ttf') format('truetype');
+  }
+
+body {
+    height: 100vh;
+    background-image: url('ChatOn\ image\ 2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.generalMultijugador {
+    width: 100%;
+    min-width: 320px;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 14vh;
+}
+.loginMultijugador {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: "Ovo", serif;
+    font-weight: normal;
+    font-size: 30px;
+    color: #fff;
+}
+.tituloMultijugador{
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 45px;
+    color: rgb(0, 0, 0);
+    font-family: 'Canterbury';
+}
+.regresar {
+    width: 90px;
+    height: auto;
+} 
+.volver {
+    width: 100%;
+    text-align: left;
+    margin: auto;
+    padding: 10px;
+}
+@media screen and (min-width: 980px) {
+    .loginMultijugador {
+        font-size: 40px;
+        padding: 17px;
+    }
+    .regresar {
+        width: 100px; 
+    }
+}
+@media screen and (min-width: 768px) {
+    .loginMultijugador {
+        font-size: 35px;
+        padding: 14px;
+    }
+    .regresar {
+        width: 90px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .loginMultijugador {
+        font-size: 25px;
+        padding: 9px;
+    }
+    .regresar {
+        width: 80px;
+    }
+}
+@media screen and (max-width: 406px) {
+    .loginMultijugador {
+        font-size: 20px;
+        padding: 8px;
+    }
+    .regresar {
+        width: 70px;
+    }
+}
+@media screen and (max-width: 348px) {
+    .loginMultijugador {
+        font-size: 20px;
+        padding: 7px;
+    }
+    .regresar {
+        width: 60px;
+    }
+}
+
+
+.contenedorUnirseASala {
+    width: 370px;
+    height: 330px;
+    margin: 0 auto;
+    margin-top: 10vh;
+    text-align: center;
+    background-color: rgba(240, 248, 255, 0.335);
+    border-radius: 3vh;
+}
+.codigo {
+    margin: 0 auto;
+    padding-top: 20px;
+    text-align: center;
+    font-family: "Ovo", serif;
+    font-size: 30px;
+    color: #fff;
+    letter-spacing: 12px;
+}
+input.codigo::placeholder {
+    color: #fff;
+    text-align: center;
+}
+.contenedorUnirseASala h3 {
+    margin: auto;
+    padding: 5px;
+    padding-bottom: 2px;
+    padding-top: 8px;
+    font-family: "Ovo", serif;
+    font-size: 23px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+.contenedorUnirseASala p {
+    font-family: "Ovo", serif;
+    color: #fff;
+    font-size: 15px;
+    margin: auto;
+    padding: 5px;
+    padding-top: 2px;
+}
+.contenedorUnirseASala h1 {
+    font-family: "Ovo", serif;
+    font-weight: normal;
+    font-size: 35px;
+    color: #fff;
+    margin: auto;
+    margin-top: 135px;
+}
+@media screen and (min-width: 900px) {
+    .contenedorUnirseASala {
+        width: 390px;
+        height: 350px;
+        text-align: center;
+    }
+    .contenedorUnirseASala h3 {
+        font-size: 25px;
+        padding-top: 10px;
+    }
+    .contenedorUnirseASala p {
+        font-size: 18px;
+        padding-top: 5px;
+    }
+    .contenedorUnirseASala h1 {
+        font-size: 40px;
+    }
+}
+@media screen and (min-width: 980px) {
+    .contenedorUnirseASala {
+        width: 430px;
+        height: 390px;
+        text-align: center;
+    }
+    .contenedorUnirseASala h3 {
+        font-size: 29px;
+        padding-top: 14px;
+    }
+    .contenedorUnirseASala p {
+        font-size: 23px;
+        padding-top: 10px;
+    }
+    .contenedorUnirseASala h1 {
+        font-size: 50px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .contenedorUnirseASala {
+        width: 350px;
+        height: 310px;
+        text-align: center;
+    }
+    .contenedorUnirseASala h3 {
+        font-size: 20px;
+    }
+    .contenedorUnirseASala p {
+        font-size: 13px;
+    }
+    .contenedorUnirseASala h1 {
+        font-size: 30px;
+    }
+}
+@media screen and (max-width: 580px) {
+    .contenedorUnirseASala {
+        width: 330px;
+        height: 290px;
+        text-align: center;
+    }
+    .contenedorUnirseASala h3 {
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+    .contenedorUnirseASala p {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+    .contenedorUnirseASala h1 {
+        font-size: 25px;
+    }
+}
+a{
+    text-decoration: none;
+}

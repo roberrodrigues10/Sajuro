@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botones Estilo Terror con Mordiscos Pronunciados</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .button-container {
+            margin-top: 50px;
+        }
+
+        .button {
+            background-color: #2C1B16; /* Color aún más oscuro */
+            border: none;
+            color: #FF4500; /* Color naranja intenso para un contraste fuerte */
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 40px;
+            text-align: center;
+            text-decoration: none;
+            border: 2px solid #d3cbc8;
+            display: inline-block;
+            border-radius: 12px;
+            margin: 10px;
+            width: 200px;
+            position: relative;
+            /* Mordiscos más pronunciados en todos los lados */
+            clip-path: polygon(
+                0% 15%, 0% 0%, 10% 0%, 15% 5%, 0% 15%, /* Lado izquierdo */
+                100% 0%, 100% 15%, 90% 0%, 85% 5%, 100% 15%, /* Parte superior */
+                100% 100%, 90% 100%, 95% 95%, 100% 100%, /* Lado derecho */
+                0% 100%, 0% 85%, 10% 100%, 5% 95%, 0% 85% /* Parte inferior */
+            );
+            transition: transform 0.1s, box-shadow 0.1s; /* Efecto de transición */
+        }
+
+        .button:hover {
+            transform: translateY(-4px); /* Efecto de elevación al pasar el mouse */
+        }
+
+        .button:active {
+            box-shadow: 0px 4px #5a2f0a;
+            transform: translateY(2px); /* Efecto de hundimiento al hacer clic */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <button class="button">Ranking</button>
+        <button class="button">Amigos</button>
+        <button class="button">Perfil</button>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+@font-face {
+    font-family: 'Metal Mania';
+    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+}
+html{
+    touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
+
+}
+.contenido-multijugador{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+.titulo-crear{
+    font-family: 'Metal Mania';
+    position: fixed;
+    margin: -70px 60px;
+    color: rgb(52, 42, 34);
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.titulo-unir{
+    font-family: 'Metal Mania';
+    position: fixed;
+    margin: -70px 58px;
+    color: rgb(52, 42, 34);
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+/* Unirse*/
+.codigo-ingreso{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    overflow: hidden;
+}
+.codigo-ingreso {
+    display: grid;
+    border-bottom: 2px solid rgb(108, 75, 48);
+    width: 40px;
+    font-size: 30px;
+    margin-left: 20px;
+    text-align: center;
+    color: rgba(232, 175, 129, 0.755);
+    height: 24px;
+    font-family: 'Metal Mania';
+    overflow: hidden;
+}
+.content-codigo{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    height: 72vh;
+    align-items: center;
+    overflow: hidden;
+}
+.titulo-mensaje{
+    text-align: center;
+    font-size: 30px;
+    color: rgba(232, 175, 129, 0.755);
+    margin: 4vh -2vw;
+    font-family: 'Metal Mania';
+    overflow: hidden;
+
+}
+.boton{
+    display: grid;
+    width: 22vw;
+    justify-self: center;
+    background: #7e6d42a2;
+    border: 1px solid #c19a67;
+    color: #d4c0a1;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    font-family: 'Metal Mania';
+    grid-row-start: 5;
+    padding-top: 3px;
+    margin-top: -5vh;
+    height: 25px;
+    overflow: hidden;
+
+}
+.boton:hover {
+    background: #9e8852;
+}
+.lineas-codigo{
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    width: 20vw;
+    justify-self: center;
+    overflow: hidden;
+}
+.codigo-final{
+    display: grid;
+    height: 50vh;
+    grid-template-rows: repeat(4, 25%);
+    width: 50vw;
+    overflow: hidden;
+}
+.content-lineasCodigo{
+    display: grid;
+    grid-row-start: 2;
+    align-items: end;
+    overflow: hidden;
+}
+.titulo-mensaje-2{
+    display: grid;
+    justify-self: center;
+    font-family: 'Metal Mania';
+    font-size: 14px;
+    color: rgba(232, 175, 129, 0.755);
+    margin-top: -25px;
+    overflow: hidden;
+}
+/* Finalizo unirse*/
+
+/* Crear sala*/
+.contenidoGeneral-crearSala{
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 60% 40%;
+    height: 100vh;
+    overflow: hidden;
+}
+.contenidoGeneral-usuarios{
+    margin-top: 7vh;
+    overflow: hidden;
+}
+.titulo-jugadores{
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    font-family: 'Metal Mania';
+    color: white;
+    font-size: 35px;
+    grid-column-start: 2;
+    justify-self: center;
+    margin: -7vh 26.5vw;
+}
+.titulo-expulsar{
+    position: fixed;
+    display: grid;
+    grid-column-start: 1;
+    font-family: 'Metal Mania';
+    background-color: red;
+    width: 60px;
+    text-align: center;
+    height: 20px;
+    align-self: center;
+    color: white;
+    top: 87vh;
+    left: 29.3vw;
+}
+
+.username-multi{
+    font-family: 'Metal Mania';
+    margin: -22px 10px;
+    height: 20px;
+    color: white;
+}
+.contenido-usuarios{
+    display: grid;
+    height: 130px;
+    width: 10vw;
+    justify-items: center;
+}
+.contenido-usuarioMover{
+    margin: 6vh 2vw;
+    width: 68vw;
+    display: grid;
+    grid-template-columns: repeat(7, 10%);
+    column-gap: 15px;
+    row-gap: 5px;
+    justify-self: center;
+}
+.codigoANDnumero{
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    top: 92vh;
+    left: 28.8vw;
+}
+.codigo-aleatorio{
+    font-family: 'Metal Mania';
+    font-size: 25px;
+    color: white;
+}
+.numero-codigo{
+    font-family: 'Metal Mania';
+    font-size: 18px;
+    color: white;
+}
+.color-seleccionado{
+    background-color: #c19a67;
+}
+.ronda-1-2, .ronda-2-4, .ronda-4-6, .tiempo-4, .tiempo-6, .tiempo-8, .modo-libre, .modo-aleatorio {
+    margin: 5px 0;
+    cursor: pointer;
+    font-family: 'Metal Mania';
+    background-color: #9e8852;
+    border: 1px solid #c19a67;
+    height: 40px;
+    width: 280px;
+    color: wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ronda-1-2:hover, .ronda-2-4:hover, .ronda-4-6:hover, .tiempo-4:hover, .tiempo-6:hover, .tiempo-8:hover, .modo-libre:hover,.modo-aleatorio:hover {
+    background-color: #c19a67;
+}
+
+.titulo-configurar{
+    display: grid;
+    font-family: 'Metal Mania';
+    font-size: 35px;
+    color: white;
+    justify-items: center;
+}
+#modo-juego, #tiempo-juego, #modalidad-juego, #iniciar{
+    font-family: 'Metal Mania';
+    background-color: #9e8852;
+    border: 1px solid #c19a67;
+    height: 40px;
+    width: 280px;
+    color: wheat;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+#modalidad-juego{
+    margin-top: 15px;
+}
+.rondas, .tiempo, .modalidad{
+    display: grid;
+    justify-items: center;
+}
+.contenido-configurar{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2,1fr); 
+    margin-top: 6vh;
+}
+.contenidoGeneral-configuraciones{
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 10% repeat(4, 1fr);
+}
+#iniciar{
+    position: fixed;
+    display: grid;
+    justify-self: center;
+    grid-row-start: 4;
+    color: white;
+    background-color: #3e301d;
+    border: 1px solid #5f4a2c;
+    top: 93vh;
+}
+.opciones-modalidad{
+    margin-top: -141.5px;
+}
+.ocultar-moda{
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.x{
+    background-color: red;
+    width: 20px;
+    text-align: center;
+    margin-top: -20.5px;
+    border: 1px solid salmon;
+}
+/* Finalizo crear sala*/
+
+
+

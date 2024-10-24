@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .card {
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fafafa;
+      margin-bottom: 20px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn {
+      padding: 10px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 4px;
+      background-color: #3498db;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    .alert {
+      display: none;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .alert-success {
+      background-color: #2ecc71;
+      color: white;
+    }
+
+    .alert-danger {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .btn {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Quiz Game</h1>
+  <div class="card">
+    <h2 id="question">¿Cuál es la capital de Francia?</h2>
+    <div class="btn-group">
+      <button class="btn" onclick="checkAnswer(this)">Londres</button>
+      <button class="btn" onclick="checkAnswer(this)">París</button>
+      <button class="btn" onclick="checkAnswer(this)">Madrid</button>
+      <button class="btn" onclick="checkAnswer(this)">Roma</button>
+    </div>
+  </div>
+  <div id="result" class="alert"></div>
+</div>
+
+<script>
+  function checkAnswer(button) {
+    const correctAnswer = "París";
+    const resultDiv = document.getElementById("result");
+
+    if (button.textContent === correctAnswer) {
+      resultDiv.textContent = "¡Correcto!";
+      resultDiv.className = "alert alert-success";
+    } else {
+      resultDiv.textContent = "Respuesta incorrecta. Intenta de nuevo.";
+      resultDiv.className = "alert alert-danger";
+    }
+
+    resultDiv.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
