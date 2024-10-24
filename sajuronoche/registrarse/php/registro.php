@@ -21,9 +21,9 @@ if ($conn === null) {
 // Verificar si la solicitud es de tipo POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Capturar los valores enviados desde el formulario
-    $usuario = $_POST['usuario'];
-    $contrasena = $_POST['contrasena'];
-    $email = $_POST['email'];
+    $usuario = trim($_POST['usuario']);
+    $contrasena = trim($_POST['contrasena']);
+    $email = trim($_POST['email']);
 
     // Validar que los campos no estén vacíos
     if (empty($usuario) || empty($contrasena) || empty($email)) {
@@ -34,6 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validar formato del correo electrónico
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo json_encode(['status' => 'error', 'formato_message' => 'Formato de correo incorrecto.']);
+        exit;
+    }
+
+    // Validar longitud de la contraseña (opcional, pero recomendado)
+    if (strlen($contrasena) < 6) {
+        echo json_encode(['status' => 'error', 'message' => 'La contraseña debe tener al menos 6 caracteres.']);
         exit;
     }
 
@@ -82,33 +88,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Enviar correo de verificación utilizando PHPMailer
         $mail = new PHPMailer(true);
-        $mail->isSMTP(); // Establecer el uso de SMTP
-        $mail->Host = 'smtp.gmail.com'; // Especificar el servidor SMTP de Gmail
-        $mail->SMTPAuth = true; // Habilitar la autenticación SMTP
-        $mail->Username = 'roberrodrigues300@gmail.com'; // Tu dirección de correo electrónico
-        $mail->Password = 'flhk dmrq nrlv bzqe'; // Tu contraseña de Gmail
-        $mail->SMTPSecure = 'tls'; // Habilitar TLS
-        $mail->Port = 587; // Puerto TCP para la conexión
-        
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'roberrodrigues300@gmail.com';
+        $mail->Password = 'flhk dmrq nrlv bzqe'; // Usa variables de entorno para contraseñas en producción
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
 
         // Destinatarios
-        $mail->setFrom('roberrodrigues300@gmail.com', 'Tu Nombre'); // De quién se envía el correo
-        $mail->addAddress($email, $usuario); // A quién se envía (correo ingresado por el usuario)
+        $mail->setFrom('roberrodrigues300@gmail.com', 'Tu Nombre');
+        $mail->addAddress($email, $usuario);
 
-        $mail->CharSet = 'UTF-8'; // Asegúrate de usar UTF-8
-
+        $mail->CharSet = 'UTF-8'; 
 
         // Contenido del correo
-        // Contenido del correo
-        $mail->isHTML(true); // Establecer el formato de correo como HTML
-        $mail->Subject = "Verificación de cuenta"; // Asunto del correo
-        $mail->Body = 'Haz clic en el siguiente enlace para verificar tu cuenta: <a href="http://localhost/Sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '">Verificar cuenta</a>'; // Contenido en HTML del correo
-        $mail->AltBody = 'Haz clic en el siguiente enlace para verificar tu cuenta: http://localhost/Sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token; // Contenido alternativo en texto plano
-
+        $mail->isHTML(true);
+        $mail->Subject = "Verificación de cuenta";
+        $mail->Body = 'Haz clic en el siguiente enlace para verificar tu cuenta: <a href="https://' . $_SERVER['HTTP_HOST'] . '/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '">Verificar cuenta</a>';
+        $mail->AltBody = 'Haz clic en el siguiente enlace para verificar tu cuenta: http://' . $_SERVER['HTTP_HOST'] . '/registrarse/verificacion.html?email=' . $email . '&token=' . $token;
 
         // Enviar el correo
         if (!$mail->send()) {
-            throw new Exception('Error al enviar el correo de verificación: ' . $mail->ErrorInfo);
+            throw new Exception('Error al enviar el correo de verificación.');
         }
 
         // Confirmar la transacción
@@ -116,9 +118,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['status' => 'success', 'message' => 'Registro exitoso. Revisa tu correo para verificar tu cuenta.']);
 
     } catch (Exception $e) {
-        // Si hay un error, revertir la transacción
+        // Revertir la transacción si hay un error
         $conn->rollback();
-        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+        echo json_encode(['status' => 'error', 'message' => 'Error al procesar el registro.']);
     }
 
     // Cerrar los statements

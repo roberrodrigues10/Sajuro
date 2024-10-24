@@ -194,6 +194,34 @@ input {
     transition: background-color 0s;
     transition-delay: 1000s; /* Previene cambios de color de fondo en autocompletar */
 }
+@media(max-width: 500px){
+
+    .tarjeta {
+        height: 370px;
+        width: 320px;
+    }
+    
+    .tarjeta::before {
+        height: 420px;
+        width: 420px;
+    }  
+    .tarjeta::after {
+        height: 360px;
+        width: 310px;
+    }
+    .img-logoLogin{
+        width: 115px;
+    }
+    .logo-login{
+        top: 0;
+    }
+    .input-container{
+        margin: 10px 0;
+    }
+    .conten-sesion{
+        margin-top: 80px;
+    }
+}
 
 
     
