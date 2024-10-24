@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="css/img/logo.png">
+    <title>Restablecer Contraseña</title>
+    <link rel="stylesheet" href="../css/inicio.css">
+    <link rel="stylesheet" href="../restablecer/css/verificar.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="tarjeta">
+            <div class="conten">
+                <div class="logo-login">
+                    <a href="../index.html">
+                        <img src="../css/img/logo-login.png" alt="" width="150px">
+                    </a>                    
+                </div>
+                <div class="conten-sesion">
+                        <div class="input-container">
+                            <input type="password" id="nuevaContrasena" name="usuario" required>
+                            <label>Nueva contraseña</label>                
+                        </div>
+                        <div class="input-container">
+                            <input type="password" class="contrasena" id="confirmarContrasena" name="contrasena" required>
+                            <label>Verificar contraseña</label>
+                        </div>
+                        <br>
+                        <div id="mensaje-no-coindicen"></div> <!-- Contenedor para mensajes -->
+                        <div id="establecio-contra" class="establecio-contra"></div> <!-- Contenedor para mensajes -->
+                        <button class="restablecerBtn" id="restablecerBtn">Restablecer contraseña</button>
+                </div>
+            </div>
+        </div>
+    </div>
+   <script src="js/restablecer.js"></script>
+</body>
+</html>
