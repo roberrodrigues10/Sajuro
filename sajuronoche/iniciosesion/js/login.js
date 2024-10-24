@@ -42,6 +42,9 @@ function inicioSesion(event) {
         messageContainer.textContent = 'Hubo un error en el servidor. Inténtalo de nuevo.';
     });
 }
+// Cuando el usuario inicia sesión, guarda una bandera en localStorage
+
+
 
 // Vincular la función al evento de envío del formulario
 document.getElementById('iniciosesion').addEventListener('submit', inicioSesion);

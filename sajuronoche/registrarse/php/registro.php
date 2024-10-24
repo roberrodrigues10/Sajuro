@@ -1,43 +1,78 @@
 <?php
-require 'conexion.php'; // Incluir la configuración de la base de datos
+require 'conexion.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Asegúrate de que la ruta sea correcta donde tengas las librerías PHPMailer
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/Exception.php';
 
-// Crear una instancia de la clase Database y obtener la conexión
+function verificarCorreo($email) {
+    list($usuario, $dominio) = explode('@', $email);
+    
+    // Verificar si el dominio tiene registros MX
+    if (!checkdnsrr($dominio, 'MX')) {
+        return false;
+    }
+    
+    // Obtener los registros MX
+    getmxrr($dominio, $mxhosts);
+    
+    // Conectar al servidor SMTP
+    $socket = @fsockopen($mxhosts[0], 25, $errno, $errstr, 30);
+    if (!$socket) {
+        return false;
+    }
+    
+    $response = fgets($socket);
+    if (substr($response, 0, 3) != '220') {
+        return false;
+    }
+    
+    // Simular una conexión SMTP
+    fputs($socket, "HELO example.com\r\n");
+    $response = fgets($socket);
+    fputs($socket, "MAIL FROM: <verify@example.com>\r\n");
+    $response = fgets($socket);
+    fputs($socket, "RCPT TO: <$email>\r\n");
+    $response = fgets($socket);
+    
+    // Cerrar la conexión
+    fputs($socket, "QUIT\r\n");
+    fclose($socket);
+    
+    // Verificar la respuesta
+    return (substr($response, 0, 3) == '250');
+}
+
 $db = new Database();
 $conn = $db->getConnection();
 
-// Verificar si la conexión se realizó correctamente
 if ($conn === null) {
     echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos.']);
     exit;
 }
 
-// Verificar si la solicitud es de tipo POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Capturar los valores enviados desde el formulario
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
     $email = $_POST['email'];
 
-    // Validar que los campos no estén vacíos
     if (empty($usuario) || empty($contrasena) || empty($email)) {
         echo json_encode(['status' => 'error', 'message' => 'Todos los campos son requeridos.']);
         exit;
     }
 
-    // Validar formato del correo electrónico
+    if (!verificarCorreo($email)) {
+        echo json_encode(['status' => 'error', 'message' => 'El correo electrónico proporcionado no existe.']);
+        exit;
+    } 
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo json_encode(['status' => 'error', 'formato_message' => 'Formato de correo incorrecto.']);
         exit;
     }
 
-    // Verificar si el usuario o el correo electrónico ya existen
     $sql_check = "SELECT nombre_usuario, email FROM usuario WHERE nombre_usuario = ? OR email = ?";
     $stmt_check = $conn->prepare($sql_check);
     $stmt_check->bind_param('ss', $usuario, $email);
@@ -49,66 +84,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Encriptar la contraseña
     $hashed_contrasena = password_hash($contrasena, PASSWORD_DEFAULT);
-
-    // Generar un token único para la verificación
     $token = uniqid('', true);
 
-    // Iniciar una transacción
     $conn->begin_transaction();
 
     try {
-        // Insertar los datos en la tabla usuarios
         $sql = "INSERT INTO usuario (nombre_usuario, contrasena, email, token, is_verified) VALUES (?, ?, ?, ?, 0)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('ssss', $usuario, $hashed_contrasena, $email, $token);
 
         if (!$stmt->execute()) {
-            throw new Exception('Error en la ejecución de la consulta para registrarse.');
+            throw new Exception('Error en la ejecución de la consulta para registrar usuario.');
         }
 
-        // Enviar correo de verificación utilizando PHPMailer
         $mail = new PHPMailer(true);
-        $mail->isSMTP(); // Establecer el uso de SMTP
-        $mail->Host = 'smtp.gmail.com'; // Especificar el servidor SMTP de Gmail
-        $mail->SMTPAuth = true; // Habilitar la autenticación SMTP
-        $mail->Username = 'roberrodrigues300@gmail.com'; // Tu dirección de correo electrónico
-        $mail->Password = 'flhk dmrq nrlv bzqe'; // Tu contraseña de Gmail
-        $mail->SMTPSecure = 'tls'; // Habilitar TLS
-        $mail->Port = 587; // Puerto TCP para la conexión
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'roberrodrigues300@gmail.com';
+        $mail->Password = 'flhk dmrq nrlv bzqe';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
         
-        // Destinatarios
-        $mail->setFrom('roberrodrigues300@gmail.com', 'Sajuro'); // De quién se envía el correo
-        $mail->addAddress($email, $usuario); // A quién se envía (correo ingresado por el usuario)
+        $mail->setFrom('roberrodrigues300@gmail.com', 'Tu Nombre');
+        $mail->addAddress($email, $usuario);
+        $mail->CharSet = 'UTF-8';
 
-        $mail->CharSet = 'UTF-8'; // Asegúrate de usar UTF-8
+        $mail->isHTML(true);
+        $mail->Subject = "Verificación de cuenta";
+        $mail->Body = 'Haz clic en el siguiente enlace para verificar tu cuenta: <a href="http://localhost/Sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '">Verificar cuenta</a>';
+        $mail->AltBody = 'Haz clic en el siguiente enlace para verificar tu cuenta: http://localhost/Sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token;
 
-        // Contenido del correo
-        $mail->isHTML(true); // Establecer el formato de correo como HTML
-        $mail->Subject = "Verificación de cuenta"; // Asunto del correo
-        $mail->Body = 'Haz clic en el siguiente enlace para verificar tu cuenta: <a href="http://localhost/sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '">Verificar cuenta</a>'; // Contenido en HTML del correo
-        $mail->AltBody = 'Haz clic en el siguiente enlace para verificar tu cuenta: http://localhost/Sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token; // Contenido alternativo en texto plano
-
-        // Enviar el correo
         if (!$mail->send()) {
             throw new Exception('Error al enviar el correo de verificación: ' . $mail->ErrorInfo);
         }
 
-        // Confirmar la transacción
         $conn->commit();
         echo json_encode(['status' => 'success', 'message' => 'Registro exitoso. Revisa tu correo para verificar tu cuenta.']);
 
     } catch (Exception $e) {
-        // Si hay un error, revertir la transacción
         $conn->rollback();
         echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     }
 
-    // Cerrar los statements
     $stmt->close();
 }
 
-// Cerrar la conexión
+
 $conn->close();
 ?>

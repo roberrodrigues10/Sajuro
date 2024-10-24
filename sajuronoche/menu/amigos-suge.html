@@ -9,13 +9,20 @@
     <link rel="stylesheet" href="../menu/css/amigos-suge copy.css">
     <link rel="stylesheet" href="../menu/css/conten-home.css">
     <link rel="stylesheet" href="../css/inicio.css">
-    <style>
-        
-
-
-    </style>
+    <script>
+        window.onload = function() {
+            const usuarioId = sessionStorage.getItem('usuarioId');
+            
+            // Si no hay un usuario logueado, redirigir al inicio de sesión
+            if (!usuarioId) {
+                alert("Debes iniciar sesión para acceder a esta página.");
+                window.location.href = 'iniciosesion.html'; // Cambia la ruta según sea necesario
+            }
+        };
+    </script>
 </head>
 <body>
+
     <div class="contenido-general" id="afuera">
         <div class="contenido-home-oculto" id="home-aparecer">
             
@@ -255,6 +262,7 @@
         }
     });
       </script>
+
       <script src="js/cerrar-sesion.js"></script>
     <script src="js/menu-conte.js"></script>
     <script src="js/modal-menu.js"></script>

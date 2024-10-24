@@ -2,17 +2,17 @@ function registrarUsuario(event) {
     event.preventDefault(); // Evitar el envío normal del formulario
     const mensajeLogin = document.getElementById('mensaje-formato');
     const mensajeCorreoOusuario = document.getElementById('mensaje-correoOusuario');
+    const mensajeError = document.getElementById('mensaje-error');
     const formData = new FormData(document.getElementById('registro-form'));
     const registrarButton = document.getElementById('registrar-button');
-    const loadingIndicator = document.getElementById('loading-indicator');
 
     // Desactivar el botón de registro para evitar múltiples clics
     registrarButton.disabled = true;
-    loadingIndicator.style.display = 'block'; // Mostrar indicador de carga
 
     // Limpiar mensajes anteriores
     mensajeLogin.textContent = '';
     mensajeCorreoOusuario.textContent = '';
+    if (mensajeError) mensajeError.textContent = '';
 
     fetch('php/registro.php', {
         method: 'POST',
@@ -25,21 +25,29 @@ function registrarUsuario(event) {
         return response.json(); // Intentar convertir la respuesta en JSON
     })
     .then(data => {
-        loadingIndicator.style.display = 'none'; // Ocultar el indicador de carga
-        registrarButton.disabled = false; // Rehabilitar el botón en caso de error
+        console.log(data); // Mostrar la respuesta en la consola para depuración
 
+        // Rehabilitar el botón en caso de error
         if (data.status !== 'success') {
+            registrarButton.disabled = false; // Habilitar el botón si hay un error
             mensajeLogin.textContent = data.formato_message;
             mensajeCorreoOusuario.textContent = data.correoUsuariomessage;
+            if (data.message) {
+                // Si tienes un elemento para mensajes generales
+                if (mensajeError) {
+                    mensajeError.textContent = data.message;
+                } else {
+                    // Si no hay un elemento específico, usar uno de los existentes
+                    mensajeLogin.textContent = data.message;
+                }
+            }
         } else {
             document.getElementById('registro-form').reset(); // Reiniciar el formulario
-            window.location.href = "../iniciosesion/iniciarsesion.html"; // Redirigir
+            window.location.href = "../../../../Sajuro/sajuronoche/iniciosesion/iniciarsesion.html"; // Redirigir a la página deseada
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        mensajeLogin.textContent = 'Ocurrió un error. Inténtalo de nuevo.';
-        loadingIndicator.style.display = 'none'; // Ocultar el indicador de carga
-        registrarButton.disabled = false; // Habilitar el botón
+        registrarButton.disabled = false; // Habilitar el botón en caso de error
     });
 }

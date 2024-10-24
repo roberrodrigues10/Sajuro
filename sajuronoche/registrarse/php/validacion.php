@@ -31,7 +31,7 @@ $result = $stmt->get_result();
 // Verificar si se encontró el usuario
 if ($result->num_rows === 1) {
     // Actualizar el estado de verificación del usuario
-    $sql_update = "UPDATE usuario SET is_verified = 1 WHERE email = ?";
+    $sql_update = "UPDATE usuario SET is_verified = 1, token = NULL WHERE email = ?";
     $stmt_update = $conn->prepare($sql_update);
     $stmt_update->bind_param('s', $email);
     
