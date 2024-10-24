@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>No más zoom</title>
+  <style>
+    /* Estilos CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Quita el scroll */
+      transform: scale(1); /* Mantiene el tamaño original */
+      transform-origin: 0 0; /* Fija el origen para el escalado */
+    }
+
+    /* Contenido básico */
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #282c34;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  </style>
+
+  <script>
+    // Bloqueando el zoom con teclado
+    document.addEventListener('keydown', function(event) {
+      if (event.ctrlKey && (event.key === '+' || event.key === '-')) {
+        event.preventDefault(); // Detiene el zoom
+      }
+    });
+
+    // Evitar el zoom con el mouse (Ctrl + scroll)
+    document.addEventListener('wheel', function(event) {
+      if (event.ctrlKey) {
+        event.preventDefault(); // Bloquear zoom con scroll
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Contenido simple -->
+  <div class="container">
+    <div>
+      <h1>¡Sin Zoom, por favor!</h1>
+      <p>Prueba hacer zoom y verás que no pasa nada...</p>
+    </div>
+  </div>
+
+</body>
+</html>

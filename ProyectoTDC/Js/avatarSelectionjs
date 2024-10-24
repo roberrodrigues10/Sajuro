@@ -1,0 +1,68 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const avatares = document.querySelectorAll('.ContenidoAvatar1');
+    const avatarPerfil = document.querySelector('.contenidoAvatarPerfil img');
+    const esferasAzules = document.querySelector('.CantidadEsferaAzulModalNivel h1');
+
+    // Función para actualizar los avatares desbloqueados
+    function actualizarAvatares() {
+        const cantidadEsferasAzules = parseInt(esferasAzules.textContent) || 0;
+        const avataresBloqueados = document.querySelectorAll('[id^="bloqueado-"]');
+        
+        avataresBloqueados.forEach((img, index) => {
+            const divAvatar = img.parentElement; // Obtener el div contenedor
+            if (index < Math.floor(cantidadEsferasAzules / 10)) {
+                img.id = ''; // Desbloquear avatar
+                divAvatar.style.opacity = '1'; // Mostrar normal
+                divAvatar.style.cursor = 'pointer'; // Habilitar cursor
+            } else {
+                img.id = `bloqueado-${index + 1}`; // Mantener bloqueado
+                divAvatar.style.opacity = '0.5'; // Reducir visibilidad
+                divAvatar.style.cursor = 'not-allowed'; // Cursor no permitido
+            }
+        });
+    }
+
+    // Recupera el avatar guardado al cargar la página
+    const avatarGuardado = localStorage.getItem('avatarSeleccionado');
+    if (avatarGuardado) {
+        avatarPerfil.src = avatarGuardado;
+    }
+
+    // Asignar eventos de clic a cada avatar
+    avatares.forEach(avatar => {
+        avatar.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            
+            // Verifica si el avatar está bloqueado
+            if (img.id.startsWith('bloqueado-')) {
+                console.log('Este avatar está bloqueado');
+                return; // Salir si el avatar está bloqueado
+            }
+
+            const nuevaImagenSrc = img.src;
+            avatarPerfil.src = nuevaImagenSrc;
+
+            // Guardar la selección en localStorage
+            localStorage.setItem('avatarSeleccionado', nuevaImagenSrc);
+
+            // Aplicar el efecto de opacidad a los otros avatares
+            avatares.forEach(av => {
+                if (av !== this) {
+                    av.classList.add('fade');
+                }
+            });
+
+            // Quitar el efecto de opacidad después de 1 segundo
+            setTimeout(() => {
+                avatares.forEach(av => av.classList.remove('fade'));
+            }, 1000);
+        });
+    });
+
+    // Actualiza los avatares inicialmente
+    actualizarAvatares();
+
+    // Observa cambios en la cantidad de esferas azules
+    const observer = new MutationObserver(actualizarAvatares);
+    observer.observe(esferasAzules, { childList: true, characterData: true, subtree: true });
+});

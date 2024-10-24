@@ -1,0 +1,513 @@
+body {
+    height: 100%;
+    background-image: url('DALL·E-2024-09-19-16.52.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.RankingJugadores {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr) minmax(100px, 1fr);
+    grid-template-rows: 50px;
+    text-align: center;
+}
+.RankingJugadores :first-child{
+    min-width: 80px;
+    grid-column-start: 6;
+    grid-column-end: 11;
+}
+.cuadroRanking {
+    width: auto;
+    height: auto;
+    max-width: 270px;
+    background-image:
+        linear-gradient(rgba(128, 0, 255, 0.70), rgb(34, 184, 1, 0.70)),
+        linear-gradient(rgb(0, 173, 29, 0.70), rgb(157, 0, 255, 0.70));
+    border-bottom-right-radius: 35px;
+    border-bottom-left-radius: 35px;
+}
+.cuadroRanking h1{
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Ovo", serif;
+    font-weight: normal;
+}
+.iconoJugadores {
+}
+.iconoJugadoresImg {
+    width: 15px;
+    height: 15px;
+    margin-top: 8px;
+}
+.RankingJugadores :nth-child(2){
+    grid-column-start: 12;
+    grid-column-end: 13;
+}
+.logoJugadores {
+}
+.logoJugadoresImg {
+    width: 40px;
+    height: 40px;
+    justify-self: center;
+}
+.generalJugadores {
+    width: 100%;
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.cuadrosJugadores1 {
+    text-align: center;
+    margin: 0 auto;
+}
+.cuadrosJugadores2 {
+    text-align: center;
+    margin: 0 auto;
+}
+.imgSolitarioJugadores {
+    width: 60%;
+    margin: 0 auto;  
+    padding-right: 35px;
+    cursor: pointer;
+}
+.imgMultijugadorJugadores {
+    width: 60%;
+    margin: 0 auto;  
+    padding: 5px;
+    cursor: pointer;
+}
+.menuJugadores {
+    display: flex;
+    width: 50%;
+    height: 25px;
+    margin: 0 auto;
+    background-image:
+        linear-gradient(rgb(0, 247, 255), rgb(34, 184, 1)),
+        linear-gradient(rgb(0, 173, 29), rgb(0, 242, 255));
+    border-radius: 100px;
+}
+.solicitudesJugadores {
+    margin: auto;
+    place-self: center;
+}
+.casaJugadores {
+    margin: auto;
+    place-self: center;
+}
+.configuracionesJugadores {
+    margin: auto;
+    place-self: center;
+}
+.solicitudesJugadores:hover {
+    transform: translate(0px, -40px);
+    transition: all 0.2s;
+    border-radius: 100%;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    margin: auto;
+}
+.solicitudesJugadores:hover .iconJugadores {
+    fill: blueviolet;
+    margin-top: 5px;
+}
+.casaJugadores:hover {
+    transform: translate(0px, -40px);
+    transition: all 0.3s;
+    border-radius: 100%;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    margin: auto;
+}
+.casaJugadores:hover .iconJugadores {
+    fill: blueviolet;
+    margin-top: 5px;
+}
+.efectoClickIconsJugadores {
+    transform: translate(0px, -40px);
+    border-radius: 100%;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    margin: auto;
+}
+.configuracionesJugadores:hover {
+    transform: translate(0px, -40px);
+    transition: all 0.3s;
+    border-radius: 100%;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    margin: auto;
+}
+.configuracionesJugadores:hover .iconJugadores {
+    fill: blueviolet;
+    margin-top: 5px;
+}
+.iconJugadores {
+    width: 25px;
+    height: 20px;
+    border-radius: 100%;
+    padding: 2px;
+}
+
+@media screen and (min-height: 480px) {
+    body {
+        height: 100vh;
+    }
+}
+@media screen and (min-width: 520px) {
+    body {
+        height: 120vh;
+    }
+}
+@media screen and (min-width: 590px) {
+    body {
+        height: 130vh;
+    }
+}
+@media screen and (min-width: 330px) {
+    .generalJugadores {
+        width: 100%;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .avatarJugadoresImg {
+        width: 45px;
+        height: 45px;
+    }
+    .imgSolitarioJugadores {
+        width: 50%;
+        padding-right: 35px;
+    }
+    .imgMultijugadorJugadores {
+        width: 50%;
+    }
+    .menuJugadores {
+        height: 40px;
+    }
+    .RankingJugadores {
+        grid-template-rows: 60px;
+    }
+    .RankingJugadores :first-child{
+        grid-column-start: 6;
+        grid-column-end: 10;
+    }
+    .RankingJugadores :nth-child(2){
+        grid-column-start: 12;
+        grid-column-end: 13;
+    }
+    .logoJugadores {
+    }
+    .logoJugadoresImg {
+        width: 45px;
+        height: 45px;
+        margin-top: 15px;
+    }
+    .iconoJugadoresImg {
+        width: 20px;
+        height: 20px;
+        margin-top: 15px;
+    }
+}
+@media screen and (min-width: 480px) {
+    .menuJugadores {
+        height: 40px;
+    }
+    .RankingJugadores {
+        grid-template-rows: 70px;
+    }
+    .RankingJugadores :first-child{
+        grid-column-start: 6;
+        grid-column-end: 10;
+    }
+    .RankingJugadores :nth-child(2){
+        grid-column-start: 12;
+        grid-column-end: 13;
+    }
+    .cuadroRanking h1{
+        font-size: 18px;
+    }
+    .logoJugadores {
+    }
+    .logoJugadoresImg {
+        width: 45px;
+        height: 45px;
+        margin-top: 15px;
+    }
+    .iconoJugadoresImg {
+        width: 25px;
+        height: 25px;
+        margin-top: 15px;
+    }
+    body {
+        height: 110vh;
+    }
+}
+@media screen and (min-width: 560px) {
+    .RankingJugadores {
+        display: grid;
+        grid-template-columns: repeat(14, 1fr);
+        grid-template-rows: 75px;
+        text-align: center;
+    }
+    .RankingJugadores :first-child{
+        min-width: 80px;
+        grid-column-start: 6;
+        grid-column-end: 11;
+    }
+    .cuadroRanking h1{
+        margin: 0;
+        color: #fff;
+        font-size: 25px;
+        font-family: "Ovo", serif;
+        font-weight: normal;
+    }
+    .iconoJugadoresImg {
+        width: 25px;
+        height: 25px;
+        margin-top: 8px;
+    }
+    .RankingJugadores :nth-child(2){
+        grid-column-start: 14;
+        grid-column-end: 15;
+    }
+    .logoJugadores {
+    }
+    .logoJugadoresImg {
+        width: 40px;
+        height: 40px;
+        justify-self: center;
+    }
+}
+@media screen and (min-width: 728px) {
+    .generalJugadores {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+    .cuadrosJugadores1 {
+        width: 90%;
+        text-align: right;
+        margin-right: 20px;
+        padding-top: 6.5px;
+    }
+    .cuadrosJugadores2 {
+        width: 90%;
+        text-align: left;
+        margin-left: 20px;
+    }
+    .botonJugadores {
+        margin-bottom: 30px;
+    }
+    .avatarJugadoresImg {
+        width: 55px;
+        height: 55px;
+    }
+    .menuJugadores {
+        margin-top: 50px;
+    }
+    .imgMultijugadorJugadores {
+        width: 80%;
+    }
+    .imgSolitarioJugadores {
+        width: 80%;
+        padding-right: 0px;
+    }
+    .RankingJugadores {
+        display: grid;
+        grid-template-columns: repeat(14, 1fr);
+        grid-template-rows: 80px;
+        text-align: center;
+    }
+    .RankingJugadores :first-child{
+        min-width: 80px;
+        grid-column-start: 6;
+        grid-column-end: 11;
+    }
+    .cuadroRanking h1{
+        margin: 0;
+        color: #fff;
+        font-size: 30px;
+        font-family: "Ovo", serif;
+        font-weight: normal;
+    }
+    .iconoJugadoresImg {
+        width: 30px;
+        height: 30px;
+        margin-top: 8px;
+    }
+    .RankingJugadores :nth-child(2){
+        grid-column-start: 14;
+        grid-column-end: 15;
+    }
+    .logoJugadores {
+    }
+    .logoJugadoresImg {
+        width: 40px;
+        height: 40px;
+        justify-self: center;
+    }
+}
+@media screen and (min-width: 960px) {
+    .generalJugadores {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 45px;
+    }
+    .cuadrosJugadores1 {
+        width: 90%;
+        text-align: right;
+        margin-right: 15px;
+        padding-top: 6.5px;
+    }
+    .cuadrosJugadores2 {
+        width: 90%;
+        text-align: left;
+        margin-left: 15px;
+    }
+    .botonJugadores {
+        margin-bottom: 30px;
+    }
+    .avatarJugadoresImg {
+        width: 55px;
+        height: 55px;
+    }
+    .imgMultijugadorJugadores {
+        width: 65%;
+    }
+    .imgSolitarioJugadores {
+        width: 65%;
+        padding-right: 0px;
+    }
+    .menuJugadores {
+        margin-top: 55px;
+    }
+    .RankingJugadores {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: 85px;
+        text-align: center;
+    }
+    .RankingJugadores :first-child{
+        min-width: 80px;
+        grid-column-start: 4;
+        grid-column-end: 6;
+    }
+    .cuadroRanking {
+        width: auto;
+    }
+    .cuadroRanking h1{
+        margin: 0;
+        color: #fff;
+        font-size: 30px;
+        font-family: "Ovo", serif;
+        font-weight: normal;
+    }
+    .iconoJugadoresImg {
+        width: 30px;
+        height: 30px;
+        margin-top: 8px;
+    }
+    .RankingJugadores :nth-child(2){
+        grid-column-start: 8;
+        grid-column-end: 9;
+    }
+    .logoJugadores {
+    }
+    .logoJugadoresImg {
+        width: 40px;
+        height: 40px;
+        justify-self: center;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .generalJugadores {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 40px;
+    }
+    .cuadrosJugadores1 {
+        width: 90%;
+        text-align: right;
+        margin-right: 20px;
+        padding-top: 6.5px;
+    }
+    .cuadrosJugadores2 {
+        width: 90%;
+        text-align: left;
+        margin-left: 20px;
+    }
+    .botonJugadores {
+        margin-bottom: 30px;
+    }
+    .avatarJugadoresImg {
+        width: 55px;
+        height: 55px;
+    }
+    .imgMultijugadorJugadores {
+        width: 70%;
+    }
+    .imgSolitarioJugadores {
+        width: 70%;
+        padding-right: 0px;
+    }
+    .menuJugadores {
+        margin-top: 60px;
+        height: 6vh;
+    }
+    .iconJugadores {
+        width: 30px;
+        height: 25px;
+        border-radius: 100%;
+    }
+    
+}
+@media screen and (min-width: 1328px) {
+    .generalJugadores {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 35px;
+    }
+    .cuadrosJugadores1 {
+        width: 100%;
+        text-align: right;
+        margin-right: 25px;
+    }
+    .cuadrosJugadores2 {
+        width: 100%;
+        text-align: left;
+        margin-left: 25px;
+    }
+    .botonJugadores {
+        margin-bottom: 30px;
+    }
+    .avatarJugadoresImg {
+        width: 55px;
+        height: 55px;
+    }
+    .imgMultijugadorJugadores {
+        width: 75%;
+    }
+    .imgSolitarioJugadores {
+        width: 75%;
+        padding-right: 0px;
+    }
+    .menuJugadores {
+        margin-top: 70px;
+        height: 8vh;
+    }
+    .iconJugadores {
+        width: 35px;
+        height: 30px;
+        border-radius: 100%;
+        padding: 2px;
+    }
+}
