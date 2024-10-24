@@ -47,8 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Establecer el nombre de usuario en la sesión
                 $_SESSION['nombre_usuario'] = $nombre_usuario;
 
-                // No mezclar echo con JSON si se espera que fetch lo maneje correctamente
-                echo json_encode(['status' => 'success', 'message' => 'Inicio de sesión exitoso.']);
+                // Enviar respuesta exitosa con el ID del usuario
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'Inicio de sesión exitoso.',
+                    'usuarioId' => $user_id,
+                    'nombreUsuario' => $nombre_usuario 
+                ]);
             } else {
                 echo json_encode(['status' => 'error', 'message' => 'La cuenta no está verificada.']);
             }
@@ -68,4 +73,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Cerrar la conexión
 $conn->close();
 ?>
-

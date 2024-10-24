@@ -17,10 +17,10 @@ if (crearSalaBtn) {
         const codigoSala = generarCodigoSala(); // Genera el código de sala
         console.log('Código generado:', codigoSala);
 
-        // Redirigir a crearSala.html con el código de sala como parámetro
-        window.location.href = `./crear/crearSala.html?codigo=${codigoSala}`; // Genera el código de sala y lo muestra en el HTML
+        // Obtener el ID del anfitrión desde sessionStorage
+        const usuarioId = sessionStorage.getItem('usuarioId');
 
-        // Aquí puedes incluir la lógica para enviar el código al servidor si es necesario
+        // Aquí puedes incluir la lógica para enviar el código al servidor
         const response = await fetch('./crear/php/crear-sala.php', { // Cambia esta ruta según tu estructura
             method: 'POST',
             headers: {
@@ -28,24 +28,42 @@ if (crearSalaBtn) {
             },
             body: JSON.stringify({
                 codigo_sala: codigoSala,
-                id_anfitrion: usuarioId, // Este valor se obtiene de la sesión en PHP
+                id_anfitrion: usuarioId, // Obtener el ID del anfitrión desde sessionStorage
                 estado: 'espera'
             })
         });
 
-        const data = await response.json();
-        if (data.success) {
-            console.log('Sala creada:', data.codigo_sala);
+        // Para depuración, verifica el contenido de la respuesta
+        const responseText = await response.text(); // Obtiene el texto completo
+        console.log('Respuesta del servidor:', responseText); // Muestra la respuesta en consola
+
+        let data;
+        try {
+            data = JSON.parse(responseText); // Intenta convertir a JSON
+        } catch (error) {
+            console.error('Error al parsear JSON:', error);
+            return; // Salir si no se puede parsear
+        }
+
+        if (data.status === 'success') {
+            console.log('Sala creada:', data.message); // Mensaje de éxito
+
+            // Enviar el mensaje por WebSocket después de crear la sala
             socket.send(JSON.stringify({
                 action: 'sala_creada',
-                codigo_sala: data.codigo_sala,
+                codigo_sala: codigoSala, // Usar el código generado aquí
                 username: 'usuarioNombre' // Cambia esto por el nombre del usuario
             }));
+
+            // Redirigir a crearSala.html con el código de sala como parámetro
+            window.location.href = `./crear/crearSala.html?codigo=${codigoSala}`; // Muestra el código en el HTML
         } else {
-            console.error('Error al crear la sala:', data.error);
+            console.error('Error al crear la sala:', data.message); // Mensaje de error
         }
     });
 }
+
+// Función para obtener un parámetro de la URL
 function obtenerParametro(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
@@ -61,51 +79,3 @@ if (numeroCodigoElement) {
         numeroCodigoElement.textContent = 'No se generó ningún código';
     }
 }
-
-
-
-
-// Unirse a Sala
-    
-    /*const unirseSalaBtn = document.getElementById('unirse-sala');
-    console.log(unirseSalaBtn); // Esto mostrará el botón en la consola o 'null' si no existe
-
-    if (unirseSalaBtn) {
-        console.log("El botón existe, agregando evento click");
-        unirseSalaBtn.addEventListener('click', async () => {
-            const codigoSala = document.getElementById('codigo-unirse').value;
-            const usuarioId = 1; // Cambia esto para obtener el ID del usuario actual
-
-            // Petición para unirse a una sala en el servidor
-            const response = await fetch('../unirse/php/unirse-sala.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    codigo_sala: codigoSala,
-                    id_usuario: usuarioId,
-                })
-            });
-
-            const data = await response.json();
-            if (data.success) {
-                console.log('Unido a la sala:', data.codigo_sala);
-                agregarJugador('TuNombre'); // Cambia esto por el nombre del usuario
-
-                // Notificar a otros usuarios que el usuario se unió
-                socket.send(JSON.stringify({
-                    action: 'usuario_unido',
-                    username: 'TuNombre' // Cambia esto por el nombre del usuario
-                }));
-            } else {
-                console.error('Error al unirse a la sala:', data.error);
-            }
-        });
-    } else {
-        console.error('El botón unirse-sala no existe');
-    }
-;
-*/
-
-

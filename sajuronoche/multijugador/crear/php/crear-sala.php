@@ -1,49 +1,48 @@
 <?php
+require 'conexion.php'; // Incluir la configuración de la base de datos
 
 session_start();
 
-// Verificar si el id_anfitrion está disponible en la sesión
-if (!isset($_SESSION['id_anfitrion'])) {
-    die(json_encode(['success' => false, 'error' => 'El usuario no ha iniciado sesión']));
+// Verificar la conexión
+$db = new Database();
+$conn = $db->getConnection();
+if ($conn === null) {
+    echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos.']);
+    exit;
 }
 
-$id_anfitrion = $_SESSION['id_anfitrion']; // Obtener el ID del anfitrión desde la sesión
+// Verificar si la solicitud es de tipo POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Capturar el código de la sala y el ID del anfitrión
+    $data = json_decode(file_get_contents('php://input'), true);
+    $codigo_sala = $data['codigo_sala'];
+    $id_anfitrion = $data['id_anfitrion'];
 
+    // Preparar la consulta SQL para insertar la sala
+    $sql = "INSERT INTO sala (codigo_sala, id_anfitrion, estado) VALUES (?, ?, 'espera')";
+    $stmt = $conn->prepare($sql);
 
-// Conectar a la base de datos
-$servername = "localhost"; // Cambia esto según tu servidor
-$username = "root"; // Cambia esto por tu usuario de MySQL
-$password = ""; // Cambia esto por tu contraseña de MySQL
-$dbname = "sajuro"; // Cambia esto por el nombre de tu base de datos
+    if (!$stmt) {
+        echo json_encode(['status' => 'error', 'message' => 'Error en la consulta SQL: ' . $conn->error]);
+        exit;
+    }
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    // Enlazar los parámetros
+    $stmt->bind_param('si', $codigo_sala, $id_anfitrion);
+    if ($stmt->execute()) {
+        echo json_encode(['status' => 'success', 'message' => 'Sala creada exitosamente.']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Error al crear la sala: ' . $stmt->error]);
+    }
 
-if ($conn->connect_error) {
-    die(json_encode(['success' => false, 'error' => 'Error de conexión a la base de datos']));
-}
-
-// Obtener los datos enviados desde el fetch (en formato JSON)
-$data = json_decode(file_get_contents('php://input'), true);
-$codigo_sala = $data['codigo_sala'];
-$id_anfitrion = $data['id_anfitrion'];
-$estado = $data['estado'];
-
-// Validar que los datos no estén vacíos
-if (empty($codigo_sala) || empty($id_anfitrion)) {
-    die(json_encode(['success' => false, 'error' => 'Datos faltantes']));
-}
-
-// Insertar en la base de datos
-$stmt = $conn->prepare("INSERT INTO sala (codigo_sala, id_anfitrion, estado) VALUES (?, ?, ?)");
-$stmt->bind_param("sis", $codigo_sala, $id_anfitrion, $estado);
-
-if ($stmt->execute()) {
-    echo json_encode(['success' => true, 'codigo_sala' => $codigo_sala]);
+    // Cerrar el statement
+    $stmt->close();
 } else {
-    echo json_encode(['success' => false, 'error' => 'Error al crear la sala']);
+    echo json_encode(['status' => 'error', 'message' => 'Método de solicitud no válido.']);
 }
 
-$stmt->close();
+
+// Cerrar la conexión
 $conn->close();
 ?>
 

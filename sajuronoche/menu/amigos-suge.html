@@ -30,7 +30,7 @@
                     <div class="content-bienvenido">
                     <img src="css/img/biemvenido.png" alt="" class="bienvenido-img" > 
                     <div class="titulo-bienvenido">BIENVENIDO</div>
-                    <div class="titulo-user">username</div>
+                    <div class="titulo-user" id="username"></div>
                     </div>           
                 </div>  
                 <div class="logo-ranking" >
@@ -142,7 +142,9 @@
         </div>
         </div>
         <div class="objetos">
+            <button class="cerrar-sesion">
             <div class="cerrar-sesion">cerrar sesión</div>
+            </button>
             <div class="objetos-espada">
             <img src="css/img/objetos.png" alt="" width="120px" class="objetos-logo">
             </div>
@@ -242,7 +244,18 @@
             event.preventDefault(); // Bloquear zoom con scroll
           }
         });
+         // Esperar a que el DOM se haya cargado
+    document.addEventListener('DOMContentLoaded', () => {
+        // Obtener el nombre de usuario del sessionStorage
+        const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+
+        // Mostrar el nombre de usuario en el elemento correspondiente
+        if (nombreUsuario) {
+            document.getElementById('username').textContent = nombreUsuario;
+        }
+    });
       </script>
+      <script src="js/cerrar-sesion.js"></script>
     <script src="js/menu-conte.js"></script>
     <script src="js/modal-menu.js"></script>
     <script src="ranking.js"></script>
