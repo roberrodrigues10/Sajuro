@@ -66,7 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verificarCorreo($email)) {
         echo json_encode(['status' => 'error', 'message' => 'El correo electrónico proporcionado no existe.']);
         exit;
+<<<<<<< HEAD
     }
+=======
+    } 
+>>>>>>> 42aa33a85b0d2132a972d0d5a2c3b2ecf1bd693b
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo json_encode(['status' => 'error', 'formato_message' => 'Formato de correo incorrecto.']);

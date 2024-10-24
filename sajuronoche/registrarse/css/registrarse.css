@@ -167,7 +167,11 @@ input[type="text"], input[type="password"], input[type="email"] {
 }
 #mensaje-formato{
     position: fixed;
+<<<<<<< HEAD
     margin: -30px 50px;
+=======
+    margin: -30px 54px;
+>>>>>>> 42aa33a85b0d2132a972d0d5a2c3b2ecf1bd693b
     color: rgb(224, 183, 106);
 }
 #mensaje-correoOusuario{
@@ -199,4 +203,24 @@ select:-webkit-autofill:focus {
 input {
     transition: background-color 0s;
     transition-delay: 1000s; /* Previene cambios de color de fondo en autocompletar */
+<<<<<<< HEAD
 }
+=======
+}
+.input-error {
+    border: 2px solid red;
+}
+
+.input-success {
+    border: 2px solid green;
+}
+.input-error {
+    border: 2px solid red;
+}
+
+.input-success {
+    border: 2px solid green;
+}
+
+    
+>>>>>>> 42aa33a85b0d2132a972d0d5a2c3b2ecf1bd693b
