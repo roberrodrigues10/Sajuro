@@ -14,7 +14,7 @@ function generarCodigoSala() {
 const crearSalaBtn = document.getElementById('crear-sala');
 if (crearSalaBtn) {
     crearSalaBtn.addEventListener('click', async () => {
-        const codigoSala = generarCodigoSala(); // Genera el código de sala
+        const codigoSala = generarCodigoSala(); // Genera el código de salaaaa
         console.log('Código generado:', codigoSala);
 
         // Obtener el ID del anfitrión desde sessionStorage
