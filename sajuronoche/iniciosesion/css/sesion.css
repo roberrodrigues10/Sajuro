@@ -182,7 +182,47 @@ input {
 }
 
 @media(max-width: 500px){
-    .tarjeta{
-        width: 330px;
+
+    .tarjeta {
+        height: 350px;
+        width: 320px;
+    }
+    
+    .tarjeta::before {
+        height: 420px;
+        width: 420px;
+    }  
+    .tarjeta::after {
+        height: 340px;
+        width: 310px;
+    }
+    .img-logoLogin{
+        width: 115px;
+    }
+    .logo-login{
+        top: 0;
+    }
+    .input-container{
+        margin: 10px 0;
+    }
+    .conten-sesion{
+        margin-top: 80px;
+    }
+    #mensaje-correoOusuario{
+        width: 300px;
+        display: flex;
+        margin-left: 56px;
+    }
+    #mensaje-formato{
+        width: 300px;
+        margin-left: 13px;
+
+    }
+    #mensaje-error{
+        position: fixed;
+        color: rgb(224, 183, 106);
+        width: 300px;
+        font-size: 15px;
+        margin-left: 17px;
     }
 }

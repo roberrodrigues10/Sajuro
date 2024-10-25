@@ -5,7 +5,7 @@ const token = params.get('token');
 
 // Función para verificar la cuenta
 function verificarCuenta(email, token) {
-    fetch(`php/validacion.php?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`)
+    fetch(`https://25f1-177-74-204-178.ngrok-free.app/Sajuro-1/sajuronoche/registrarse/php/validacion.php?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`)
         .then(response => response.json())
         .then(data => {
             // Mostrar el mensaje correspondiente

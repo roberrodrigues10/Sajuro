@@ -4,7 +4,7 @@
 }   
 @font-face {
     font-family: 'Metal Mania';
-    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+    src: url('../../css/fonts/MetalMania-Regular.ttf') format('truetype');
 }
 html{
     background-color: #4C3A28;
@@ -35,7 +35,7 @@ html{
 }
 .ranking {
     display: flex;
-    width: 100%;
+    width: 100vw;
     justify-content: center;
     height: 10vh;
 }
@@ -112,7 +112,7 @@ html{
 .logo-ranking {
     position: fixed;
     display: grid;
-    justify-items: end;
+    justify-items: start;
     height: 10px;
     margin: 0px 92vw;
 }
@@ -127,6 +127,8 @@ html{
     position: fixed;
     top: 38vh;
     gap: 0;
+    grid-template-rows: 50% 50%;
+    height: 30vh;
 }
 .titulo-solitario{
     font-family: 'Metal Mania';
@@ -139,8 +141,6 @@ html{
 }
 .titulo-multijugador{
     font-family: 'Metal Mania';
-    position: fixed;
-    margin: -70px 45px;
     color: rgb(52, 42, 34);
     font-size: 30px;
     font-weight: bold;
@@ -199,7 +199,7 @@ html{
     width: 100vw;
     display: flex;
     justify-content: center;
-    z-index: 1000;
+    z-index: 0;
 }
 .cerrar-sesion{
     position: fixed;
@@ -276,58 +276,115 @@ a{
     width: 650px;
     height: 150px;
 }
-@media(max-width: 389px){
-    .contenido-home{
-        position: fixed;
-        height: 0;
-        top: 100%;
-    }
-    .contenido-home-modalidad{
-        display: grid;
-        grid-template-columns: 100%;
-        overflow: scroll;
-        height: 60vh;
-        margin-top: 5vh;
-    }
-    .img-solitario, .img-multi{
-        width: 280px;
-    }
-    .solitario{
-        display: grid;
-        justify-self: center;
-    }
-    .multijugador{
-        display: grid;
-        justify-self: center;
-    }
-}
 
-@media(min-width: 390px) and (max-width: 769px){
+
+@media(max-width: 400px) and (max-width:800px){
     body{
         overflow: scroll;
+        height: 100%;
     }
-    .contenido-home{
+    .bienvenido{
         position: fixed;
-        height: 0;
-        top: 100%;
+        display: grid;
+        justify-items: center;
+        width: 102vw;
+        
+    }
+    .bienvenido-img{
+        width: 220px;
+        height: 105px;
+    }
+    .titulo-bienvenido{
+        position: fixed;
+        margin: 25px 68px;
+        font-size: 20px;
+    }
+    .titulo-user{
+        position: fixed;
+        margin: 44px 85px;
+        font-size: 15px;
     }
     .contenido-home-modalidad{
-        display: grid;
-        grid-template-columns: 100%;
-        overflow: scroll;
-        height: 60vh;
-        margin-top: 5vh;
+       
     }
-    .img-solitario, .img-multi{
-        width: 300px;
+    .campos{
+        position: fixed;
+        display: grid;
+        justify-self: center;
+        top: 40%;
+        height: 125px;
+        gap: 10px;
+    }
+    .img-solitario, .img-multijugador{
+        width: 200px;
     }
     .solitario{
         display: grid;
-        justify-self: center;
+        grid-row-start: 1;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
     }
     .multijugador{
         display: grid;
-        justify-self: center;
+        grid-row-start: 2;
+        height: 100%;
+        width: 100%;
+    }
+    .titulo-solitario{
+        position: relative;
+        display: flex;
+        font-size: 20px;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .titulo-multijugador{
+        display: flex;
+        font-size: 20px;
+        width: 56px;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    a{
+        width: 200px;
+    }
+    .img-logoPerfil{
+        width: 80px;
+    }
+    .ranking-logo{
+        width: 78px;
+    }
+    .logo-ranking{
+       margin: 0px 80vw;
+
+    }
+    .ranking-conte{
+        margin: 4px 0;
+    }
+    .objetos-espada{
+        position: fixed;
+        display: flex;
+        width: 90vw;
+        justify-content: center;
+        top: 70vh;
+        z-index: 0;
+    }
+    .usuariosAmigos{
+        display: none;
+    }
+    .objetos-logo{
+        width: 50px;
+    }
+    .amigosImagenTitulo{
+        width: 90px;
+    }
+    .nombre{
+        position: fixed;
+        font-size: 14px;
+        margin-top: -30px;
+        margin-left: 20px;
     }
 }
 

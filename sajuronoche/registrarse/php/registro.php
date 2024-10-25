@@ -8,42 +8,45 @@ require 'PHPMailer/src/SMTP.php';
 require 'PHPMailer/src/Exception.php';
 
 function verificarCorreo($email) {
+    // Validar el formato del correo
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return false; // Formato no válido
+    }
+
+    // Obtener el dominio y verificar registros MX
     list($usuario, $dominio) = explode('@', $email);
-    
-    // Verificar si el dominio tiene registros MX
     if (!checkdnsrr($dominio, 'MX')) {
-        return false;
+        return false; // No hay registros MX
     }
-    
-    // Obtener los registros MX
+
+    $mxhosts = [];
     getmxrr($dominio, $mxhosts);
-    
-    // Conectar al servidor SMTP
-    $socket = @fsockopen($mxhosts[0], 25, $errno, $errstr, 30);
+
+    // Intentar conectarse al primer servidor MX
+    $socket = @fsockopen($mxhosts[0], 25, $errno, $errstr, 10);
     if (!$socket) {
-        return false;
+        return false; // No se pudo conectar
     }
-    
-    $response = fgets($socket);
-    if (substr($response, 0, 3) != '220') {
-        return false;
-    }
-    
-    // Simular una conexión SMTP
+
+    fgets($socket); // Saludo del servidor
     fputs($socket, "HELO example.com\r\n");
-    $response = fgets($socket);
-    fputs($socket, "MAIL FROM: <verify@example.com>\r\n");
-    $response = fgets($socket);
+    fgets($socket); // Respuesta del HELO
+
+    fputs($socket, "MAIL FROM: <test@example.com>\r\n");
+    fgets($socket); // Respuesta del MAIL FROM
+
     fputs($socket, "RCPT TO: <$email>\r\n");
-    $response = fgets($socket);
-    
-    // Cerrar la conexión
-    fputs($socket, "QUIT\r\n");
+    $response = fgets($socket); // Respuesta del RCPT TO
     fclose($socket);
-    
-    // Verificar la respuesta
-    return (substr($response, 0, 3) == '250');
+
+    // Verificar la respuesta del servidor
+    if (substr($response, 0, 3) == '250') {
+        return true; // El correo puede existir
+    } else {
+        return false; // El correo no existe o el servidor no permite la verificación
+    }
 }
+
 
 $db = new Database();
 $conn = $db->getConnection();
