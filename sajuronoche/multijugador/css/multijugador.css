@@ -125,7 +125,7 @@ html{
 .contenidoGeneral-crearSala{
     display: grid;
     width: 100vw;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 50% 50%;
     height: 100vh;
     overflow: hidden;
 }
@@ -175,10 +175,11 @@ html{
     margin: 6vh 2vw;
     width: 68vw;
     display: grid;
-    grid-template-columns: repeat(7, 10%);
+    grid-template-columns: repeat(6, 10%);
     column-gap: 15px;
     row-gap: 5px;
     justify-self: center;
+    position: fixed;
 }
 .codigoANDnumero{
     position: fixed;
@@ -223,6 +224,7 @@ html{
     font-size: 35px;
     color: white;
     justify-items: center;
+    width: 90%;
 }
 #modo-juego, #tiempo-juego, #modalidad-juego, #iniciar{
     font-family: 'Metal Mania';
@@ -244,7 +246,7 @@ html{
 }
 .contenido-configurar{
     display: grid;
-    width: 100%;
+    width: 90%;
     grid-template-columns: repeat(2,1fr); 
     margin-top: 6vh;
 }
