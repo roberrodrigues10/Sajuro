@@ -18,7 +18,6 @@ body{
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.656); /* Fondo semi-transparente */
 }
 .contenido-ranking-todo{
     position: relative;
@@ -252,7 +251,7 @@ a{
     .calabera{
         display: grid;
         align-items: start;
-        height: 30px;
+        height: 25px;
     }
     .numero{
         font-family: 'Metal Mania';

@@ -9,13 +9,16 @@ src: url('/css/fonts/Canterbury.ttf') format('truetype');
 }   
 
 .contenedor {
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: hidden;
 }
-
 .tarjeta {
     height: 350px;
     width: 380px;
@@ -182,7 +185,6 @@ input {
 }
 
 @media(max-width: 500px){
-
     .tarjeta {
         height: 350px;
         width: 320px;
@@ -224,5 +226,12 @@ input {
         width: 300px;
         font-size: 15px;
         margin-left: 17px;
+    }
+    .img-logoLogin{
+        width: 125px;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+        font-size: 16px;
+        border-radius: 0;
     }
 }

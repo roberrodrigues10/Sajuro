@@ -54,17 +54,23 @@ html{
     margin-top: 70px;
 }
 
-.solitario {
+.solitario{
     display: grid;
-    justify-self: end;
-    align-self: center;
-
+    grid-row-start: 1;
+    height: 100px;
+    width: 270px;
+    background-image: url('../css/img/campo-modalidad.png');
+    background-size: 270px;
+    background-repeat: no-repeat;
 }
-
-.multijugador {
+.multijugador{
     display: grid;
-    justify-self: start;
-    align-self: center;
+    grid-row-start: 2;
+    height: 100px;
+    width: 270px;
+    background-image: url('../css/img/campo-modalidad.png');
+    background-size: 270px;
+    background-repeat: no-repeat;
 }
 
 .bienvenido{
@@ -97,8 +103,6 @@ html{
     font-size: 17px;
     font-family: 'Metal Mania';
 }
-.perfil-logo, .ranking-logo {
-}
 
 .ranking-conte {
     display: grid;
@@ -126,25 +130,34 @@ html{
     display: grid;
     position: fixed;
     top: 38vh;
-    gap: 0;
+    gap: 20px;
     grid-template-rows: 50% 50%;
-    height: 30vh;
+    height: 20vh;
 }
 .titulo-solitario{
     font-family: 'Metal Mania';
-    position: fixed;
-    margin: -70px 72px;
+    position: relative;
     color: rgb(52, 42, 34);
     font-size: 30px;
     font-weight: bold;
     letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
 }
 .titulo-multijugador{
+    position: relative;
+    display: flex;
     font-family: 'Metal Mania';
     color: rgb(52, 42, 34);
     font-size: 30px;
     font-weight: bold;
     letter-spacing: 0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
 }
 .contenido-amigos-activos{
     position: fixed;
@@ -196,14 +209,22 @@ html{
 }
 .objetos{
     position: fixed;
-    width: 100vw;
     display: flex;
     justify-content: center;
     z-index: 0;
+    width: 100vw;
+    flex-direction: column;
+    bottom: 0;
+    height: 150px;
+}
+.cerrarSesioncontent{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 100%;
 }
 .cerrar-sesion{
-    position: fixed;
-    top: 95vh;
+    bottom: 0dvh;
     color: #8b6946;
     font-family: 'Metal Mania';
     font-size: 22px;
@@ -212,11 +233,16 @@ html{
     text-align: center;
     border: 2px solid #8b6946;
 }
+.objetos-espada{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .objetos-logo{
-    position: fixed;
     width: 70px;
     animation: rotar360 3s linear infinite; /* Cambia 3s para ajustar la velocidad */
     margin: 1vh -2vw;
+    z-index: 0;
 }
 .nombre{
     position: fixed;
@@ -240,7 +266,9 @@ html{
     opacity: 100%;
 }
 
-
+.calaActivo{
+    width: 40px;
+}
 @keyframes rotate {
     0% {
         transform: rotateY(0deg); /* Rotar en Y */
@@ -303,16 +331,13 @@ a{
         position: fixed;
         margin: 44px 85px;
         font-size: 15px;
-    }
-    .contenido-home-modalidad{
-       
-    }
+    }   
     .campos{
         position: fixed;
         display: grid;
         justify-self: center;
         top: 40%;
-        height: 125px;
+        height: 130px;
         gap: 10px;
     }
     .img-solitario, .img-multijugador{
@@ -321,32 +346,24 @@ a{
     .solitario{
         display: grid;
         grid-row-start: 1;
-        height: 100%;
-        width: 100%;
+        height: 65px;
+        width: 200px;
         justify-content: center;
+        background-size: 200px;
     }
     .multijugador{
         display: grid;
         grid-row-start: 2;
-        height: 100%;
-        width: 100%;
-    }
-    .titulo-solitario{
-        position: relative;
-        display: flex;
-        font-size: 20px;
-        height: 100%;
+        height: 65px;
+        width: 200px;
         justify-content: center;
-        align-items: center;
+        background-size: 200px;
     }
-    .titulo-multijugador{
-        display: flex;
+    .titulo-multijugador, .titulo-solitario{
         font-size: 20px;
-        width: 56px;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
+        height: 115%;
     }
+
     a{
         width: 200px;
     }
@@ -363,29 +380,63 @@ a{
     .ranking-conte{
         margin: 4px 0;
     }
-    .objetos-espada{
-        position: fixed;
-        display: flex;
-        width: 90vw;
-        justify-content: center;
-        top: 70vh;
-        z-index: 0;
-    }
     .usuariosAmigos{
         display: none;
+        width: 100vh;
+        z-index: 100;
+        height: 100vh;
     }
     .objetos-logo{
         width: 50px;
+        z-index: 0;
     }
     .amigosImagenTitulo{
-        width: 90px;
+        width: 110px;
     }
     .nombre{
         position: fixed;
         font-size: 14px;
-        margin-top: -30px;
-        margin-left: 20px;
+        margin-top: -35px;
+        margin-left: 28px;
+        z-index: 1000;
     }
+    .contenido-amigos-activos{
+        z-index: 1;
+    }
+    .imgFondoactivo{
+        width: 180px;
+    }
+    .logo-usuario-conectado{
+        margin: -52px 10PX;
+    }
+    .calaActivo{
+        width: 35px;
+    }
+    .usuario-conectado{
+        font-size: 13px;
+        margin: -46px 46px;
+    }
+    .point-color-conectados{
+        font-size: 8.5px;
+    }
+    .point-conectados{
+        margin: -60px 95px;
+    }
+    .usuarios{
+        width: 50px;
+    }
+    .amigosCerrar{
+        width: 100px;
+    }
+    .puntajes{
+        margin-left: 10px;
+    }
+    .logo-enlinea{
+        width: 24px;
+        margin: 12px -35px;
+    }
+    
+    
 }
 
 

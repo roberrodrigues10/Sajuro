@@ -43,3 +43,26 @@ clickSemanal.addEventListener('click', () => {
     clickMundial.style.color = '';
 });
 
+// Obtener elementos
+const usuariosAmigos = document.getElementById("usuariosAmigos");
+const abrirAmigos = document.getElementById("amigosOpen");
+const cerrarAmigos = document.getElementById("amigosCerrar"); // Asume que tienes esta clase en el botón de cerrar
+
+// Abrir el modal
+abrirAmigos.onclick = function() {
+    usuariosAmigos.style.display = "block";
+}
+
+// Detectar el ancho de pantalla
+const mediaQuery = window.matchMedia("(max-width: 400px)");
+
+document.addEventListener('click', (e) => {
+    // Verificar si la pantalla cumple con la media query
+    if (mediaQuery.matches) {
+        // Verificar si el clic fue fuera del contenido del modal y del botón de apertura
+        if (!cerrarAmigos.contains(e.target) && !abrirAmigos.contains(e.target)) {
+            usuariosAmigos.style.display = "none"; // Oculta el modal
+        }
+    }
+});
+

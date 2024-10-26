@@ -1,3 +1,4 @@
+
 function registrarUsuario(event) {
     event.preventDefault(); // Evitar el envío normal del formulario
     const mensajeLogin = document.getElementById('mensaje-formato');
@@ -14,7 +15,7 @@ function registrarUsuario(event) {
     mensajeCorreoOusuario.textContent = '';
     if (mensajeError) mensajeError.textContent = '';
 
-    fetch('php/registro.php', {
+    fetch('https://c810-177-74-204-178.ngrok-free.app/sajuro-1/sajuronoche/registrarse/php/registro.php', {
         method: 'POST',
         body: formData
     })
