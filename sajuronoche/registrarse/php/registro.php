@@ -105,13 +105,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'roberrodrigues300@gmail.com';
-        $mail->Password = 'flhk dmrq nrlv bzqe';
+        $mail->Username = 'sajurosoportes@gmail.com';
+        $mail->Password = 'reqx wjgv qnzy kecs';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         
-        $mail->setFrom('roberrodrigues300@gmail.com', 'Tu Nombre');
-        $mail->addAddress($email, $usuario);
+        $mail->setFrom('roberrodrigues300@gmail.com', 'Sajuro');
+        $mail->addAddress($email);
         $mail->CharSet = 'UTF-8';
 
         $mail->isHTML(true);

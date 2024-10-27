@@ -158,18 +158,26 @@ html{
     top: 87vh;
     left: 29.3vw;
 }
-
+.imagen-usuario{
+    height: 100%;
+    display: grid;
+    align-items: end;
+}
 .username-multi{
     font-family: 'Metal Mania';
-    margin: -22px 10px;
-    height: 20px;
+    height: 2vh;
     color: white;
+    font-size: 0.9vw;
+    display: grid;
+    grid-row-start: 2;
+    align-self: flex-start;
 }
 .contenido-usuarios{
     display: grid;
-    height: 130px;
+    height: 16.5vh;
     width: 10vw;
     justify-items: center;
+    grid-template-rows: 82% 18%;
 }
 .contenido-usuarioMover{
     margin: 6vh 2vw;
@@ -177,7 +185,7 @@ html{
     display: grid;
     grid-template-columns: repeat(6, 10%);
     column-gap: 15px;
-    row-gap: 5px;
+    row-gap: 2vh;
     justify-self: center;
     position: fixed;
 }
@@ -203,42 +211,55 @@ html{
 }
 .ronda-1-2, .ronda-2-4, .ronda-4-6, .tiempo-4, .tiempo-6, .tiempo-8, .modo-libre, .modo-aleatorio {
     margin: 5px 0;
-    cursor: pointer;
     font-family: 'Metal Mania';
     background-color: #9e8852;
     border: 1px solid #c19a67;
-    height: 40px;
-    width: 280px;
+    height: 6vh;
+    width: 18.3vw;
     color: wheat;
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 80%;
+    font-size: 1vw;
 }
 .ronda-1-2:hover, .ronda-2-4:hover, .ronda-4-6:hover, .tiempo-4:hover, .tiempo-6:hover, .tiempo-8:hover, .modo-libre:hover,.modo-aleatorio:hover {
     background-color: #c19a67;
 }
 
-.titulo-configurar{
+.titulo-jugadores{
+    position: fixed;
     display: grid;
-    font-family: 'Metal Mania';
-    font-size: 35px;
-    color: white;
     justify-items: center;
-    width: 90%;
+    font-family: 'Metal Mania';
+    color: white;
+    font-size: 2.5vw;
+    grid-column-start: 2;
+    justify-self: center;
+    margin: -7vh 26.5vw;
 }
 #modo-juego, #tiempo-juego, #modalidad-juego, #iniciar{
     font-family: 'Metal Mania';
     background-color: #9e8852;
     border: 1px solid #c19a67;
-    height: 40px;
-    width: 280px;
+    height: 6vh;
+    width: 18.3vw;
     color: wheat;
-    font-size: 30px;
+    font-size: 2vw;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-#modalidad-juego{
-    margin-top: 15px;
+.modalidad{
+    height: 18vh;
+    display: grid;
+    grid-template-rows: 6vh 10vh;
+}
+.opciones-modalidad{
+    display: grid;
+    grid-row-start: 2;
+    gap: 0;
+    margin: 0;
 }
 .rondas, .tiempo, .modalidad{
     display: grid;
@@ -249,6 +270,17 @@ html{
     width: 90%;
     grid-template-columns: repeat(2,1fr); 
     margin-top: 6vh;
+}
+.titulo-configurar{
+    display: grid;
+    font-family: 'Metal Mania';
+    font-size: 2.5vw;
+    color: white;
+    justify-items: center;
+    width: 100%;
+}
+.imgUsuariounirse{
+    width: 7vw;
 }
 .contenidoGeneral-configuraciones{
     display: grid;
@@ -264,9 +296,6 @@ html{
     background-color: #3e301d;
     border: 1px solid #5f4a2c;
     top: 93vh;
-}
-.opciones-modalidad{
-    margin-top: -141.5px;
 }
 .ocultar-moda{
     opacity: 0;
