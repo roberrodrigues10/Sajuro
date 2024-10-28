@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $mail->isHTML(true);
         $mail->Subject = "Verificación de cuenta";
-        $mail->Body = 'Haz clic en el siguiente enlace para verificar tu cuenta: <a href="https://c810-177-74-204-178.ngrok-free.app/sajuro-1/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '">Verificar cuenta</a>';
+        $mail->Body = 'Haz clic en el siguiente enlace para verificar tu cuenta: <a href="https://9d2e-2803-1800-1358-a7b0-745f-1c51-fc64-99e9.ngrok-free.app/sajuro-1/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '">Verificar cuenta</a>';
         $mail->AltBody = 'Haz clic en el siguiente enlace para verificar tu cuenta: http://localhost/Sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token;
 
         if (!$mail->send()) {

@@ -15,7 +15,7 @@ function registrarUsuario(event) {
     mensajeCorreoOusuario.textContent = '';
     if (mensajeError) mensajeError.textContent = '';
 
-    fetch('https://c810-177-74-204-178.ngrok-free.app/sajuro-1/sajuronoche/registrarse/php/registro.php', {
+    fetch('https://9d2e-2803-1800-1358-a7b0-745f-1c51-fc64-99e9.ngrok-free.app/sajuro-1/sajuronoche/registrarse/php/registro.php', {
         method: 'POST',
         body: formData
     })
