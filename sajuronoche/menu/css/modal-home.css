@@ -18,7 +18,6 @@ body{
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.656); /* Fondo semi-transparente */
 }
 .contenido-ranking-todo{
     position: relative;
@@ -194,12 +193,25 @@ a{
     cursor: url('../../css/img/cursor.png'), auto;
 }
 @media(max-width: 400px){
+<<<<<<< HEAD
+=======
+    .modal-content {    
+        margin: 0vh -21vw;
+        top: 10vh;
+    }
+>>>>>>> d93dd071288014ce35bf7072b6497e81c03db476
     .contenido-ranking-todo{
         position: fixed;
         background-size: 300px;
         width: 300px;
         top: 0;
         height: 300px;
+<<<<<<< HEAD
+=======
+        display: grid;
+        grid-template-rows: 20% 200px;
+        margin-top: 12vh;
+>>>>>>> d93dd071288014ce35bf7072b6497e81c03db476
     }
     .contenidoSuperior-ranking{
         position: relative;
@@ -237,6 +249,7 @@ a{
         font-size: 10px;
     }
     .cala{
+<<<<<<< HEAD
         width: 29px;
         height: 29px;
     }
@@ -277,5 +290,54 @@ a{
         grid-template-rows: repeat(4, 25%);
         margin-top: -270px;
         opacity: 0;
+=======
+        width: 25px;
+        height: 25px;
+        display: grid;
+        align-items: center;
+    }
+    .calabera{
+        display: grid;
+        align-items: start;
+        height: 25px;
+    }
+    .numero{
+        font-family: 'Metal Mania';
+        font-size: 30px;
+        color: rgba(143, 102, 68, 0.871);
+        display: grid;
+        justify-self: center;
+        margin: -1.5px 0px;
+    }
+    .usuario-ranking{
+        width: 57%;
+        height: 37px;
+        display: grid;
+        grid-template-columns: 20% 15% 35% 23%;
+        border: 2px solid rgba(65, 53, 38, 0.947);
+        border-bottom-right-radius: 25px;
+        border-top-left-radius: 25px;
+        background-color: rgba(65, 53, 38, 0.625);
+        margin: 0% 22%;
+    }
+    .ranking-dentro,.ranking-dentroMundial{
+        height: 190px;
+        margin: 0;
+    }
+    .usuario{
+        font-size: 16px;
+        display: grid;
+        align-items: center;
+        height: 34px;
+    }
+    .point-general{
+        margin-top: -3px;
+    }
+    .sajuro-points{
+        font-size: 9px;
+    }
+    .contenido-points{
+        font-size: 10px;
+>>>>>>> d93dd071288014ce35bf7072b6497e81c03db476
     }
 }

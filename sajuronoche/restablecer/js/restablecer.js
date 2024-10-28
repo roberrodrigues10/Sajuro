@@ -12,7 +12,7 @@ document.getElementById('restablecerBtn').addEventListener('click', function() {
     const token = urlParams.get('token'); // Obtener el token de la URL
     function redirigir() {
         setTimeout(function() {
-            window.location.href = '../../../../Sajuro/sajuronoche/iniciosesion/iniciarsesion.html'; // Cambia la URL a donde quieras redirigir
+            window.location.href = '../../../../Sajuro/sajuronoche/iniciosesion/iniciarsesion.php'; // Cambia la URL a donde quieras redirigir
         }, 2000);
     }
 

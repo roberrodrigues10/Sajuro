@@ -1,3 +1,6 @@
+*{
+    margin: 0;
+}
 .contenedor {
     height: 100vh;
     width: 100vw;
@@ -124,4 +127,20 @@ input[type="text"], input[type="password"] {
     position: fixed;
     margin: -30px 80px;
     color: rgb(224, 183, 106);
+}
+@media(max-width: 500px){
+
+    .tarjeta {
+        height: 360px;
+        width: 320px;
+    }
+    
+    .tarjeta::before {
+        height: 420px;
+        width: 420px;
+    }  
+    .tarjeta::after {
+        height: 350px;
+        width: 310px;
+    }
 }

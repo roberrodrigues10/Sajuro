@@ -22,7 +22,7 @@ if (empty($email) || empty($token)) {
 }
 
 // Buscar el usuario en la base de datos
-$sql = "SELECT * FROM registrarse WHERE email = ? AND token = ?";
+$sql = "SELECT * FROM usuario WHERE email = ? AND token = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('ss', $email, $token);
 $stmt->execute();
@@ -31,7 +31,7 @@ $result = $stmt->get_result();
 // Verificar si se encontró el usuario
 if ($result->num_rows === 1) {
     // Actualizar el estado de verificación del usuario
-    $sql_update = "UPDATE registrarse SET is_verified = 1 WHERE email = ?";
+    $sql_update = "UPDATE usuario SET is_verified = 1, token = NULL WHERE email = ?";
     $stmt_update = $conn->prepare($sql_update);
     $stmt_update->bind_param('s', $email);
     

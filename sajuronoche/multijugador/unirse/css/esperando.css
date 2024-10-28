@@ -1,0 +1,221 @@
+*{
+    margin: 0;
+    font-family: 'Metal Mania';
+}
+@font-face {
+    font-family: 'Metal Mania';
+    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+}
+html{
+    touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
+
+}
+
+/* Crear sala*/
+.contenidoGeneral-crearSala{
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 65% 35%;
+    height: 100vh;
+    overflow: hidden;
+}
+.contenidoGeneral-usuarios{
+    margin-top: 7vh;
+    overflow: hidden;
+}
+.titulo-jugadores{
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    font-family: 'Metal Mania';
+    color: white;
+    font-size: 2.5vw;
+    grid-column-start: 2;
+    justify-self: center;
+    margin: -7vh 26.5vw;
+}
+.imagen-usuario{
+    height: 100%;
+    display: grid;
+    align-items: end;
+}
+.imgUsuariounirse{
+    width: 7vw;
+}
+.username-multi{
+    font-family: 'Metal Mania';
+    height: 2vh;
+    color: white;
+    font-size: 0.9vw;
+    display: grid;
+    grid-row-start: 2;
+    align-self: flex-start;
+}
+.contenido-usuarios{
+    display: grid;
+    height: 16.5vh;
+    width: 10vw;
+    justify-items: center;
+    grid-template-rows: 82% 18%;
+}
+.contenido-usuarioMover{
+    margin: 6vh 2vw;
+    width: 68vw;
+    display: grid;
+    grid-template-columns: repeat(6, 10%);
+    column-gap: 15px;
+    row-gap: 2vh;
+    justify-self: center;
+    position: fixed;
+}
+.codigoANDnumero{
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    top: 92vh;
+    left: 28.8vw;
+}
+.codigo-aleatorio{
+    font-family: 'Metal Mania';
+    font-size: 25px;
+    color: white;
+}
+.numero-codigo{
+    font-family: 'Metal Mania';
+    font-size: 18px;
+    color: white;
+}
+.color-seleccionado{
+    background-color: #c19a67;
+}
+.ronda-tomada, .tiempo-tomado, .modo-tomado{
+    margin: 5px 0;
+    font-family: 'Metal Mania';
+    background-color: #9e8852;
+    border: 1px solid #c19a67;
+    height: 6vh;
+    width: 18.3vw;
+    color: wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 80%;
+    font-size: 1vw;
+}
+.ronda-1-2:hover, .ronda-2-4:hover, .ronda-4-6:hover, .tiempo-4:hover, .tiempo-6:hover, .tiempo-8:hover, .modo-libre:hover,.modo-aleatorio:hover {
+    background-color: #c19a67;
+}
+
+.titulo-configurar{
+    display: grid;
+    font-family: 'Metal Mania';
+    font-size: 2.5vw;
+    color: white;
+    justify-items: center;
+    width: 100%;
+    margin-left: 50px;
+
+}
+#modo-juego, #tiempo-juego, #modalidad-juego, #iniciar{
+    font-family: 'Metal Mania';
+    background-color: #9e8852;
+    border: 1px solid #c19a67;
+    height: 6vh;
+    width: 18.3vw;
+    color: wheat;
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rondas, .tiempo, .modalidad{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+}
+.contenido-configurar{
+    display: grid;
+    grid-template-rows: repeat(3,1fr); 
+    margin-top: 6vh;
+    gap: 30px;
+    margin-left: 100px;
+}
+.contenidoGeneral-configuraciones{
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 10% repeat(4, 1fr);
+}
+#iniciar{
+    position: fixed;
+    display: grid;
+    justify-self: center;
+    grid-row-start: 4;
+    color: white;
+    background-color: #3e301d;
+    border: 1px solid #5f4a2c;
+    top: 93vh;
+}
+.chat {
+    position: fixed;
+    margin-left: 51.5%;
+    height: 100%;
+    top: 0.7vh;
+}
+
+.chatContenido {
+    position: relative;
+    height: 70%;
+    width: 20vw;
+    border: 3px solid #c19a67;
+    background-color: rgba(158, 136, 82, 0.4); 
+    margin-top: 10vh;
+    padding: 10px; 
+    border-radius: 10px;
+}
+
+.nombreChat {
+    display: grid;
+    font-family: 'Metal Mania';
+    font-size: 2.5vw;
+    color: white;
+    justify-items: center;
+    width: 100%;
+}
+
+.escribir {
+    position: absolute; 
+    bottom: 10px; 
+    left: 0;
+    right: 0; 
+}
+
+.escribir input {
+    width: 78%;
+    background-color: #3e301d; 
+    border: none; 
+    padding: 5px; 
+    box-sizing: border-box; 
+    opacity: 1; 
+    margin: 2px 4px;
+    border-radius: 10px;
+    border: 3px solid #392a16;
+    color: white;
+}
+.enviarUnirse{
+    padding: 5px; 
+    background-color: #c19a67;
+    border: 1px solid #9e8852;
+    border-radius: 10px;
+    width: 15%;
+    cursor: pointer;
+}
+.enviarUnirse:hover{
+    background-color: #9e8852;
+}
+
+
+/* Finalizo crear sala*/
+
+
+

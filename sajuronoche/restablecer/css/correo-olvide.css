@@ -9,7 +9,7 @@ src: url('/css/fonts/Canterbury.ttf') format('truetype');
 }   
 
 .contenedor {
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -146,4 +146,20 @@ input[type="email"] {
 }
 .login-button:hover {
     background: #9e8852;
-}   
+}
+@media(max-width: 500px){
+
+    .tarjeta {
+        height: 360px;
+        width: 320px;
+    }
+    
+    .tarjeta::before {
+        height: 420px;
+        width: 420px;
+    }  
+    .tarjeta::after {
+        height: 350px;
+        width: 310px;
+    }
+}

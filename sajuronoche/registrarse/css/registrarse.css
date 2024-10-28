@@ -9,12 +9,17 @@ src: url('/css/fonts/Canterbury.ttf') format('truetype');
 }
 
 .contenedor {
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: hidden;
 }
+
 
 .tarjeta {
     height: 410px;
@@ -175,6 +180,11 @@ input[type="text"], input[type="password"], input[type="email"] {
     margin: -30px 85px;
     color: rgb(224, 183, 106);
 }
+#mensaje-error{
+    position: fixed;
+    color: rgb(224, 183, 106);
+    margin: -30px 43px;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -221,6 +231,31 @@ input {
     .conten-sesion{
         margin-top: 80px;
     }
+<<<<<<< HEAD
+=======
+    #mensaje-correoOusuario{
+        width: 300px;
+        display: flex;
+        margin-left: 56px;
+    }
+    #mensaje-formato{
+        width: 300px;
+        margin-left: 13px;
+
+    }
+    #mensaje-error{
+        position: fixed;
+        color: rgb(224, 183, 106);
+        width: 300px;
+        font-size: 15px;
+        margin-left: 17px;
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+        font-size: 16px;
+        border-radius: 0;
+    }
+    
+>>>>>>> d93dd071288014ce35bf7072b6497e81c03db476
 }
 
 

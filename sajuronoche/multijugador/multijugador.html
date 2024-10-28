@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, usuario-mundial-scalable=no">
-    <link rel="shortcut icon" href="css/img/logo.png">
+    <link rel="shortcut icon" href="../../css/img/logo-login.png">
     <title>Sajuro</title>
     <link rel="stylesheet" href="css/multijugador.css">
     <link rel="stylesheet" href="../css/inicio.css">
@@ -12,14 +12,15 @@
 <body>
     <div class="contenido-multijugador">
         <div class="contenidoMulti">
-            <div class="unirse">
-                <a href="">
+            <div class="crear" >
+                <button class="btn button-crear" href="./crear/crearSala.html" >
                 <img src="../menu/css/img/campo-modalidad.png" alt="" width="270px">
-                <div class="titulo-crear">crear a sala</div>
-                </div>
-                </a>
-                <div class="crear">
-                    <a href="../multijugador/unirse/codigo.html">
+                <div class="titulo-crear" id="crear-sala">crear a sala</div>
+                </button>
+            </div>  
+                
+                <div class="unirse">
+                    <button class="btn button-unirse" href="../multijugador/unirse/codigo.html">
                     <img src="../menu/css/img/campo-modalidad.png" alt="" width="270px">
                     <div class="titulo-unir">unirse a sala</div>
                 </div>
@@ -27,5 +28,6 @@
             </div>
         </div>
     </div>
+    <script src="./crear/js/crear.js"></script>
 </body>
 </html>

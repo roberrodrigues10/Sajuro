@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, usuario-mundial-scalable=no">
-    <link rel="shortcut icon" href="css/img/logo.png">
+    <link rel="shortcut icon" href="../css/img/logo-login.png">
     <title>Sajuro</title>
     <link rel="stylesheet" href="../../sajuronoche/menu/css/modal-home.css">
     <link rel="stylesheet" href="../menu/css/amigos-suge copy.css">
     <link rel="stylesheet" href="../menu/css/modal-home.css">
     <link rel="stylesheet" href="../menu/css/conten-home.css">
     <link rel="stylesheet" href="../css/inicio.css">
-    <style>
-        
-
-
-    </style>
+    <script>
+        window.onload = function() {
+            const usuarioId = sessionStorage.getItem('usuarioId');
+            
+            // Si no hay un usuario logueado, redirigir al inicio de sesión
+            if (!usuarioId) {
+                alert("Debes iniciar sesión para acceder a esta página.");
+                window.location.href = 'iniciosesion.html'; // Cambia la ruta según sea necesario
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="contenido-general" id="afuera">
@@ -30,7 +36,7 @@
                     <div class="content-bienvenido">
                     <img src="css/img/biemvenido.png" alt="" class="bienvenido-img" > 
                     <div class="titulo-bienvenido">BIENVENIDO</div>
-                    <div class="titulo-user">username</div>
+                    <div class="titulo-user" id="username"></div>
                     </div>           
                 </div>  
                 <div class="logo-ranking" >
@@ -43,13 +49,19 @@
                     <div class="campos">
                         <div class="solitario">
                             <a href="../modos/modo_juego.html" class="solitario-a">
+<<<<<<< HEAD
                             <img src="css/img/campo-modalidad.png" class="img-solitario" width="270px">
+=======
+>>>>>>> d93dd071288014ce35bf7072b6497e81c03db476
                             <div class="titulo-solitario">SOLITARIO</div>
                         </a>
                         </div>
                         <div class="multijugador">
                             <a href="../modos/modo_juego.html" class="solitario-a">
+<<<<<<< HEAD
                             <img src="css/img/campo-modalidad.png" class="img-solitario" width="270px">
+=======
+>>>>>>> d93dd071288014ce35bf7072b6497e81c03db476
                             <div class="titulo-solitario titulo-multijugador">MULTIJUGADOR</div>
                         </a>
                         </div>
@@ -60,70 +72,72 @@
         <div class="contenido-amigos-activos">
             <div class="contenido-activos">
                 <div class="titulo-friend">
-                <img src="css/img/conectado.png" alt="" width="180px">
-                 <div class="nombre">AMIGOS</div>
+                <img src="css/img/conectado.png" alt="" width="180px" class="amigosImagenTitulo">
+                 <div class="nombre" id="amigosOpen">AMIGOS</div>
             </div>
-            <div class="usuarios">
-                <img src="css/img/conectado.png" alt="" width="270px">
-                <div class="logo-usuario-conectado">
-                    <img src="css/img/avatar.png" alt="" class="cala">
-                </div>
-                <div class="usuario-conectado">username</div>
-                <div class="point-general point-conectados">
-                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
-                    <div class="contenido-points point-color-conectados puntajes">1080</div>
-                    <div class="estado">
-                        <div class="en-linea" id="en-linea">
-                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
+            <div class="usuariosAmigos" id="usuariosAmigos">
+                <div class="amigosCerrar" id="amigosCerrar">
+                    <div class="usuarios">
+                        <img src="css/img/conectado.png" alt="" class="imgFondoactivo" width="270px">
+                        <div class="logo-usuario-conectado">
+                            <img src="css/img/avatar.png" alt="" class="calaActivo">
                         </div>
-                        <div class="onflinne" id="ofline">
-                            <img src="css/img/ofline.png"   alt="" width="40px" class="logo-enlinea ofline">
+                        <div class="usuario-conectado">username</div>
+                        <div class="point-general point-conectados">
+                            <div class="sajuro-points point-color-conectados">SajuroPoints</div>
+                            <div class="contenido-points point-color-conectados puntajes">1080</div>
+                            <div class="estado">
+                                <div class="en-linea" id="en-linea">
+                                    <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
+                                </div>
+                                <div class="onflinne" id="ofline">
+                                    <img src="css/img/ofline.png"   alt="" width="40px" class="logo-enlinea ofline">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="usuarios">
-                <img src="css/img/conectado.png" alt="" width="270px">
-                <div class="logo-usuario-conectado">
-                    <img src="css/img/avatar.png" alt="" class="cala">
-                </div>
-                <div class="usuario-conectado">username</div>
-                <div class="point-general point-conectados">
-                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
-                    <div class="contenido-points point-color-conectados puntajes">1800</div>
-                    <div class="estado">
-                        <div class="en-linea">
-                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
+                    <div class="usuarios">
+                        <img src="css/img/conectado.png" alt="" class="imgFondoactivo" width="270px">
+                        <div class="logo-usuario-conectado">
+                            <img src="css/img/avatar.png" alt="" class="calaActivo">
                         </div>
-                        <div class="onflinne">
-                            <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="usuarios">
-                <img src="css/img/conectado.png" alt="" width="270px">
-                <div class="logo-usuario-conectado">
-                    <img src="css/img/avatar.png" alt="" class="cala">
-                </div>
-                <div class="usuario-conectado">username</div>
-                <div class="point-general point-conectados">
-                    <div class="sajuro-points point-color-conectados">SajuroPoints</div>
-                    <div class="contenido-points point-color-conectados puntajes">2000</div>
-                    <div class="estado">
-                        <div class="en-linea">
-                            <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
-                        </div>
-                        <div class="onflinne">
-                            <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
+                        <div class="usuario-conectado">username</div>
+                        <div class="point-general point-conectados">
+                            <div class="sajuro-points point-color-conectados">SajuroPoints</div>
+                            <div class="contenido-points point-color-conectados puntajes">1800</div>
+                            <div class="estado">
+                                <div class="en-linea">
+                                    <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
+                                </div>
+                                <div class="onflinne">
+                                    <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="usuarios">
-                <img src="css/img/conectado.png" alt="" width="270px">
+                    <div class="usuarios">
+                        <img src="css/img/conectado.png" alt="" class="imgFondoactivo" width="270px">
+                        <div class="logo-usuario-conectado">
+                            <img src="css/img/avatar.png" alt="" class="calaActivo">
+                        </div>
+                        <div class="usuario-conectado">username</div>
+                        <div class="point-general point-conectados">
+                            <div class="sajuro-points point-color-conectados">SajuroPoints</div>
+                            <div class="contenido-points point-color-conectados puntajes">2000</div>
+                            <div class="estado">
+                                <div class="en-linea">
+                                    <img src="css/img/enlinea.png" alt="" width="40px" class="logo-enlinea">
+                                </div>
+                                <div class="onflinne">
+                                    <img src="css/img/ofline.png" alt="" width="40px" class="logo-enlinea ofline">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="usuarios">
+                <img src="css/img/conectado.png" alt="" class="imgFondoactivo" width="270px">
                 <div class="logo-usuario-conectado">
-                    <img src="css/img/avatar.png" alt="" class="cala">
+                            <img src="css/img/avatar.png" alt="" class="calaActivo">
                 </div>
                 <div class="usuario-conectado">username</div>
                 <div class="point-general point-conectados">
@@ -138,10 +152,13 @@
                         </div>
                     </div>
                 </div>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
-        </div>
         <div class="objetos">
+<<<<<<< HEAD
             <div class="cerrarSesioncontent">
             <div class="cerrarSesionContent">
             <div class="cerrar-sesion">cerrar sesión</div>
@@ -150,6 +167,16 @@
             <div class="objetos-espada">
             <img src="css/img/objetos.png" alt="" width="120px" class="objetos-logo">
             </div>
+=======
+            <div class="objetos-espada">
+            <img src="css/img/objetos.png" alt="" width="120px" class="objetos-logo">
+            </div>
+            <div class="cerrarSesioncontent">
+            <div class="cerrarSesionContent">
+            <div class="cerrar-sesion">cerrar sesión</div>
+            </div>
+            </div>
+>>>>>>> d93dd071288014ce35bf7072b6497e81c03db476
         </div>
         <div id="myModal" class="modal">
             <div class="modal-content">
@@ -327,7 +354,19 @@
             event.preventDefault(); // Bloquear zoom con scroll
           }
         });
+         // Esperar a que el DOM se haya cargado
+    document.addEventListener('DOMContentLoaded', () => {
+        // Obtener el nombre de usuario del sessionStorage
+        const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+
+        // Mostrar el nombre de usuario en el elemento correspondiente
+        if (nombreUsuario) {
+            document.getElementById('username').textContent = nombreUsuario;
+        }
+    });
       </script>
+
+    <script src="js/cerrar-sesion.js"></script>
     <script src="js/menu-conte.js"></script>
     <script src="js/modal-menu.js"></script>
     <script src="ranking.js"></script>
