@@ -64,7 +64,7 @@ if (unirseSalaBtn) {
             }));
 
             // Redirigir a la sala de juego
-            window.location.href = `./unirse/juegoSala.html?codigo=${codigoSala}`;
+            window.location.href = `./unirse/esperando.html?codigo=${codigoSala}`;
         } else {
             console.error('Error al unirse a la sala:', data.message);
         }
