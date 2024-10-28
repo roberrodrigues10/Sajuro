@@ -11,23 +11,22 @@ html{
     width: 100vw;
     grid-template-columns: 28% 46% 28%;
     height: 95vh;
+    overflow: hidden;
 }
 .contenidoCampo{
     display: grid;
     grid-column-start: 2;
-    justify-content: center;
-    align-items: center;
-    margin-right: 3.5vw;
     grid-template-rows: 78% 11% 11%;
     height: 95vh;
-    margin-top: 30px;
+    width: 100%;
 }
 .porteros, .defensas, .mediocampo, .delantero{
     background-color:#4e3d24c0 ;
-    width: 350px;
-    height: 280px;
+    width: 23dvw;
+    height: 36dvh;
     border: 1px solid rgba(245, 222, 179, 0.566);
     text-align: center;
+    grid-template-rows: 15% 85%;
 }
 .derecho, .izquierda{
     display: grid;
@@ -72,14 +71,13 @@ html{
     height: 91px;
 }
 .img-tamaPortero{
-    width: 70px;
+    width: 4.8dvw;
 }
 .jugadores-A, .jugadores-B , .jugadores-C, .jugadores-D{
     display: grid;
-    width: 350px;
+    width: 23dvw;
     grid-template-columns: repeat(4,25%);
     justify-content: center;
-    margin-top: -100px;
 }
 
 .img-ajustes{
@@ -100,18 +98,75 @@ html{
 }
 .img-contenido{
     display: grid;
-    align-self: flex-end;
-    background-image: url('../img/cancha.png');
-    width: 680px;
-    height: 460px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    grid-template-columns: 50% 50%;
+    position: relative;
+    width: 600px;
+    height: 400px;
+    align-self: center;
 }
-.primerEquipo, .segundoEquipo{
+.img-contenido img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.equipoUno {
     display: grid;
-    grid-template-columns: repeat(6,1fr );
+    position: absolute; /* Posiciona el contenido dentro de la imagen */
+    top: 0%; /* Ubica el contenido en el centro vertical */
+    width: 300px;
+    height: 415px;
+}
 
+.jugadoresEquipos {
+    display: grid;
+    width: 40px !important;
+    height: 40px !important;
+    align-self: center;
+    border-radius: 30px;
+}
+.jugadores{
+    display: grid;
+    position: absolute;
+    width: 300px;
+    height: 415px;
+    grid-template-columns: repeat(5, 21%);
+} 
+.Alineacion-1{
+    height: 405px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.Alineacion-4{
+    display: grid;
+    grid-template-rows: repeat(4, 25%);
+}
+.jugadorDos{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin-left: 10px;
+    margin-top: 35px;
+}
+.jugadorTres{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+.jugadorCuatro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -15px;
+    margin-left: 10px;
+}
+.jugadorCinco{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -40px;
+    margin-left: 10px;
 }
 .integradoDeportes{
     display: grid;
@@ -136,107 +191,10 @@ html{
     align-items: center;
     height: 30px;
 }
-.jugadoresEquipo-A{
-    display: grid;
-    align-self: center;
-    grid-column-start: 1;
-    margin-left: 30px;
-}
-.jugadoresEquipo-B{
-    display: grid;
-    grid-template-rows: repeat(4, 25%);
-    height: 90%;
-    grid-column-start: 2;
-    align-self: center;
-    margin-left: -12px;
-}
-.jugadoresEquipo-C{
-    display: grid;
-    grid-template-rows: repeat(4, 25%);
-    height: 100%;
-    grid-column-start: 3;
-}
-.jugadoresEquipo-D{
-    display: grid;
-    grid-template-rows: repeat(3, 33.3%);
-    height: 100%;
-    grid-column-start: 4;
-}
-.jugadoresEquipo-E{
-    display: grid;
-    height: 100%;
-    grid-column-start: 5;
-    align-items: center;
-    margin-left: -17px;
-}
 .colorGeneral-jugador{
     width: 70px;
     display: grid;
     align-self: center;
-}
-.jugadorSeis{
-    display: grid;
-    grid-row-start: 2;
-    align-self: center;
-    margin-bottom: 70px;
-}
-.jugadorSiete{
-    display: grid;
-    grid-row-start: 3;
-    align-self: center;
-    margin-top: 73px;
-}
-.jugadorOcho{
-    display: grid;
-    grid-row-start: 1;
-    align-self: start;
-    margin-top: 60px;
-}
-.jugadorNueve{
-    display: grid;
-    grid-row-start: 2;
-    align-self: center;
-}
-.jugadorDiez{
-    display: grid;
-    grid-row-start: 3;
-    align-self: center;
-    margin-bottom: 30px;
-}
-.jugadoresEquipo-2-A{
-    display: grid;
-    align-self: center;
-    margin-left: -70px;
-    grid-column-start: 6;  
-}
-.jugadoresEquipo-2-B{
-    display: grid;
-    grid-template-rows: repeat(4, 25%);
-    height: 90%;
-    grid-column-start: 5;
-    align-self: center;
-    margin-left: -72px;
-}
-.jugadoresEquipo-2-C{
-    display: grid;
-    grid-template-rows: repeat(4, 25%);
-    height: 100%;
-    grid-column-start: 1;
-}
-.jugadoresEquipo-2-D{
-    display: grid;
-    grid-template-rows: repeat(3, 33.3%);
-    height: 100%;
-    grid-column-start: 3;
-    margin-left: -35px;
-
-}
-.jugadoresEquipo-2-E{
-    display: grid;
-    height: 100%;
-    grid-column-start: 2;
-    align-items: center;
-    margin-left: -35px;
 }
 .descripciones-jugadores .descripcion {
     display: none;
@@ -258,3 +216,5 @@ html{
     margin: 0;
     color: #666;
 }
+
+
