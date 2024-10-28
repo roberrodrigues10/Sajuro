@@ -7,103 +7,62 @@
     <title>Sajuro</title>
     <link rel="stylesheet" href="css/esperando.css">
     <link rel="stylesheet" href="../../css/inicio.css">
-
 </head>
 <body>
     <div class="contenidoGeneral-crearSala">
         <div class="contenidoGeneral-usuarios">
             <div class="contenido-superior-crear">
-                <div class="titulo-jugadores">jugadores</div>
+                <div class="titulo-jugadores">Jugadores</div>
             </div>
-            <div class="contenido-usuarioMover">
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse" class="imgUsuariounirse">
+            <div class="contenido-usuarioMover" id="usuario-anfitrion">
+                <div class="contenido-usuarios-lista">
+                    <div class="imagen-usuario">
+                        <img src="../../menu/css/img/avatar.png" alt="Avatar" class="imgUsuariounirse">
+                    </div>
+                    <div class="username-multi" id="nombre-anfitrion">Nombre Anfitrión</div>
                 </div>
-                <div class="username-multi">username</div>
             </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            </div>
+            <div id="contenido-usuarios-lista"></div>
             <div class="codigoANDnumero">
                 <div class="numero-codigo" id="numero-codigo"></div>
-                <div class="codigo-aleatorio">CODIGO</div>
+                <div class="codigo-aleatorio">CÓDIGO</div>
             </div>
             <div class="chat">
-                    <div class="chatContenido">
-                        <div class="nombreChat">chat</div>
-                        <div class="escribir">
-                            <input type="text" placeholder="Escribe un mensaje...">
-                            <button class="enviarUnirse">enviar</button>
-                        </div>                
+                <div class="chatContenido">
+                    <div class="nombreChat">Chat</div>
+                    <div class="escribir">
+                        <input type="text" placeholder="Escribe un mensaje...">
+                        <button class="enviarUnirse">Enviar</button>
                     </div>
+                </div>
             </div>
         </div>
         
         <div class="contenidoGeneral-configuraciones">
-            <div class="titulo-configurar">configuración sala</div>
+            <div class="titulo-configurar">Configuración sala</div>
             <div class="contenido-configurar">
-            <div class="rondas">
-                <button id="modo-juego"> rondas de juego</button>
-                <div class="opciones">
-                    <div class="ronda-tomada "> </div>
+                <div class="rondas">
+                    <button id="modo-juego">Rondas de juego</button>
+                    <div class="opciones">
+                        <div class="ronda-tomada"></div>
+                    </div>
+                </div>
+                <div class="tiempo">
+                    <button id="tiempo-juego">Tiempo de juego</button>
+                    <div class="opciones-tiempo">
+                        <div class="tiempo-tomado">Holaaaa</div>
+                    </div>
+                </div>
+                <div class="modalidad">
+                    <button id="modalidad-juego">Modo de juego</button>
+                    <div class="opciones-modalidad">
+                        <div class="modo-tomado"></div>
+                    </div>
                 </div>
             </div>
-            <div class="tiempo">
-                <button id="tiempo-juego">tiempo de juego</button>
-                <div class="opciones-tiempo">
-                    <div class="tiempo-tomado">holaaaa</div>
-                </div>
-            </div>
-            <div class="modalidad" >
-                <button id="modalidad-juego"> modo de juego</button>
-                <div class="opciones-modalidad">
-                    <div class="modo-tomado"></div>
-                </div>
-            </div>
-            </div>
-            <button id="iniciar"> iniciar</button>
+            <button id="iniciar">Iniciar</button>
         </div>
-        <script src="../unirse/js/unirse.js"></script>
+    </div>
+    <script src="../unirse/js/unirse.js"></script>
 </body>
 </html>

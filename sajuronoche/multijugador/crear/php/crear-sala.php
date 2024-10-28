@@ -30,19 +30,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Enlazar los parámetros
     $stmt->bind_param('si', $codigo_sala, $id_anfitrion);
     if ($stmt->execute()) {
-        echo json_encode(['status' => 'success', 'message' => 'Sala creada exitosamente.']);
+        // Obtener el ID de la sala creada
+        $id_sala = $stmt->insert_id;
+
+        // Preparar la consulta para insertar al anfitrión en la tabla jugador_en_sala
+        $sqlJugador = "INSERT INTO jugador_en_sala (id_usuario, id_sala, es_anfitrion) VALUES (?, ?, 1)";
+        $stmtJugador = $conn->prepare($sqlJugador);
+
+        if (!$stmtJugador) {
+            echo json_encode(['status' => 'error', 'message' => 'Error en la consulta SQL para jugador_en_sala: ' . $conn->error]);
+            exit;
+        }
+
+        // Enlazar los parámetros para el jugador
+        $stmtJugador->bind_param('ii', $id_anfitrion, $id_sala);
+        
+        // Ejecutar la inserción en jugador_en_sala
+        if ($stmtJugador->execute()) {
+            echo json_encode(['status' => 'success', 'message' => 'Sala creada y jugador añadido exitosamente.']);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'Error al añadir jugador: ' . $stmtJugador->error]);
+        }
+
+        // Cerrar el statement del jugador
+        $stmtJugador->close();
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Error al crear la sala: ' . $stmt->error]);
     }
 
-    // Cerrar el statement
+    // Cerrar el statement de la sala
     $stmt->close();
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Método de solicitud no válido.']);
 }
 
-
 // Cerrar la conexión
 $conn->close();
 ?>
-

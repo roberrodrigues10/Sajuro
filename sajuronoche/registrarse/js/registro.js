@@ -15,7 +15,7 @@ function registrarUsuario(event) {
     mensajeCorreoOusuario.textContent = '';
     if (mensajeError) mensajeError.textContent = '';
 
-    fetch('https://c810-177-74-204-178.ngrok-free.app/sajuro-1/sajuronoche/registrarse/php/registro.php', {
+    fetch('php/registro.php', {
         method: 'POST',
         body: formData
     })
@@ -44,7 +44,7 @@ function registrarUsuario(event) {
             }
         } else {
             document.getElementById('registro-form').reset(); // Reiniciar el formulario
-            window.location.href = "../../../../Sajuro-1/sajuronoche/iniciosesion/iniciarsesion.html"; // Redirigir a la página deseada
+            window.location.href = "../../../../Sajuro/sajuronoche/iniciosesion/iniciarsesion.html"; // Redirigir a la página deseada
         }
     })
     .catch(error => {

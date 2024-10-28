@@ -19,52 +19,44 @@ function obtenerCodigoSala() {
 const unirseSalaBtn = document.getElementById('unirse-sala');
 if (unirseSalaBtn) {
     unirseSalaBtn.addEventListener('click', async () => {
-        const codigoSala = obtenerCodigoSala(); // Obtener el código de 4 dígitos
-        if (codigoSala.length !== 4) {
-            alert('Por favor, ingresa un código de 4 dígitos completo.');
-            return;
-        }
-
-        // Obtener el ID del jugador desde sessionStorage
-        const usuarioId = sessionStorage.getItem('usuarioId');
-        const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+        // Obtener el código de sala y el ID del usuario
+        const codigoSala = obtenerCodigoSala(); // Asegúrate de obtener el código aquí
+        const usuarioId = sessionStorage.getItem('usuarioId'); // Asegúrate de que esta línea esté configurada correctamente
+        const nombreUsuario = sessionStorage.getItem('nombreUsuario'); // Asegúrate de que esta línea esté configurada correctamente
 
         // Enviar el código de sala y el ID del jugador al servidor
-        const response = await fetch('http://localhost/Sajuro/sajuronoche/multijugador/unirse/php/unirse-sala.php', { // Cambia esta ruta según tu estructura
+        const response = await fetch('http://localhost/Sajuro/sajuronoche/multijugador/unirse/php/unirse-sala.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 codigo_sala: codigoSala,
-                id_usuario: usuarioId,
-                nombreUsuario: nombreUsuario
+                id_usuario: usuarioId
             })
         });
 
-        const responseText = await response.text(); // Obtener el texto completo
-        console.log('Respuesta del servidor:', responseText); // Muestra la respuesta en consola
-
+        const responseText = await response.text();
         let data;
         try {
-            data = JSON.parse(responseText); // Intenta convertir a JSON
+            data = JSON.parse(responseText);
         } catch (error) {
             console.error('Error al parsear JSON:', error);
-            return; // Salir si no se puede parsear
+            return;
         }
 
         if (data.status === 'success') {
-            console.log('Te has unido a la sala:', data.message); // Mensaje de éxito
+            console.log('Te has unido a la sala:', data.message);
 
             // Enviar el mensaje por WebSocket después de unirse a la sala
             socket.send(JSON.stringify({
                 action: 'jugador_unido',
                 codigo_sala: codigoSala,
-                nombreUsuario: nombreUsuario // Cambia esto por el nombre del usuario
+                nombreUsuario: nombreUsuario
             }));
 
             // Redirigir a la sala de juego
-            window.location.href = `./unirse/esperando.html?codigo=${codigoSala}`;
+            window.location.href = `./esperando.html?codigo=${codigoSala}`;
         } else {
             console.error('Error al unirse a la sala:', data.message);
         }
@@ -76,9 +68,36 @@ socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
     
     if (data.action === 'jugador_unido') {
-        console.log(`${data.username} se ha unido a la sala con el código ${data.codigo_sala}`);
-        // Lógica adicional para actualizar la UI o notificar a otros jugadores
+        console.log(`${data.nombreUsuario} se ha unido a la sala con el código ${data.codigo_sala}`);
+        
+        // Mostrar en la UI que el jugador se ha unido
+        mostrarJugadores([{ username: data.nombreUsuario }]); // Actualiza la interfaz
     }
 };
 
+// Función para mostrar los jugadores
+function mostrarJugadores(jugadores) {
+    const contenedorUsuarios = document.getElementById('contenido-usuarios-lista');
+    
+    // Limpiar la lista de jugadores
+    contenedorUsuarios.innerHTML = ''; // Limpia antes de agregar
 
+    jugadores.forEach(jugador => {
+        const divUsuario = document.createElement('div');
+        divUsuario.className = 'contenido-usuarioMover';
+        
+        const imagenUsuario = document.createElement('img');
+        imagenUsuario.src = '../../menu/css/img/avatar.png'; // Imagen fija para todos
+        imagenUsuario.alt = 'Avatar';
+        imagenUsuario.className = 'imgUsuariounirse';
+        imagenUsuario.width = 100;
+
+        const nombreUsuario = document.createElement('div');
+        nombreUsuario.className = 'username-multi';
+        nombreUsuario.textContent = jugador.username;
+
+        divUsuario.appendChild(imagenUsuario);
+        divUsuario.appendChild(nombreUsuario);
+        contenedorUsuarios.appendChild(divUsuario);
+    });
+}
