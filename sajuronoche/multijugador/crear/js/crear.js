@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function(){
 // Conectar al WebSocket
 const socket = new WebSocket('ws://localhost:8080');
 
@@ -11,7 +12,7 @@ function generarCodigoSala() {
 }
 
 // Obtener referencias del DOM
-window.onload = function () {
+
     const crearSalaBtn = document.getElementById('crear-sala');
 
     if (crearSalaBtn) {
@@ -81,16 +82,12 @@ window.onload = function () {
             console.log(`Sala creada con código: ${data.codigo_sala}`);
         }
     };
-};
+
 
 // Función para mostrar los jugadores
 function mostrarJugadores(jugadores) {
-    const contenedorUsuarios = document.getElementById('contenido-usuarios-lista');
+    const contenedorUsuarios = document.querySelector('contenido-usuarios-lista');
 
-    if (!contenedorUsuarios) {
-        console.error('El contenedor de usuarios no se encontró.');
-        return;
-    }
 
     jugadores.forEach(jugador => {
         const divUsuario = document.createElement('div');
@@ -115,7 +112,7 @@ function mostrarJugadores(jugadores) {
 // Obtener el código de sala de la URL y mostrarlo
 const codigoSala = obtenerParametro('codigo');
 const numeroCodigoElement = document.getElementById('numero-codigo');
-if (numeroCodigoElement) {
+if (numeroCodigoElement) {  
     numeroCodigoElement.textContent = codigoSala ? codigoSala : 'No se generó ningún código';
 }
 
@@ -124,3 +121,4 @@ function obtenerParametro(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
+})
