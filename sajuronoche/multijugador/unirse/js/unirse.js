@@ -1,8 +1,12 @@
+import { mostrarJugadores } from '../../js/jugadores.js';
+
 document.addEventListener("DOMContentLoaded", function () {
     const socket = new WebSocket('ws://localhost:8080');
+    let jugadores = [];
 
     socket.onopen = () => {
         console.log('Conectado al servidor WebSocket');
+        
     };
 
     // Obtener el código de sala a partir de los inputs
@@ -25,9 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const response = await fetch('http://localhost/Sajuro/sajuronoche/multijugador/unirse/php/unirse-sala.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     codigo_sala: codigoSala,
                     id_usuario: usuarioId
@@ -35,14 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const data = await response.json();
-            console.log('Respuesta del servidor:', data); // Línea de depuración para ver la respuesta
-
             if (data.status === 'success') {
-                console.log('Te has unido a la sala:', data.message);
-
-                // Muestra los jugadores en la interfaz, incluyendo el anfitrión
+                // Muestra todos los jugadores en la interfaz
                 mostrarJugadores(data.jugadores);
-                mostrarAnfitrion(data.anfitrion); // Asegúrate de que el anfitrión se envíe desde el servidor
 
                 // Envía el nuevo jugador al WebSocket
                 socket.send(JSON.stringify({
@@ -51,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     nombreUsuario: nombreUsuario
                 }));
 
-                // Redirige a la sala de espera (esto puede hacerse después de mostrar la lista de jugadores)
+                // Redirige a sala de espera
                 window.location.href = `./esperando.html?codigo=${codigoSala}`;
             } else {
                 console.error('Error al unirse a la sala:', data.message);
@@ -59,63 +56,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    socket.onmessage = (event) => {
+    socket.onmessage = function (event) {
         const data = JSON.parse(event.data);
-        console.log('Mensaje recibido:', data); // Para depuración
+        console.log('Mensaje recibido por WebSocket:', data);
 
         if (data.action === 'jugador_unido') {
-            console.log(`${data.nombreUsuario} se unió a la sala.`);
-            // Agregar el nuevo jugador a la lista
-            mostrarJugadores([{ nombreUsuario: data.nombreUsuario }]); // Actualiza la lista de jugadores
-        } else if (data.action === 'actualizar_jugadores') {
-            console.log(`Lista de jugadores en la sala ${data.codigo_sala}:`, data.jugadores);
-            mostrarJugadores(data.jugadores);
+            if (!jugadores.some(jugador => jugador.username === data.nombreUsuario)) {
+                jugadores.push({ username: data.nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
+                mostrarJugadores(jugadores); // Actualizar la lista de jugadores
+            }
         }
     };
-
-    // Función para mostrar la lista de jugadores
-    function mostrarJugadores(jugadores) {
-        const contenedorUsuarios = document.querySelector('#contenido-usuarios-lista');
-        console.log('Contenedor de usuarios:', contenedorUsuarios);
-
-        if (!contenedorUsuarios) {
-            console.error('El contenedor de usuarios no se encontró en el DOM.');
-            return; // Sale de la función si el contenedor es null
-        }
-
-        // Limpia el contenedor antes de agregar nuevos usuarios
-        contenedorUsuarios.innerHTML = '';
-
-        // Itera sobre cada jugador en la lista y crea un nuevo elemento para mostrarlo
-        jugadores.forEach(jugador => {
-            const divUsuario = document.createElement('div');
-            divUsuario.className = 'contenido-usuarioMover';
-
-            const imagenUsuario = document.createElement('img');
-            imagenUsuario.src = '../../menu/css/img/avatar.png';
-            imagenUsuario.alt = 'Avatar';
-            imagenUsuario.className = 'imgUsuariounirse';
-            imagenUsuario.width = 100;
-
-            const nombreUsuario = document.createElement('div');
-            nombreUsuario.className = 'username-multi';
-            nombreUsuario.textContent = jugador.nombreUsuario || "Sin nombre"; // Asegura que haya un nombre
-
-            divUsuario.appendChild(imagenUsuario);
-            divUsuario.appendChild(nombreUsuario);
-            contenedorUsuarios.appendChild(divUsuario);
-        });
-
-        console.log("Jugadores mostrados en el DOM:", jugadores);
+const urlParams = new URLSearchParams(window.location.search);
+    const codigoSala = urlParams.get('codigo');
+    const codigoSalaElemento = document.getElementById('numero-codigo');
+    if (codigoSalaElemento) {
+        codigoSalaElemento.textContent = codigoSala; // Mostrar el código de la sala
     }
 
-    // Función para mostrar el anfitrión de la sala
-    function mostrarAnfitrion(nombreAnfitrion) {
-        const contenedorAnfitrion = document.querySelector('#anfitrion-sala'); // Asegúrate de tener un elemento en tu HTML para mostrar al anfitrión
-        if (nombreAnfitrion) {
-            contenedorAnfitrion.textContent = `Anfitrión: ${nombreAnfitrion}`; // Muestra el nombre del anfitrión
-        } else {
-            console.error('No se encontró el nombre del anfitrión');
-        }
-    }
 });

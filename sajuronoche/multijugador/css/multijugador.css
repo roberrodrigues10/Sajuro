@@ -2,10 +2,12 @@
     font-family: 'Metal Mania';
     src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
 }
+
 html{
     touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
 
 }
+
 .contenido-multijugador{
     display: flex;
     width: 100vw;
@@ -179,7 +181,7 @@ html{
     justify-items: center;
     grid-template-rows: 82% 18%;
 }
-.contenido-usuarioMover{
+.contenido-usuarios-lista{
     margin: 6vh 2vw;
     width: 68vw;
     display: grid;
