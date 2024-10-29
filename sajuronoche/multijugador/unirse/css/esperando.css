@@ -58,7 +58,7 @@ html{
     justify-items: center;
     grid-template-rows: 82% 18%;
 }
-.contenido-usuarioMover{
+.contenido-usuarios-lista{
     margin: 6vh 2vw;
     width: 68vw;
     display: grid;

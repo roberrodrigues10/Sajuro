@@ -71,7 +71,7 @@ socket.onmessage = function (event) {
 
     if (data.action === 'jugador_unido') {
         if (!jugadores.some(jugador => jugador.username === data.nombreUsuario)) {
-            jugadores.push({ username: data.nombreUsuario });
+            jugadores.push({ username: data.nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
             mostrarJugadores(jugadores); // Asegúrate de pasar el array 'jugadores'
         }
     }
