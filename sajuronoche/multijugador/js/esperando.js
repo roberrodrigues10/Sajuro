@@ -52,12 +52,6 @@ import { mostrarJugadores } from './jugadores.js';
         console.error('Error en el WebSocket:', error);
     };
 
-    const nombreUsuario = sessionStorage.getItem('nombreUsuario');
-    if (nombreUsuario) {
-        jugadores.push({ username: nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
-    }
-    mostrarJugadores(jugadores);
-
 
 // Implementa una función para obtener el ID del usuario
 function getUserId() {
