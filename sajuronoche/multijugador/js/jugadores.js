@@ -15,7 +15,7 @@ export function mostrarJugadores(jugadores) {
         const avatarDiv = document.createElement('div');
         avatarDiv.classList.add('imagen-usuario');
         const avatarImg = document.createElement('img');
-        avatarImg.src = jugador.avatar || '../../menu/css/img/avatar.png'; 
+        avatarImg.src ='../../menu/css/img/avatar.png'; 
         avatarImg.alt = 'Avatar';
         avatarImg.classList.add('imgUsuariounirse');
         avatarImg.width = 100;

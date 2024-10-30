@@ -1,52 +1,50 @@
-const express = require('express');
-const mysql = require('mysql2');
-const path = require('path');
+// Ejemplo del archivo del servidor WebSocket (server.js)
 
-const app = express();
+const socket = new WebSocket('ws://localhost:8080');
 
-// Configuración de la conexión a MySQL
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '', // Cambia esto por tu contraseña de MySQL
-  database: 'sajuro' // Cambia esto por tu nombre de base de datos
+// Almacena las salas y jugadores
+let salas = {};
+
+// Maneja nuevas conexiones
+socket.on('connection', (socket) => {
+    socket.on('message', (message) => {
+        const data = JSON.parse(message);
+
+        if (data.action === 'unirse_sala') {
+            handleNewPlayerJoin(data.codigo_sala, data.id_usuario, socket);
+        }
+    });
+
+    socket.on('close', () => {
+        // Aquí podrías implementar lógica de desconexión
+        console.log('Cliente desconectado');
+    });
 });
 
-// Conexión a la base de datos
-connection.connect((err) => {
-  if (err) {
-    console.error('Error conectando a MySQL:', err);
-    return;
-  }
-  console.log('Conectado a MySQL');
-});
-
-// Servir archivos estáticos de la carpeta 'sajuronoche'
-app.use(express.static(path.join(__dirname, 'sajuronoche')));
-
-// Ruta principal que sirve el archivo 'index.html'
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'sajuronoche', 'index.html'), (err) => {
-    if (err) {
-      console.error('Error al enviar el archivo:', err); // Agrega esta línea
-      res.status(err.status).end();
+// Función para manejar el ingreso de un nuevo jugador a la sala
+function handleNewPlayerJoin(codigo_sala, id_usuario, socket) {
+    // Inicializa la sala si no existe
+    if (!salas[codigo_sala]) {
+        salas[codigo_sala] = [];
     }
-  });
-});
 
-// Ruta para obtener datos de la base de datos
-app.get('/usuario', (req, res) => {
-  connection.query('SELECT * FROM usuario', (err, results) => {
-    if (err) {
-      res.status(500).send('Error obteniendo datos');
-      return;
-    }
-    res.json(results);
-  });
-});
+    // Agrega al jugador a la sala
+    const jugador = { id: id_usuario, nombreUsuario: `Jugador${id_usuario}` };
+    salas[codigo_sala].push(jugador);
 
-// Iniciar el servidor en el puerto 3000
-const PORT = 3000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Servidor corriendo en http://0.0.0.0:${PORT}`);
-});
+    // Envía la lista de jugadores a todos en la sala
+    const mensaje = {
+        action: 'actualizar_jugadores',
+        jugadores: salas[codigo_sala]
+    };
+    broadcastToSala(codigo_sala, JSON.stringify(mensaje));
+}
+
+// Envía un mensaje a todos los jugadores en una sala específica
+function broadcastToSala(codigo_sala, mensaje) {
+    socket.clients.forEach((client) => {
+        if (client.readyState === socket.OPEN && salas[codigo_sala].some(j => j.socket === client)) {
+            client.send(mensaje);
+        }
+    });
+}

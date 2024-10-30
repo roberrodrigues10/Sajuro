@@ -4,7 +4,7 @@ const socket = new WebSocket('ws://localhost:8080');
 let jugadores = []; // Lista para mantener a todos los jugadores
 
 socket.onopen = () => {
-    console.log('Conectado al servidor WebSocket');
+    console.log('Conectado al servidor WebSocket crear');
 };
 
 function generarCodigoSala() {
@@ -44,7 +44,7 @@ if (crearSalaBtn) {
         }
 
         if (data.status === 'success') {
-            console.log('Sala creada:', data.message);
+            console.log('Sala creada:', data.jugadores);
         
             // Agregar al anfitrión a la lista de jugadores
             jugadores.push({ username: nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
@@ -70,7 +70,7 @@ if (crearSalaBtn) {
 // Manejo de mensajes recibidos por WebSocket
 socket.onmessage = function (event) {
     const data = JSON.parse(event.data);
-    console.log('Mensaje recibido por WebSocket:', data);
+    console.log('crear sala web socket :', data);
 
     if (data.action === 'jugador_unido') {
         // Verificar si el jugador ya está en la lista antes de añadirlo

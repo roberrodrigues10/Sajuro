@@ -3,9 +3,10 @@ import { mostrarJugadores } from '../../js/jugadores.js';
 document.addEventListener("DOMContentLoaded", function () {
     const socket = new WebSocket('ws://localhost:8080');
     let jugadores = [];
+    console.log('jugadoress recien', jugadores)
 
     socket.onopen = () => {
-        console.log('Conectado al servidor WebSocket');
+        console.log('Conectado al servidor WebSocket en unirse');
     };
 
     // Obtener el código de sala a partir de los inputs
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = await response.json();
             console.log(data); // Para depurar la respuesta del servidor
             if (data.status === 'success') {
+                console.log('jugadores suceso', data.jugadores)
                 // Muestra todos los jugadores en la interfaz
                 mostrarJugadores(data.jugadores);
 
@@ -63,7 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     socket.onmessage = function (event) {
         const data = JSON.parse(event.data);
-        console.log('Mensaje recibido por WebSocket:', data);
+        console.log('Mensaje recibido por WebSocket unirse:', data);
+        updateClientData(data)
+        console.log(updateClientData)
 
         if (data.action === 'jugador_unido') {
             if (!jugadores.some(jugador => jugador.username === data.nombreUsuario)) {
