@@ -77,6 +77,12 @@ socket.onmessage = function (event) {
         if (!jugadores.some(jugador => jugador.username === data.nombreUsuario)) {
             jugadores.push({ username: data.nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
             mostrarJugadores(jugadores);
+
+            const response = JSON.stringify({
+                action: 'actualizar_jugadores',
+                jugadores: jugadores
+            });
+            socket.send(response)
         }
     }
 };
