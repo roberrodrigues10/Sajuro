@@ -1,3 +1,6 @@
+*{
+    font-family: 'Metal Mania';
+}
 @font-face {
     font-family: 'Metal Mania';
     src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
@@ -71,13 +74,21 @@ html{
     height: 91px;
 }
 .img-tamaPortero{
-    width: 4.8dvw;
+    width: 4.2dvw;
+    height: 3vw;
+    pointer-events: none;
 }
 .jugadores-A, .jugadores-B , .jugadores-C, .jugadores-D{
     display: grid;
     width: 23dvw;
     grid-template-columns: repeat(4,25%);
     justify-content: center;
+}
+.nombres{
+    font-size: 0.8vw;
+    margin-top: -10px;
+    letter-spacing: 0.5px;
+    color: #ffffff;
 }
 
 .img-ajustes{
@@ -102,6 +113,9 @@ html{
     width: 600px;
     height: 400px;
     align-self: center;
+    justify-self: center;
+    margin-right: 50px;
+    margin-top: 90px;
 }
 .img-contenido img{
     width: 100%;
@@ -114,12 +128,36 @@ html{
     top: 0%; /* Ubica el contenido en el centro vertical */
     width: 300px;
     height: 415px;
+    z-index: 1000;
 }
-
+.equipoUnoEstatico{
+    display: grid;
+    position: absolute; /* Posiciona el contenido dentro de la imagen */
+    top: 0%; /* Ubica el contenido en el centro vertical */
+    width: 300px;
+    height: 415px;
+    z-index: 0;
+}
+.equipoDos {
+    display: grid;
+    position: absolute; /* Posiciona el contenido dentro de la imagen */
+    top: 0%; /* Ubica el contenido en el centro vertical */
+    width: 320px;
+    height: 415px;
+    left: 49%;
+}
+.equipoDosEstatico {
+    display: grid;
+    position: absolute; /* Posiciona el contenido dentro de la imagen */
+    top: 0%; /* Ubica el contenido en el centro vertical */
+    width: 320px;
+    height: 415px;
+    left: 49%;
+}
 .jugadoresEquipos {
     display: grid;
-    width: 40px !important;
-    height: 40px !important;
+    width: 60px !important;
+    height: 60px !important;
     align-self: center;
     border-radius: 30px;
 }
@@ -129,44 +167,385 @@ html{
     width: 300px;
     height: 415px;
     grid-template-columns: repeat(5, 21%);
-} 
+}
+.equipoDos .jugadores{
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
 .Alineacion-1{
     height: 405px;
     display: flex;
     align-items: center;
     justify-content: end;
+    
 }
 .Alineacion-4{
     display: grid;
     grid-template-rows: repeat(4, 25%);
 }
+.Alineacion-2{
+    display: grid;
+    grid-template-rows: repeat(2, 50%);
+}
+.Alineacion-3{
+    display: grid;
+    grid-template-rows: repeat(3, 33.3%);
+}
+.jugadorUno{
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 3px;
+    margin-right: -15px;
+    opacity: 0;
+}
 .jugadorDos{
     display: flex;
-    align-items: end;
     justify-content: center;
     margin-left: 10px;
-    margin-top: 35px;
+    margin-top: 46px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
 }
 .jugadorTres{
     display: flex;
-    align-items: end;
     justify-content: center;
-    margin-top: 12px;
+    margin-top: 23px;
     margin-left: 10px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
 }
 .jugadorCuatro{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -15px;
+    margin-bottom: 3px;
     margin-left: 10px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
 }
 .jugadorCinco{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -40px;
+    margin-bottom: 29px;
     margin-left: 10px;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0;
+}
+.jugadorSeis{
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    margin-left: 0px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+}
+.jugadorSiete{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-left: 0px;
+    margin-bottom: 60px;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0;
+}
+.jugadorOcho{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 11px;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0;
+}
+.jugadorNueve{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-bottom: 26px;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0;
+}
+.jugadorDiez{
+    display: grid;
+    align-self: start;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 11px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
+}
+.jugadorOnce{
+    display: flex;
+    align-items: center;
+    margin-right: 2px;
+    margin-bottom: 15px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
+}
+.jugadorUno-E{
+    display: flex;
+    font-size: 11px;
+    margin-top: 3px;
+    margin-right: -15px;
+}
+.jugadorDos-E{
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    margin-top: 46px;
+}
+.jugadorTres-E{
+    display: flex;
+    justify-content: center;
+    margin-top: 23px;
+    margin-left: 10px;
+}
+.jugadorCuatro-E{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    flex-direction: column;
+}
+.jugadorCinco-E{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 29px;
+    margin-left: 10px;
+}
+.jugadorSeis-E{
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    margin-left: 0px;
+}
+.jugadorSiete-E{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-left: 0px;
+    margin-bottom: 60px;
+}
+.jugadorOcho-E{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 11px;
+}
+.jugadorNueve-E{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-bottom: 26px;
+}
+.jugadorDiez-E{
+    display: grid;
+    align-self: start;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 11px;
+}
+.jugadorOnce-E{
+    display: flex;
+    align-items: center;
+    margin-right: 2px;
+    margin-bottom: 15px;
+}
+.equipoDos .jugadorUno{
+    display: grid;
+    justify-self: end;
+    margin-bottom: 40px;
+    margin-right: 0px;
+    opacity: 0;
+}
+.equipoDos .jugadorDos{
+    display: grid;
+    margin-right: 20px;
+    margin-top: 25px;
+    opacity: 0;
+}
+.equipoDos .jugadorTres{
+    display: grid;
+    margin-right: 20px;
+    margin-top: 10px;
+    height: 57.55px;
+    opacity: 0;
+}
+.equipoDos .jugadorCuatro{
+    display: grid;
+    margin-right: 20px;
+    margin-bottom: 35px;
+    height: 57.55px;
+    align-self: center;
+    opacity: 0;
+}
+.equipoDos .jugadorCinco{
+    display: grid;
+    margin-right: 20px;
+    margin-top: -10px;
+    opacity: 0;
+}
+.equipoDos .jugadorSeis{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: center;
+    margin-top: 10px;
+    opacity: 0;
+}
+.equipoDos .jugadorSiete{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: center;
+    margin-bottom: 90px;
+    margin-left: 10px;
+    opacity: 0;
+}
+.equipoDos .jugadorOcho{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: start;
+    margin-top: 28px;
+    margin-right: 17px;
+    opacity: 0;
+}
+.equipoDos .jugadorNueve{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: start;
+    margin-top: 12px;
+    margin-right: 17px;
+    opacity: 0;
+}
+.equipoDos .jugadorDiez{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    margin-right: 17px;
+    margin-top: -12px;
+    opacity: 0;
+}
+.equipoDos .jugadorOnce{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    margin-right: 4px;
+    margin-bottom: 30px;
+    opacity: 0;
+}
+.equipoDosEstatico .jugadorUno-E{
+    display: grid;
+    justify-self: end;
+    margin-bottom: 40px;
+    margin-right: 0px;
+}
+.equipoDosEstatico .jugadorDos-E{
+    display: grid;
+    margin-right: 20px;
+    margin-top: 25px;
+}
+.equipoDosEstatico .jugadorTres-E{
+    display: grid;
+    margin-right: 20px;
+    margin-top: 10px;
+    height: 57.55px;
+}
+.equipoDosEstatico .jugadorCuatro-E{
+    display: grid;
+    margin-right: 20px;
+    margin-bottom: 35px;
+    height: 57.55px;
+    align-self: center;
+}
+.equipoDosEstatico .jugadorCinco-E{
+    display: grid;
+    margin-right: 20px;
+    margin-top: -10px;
+}
+.equipoDosEstatico .jugadorSeis-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: center;
+    margin-top: 10px;
+}
+.equipoDosEstatico .jugadorSiete-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: center;
+    margin-bottom: 90px;
+    margin-left: 10px;
+}
+.equipoDosEstatico .jugadorOcho-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: start;
+    margin-top: 38px;
+    margin-right: 17px;
+}
+.equipoDosEstatico .jugadorNueve-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: start;
+    margin-top: 12px;
+    margin-right: 17px;
+}
+.equipoDosEstatico .jugadorDiez-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    margin-right: 17px;
+    margin-top: -12px;
+}
+.equipoDosEstatico .jugadorOnce-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    margin-right: 4px;
+    margin-bottom: 30px;
+}
+.nombreJugador{
+    display: flex;
+    justify-content: center;
+    color: #faebd7;
+}
+.timer-deportes{
+    position: fixed;
+    top: 13vh;
+    left: 48vw;
+    color: white;
 }
 .integradoDeportes{
     display: grid;
@@ -216,5 +595,35 @@ html{
     margin: 0;
     color: #666;
 }
-
-
+.habilitado {
+    transform: scale(1.8);
+    transition: .6s;
+}
+.invisible {
+    opacity: 0;
+}
+.visble{
+    opacity: 1;
+}
+.desaparecerCampo{
+    opacity: 40%;
+}
+.colorGeneraljugador.habilitado {
+    opacity: 1;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(1.8) contrast(2.0);
+}
+.timer-deportes {
+    position: absolute;
+    font-family: 'Metal Mania';
+    color: #ffffff;
+    top: 10%;
+}
+#contador {
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    color: #ffffff;
+    font-family: 'Metal Mania';
+    font-size: 50px;
+}
