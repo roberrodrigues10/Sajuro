@@ -11,6 +11,7 @@ function generarCodigoSala() {
     return Math.floor(1000 + Math.random() * 9000).toString();
 }
 
+// Botón para crear sala
 const crearSalaBtn = document.getElementById('crear-sala');
 
 if (crearSalaBtn) {
@@ -19,7 +20,7 @@ if (crearSalaBtn) {
         const usuarioId = sessionStorage.getItem('usuarioId');
         const nombreUsuario = sessionStorage.getItem('nombreUsuario');
         console.log('Código generado:', codigoSala);
-        console.log('Nombre de usuario en sessionStorage:', nombreUsuario); // Verificar
+        console.log('Nombre de usuario en sessionStorage:', nombreUsuario);
 
         // Crear la sala en el servidor
         const response = await fetch('./crear/php/crear-sala.php', {
@@ -32,7 +33,7 @@ if (crearSalaBtn) {
         });
         
         const responseText = await response.text();
-        console.log('Respuesta del servidor:', responseText); // Agregado para ver la respuesta
+        console.log('Respuesta del servidor:', responseText);
         
         let data;
         try {
@@ -49,13 +50,14 @@ if (crearSalaBtn) {
             jugadores.push({ username: nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
             mostrarJugadores(jugadores);
         
-            // Enviar el mensaje por WebSocket después de crear la sala
+            // Enviar mensaje por WebSocket
             socket.send(JSON.stringify({
                 action: 'sala_creada',
                 codigo_sala: codigoSala,
                 nombreUsuario: nombreUsuario
             }));
         
+            // Redirigir al archivo con el código de sala
             setTimeout(() => {
                 window.location.href = `./crear/crearSala.html?codigo=${codigoSala}`;
             }, 1000);
@@ -65,36 +67,32 @@ if (crearSalaBtn) {
     });
 }
 
+// Manejo de mensajes recibidos por WebSocket
 socket.onmessage = function (event) {
     const data = JSON.parse(event.data);
     console.log('Mensaje recibido por WebSocket:', data);
 
     if (data.action === 'jugador_unido') {
+        // Verificar si el jugador ya está en la lista antes de añadirlo
         if (!jugadores.some(jugador => jugador.username === data.nombreUsuario)) {
             jugadores.push({ username: data.nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
-            mostrarJugadores(jugadores); // Asegúrate de pasar el array 'jugadores'
+            mostrarJugadores(jugadores);
         }
     }
 };
 
-// Este código debe estar fuera del event listener de "crear sala"
+// Cargar la lista de jugadores al cargar la página
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtener el código de sala de la URL y mostrarlo
     const urlParams = new URLSearchParams(window.location.search);
     const codigoSala = urlParams.get('codigo');
     const codigoSalaElemento = document.getElementById('numero-codigo');
     if (codigoSalaElemento) {
-        codigoSalaElemento.textContent = codigoSala; // Mostrar el código de la sala
+        codigoSalaElemento.textContent = codigoSala;
     }
 
     const nombreUsuario = sessionStorage.getItem('nombreUsuario');
-    
-    // Verifica que el nombre de usuario no sea nulo antes de agregarlo
     if (nombreUsuario) {
-        // Agregar al anfitrión a la lista de jugadores si no está presente
         jugadores.push({ username: nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
     }
-    
-    // Mostrar la lista de jugadores al cargar la página
     mostrarJugadores(jugadores);
 });

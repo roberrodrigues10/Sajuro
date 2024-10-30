@@ -10,7 +10,7 @@ export function mostrarJugadores(jugadores) {
 
     jugadores.forEach(jugador => {
         const jugadorDiv = document.createElement('div');
-        jugadorDiv.classList.add('contenido-usuarios-lista');
+        jugadorDiv.classList.add('jugador-item'); // Cambia esta clase si necesitas un estilo específico
 
         const avatarDiv = document.createElement('div');
         avatarDiv.classList.add('imagen-usuario');
