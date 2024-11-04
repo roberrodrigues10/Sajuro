@@ -184,7 +184,7 @@ html{
     justify-items: center;
     grid-template-rows: 82% 18%;
 }
-.contenido-usuarioMover{
+.contenido-usuarios-lista{
     margin: 6vh 2vw;
     width: 68vw;
     display: grid;
@@ -397,7 +397,7 @@ html{
         width: 100%;
         left: 60dvw;
     }
-    .contenido-usuarioMover{
+    .contenido-usuarios-lista{
         grid-template-columns: repeat(3, 40px);
         margin-top: 0;
         margin-left: 20px;
@@ -521,7 +521,7 @@ html{
         width: 100%;
         left: 55dvw;
     }
-    .contenido-usuarioMover{
+    .contenido-usuarios-lista{
         grid-template-columns: repeat(3, 45px);
         margin-top: 0;
         margin-left: 30px;
@@ -757,3 +757,4 @@ html{
         margin-top: 0.5dvh;
     }
 }
+/* Finalizo mediaqueries crear sala*/

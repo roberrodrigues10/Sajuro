@@ -16,7 +16,7 @@
                 <div class="titulo-expulsar" id="expulsar">expulsar</div>
                 <div class="titulo-jugadores">jugadores</div>
             </div>
-            <div class="contenido-usuarios-lista" id="contenido-usuarios-lista">
+            <div class="contenido-usuarios-lista" >
             </div>
             <div class="codigoANDnumero">
                 <div class="numero-codigo" id="numero-codigo"></div>
@@ -26,10 +26,13 @@
                 <div class="chatContenido">
                     <div class="nombreChat">chat</div>
                     <div class="escribir">
-                        <input type="text" placeholder="Escribe un mensaje...">
-                        <button class="enviarUnirse">enviar</button>
+                        <div id="messages" class="messages"></div>
+                        <input type="text" id="message" placeholder="Escribe un mensaje...">
+                        <button class="enviarUnirse" type="button" id="send">Enviar</button>
                     </div>                
+                </div>
             </div>
+            
         </div>
         <div class="contenidoGeneral-configuraciones">
             <div class="titulo-configurar">configurar sala</div>

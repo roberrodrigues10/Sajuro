@@ -21,7 +21,6 @@ function actualizarJugadores(nuevoJugador = null) {
     const urlParams = new URLSearchParams(window.location.search);
     salaActual = urlParams.get('codigo');
 
-    // Solo añadir si el jugador tiene un username válido y no está en la lista
     if (nuevoJugador && nuevoJugador.username && !jugadores.some(j => j.username === nuevoJugador.username)) {
         jugadores.push(nuevoJugador);
     }
@@ -52,7 +51,6 @@ function inicializarSala() {
         });
     }
 
-    // Solo agregar anfitrión si tiene un nombre de usuario válido y la lista está vacía
     if (nombreUsuario && jugadores.length === 0) {
         const nuevoJugador = { 
             username: nombreUsuario, 
@@ -64,12 +62,10 @@ function inicializarSala() {
 
 socket.onopen = () => {
     console.log('Conectado al servidor WebSocket');
-
     while (pendingMessages.length > 0) {
         const message = pendingMessages.shift();
         socket.send(JSON.stringify(message));
     }
-
     inicializarSala();
 };
 
@@ -95,9 +91,15 @@ socket.onmessage = (event) => {
                 const nuevosJugadores = data.jugadores.filter(nuevo =>
                     nuevo.username && !jugadores.some(j => j.username === nuevo.username)
                 );
-                jugadores = [...jugadores, ...nuevosJugadores]; // Agrega solo jugadores nuevos y con nombre válido
+                jugadores = [...jugadores, ...nuevosJugadores];
                 mostrarJugadores(jugadores);
             }
+            break;
+
+            case 'mensaje_chat':
+                if (data.action === 'mensaje_chat') {
+                    mostrarMensajeChat(data);
+                }
             break;
     }
 };
@@ -110,9 +112,7 @@ socket.onclose = (event) => {
     console.log('Conexión WebSocket cerrada:', event.code, event.reason);
 };
 
-// Evento para crear sala
 document.addEventListener("DOMContentLoaded", function () {
-    // Botón crear sala
     const crearSalaBtn = document.getElementById('crear-sala');
     if (crearSalaBtn) {
         crearSalaBtn.addEventListener('click', async () => {
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         avatar: '../../menu/css/img/avatar.png'
                     };
                     
-                    jugadores = [nuevoJugador]; // Inicializar con el anfitrión
+                    jugadores = [nuevoJugador];
 
                     sendWebSocketMessage({
                         action: 'sala_creada',
@@ -147,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         jugadores: jugadores
                     });
 
-                    // Redirigir
                     window.location.href = `./crear/crearSala.html?codigo=${codigoSala}`;
                 }
             } catch (error) {
@@ -156,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Botón unirse a sala
     const unirseSalaBtn = document.getElementById('unirse-sala');
     if (unirseSalaBtn) {
         unirseSalaBtn.addEventListener('click', async () => {
@@ -183,14 +181,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (data.status === 'success') {
                     salaActual = codigoSala;
-                    
-                    // Notificar que un nuevo jugador se ha unido
+
                     sendWebSocketMessage({
                         action: 'jugador_unido',
                         codigo_sala: codigoSala,
                         nombreUsuario: nombreUsuario
                     });
-                
+
                     window.location.href = `./esperando.html?codigo=${codigoSala}`;
                 }
             } catch (error) {
@@ -198,10 +195,35 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    document.getElementById('send').addEventListener('click', () => {
+        const messageInput = document.getElementById('message');
+        const message = messageInput.value.trim();
+        if (message) {
+            // Enviar el mensaje al servidor WebSocket
+            socket.send(JSON.stringify({
+                action: 'mensaje_chat',
+                nombreUsuario: 'NombreUsuario',  // Ajusta esto según el nombre de usuario que uses
+                mensaje: message
+            }));
+            messageInput.value = ''; // Limpia el campo de entrada de texto
+        }
+    });
 });
 
-// Función para obtener el código de la sala desde los inputs
 function obtenerCodigoSala() {
     const inputs = document.querySelectorAll('.codigo-ingreso');
     return Array.from(inputs).map(input => input.value).join('');
+}
+
+function mostrarMensajeChat(data) {
+    const chatContainer = document.getElementById('messages');
+    if (chatContainer) {
+        const mensajeElemento = document.createElement('div');
+        mensajeElemento.textContent = `${data.nombreUsuario}: ${data.mensaje}`;
+        chatContainer.appendChild(mensajeElemento);
+        chatContainer.scrollTop = chatContainer.scrollHeight; // Desplaza hacia abajo automáticamente
+    } else {
+        console.error("No se encontró el contenedor de mensajes en el HTML.");
+    }
 }
