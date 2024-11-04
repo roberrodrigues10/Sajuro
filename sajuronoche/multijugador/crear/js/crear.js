@@ -22,6 +22,10 @@ if (crearSalaBtn) {
         console.log('Código generado:', codigoSala);
         console.log('Nombre de usuario en sessionStorage:', nombreUsuario);
 
+        // Agregar al anfitrión a la lista de jugadores
+        jugadores.push({ username: nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
+        mostrarJugadores(jugadores);
+
         // Crear la sala en el servidor
         const response = await fetch('./crear/php/crear-sala.php', {
             method: 'POST',
@@ -45,10 +49,6 @@ if (crearSalaBtn) {
 
         if (data.status === 'success') {
             console.log('Sala creada:', data.jugadores);
-        
-            // Agregar al anfitrión a la lista de jugadores
-            jugadores.push({ username: nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
-            mostrarJugadores(jugadores);
         
             // Enviar mensaje por WebSocket
             socket.send(JSON.stringify({
@@ -87,18 +87,18 @@ socket.onmessage = function (event) {
     }
 };
 
-// Cargar la lista de jugadores al cargar la página
-document.addEventListener('DOMContentLoaded', function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const codigoSala = urlParams.get('codigo');
-    const codigoSalaElemento = document.getElementById('numero-codigo');
-    if (codigoSalaElemento) {
-        codigoSalaElemento.textContent = codigoSala;
-    }
 
-    const nombreUsuario = sessionStorage.getItem('nombreUsuario');
-    if (nombreUsuario) {
-        jugadores.push({ username: nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
-    }
+
+// Cargar la lista de jugadores al cargar la página
+const urlParams = new URLSearchParams(window.location.search);
+const codigoSala = urlParams.get('codigo');
+const codigoSalaElemento = document.getElementById('numero-codigo');
+if (codigoSalaElemento) {
+    codigoSalaElemento.textContent = codigoSala;
+}
+
+const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+if (nombreUsuario) {
+    jugadores.push({ username: nombreUsuario, avatar: '../../menu/css/img/avatar.png' });
     mostrarJugadores(jugadores);
-});
+}
