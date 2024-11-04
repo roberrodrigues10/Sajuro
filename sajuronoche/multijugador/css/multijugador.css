@@ -1,13 +1,15 @@
+*{
+    margin: 0;
+    font-family: 'Metal Mania';
+}
 @font-face {
     font-family: 'Metal Mania';
     src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
 }
-
 html{
     touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
 
 }
-
 .contenido-multijugador{
     display: flex;
     width: 100vw;
@@ -152,13 +154,14 @@ html{
     grid-column-start: 1;
     font-family: 'Metal Mania';
     background-color: red;
-    width: 60px;
+    width: 5vw;
     text-align: center;
-    height: 20px;
+    height: 2.7vh;
     align-self: center;
     color: white;
     top: 87vh;
     left: 29.3vw;
+    font-size: 1.05vw;
 }
 .imagen-usuario{
     height: 100%;
@@ -181,7 +184,7 @@ html{
     justify-items: center;
     grid-template-rows: 82% 18%;
 }
-.contenido-usuarios-lista{
+.contenido-usuarioMover{
     margin: 6vh 2vw;
     width: 68vw;
     display: grid;
@@ -195,17 +198,17 @@ html{
     position: fixed;
     display: grid;
     justify-items: center;
-    top: 92vh;
+    top: 92dvh;
     left: 28.8vw;
 }
 .codigo-aleatorio{
     font-family: 'Metal Mania';
-    font-size: 25px;
+    font-size: 1.7vw;
     color: white;
 }
 .numero-codigo{
     font-family: 'Metal Mania';
-    font-size: 18px;
+    font-size: 1.3vw;
     color: white;
 }
 .color-seleccionado{
@@ -271,22 +274,22 @@ html{
     display: grid;
     width: 90%;
     grid-template-columns: repeat(2,1fr); 
-    margin-top: 6vh;
+    margin-top: 15dvh;
+    row-gap: 20px;
 }
 .titulo-configurar{
-    display: grid;
+    position: fixed;
     font-family: 'Metal Mania';
     font-size: 2.5vw;
     color: white;
-    justify-items: center;
-    width: 100%;
+    left: 65dvw;
 }
 .imgUsuariounirse{
     width: 7vw;
 }
 .contenidoGeneral-configuraciones{
     display: grid;
-    height: 100vh;
+    height: 100dvh;
     grid-template-rows: 10% repeat(4, 1fr);
 }
 #iniciar{
@@ -319,5 +322,438 @@ html{
     background-color: transparent;
     border: none;
 }
+.chat {
+    position: fixed;
+    height: 100dvh;
+    margin: 31vh 2vh;
+}
 
+.chatContenido {
+    position: relative;
+    height: 45%;
+    width: 23vw;
+    border: 3px solid #c19a67;
+    background-color: rgba(158, 136, 82, 0.4); 
+    margin-top: 10vh;
+    padding: 10px; 
+    border-radius: 10px;
+}
+
+.nombreChat {
+    display: grid;
+    font-family: 'Metal Mania';
+    font-size: 2.5vw;
+    color: white;
+    justify-items: center;
+    width: 100%;
+}
+
+.escribir {
+    position: absolute; 
+    bottom: 10px; 
+    left: 0;
+    right: 0; 
+}
+
+.escribir input {
+    width: 19.5vw;
+    background-color: #3e301d; 
+    border: none; 
+    padding: 0.3vw; 
+    box-sizing: border-box; 
+    opacity: 1; 
+    margin: 2px 4px;
+    border-radius: 10px;
+    border: 3px solid #392a16;
+    color: white;
+    font-size: 1vw;
+}
+.enviarUnirse{
+    padding: 0.3vw; 
+    background-color: #c19a67;
+    border: 1px solid #9e8852;
+    border-radius: 10px;
+    width: 3.5vw;
+    cursor: pointer;
+    font-size: 1vw;
+
+}
+.enviarUnirse:hover{
+    background-color: #9e8852;
+}
 /* Finalizo crear sala*/
+/*mediaqueries crear sala*/
+@media(max-width: 399px){
+    .titulo-jugadores{
+        font-size: 20px;
+        display: grid;
+        justify-items: center;
+        width: 50%;
+        margin-left: 0;
+    }
+    .titulo-configurar{
+        font-size: 20px;
+        display: grid;
+        width: 100%;
+        left: 60dvw;
+    }
+    .contenido-usuarioMover{
+        grid-template-columns: repeat(3, 40px);
+        margin-top: 0;
+        margin-left: 20px;
+        width: 120px;
+    }
+    .contenido-usuarios{
+        height: 50px;
+    }
+    .imagen-usuario{
+        height: 50px;
+        display: grid;
+        align-items: center;
+    }
+    .imgUsuariounirse{
+        width: 40px;
+    }
+    .username-multi{
+        font-size: 9px;
+    }
+    .contenidoGeneral-configuraciones{
+        position: fixed;
+        grid-template-rows: 8.8% repeat(4, 1fr);
+        height: 10dvh;
+        margin: 0dvh 50dvw; 
+    }
+    .contenido-configurar{
+        row-gap: 1dvh;
+        column-gap: 3dvh;
+        margin-top: 9dvh;
+    }
+    #modo-juego, #tiempo-juego, #modalidad-juego, #iniciar{  
+        height: 25px;
+        width: 80px;
+        font-size: 9px;
+    } 
+    .ronda-1-2, .ronda-2-4, .ronda-4-6, .tiempo-4, .tiempo-6, .tiempo-8, .modo-libre, .modo-aleatorio {
+        height: 23.4px;
+        width: 78.4px;  
+        font-size: 8px;
+    }
+    .modalidad{
+        grid-template-rows: 25px 50px;
+        margin: 0;
+    }
+    .modo-aleatorio{
+        margin: 0;
+    }
+    #modalidad-deportes, #modalidad-musica, #modalidad-cultura, #modalidad-ropa, #modalidad-animales, #modalidad-comida{
+        margin: 5px 0px;
+    }
+    .titulo-expulsar{
+        top: 38dvh;
+        height: 13px;
+        width: 40px;
+        font-size: 10px;
+        left: 20vw;
+        z-index: 100;
+    }
+    #iniciar{
+        top: 93dvh;
+        width: 150px;
+        font-size: 16px;
+    }
+    .chat{
+        display: grid;
+        margin: 25dvh 2dvw;
+        justify-self: center;
+        z-index: 0;
+        height: 200px;
+    }
+    .chatContenido{
+        width: 220px;
+        height: 250px;
+    }
+    .nombreChat{
+        font-size: 21px;
+        margin-top: -12px;
+    }
+    .escribir input{
+        width: 72%;
+        justify-content: center;
+        font-size: 16px;
+    }
+    .contenidoGeneral-usuarios{
+        height: 10px;
+    }
+    .enviarUnirse{
+        font-size: 15px;
+        width: 20%;
+        color: black;
+    }
+    .codigoANDnumero{
+        left: 18vw;
+    }
+    .codigo-aleatorio{
+        font-size: 16px;
+    }
+    .numero-codigo{
+        font-size: 10px;
+    }
+    .x{
+        height: 10px;
+        width: 13px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0.5dvh;
+    }
+}
+@media(min-width: 400px) and (max-width: 550px) and (min-height: 740px){
+    .titulo-jugadores{
+        font-size: 25px;
+        display: grid;
+        justify-items: center;
+        width: 50%;
+        margin-left: 0;
+    }
+    .titulo-configurar{
+        font-size: 25px;
+        display: grid;
+        width: 100%;
+        left: 55dvw;
+    }
+    .contenido-usuarioMover{
+        grid-template-columns: repeat(3, 45px);
+        margin-top: 0;
+        margin-left: 30px;
+        width: 130px;
+    }
+    .contenido-usuarios{
+        height: 55px;
+    }
+    .imagen-usuario{
+        height: 50px;
+        display: grid;
+        align-items: center;
+    }
+    .imgUsuariounirse{
+        width: 50px;
+    }
+    .username-multi{
+        font-size: 9px;
+    }
+    .contenidoGeneral-configuraciones{
+        position: fixed;
+        grid-template-rows: 8.8% repeat(4, 1fr);
+        height: 10dvh;
+        margin: 0dvh 50dvw; 
+    }
+    .contenido-configurar{
+        row-gap: 1dvh;
+        column-gap: 3dvh;
+        margin-top: 8.1dvh;
+    }
+    #modo-juego, #tiempo-juego, #modalidad-juego, #iniciar{  
+        height: 25px;
+        width: 80px;
+        font-size: 9px;
+    } 
+    .ronda-1-2, .ronda-2-4, .ronda-4-6, .tiempo-4, .tiempo-6, .tiempo-8, .modo-libre, .modo-aleatorio {
+        height: 23.4px;
+        width: 78.4px;  
+        font-size: 8px;
+    }
+    .modalidad{
+        grid-template-rows: 25px 50px;
+        margin: 0;
+    }
+    .modo-aleatorio{
+        margin: 0;
+    }
+    #modalidad-deportes, #modalidad-musica, #modalidad-cultura, #modalidad-ropa, #modalidad-animales, #modalidad-comida{
+        margin: 5px 0px;
+    }
+    .titulo-expulsar{
+        top: 32dvh;
+        height: 13px;
+        width: 40px;
+        font-size: 10px;
+        left: 20vw;
+        z-index: 100;
+    }
+    #iniciar{
+        top: 93dvh;
+        width: 150px;
+        font-size: 16px;
+    }
+    .chat{
+        display: grid;
+        margin: 20dvh 2dvw;
+        justify-self: center;
+        z-index: 0;
+        height: 200px;
+    }
+    .chatContenido{
+        width: 240px;
+        height: 400px;
+    }
+    .nombreChat{
+        font-size: 21px;
+        margin-top: -12px;
+    }
+    .escribir input{
+        width: 72%;
+        justify-content: center;
+        font-size: 16px;
+    }
+    .contenidoGeneral-usuarios{
+        height: 10px;
+    }
+    .enviarUnirse{
+        font-size: 15px;
+        width: 20%;
+        color: black;
+    }
+    .codigoANDnumero{
+        left: 18vw;
+    }
+    .codigo-aleatorio{
+        font-size: 16px;
+    }
+    .numero-codigo{
+        font-size: 10px;
+    }
+    .x{
+        height: 10px;
+        width: 13px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0.5dvh;
+    }
+}
+@media(min-width: 700px) and (max-width: 1000px) and (min-height: 740px){
+    .titulo-jugadores{
+        font-size: 35px;
+        display: grid;
+        justify-items: center;
+        width: 50%;
+        margin-left: 0;
+    }
+    .titulo-configurar{
+        font-size: 35px;
+        display: grid;
+        width: 100%;
+        left: 60dvw;
+    }
+    .contenido-usuarioMover{
+        grid-template-columns: repeat(3, 90px);
+        margin-top: 0;
+        margin-left: 45px;
+    }
+    .contenido-usuarios{
+        height: 90px;
+    }
+    .imagen-usuario{
+        height: 50px;
+        display: grid;
+        align-items: center;
+    }
+    .imgUsuariounirse{
+        width: 80px;
+    }
+    .username-multi{
+        font-size: 17px;
+    }
+    .contenidoGeneral-configuraciones{
+        position: fixed;
+        grid-template-rows: 8.8% repeat(4, 1fr);
+        height: 10dvh;
+        margin: 0dvh 55dvw; 
+    }
+    .contenido-configurar{
+        row-gap: 1dvh;
+        column-gap: 3dvh;
+        margin-top: 8.1dvh;
+    }
+    #modo-juego, #tiempo-juego, #modalidad-juego, #iniciar{  
+        height: 35px;
+        width: 140px;
+        font-size: 16px;
+    } 
+    .ronda-1-2, .ronda-2-4, .ronda-4-6, .tiempo-4, .tiempo-6, .tiempo-8, .modo-libre, .modo-aleatorio {
+        height: 33.4px;
+        width: 138.4px;  
+        font-size: 15px;
+    }
+    .modalidad{
+        grid-template-rows: 25px 70px;
+        margin: 0;
+    }
+    .modo-libre{
+        margin-top: 18px;
+    }
+    #modalidad-deportes, #modalidad-musica, #modalidad-cultura, #modalidad-ropa, #modalidad-animales, #modalidad-comida{
+        margin: 5px 0px;
+    }
+    .titulo-expulsar{
+        top: 40dvh;
+        height: 20px;
+        width: 40px;
+        font-size: 10px;
+        left: 20vw;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #iniciar{
+        top: 93dvh;
+        width: 150px;
+        font-size: 16px;
+    }
+    .chat{
+        display: grid;
+        margin: 28dvh 33dvw;
+        justify-self: center;
+        z-index: 0;
+        height: 200px;
+    }
+    .chatContenido{
+        width: 240px;
+        height: 400px;
+    }
+    .nombreChat{
+        font-size: 21px;
+        margin-top: -12px;
+    }
+    .escribir input{
+        width: 72%;
+        justify-content: center;
+        font-size: 16px;
+    }
+    .contenidoGeneral-usuarios{
+        height: 10px;
+    }
+    .enviarUnirse{
+        font-size: 15px;
+        width: 20%;
+        color: black;
+    }
+    .codigoANDnumero{
+        left: 18vw;
+    }
+    .codigo-aleatorio{
+        font-size: 16px;
+    }
+    .numero-codigo{
+        font-size: 10px;
+    }
+    .x{
+        height: 10px;
+        width: 13px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0.5dvh;
+    }
+}
