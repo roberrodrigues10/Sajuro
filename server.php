@@ -61,15 +61,15 @@ class Chat implements MessageComponentInterface {
                     $this->salas[$codigoSala] = $data['jugadores'];
                     $this->broadcastToSala($codigoSala, $msg);
                     break;
-                    case 'mensaje_chat':
-                        $mensaje = [
-                            'action' => 'mensaje_chat',
-                            'codigo_sala' => $codigoSala,
-                            'nombreUsuario' => $data['nombreUsuario'],
-                            'mensaje' => $data['mensaje']
-                        ];
-                        $this->broadcastToSala($codigoSala, json_encode($mensaje));
-                        break;
+                case 'mensaje_chat':
+                    $mensaje = [
+                    'action' => 'mensaje_chat',
+                    'codigo_sala' => $codigoSala,
+                    'nombreUsuario' => $data['nombreUsuario'],
+                    'mensaje' => $data['mensaje']
+                    ];
+                    $this->broadcastToSala($codigoSala, json_encode($mensaje));
+                    break;
             }
         }
     }

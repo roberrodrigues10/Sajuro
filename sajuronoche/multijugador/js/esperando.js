@@ -198,12 +198,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('send').addEventListener('click', () => {
         const messageInput = document.getElementById('message');
+        const nombreUsuario = sessionStorage.getItem('nombreUsuario');
         const message = messageInput.value.trim();
         if (message) {
             // Enviar el mensaje al servidor WebSocket
             socket.send(JSON.stringify({
                 action: 'mensaje_chat',
-                nombreUsuario: 'NombreUsuario',  // Ajusta esto según el nombre de usuario que uses
+                nombreUsuario: nombreUsuario,  // Ajusta esto según el nombre de usuario que uses
                 mensaje: message
             }));
             messageInput.value = ''; // Limpia el campo de entrada de texto
