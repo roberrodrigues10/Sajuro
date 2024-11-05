@@ -26,13 +26,16 @@ class Chat implements MessageComponentInterface {
         echo "Mensaje recibido: $msg\n"; // Depuración
         $data = json_decode($msg, true);
 
-        // Procesar el mensaje según la acción
         if (isset($data['action'])) {
             $codigoSala = $data['codigo_sala'] ?? null;
 
             switch ($data['action']) {
                 case 'sala_creada':
-                    $this->salas[$codigoSala] = [$data['jugadores']];
+                    $this->salas[$codigoSala] = [
+                        'jugadores' => [],
+                        'clients' => new \SplObjectStorage() // Mantiene los clientes de cada sala
+                    ];
+                    $this->salas[$codigoSala]['clients']->attach($from);
                     $this->broadcastToSala($codigoSala, $msg);
                     break;
 
@@ -41,7 +44,8 @@ class Chat implements MessageComponentInterface {
                         'username' => $data['nombreUsuario'],
                         'avatar' => '../../menu/css/img/avatar.png'
                     ];
-                    $this->salas[$codigoSala][] = $nuevoJugador;
+                    $this->salas[$codigoSala]['jugadores'][] = $nuevoJugador;
+                    $this->salas[$codigoSala]['clients']->attach($from);
                     $this->broadcastToSala($codigoSala, json_encode([
                         'action' => 'jugador_unido',
                         'codigo_sala' => $codigoSala,
@@ -53,22 +57,32 @@ class Chat implements MessageComponentInterface {
                     $this->broadcastToClient($from, json_encode([
                         'action' => 'lista_jugadores',
                         'codigo_sala' => $codigoSala,
-                        'jugadores' => $this->salas[$codigoSala] ?? []
+                        'jugadores' => $this->salas[$codigoSala]['jugadores'] ?? []
                     ]));
                     break;
 
                 case 'actualizar_jugadores':
-                    $this->salas[$codigoSala] = $data['jugadores'];
+                    $this->salas[$codigoSala]['jugadores'] = $data['jugadores'];
                     $this->broadcastToSala($codigoSala, $msg);
                     break;
+
                 case 'mensaje_chat':
                     $mensaje = [
-                    'action' => 'mensaje_chat',
-                    'codigo_sala' => $codigoSala,
-                    'nombreUsuario' => $data['nombreUsuario'],
-                    'mensaje' => $data['mensaje']
+                        'action' => 'mensaje_chat',
+                        'codigo_sala' => $codigoSala,
+                        'nombreUsuario' => $data['nombreUsuario'],
+                        'mensaje' => $data['mensaje']
                     ];
                     $this->broadcastToSala($codigoSala, json_encode($mensaje));
+                    break;
+
+                case 'ronda_seleccionada':
+                    $rondaSeleccionada = [
+                        'action' => 'ronda_seleccionada',
+                        'codigo_sala' => $codigoSala,
+                        'ronda' => $data['ronda']
+                    ];
+                    $this->broadcastToSala($codigoSala, json_encode($rondaSeleccionada));
                     break;
             }
         }
@@ -77,6 +91,17 @@ class Chat implements MessageComponentInterface {
     public function onClose(ConnectionInterface $conn) {
         echo "Conexión cerrada: {$conn->resourceId}\n";
         $this->clients->detach($conn);
+
+        // Eliminar cliente de todas las salas
+        foreach ($this->salas as $codigoSala => $sala) {
+            if ($sala['clients']->contains($conn)) {
+                $sala['clients']->detach($conn);
+                if (empty($sala['clients'])) {
+                    unset($this->salas[$codigoSala]); // Eliminar sala si está vacía
+                }
+                break;
+            }
+        }
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e) {
@@ -84,10 +109,12 @@ class Chat implements MessageComponentInterface {
         $conn->close();
     }
 
-    // Enviar mensaje a todos en la sala
+    // Enviar mensaje a todos en la sala específica
     protected function broadcastToSala($codigoSala, $msg) {
-        foreach ($this->clients as $client) {
-            $client->send($msg);
+        if (isset($this->salas[$codigoSala])) {
+            foreach ($this->salas[$codigoSala]['clients'] as $client) {
+                $client->send($msg);
+            }
         }
     }
 

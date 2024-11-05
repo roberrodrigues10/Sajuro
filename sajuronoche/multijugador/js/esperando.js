@@ -85,6 +85,7 @@ socket.onmessage = (event) => {
             break;
 
         case 'actualizar_jugadores':
+
         case 'lista_jugadores':
             if (data.codigo_sala === salaActual) {
                 console.log('Lista de jugadores actualizada');
@@ -93,6 +94,12 @@ socket.onmessage = (event) => {
                 );
                 jugadores = [...jugadores, ...nuevosJugadores];
                 mostrarJugadores(jugadores);
+            }
+            break;
+
+            case 'ronda_seleccionada':
+            if (data.codigo_sala === salaActual) {
+                mostrarRondaSeleccionada(data.ronda);
             }
             break;
 
@@ -226,5 +233,13 @@ function mostrarMensajeChat(data) {
         chatContainer.scrollTop = chatContainer.scrollHeight; // Desplaza hacia abajo automáticamente
     } else {
         console.error("No se encontró el contenedor de mensajes en el HTML.");
+    }
+}
+
+function mostrarRondaSeleccionada(rondaSeleccionada) {
+    const rondaDisplay = document.querySelector('.ronda-tomada');
+    if (rondaDisplay) {
+        rondaDisplay.textContent = `Ronda seleccionada: ${rondaSeleccionada}`;
+        rondaDisplay.style.display = 'block'; // Asegúrate de que se muestre el elemento
     }
 }

@@ -1,11 +1,6 @@
 export function mostrarJugadores(jugadores) {
     const contenedorUsuarios = document.querySelector('.contenido-usuarios-lista'); 
 
-    if (!contenedorUsuarios) {
-        console.error("El contenedor de usuarios no se encuentra en el DOM.");
-        return;
-    }
-
     contenedorUsuarios.innerHTML = ''; // Limpia el contenedor
 
     // Verifica que 'jugadores' sea un array
