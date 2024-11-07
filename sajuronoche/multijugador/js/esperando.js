@@ -21,6 +21,7 @@ function actualizarJugadores(nuevoJugador = null) {
     const urlParams = new URLSearchParams(window.location.search);
     salaActual = urlParams.get('codigo');
 
+
     if (nuevoJugador && nuevoJugador.username && !jugadores.some(j => j.username === nuevoJugador.username)) {
         jugadores.push(nuevoJugador);
     }
@@ -85,7 +86,6 @@ socket.onmessage = (event) => {
             break;
 
         case 'actualizar_jugadores':
-
         case 'lista_jugadores':
             if (data.codigo_sala === salaActual) {
                 console.log('Lista de jugadores actualizada');
@@ -96,13 +96,6 @@ socket.onmessage = (event) => {
                 mostrarJugadores(jugadores);
             }
             break;
-
-            case 'ronda_seleccionada':
-            if (data.codigo_sala === salaActual) {
-                mostrarRondaSeleccionada(data.ronda);
-            }
-            break;
-
             case 'mensaje_chat':
                 if (data.action === 'mensaje_chat') {
                     mostrarMensajeChat(data);
@@ -145,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         username: nombreUsuario,
                         avatar: '../../menu/css/img/avatar.png'
                     };
-                    
+
                     jugadores = [nuevoJugador];
 
                     sendWebSocketMessage({
@@ -153,7 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         codigo_sala: codigoSala,
                         jugadores: jugadores
                     });
-
                     window.location.href = `./crear/crearSala.html?codigo=${codigoSala}`;
                 }
             } catch (error) {
@@ -215,6 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 mensaje: message
             }));
             messageInput.value = ''; // Limpia el campo de entrada de texto
+            console.log('mensaje', message)
         }
     });
 });
@@ -223,9 +216,8 @@ function obtenerCodigoSala() {
     const inputs = document.querySelectorAll('.codigo-ingreso');
     return Array.from(inputs).map(input => input.value).join('');
 }
-
 function mostrarMensajeChat(data) {
-    const chatContainer = document.getElementById('messages');
+    const chatContainer = document.querySelector('.messages');
     if (chatContainer) {
         const mensajeElemento = document.createElement('div');
         mensajeElemento.textContent = `${data.nombreUsuario}: ${data.mensaje}`;
@@ -233,13 +225,5 @@ function mostrarMensajeChat(data) {
         chatContainer.scrollTop = chatContainer.scrollHeight; // Desplaza hacia abajo automáticamente
     } else {
         console.error("No se encontró el contenedor de mensajes en el HTML.");
-    }
-}
-
-function mostrarRondaSeleccionada(rondaSeleccionada) {
-    const rondaDisplay = document.querySelector('.ronda-tomada');
-    if (rondaDisplay) {
-        rondaDisplay.textContent = `Ronda seleccionada: ${rondaSeleccionada}`;
-        rondaDisplay.style.display = 'block'; // Asegúrate de que se muestre el elemento
     }
 }

@@ -4,7 +4,7 @@ const rondaTres = document.getElementById('rondas-4-6');
 
 const rondas = [rondaUno, rondaDos, rondaTres];
 
- function initRondas() {
+function initRondas() {
     rondas.forEach((ronda, index) => {
         ronda.addEventListener('click', () => {
             rondas.forEach(r => r.style.backgroundColor = ''); 
@@ -18,6 +18,7 @@ const rondas = [rondaUno, rondaDos, rondaTres];
         });
     });
 }
+
 window.initRondas = initRondas;
 
 const tiempoUno = document.getElementById('tiempo-1');
