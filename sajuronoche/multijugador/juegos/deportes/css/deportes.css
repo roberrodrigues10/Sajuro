@@ -1,0 +1,1046 @@
+*{
+    font-family: 'Metal Mania';
+}
+@font-face {
+    font-family: 'Metal Mania';
+    src: url('../../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+}
+html{
+    touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
+
+}
+.contenidoGeneral-juegoDeportes{
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 28% 46% 28%;
+    height: 95vh;
+    overflow: hidden;
+}
+.contenidoCampo{
+    display: grid;
+    grid-column-start: 2;
+    grid-template-rows: 78% 11% 11%;
+    height: 95vh;
+    width: 100%;
+}
+.porteros, .defensas, .mediocampo, .delantero{
+    background-color:#4e3d24c0 ;
+    width: 23dvw;
+    height: 36dvh;
+    border: 1px solid rgba(245, 222, 179, 0.566);
+    text-align: center;
+    grid-template-rows: 15% 85%;
+}
+.derecho, .izquierda{
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    align-items: center;
+    gap: 20px;
+    margin-top: 60px;
+}
+.porteros{
+    display: grid;
+    align-self: center;
+    margin-left: 1vw;
+}
+.defensas{
+    display: grid;
+    margin-left: 1vw;
+}
+.mediocampo{
+    display: grid;
+    align-self: center;
+    margin-left: 0.7vw;
+}
+.delantero{
+    display: grid;
+}
+.titulo-deportes{
+    font-family: 'Metal Mania';
+    font-size: 30px;
+    color: antiquewhite;
+}
+.tarjetas{
+    display: flex;
+    justify-content: center;
+    width: 30vw;
+    gap: 20px;
+}
+.img-var{
+    height: 92px;
+    opacity: 0.5;
+}
+.img-bloqueoVar{
+    height: 91px;
+    opacity: 0.5;
+}
+.img-tamaPortero{
+    width: 4.2dvw;
+    height: 3vw;
+}
+.jugadores-A, .jugadores-B , .jugadores-C, .jugadores-D{
+    display: grid;
+    width: 23dvw;
+    grid-template-columns: repeat(4,25%);
+    justify-content: center;
+}
+.nombres{
+    font-size: 0.8vw;
+    margin-top: -10px;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+.img-ajustes{
+    position: fixed;
+    left: 95vw;
+    top: 3vh;
+}
+.jugadoresGeneral{
+    height: 40px;
+}
+.puntos-deportes{
+    font-family: 'Metal Mania';
+    font-size: 25px;
+    color: #faebd7;
+    display: flex;
+    align-self: start;
+    margin-left: 10px;
+}
+.img-contenido{
+    display: grid;
+    position: relative;
+    width: 600px;
+    height: 400px;
+    align-self: center;
+    justify-self: center;
+    margin-right: 50px;
+    margin-top: 90px;
+}
+.img-contenido img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.equipoUno {
+    display: grid;
+    position: absolute; /* Posiciona el contenido dentro de la imagen */
+    top: 0%; /* Ubica el contenido en el centro vertical */
+    width: 300px;
+    height: 415px;
+    z-index: 1000;
+}
+.equipoUnoEstatico{
+    display: grid;
+    position: absolute; /* Posiciona el contenido dentro de la imagen */
+    top: 0%; /* Ubica el contenido en el centro vertical */
+    width: 300px;
+    height: 415px;
+    z-index: 0;
+}
+.equipoDos {
+    display: grid;
+    position: absolute; /* Posiciona el contenido dentro de la imagen */
+    top: 0%; /* Ubica el contenido en el centro vertical */
+    width: 320px;
+    height: 415px;
+    left: 49%;
+    z-index: 1000;
+}
+.equipoDosEstatico {
+    display: grid;
+    position: absolute; /* Posiciona el contenido dentro de la imagen */
+    top: 0%; /* Ubica el contenido en el centro vertical */
+    width: 320px;
+    height: 415px;
+    left: 49%;
+    z-index: 0;
+}
+.jugadoresEquipos {
+    display: grid;
+    width: 60px !important;
+    height: 60px !important;
+    align-self: center;
+    border-radius: 30px;
+}
+.jugadores{
+    display: grid;
+    position: absolute;
+    width: 300px;
+    height: 415px;
+    grid-template-columns: repeat(5, 21%);
+}
+.equipoDos .jugadores{
+    grid-template-columns: 20% 20% 20% 20% 20%;
+}
+.Alineacion-1{
+    height: 405px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    
+}
+.Alineacion-4{
+    display: grid;
+    grid-template-rows: repeat(4, 25%);
+}
+.Alineacion-2{
+    display: grid;
+    grid-template-rows: repeat(2, 50%);
+}
+.Alineacion-3{
+    display: grid;
+    grid-template-rows: repeat(3, 33.3%);
+}
+.jugadorUno{
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 3px;
+    margin-right: -15px;
+    opacity: 0;
+}
+.jugadorDos{
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    margin-top: 46px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
+}
+.jugadorTres{
+    display: flex;
+    justify-content: center;
+    margin-top: 23px;
+    margin-left: 10px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
+}
+.jugadorCuatro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
+}
+.jugadorCinco{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 29px;
+    margin-left: 10px;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0;
+}
+.jugadorSeis{
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    margin-left: 0px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+}
+.jugadorSiete{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-left: 0px;
+    margin-bottom: 60px;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0;
+}
+.jugadorOcho{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 11px;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0;
+}
+.jugadorNueve{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-bottom: 26px;
+    flex-direction: column;
+    font-size: 11px;
+    text-align: center;
+    opacity: 0;
+}
+.jugadorDiez{
+    display: grid;
+    align-self: start;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 11px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
+}
+.jugadorOnce{
+    display: flex;
+    align-items: center;
+    margin-right: 2px;
+    margin-bottom: 15px;
+    flex-direction: column;
+    font-size: 11px;
+    opacity: 0;
+    text-align: center;
+}
+.jugadorUno-E{
+    display: flex;
+    font-size: 11px;
+    margin-top: 3px;
+    margin-right: -15px;
+}
+.jugadorDos-E{
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    margin-top: 46px;
+}
+.jugadorTres-E{
+    display: flex;
+    justify-content: center;
+    margin-top: 23px;
+    margin-left: 10px;
+}
+.jugadorCuatro-E{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    flex-direction: column;
+}
+.jugadorCinco-E{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 29px;
+    margin-left: 10px;
+}
+.jugadorSeis-E{
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    margin-left: 0px;
+}
+.jugadorSiete-E{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-left: 0px;
+    margin-bottom: 60px;
+}
+.jugadorOcho-E{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 11px;
+}
+.jugadorNueve-E{
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    margin-right: 10px;
+    margin-bottom: 26px;
+}
+.jugadorDiez-E{
+    display: grid;
+    align-self: start;
+    justify-content: center;
+    margin-right: 10px;
+    margin-top: 11px;
+}
+.jugadorOnce-E{
+    display: flex;
+    align-items: center;
+    margin-right: 2px;
+    margin-bottom: 15px;
+}
+.equipoDos .jugadorUno{
+    display: grid;
+    justify-self: end;
+    margin-bottom: 40px;
+    margin-right: 0px;
+    opacity: 0;
+}
+.equipoDos .jugadorDos{
+    display: grid;
+    margin-right: 20px;
+    margin-top: 25px;
+    opacity: 0;
+}
+.equipoDos .jugadorTres{
+    display: grid;
+    margin-right: 20px;
+    margin-top: 10px;
+    height: 57.55px;
+    opacity: 0;
+}
+.equipoDos .jugadorCuatro{
+    display: grid;
+    margin-right: 20px;
+    margin-bottom: 35px;
+    height: 57.55px;
+    align-self: center;
+    opacity: 0;
+}
+.equipoDos .jugadorCinco{
+    display: grid;
+    margin-right: 20px;
+    margin-top: -10px;
+    opacity: 0;
+}
+.equipoDos .jugadorSeis{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: center;
+    margin-top: 10px;
+    opacity: 0;
+}
+.equipoDos .jugadorSiete{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: center;
+    margin-bottom: 90px;
+    margin-left: 10px;
+    opacity: 0;
+}
+.equipoDos .jugadorOcho{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: start;
+    margin-top: 28px;
+    margin-right: 17px;
+    opacity: 0;
+}
+.equipoDos .jugadorNueve{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: start;
+    margin-top: 12px;
+    margin-right: 17px;
+    opacity: 0;
+}
+.equipoDos .jugadorDiez{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    margin-right: 17px;
+    margin-top: -12px;
+    opacity: 0;
+}
+.equipoDos .jugadorOnce{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    margin-right: 4px;
+    margin-bottom: 30px;
+    opacity: 0;
+}
+.equipoDosEstatico .jugadorUno-E{
+    display: grid;
+    justify-self: end;
+    margin-bottom: 40px;
+    margin-right: 0px;
+}
+.equipoDosEstatico .jugadorDos-E{
+    display: grid;
+    margin-right: 20px;
+    margin-top: 25px;
+}
+.equipoDosEstatico .jugadorTres-E{
+    display: grid;
+    margin-right: 20px;
+    margin-top: 10px;
+    height: 57.55px;
+}
+.equipoDosEstatico .jugadorCuatro-E{
+    display: grid;
+    margin-right: 20px;
+    margin-bottom: 35px;
+    height: 57.55px;
+    align-self: center;
+}
+.equipoDosEstatico .jugadorCinco-E{
+    display: grid;
+    margin-right: 20px;
+    margin-top: -10px;
+}
+.equipoDosEstatico .jugadorSeis-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: center;
+    margin-top: 10px;
+}
+.equipoDosEstatico .jugadorSiete-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: center;
+    margin-bottom: 90px;
+    margin-left: 10px;
+}
+.equipoDosEstatico .jugadorOcho-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: start;
+    margin-top: 38px;
+    margin-right: 17px;
+}
+.equipoDosEstatico .jugadorNueve-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    align-self: start;
+    margin-top: 12px;
+    margin-right: 17px;
+}
+.equipoDosEstatico .jugadorDiez-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    margin-right: 17px;
+    margin-top: -12px;
+}
+.equipoDosEstatico .jugadorOnce-E{
+    display: grid;
+    height: 57.55px;
+    justify-self: end;
+    margin-right: 4px;
+    margin-bottom: 30px;
+}
+.nombreJugador{
+    display: flex;
+    justify-content: center;
+    color: #faebd7;
+}
+.timer-deportes{
+    position: fixed;
+    top: 13vh;
+    left: 48vw;
+    color: white;
+}
+.integradoDeportes{
+    display: grid;
+    grid-template-columns: 360px 360px;
+    width: 680px;
+    margin-top: 30px;
+}
+.jugadoresDentro-deportes{
+    display: grid;
+    background-color: #faebd7;
+    width: 100px;
+    height: 30px;
+    font-family: 'Metal Mania';
+    text-align: center;
+    border: 1px solid #a2671a;
+    justify-self: center;
+    margin-top: 40px;
+    opacity: 0;
+}
+.tituloJugadores{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    opacity: 0;
+}
+.colorGeneral-jugador{
+    width: 70px;
+    display: grid;
+    align-self: center;
+}
+
+.descripciones-jugadores .descripcion {
+    position: absolute;
+    background: #faebd7;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    bottom: 12dvh;
+    left: 42%;
+    width: 15vw;
+    opacity: 0;
+}
+
+.descripciones-jugadores .descripcion h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+    text-align: center;
+}
+
+.descripciones-jugadores .descripcion p {
+    margin: 0;
+    color: #666;
+    text-align: center;
+}
+.habilitado {
+    
+}
+.invisible {
+    opacity: 0;
+}
+.visble{
+    opacity: 1;
+}
+.desaparecerCampo{
+    opacity: 40%;
+}
+.colorGeneraljugador.habilitado {
+    opacity: 1;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(1.8) contrast(2.0);
+}
+.timer-deportes {
+    position: absolute;
+    font-family: 'Metal Mania';
+    color: #ffffff;
+    top: 10%;
+    left: 59%;
+}
+#contador {
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    color: #ffffff;
+    font-family: 'Metal Mania';
+    font-size: 50px;
+}
+.modal-container {
+    position: fixed;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+}
+.modalRonda1 {
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+    margin-top: 30px;
+}
+.modalRonda1 h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #f1ba04;
+    text-shadow: -5px 5px 10px rgba(255, 255, 255, 0.60);
+  }
+  /* Clases para las animaciones */
+  .modal-show {
+    visibility: visible;
+  }
+
+  .modal-animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .modal-animate-out {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  .modal-hover {
+    position: absolute;
+    bottom: 22%;
+    left: 60%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    z-index: 100;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-hover .modal-content {
+    padding: 1rem;
+  }
+  .modalAlerta {
+    position: fixed;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  .modal-contenidoAlerta {
+    text-align: center;
+  }
+  .modalAlerta2 {
+    position: fixed;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  .modal-contenidoAlerta2 {
+    text-align: center;
+  }
+
+
+  .modal-containerFinalGanaste {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  /* Contenedor del modal de ganador */
+#nextModalContainerGanaste {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+}
+
+/* Animación de fondo */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Estilos del modal de victoria */
+.modalFinalGanaste {
+    background: radial-gradient(circle, rgba(50, 100, 50, 0.9), rgba(20, 60, 20, 1)) no-repeat;
+    color: #fff;
+    padding: 30px 50px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.7); /* Sombra fuerte */
+    transform: scale(0.8);
+    animation: slideIn 0.8s forwards;
+    border: 2px solid rgba(0, 255, 0, 0.7); /* Borde verde brillante */
+}
+
+/* Efecto "resplandor" alrededor del borde del modal */
+.modalFinalGanaste::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: conic-gradient(
+        from 45deg,
+        rgba(0, 255, 0, 0.3) 10%, 
+        transparent 25%, 
+        rgba(0, 255, 0, 0.5) 40%, 
+        transparent 60%, 
+        rgba(0, 255, 0, 0.3) 80%, 
+        transparent 100%
+    );
+    border-radius: 20px;
+    pointer-events: none;
+    filter: blur(4px);
+    opacity: 0.8;
+}
+
+/* Animación de entrada del modal */
+@keyframes slideIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Título del modal */
+.modalFinalGanaste h2 {
+    font-size: 2em;
+    color: #00FF7F; /* Verde claro y brillante */
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8); /* Sombra profunda */
+}
+
+/* Imagen de emoji */
+.emoji {
+    width: 60px;
+    height: 60px;
+    margin: 10px 0;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+/* Texto de aciertos y fallos */
+.modalFinalGanaste p {
+    font-size: 1.2em;
+    color: #d3d3d3;
+    margin: 8px 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Estilo para aciertos */
+.correcto {
+    color: #4CAF50; /* Verde vibrante */
+    font-weight: bold;
+}
+
+/* Estilo para fallos */
+.incorrecto {
+    color: #FF1744; /* Rojo vibrante */
+    font-weight: bold;
+}
+
+/* Estilo del botón de volver */
+.volver {
+    margin-top: 20px;
+    color: #00FF7F;
+    background-color: #2e2e2e;
+    border: 2px solid #00FF7F;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Sombra intensa */
+}
+
+.volver:hover {
+    background-color: #00FF7F;
+    color: #fff;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.7);
+    transform: translateY(-3px);
+}
+/* Contenedor del modal de perdedor */
+#nextModalContainerPerdiste {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+}
+
+/* Animación de fondo */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Estilos del modal de derrota */
+.modalFinalPerdiste {
+    background: linear-gradient(135deg, rgba(50, 0, 0, 0.9), rgba(20, 0, 0, 1)) no-repeat;
+    color: #fff;
+    padding: 30px 50px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.7);
+    transform: scale(0.8);
+    animation: slideIn 0.8s forwards;
+    border: 2px solid rgba(255, 0, 0, 0.7); /* Borde rojo oscuro */
+}
+
+/* Efecto de niebla sangrienta alrededor del borde del modal */
+.modalFinalPerdiste::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: conic-gradient(
+        from 45deg,
+        rgba(255, 0, 0, 0.3) 10%, 
+        transparent 25%, 
+        rgba(255, 0, 0, 0.5) 40%, 
+        transparent 60%, 
+        rgba(255, 0, 0, 0.3) 80%, 
+        transparent 100%
+    );
+    border-radius: 20px;
+    pointer-events: none;
+    filter: blur(5px);
+    opacity: 0.8;
+}
+
+/* Animación de entrada del modal */
+@keyframes slideIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Título del modal */
+.modalFinalPerdiste h2 {
+    font-size: 2em;
+    color: #FF4500; /* Rojo fuego */
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Imagen de emoji */
+.emojiPerdiste {
+    width: 110px;
+    height: 110px;
+    margin-left: 22%;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+/* Texto de aciertos y fallos */
+.modalFinalPerdiste p {
+    font-size: 1.2em;
+    color: #b3b3b3;
+    margin: 8px 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Estilo para aciertos */
+.correcto2 {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+/* Estilo para fallos */
+.incorrecto2 {
+    color: #FF1744;
+    font-weight: bold;
+}
+
+/* Estilo del botón de volver */
+.volver2 {
+    margin-top: 20px;
+    color: #FF4500;
+    background-color: #2e2e2e;
+    border: 2px solid #FF4500;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.volver2:hover {
+    background-color: #FF4500;
+    color: #fff;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.7);
+    transform: translateY(-3px);
+}
+
+/* Estilo general para el modal de cuenta regresiva */
+.modal-countdown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Estilo para los números del conteo */
+.countdown-number {
+    font-size: 6rem;
+    color: #ffea00;
+    font-weight: bold;
+    text-shadow: 0px 0px 20px rgba(255, 234, 0, 0.8), 0px 0px 40px rgba(255, 234, 0, 0.6);
+    transform: scale(0.5);
+    opacity: 0;
+    animation: popIn 1s ease forwards;
+}
+
+/* Animación de los números */
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Efecto de zoom de entrada */
+.countdown-number.animate {
+    animation: zoomIn 0.8s ease-out forwards;
+}
+
+/* Para el texto final "Inicia Partida" */
+.countdown-number.final {
+    color: #00ff7f;
+    text-shadow: 0px 0px 20px rgba(0, 255, 127, 0.8), 0px 0px 40px rgba(0, 255, 127, 0.6);
+}
+
+/* Animación de salida */
+@keyframes zoomIn {
+    from { transform: scale(1.2); opacity: 1; }
+    to { transform: scale(1.4); opacity: 0; }
+}
