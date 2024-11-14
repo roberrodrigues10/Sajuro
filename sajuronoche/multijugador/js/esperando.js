@@ -101,6 +101,32 @@ socket.onmessage = (event) => {
                     mostrarMensajeChat(data);
                 }
             break;
+            case 'actualizar_rondas':
+            if (data.codigo_sala === salaActual) {
+                // Actualizar el número de rondas en la interfaz de usuario
+                const rondasElement = document.getElementById('rondas');
+                if (rondasElement) {
+                    rondasElement.textContent = `rondas ${data.numRondas}`;
+                }
+            }
+            break;
+            case 'actualizar_tiempo':
+            if(data.codigo_sala === salaActual) {
+
+                const tiemposElement = document.getElementById('tiempo');
+                if (tiemposElement) {
+                    tiemposElement.textContent = `tiempo ${data.numTiempo}`;
+                }
+            } 
+            break;
+            case 'actualizar_modo_juego':
+            if (data.codigo_sala === salaActual) {
+                const modoTomado = document.querySelector('.modo-tomado');
+                if (modoTomado) {
+                    modoTomado.textContent = `Modo seleccionado: ${data.modo}`;
+                }
+            }
+            break; 
     }
 };
 
@@ -227,3 +253,154 @@ function mostrarMensajeChat(data) {
         console.error("No se encontró el contenedor de mensajes en el HTML.");
     }
 }
+
+// Selección de los elementos de opciones de rondas
+const rondaUno = document.getElementById('rondas-1-2');
+const rondaDos = document.getElementById('rondas-2-4');
+const rondaTres = document.getElementById('rondas-4-6');
+
+const rondas = [rondaUno, rondaDos, rondaTres];
+
+// Selección de rondas y actualización en pantalla y servidor
+rondas.forEach(ronda => {
+    ronda.addEventListener('click', () => {
+        // Desmarcar cualquier selección previa
+        rondas.forEach(r => {
+            r.style.backgroundColor = ''; 
+        });
+        // Marcar la opción seleccionada
+       ronda.style.backgroundColor = '#c19a67';
+
+        console.log(`Ronda seleccionada: ${ronda.id}`);
+
+        // Obtener el número de rondas desde el atributo `data-rondas`
+        const numRondas = parseInt(ronda.getAttribute('data-rondas'));
+
+        // Mostrar la selección en el segundo div
+        const rondasElement = document.getElementById('rondas');
+        if (rondasElement) {
+            rondasElement.textContent = `Rondas: ${numRondas}`;
+        }
+
+        // Enviar la actualización de rondas al servidor
+        sendWebSocketMessage({
+            action: 'actualizar_rondas',
+            codigo_sala: salaActual,
+            numRondas: numRondas
+        });
+    });
+});
+
+const tiempoUno = document.getElementById('tiempo-1');
+const tiempoDos = document.getElementById('tiempo-2');
+const tiempoTres = document.getElementById('tiempo-3');
+
+const tiempos = [tiempoUno, tiempoDos, tiempoTres];
+
+tiempos.forEach(tiempo => {
+    tiempo.addEventListener('click', () => {
+
+        tiempos.forEach(t => {
+            t.style.backgroundColor = ''; 
+        });
+        
+        tiempo.style.backgroundColor = '#c19a67';
+
+        console.log(`Tiempo seleccionado: ${tiempo.id}`);
+
+        const numTiempo = parseInt(tiempo.getAttribute('data-tiempo'));
+
+        const tiemposElement = document.getElementById('tiempo');
+        if(tiemposElement){
+            tiemposElement.textContent = `tiempo: ${numTiempo}`;
+        }
+
+        sendWebSocketMessage({
+            action: 'actualizar_tiempo',
+            codigo_sala: salaActual,
+            numTiempo: numTiempo
+        });
+    });
+});
+
+const modalidadAleatorio = document.getElementById('modalidad-aleatorio');
+const aparecerOdesaparecerModalidad = document.getElementById('aparecerOdesaparecer-modalidad');
+const modoAleatorio = document.getElementById('modo-aleatorio');
+const modoTomado = document.querySelector('.modo-tomado');
+
+// Función para limpiar event listeners anteriores
+function removeAllEventListeners(element) {
+    const newElement = element.cloneNode(true);
+    element.parentNode.replaceChild(newElement, element);
+    return newElement;
+}
+
+// Función para actualizar el modo de juego
+function actualizarModoJuego(modo) {
+    console.log('Actualizando modo de juego:', modo);
+    
+    sendWebSocketMessage({
+        action: 'actualizar_modo_juego',
+        codigo_sala: salaActual,
+        modo: modo
+    });
+
+    if (modoTomado) {
+        modoTomado.textContent = `Modo seleccionado: ${modo}`;
+    }
+}
+
+// Inicializar los event listeners una sola vez
+function inicializarEventListeners() {
+    // Remover listeners anteriores si existen
+    const newModalidadAleatorio = removeAllEventListeners(modalidadAleatorio);
+    const newModoAleatorio = removeAllEventListeners(modoAleatorio);
+
+    // Agregar nuevos listeners
+    newModalidadAleatorio.addEventListener('click', () => {
+        aparecerOdesaparecerModalidad.style.opacity = '1';
+        newModalidadAleatorio.style.backgroundColor = '#c19a67';
+        newModoAleatorio.style.backgroundColor = '';
+        actualizarModoJuego('Modo Libre');
+    });
+
+    newModoAleatorio.addEventListener('click', () => {
+        aparecerOdesaparecerModalidad.style.opacity = '0';
+        newModalidadAleatorio.style.backgroundColor = '';
+        newModoAleatorio.style.backgroundColor = '#c19a67';
+        actualizarModoJuego('Modo Aleatorio');
+    });
+
+    // Inicializar las modalidades
+    const modalidades = [
+        { id: 'modalidad-deportes', nombre: 'Deportes' },
+        { id: 'modalidad-musica', nombre: 'Música' },
+        { id: 'modalidad-cultura', nombre: 'Cultura' },
+        { id: 'modalidad-ropa', nombre: 'Ropa' },
+        { id: 'modalidad-animales', nombre: 'Animales' },
+        { id: 'modalidad-comida', nombre: 'Comida' }
+    ];
+
+    modalidades.forEach(({ id, nombre }) => {
+        const elemento = document.getElementById(id);
+        if (elemento) {
+            const newElemento = removeAllEventListeners(elemento);
+            newElemento.addEventListener('click', () => {
+                modalidades.forEach(m => {
+                    const el = document.getElementById(m.id);
+                    if (el) el.style.backgroundColor = '';
+                });
+                newElemento.style.backgroundColor = '#c19a67';
+                actualizarModoJuego(nombre);
+            });
+        }
+    });
+}
+
+// Asegurarse de que el código se ejecute solo una vez cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    inicializarEventListeners();
+});
+
+
+

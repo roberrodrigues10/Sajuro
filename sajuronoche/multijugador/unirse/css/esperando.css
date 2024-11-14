@@ -4,7 +4,7 @@
 }
 @font-face {
     font-family: 'Metal Mania';
-    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+    src: url('../../../css/fonts/MetalMania-Regular.ttf') format('truetype');
 }
 html{
     touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
