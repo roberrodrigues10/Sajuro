@@ -20,11 +20,10 @@
                         <img src="../css/img/logo-login.png" alt="" width="150px" class="img-logoLogin">
                     </a>                    
                 </div>
-                <form id="registro-form" method="PO
-                +ST" onsubmit="registrarUsuario(event)" >
+                <form id="registro-form" method="POST" onsubmit="registrarUsuario(event)" >
                     <div class="conten-sesion">
                     <div class="input-container">
-                        <input type="text" id="usuario" name="usuario"  spellcheck="false" required>
+                        <input type="text" id="usuario" name="usuario"  spellcheck="false" minlength="9" maxlength="9" required>
                         <label for="usuario">Usuario</label>
                             <svg xmlns="http://www.w3.org/2000/svg" width="" height="25" fill="currentColor" class="user" viewBox="0 0 16 16">
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>

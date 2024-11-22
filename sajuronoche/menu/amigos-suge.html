@@ -154,7 +154,7 @@
             </div>
             <div class="cerrarSesioncontent">
             <div class="cerrarSesionContent">
-            <div class="cerrar-sesion">cerrar sesión</div>
+            <div class="cerrar-sesion" id="cerrar">cerrar sesión</div>
             </div>
             </div>
         </div>
@@ -323,28 +323,32 @@
     
     <script>
         // Bloqueando el zoom con teclado
+                // Prevenir zoom
         document.addEventListener('keydown', function(event) {
-          if (event.ctrlKey && (event.key === '+' || event.key === '-')) {
-            event.preventDefault(); // Detiene el zoom
-          }
+            if (event.ctrlKey && (event.key === '+' || event.key === '-')) {
+                event.preventDefault(); // Detiene el zoom
+            }
         });
-    
+
         // Evitar el zoom con el mouse (Ctrl + scroll)
         document.addEventListener('wheel', function(event) {
-          if (event.ctrlKey) {
-            event.preventDefault(); // Bloquear zoom con scroll
-          }
+            if (event.ctrlKey) {
+                event.preventDefault(); // Bloquear zoom con scroll
+            }
         });
-         // Esperar a que el DOM se haya cargado
-    document.addEventListener('DOMContentLoaded', () => {
-        // Obtener el nombre de usuario del sessionStorage
-        const nombreUsuario = sessionStorage.getItem('nombreUsuario');
 
-        // Mostrar el nombre de usuario en el elemento correspondiente
-        if (nombreUsuario) {
-            document.getElementById('username').textContent = nombreUsuario;
-        }
-    });
+        // Esperar a que el DOM se haya cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obtener el nombre de usuario del localStorage usando getItem
+            const nombreUsuario = localStorage.getItem('nombreUsuario');
+            
+            // Mostrar el nombre de usuario en el elemento correspondiente
+            if (nombreUsuario) {
+                document.getElementById('username').textContent = nombreUsuario;
+            } else {
+                console.log('No se encontró nombre de usuario en localStorage');
+            }
+        });
       </script>
 
     <script src="js/cerrar-sesion.js"></script>

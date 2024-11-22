@@ -315,8 +315,7 @@ a{
         position: fixed;
         display: grid;
         justify-items: center;
-        width: 102vw;
-        
+        width: 102vw; 
     }
     .bienvenido-img{
         width: 220px;
@@ -362,6 +361,134 @@ a{
     .titulo-multijugador, .titulo-solitario{
         font-size: 20px;
         height: 115%;
+    }
+
+    a{
+        width: 200px;
+    }
+    .img-logoPerfil{
+        width: 80px;
+    }
+    .ranking-logo{
+        width: 78px;
+    }
+    .logo-ranking{
+       margin: 0px 79vw;
+
+    }
+    .ranking-conte{
+        margin: 4px 0;
+    }
+    .usuariosAmigos{
+        display: none;
+        width: 100vh;
+        z-index: 100;
+        height: 100vh;
+    }
+    .objetos-logo{
+        width: 50px;
+        z-index: 0;
+    }
+    .amigosImagenTitulo{
+        width: 110px;
+    }
+    .nombre{
+        position: fixed;
+        font-size: 14px;
+        margin-top: -35px;
+        margin-left: 28px;
+        z-index: 1000;
+    }
+    .contenido-amigos-activos{
+        z-index: 1;
+    }
+    .imgFondoactivo{
+        width: 180px;
+    }
+    .logo-usuario-conectado{
+        margin: -52px 10PX;
+    }
+    .calaActivo{
+        width: 35px;
+    }
+    .usuario-conectado{
+        font-size: 13px;
+        margin: -46px 46px;
+    }
+    .point-color-conectados{
+        font-size: 8.5px;
+    }
+    .point-conectados{
+        margin: -60px 95px;
+    }
+    .usuarios{
+        width: 50px;
+    }
+    .amigosCerrar{
+        width: 100px;
+    }
+    .puntajes{
+        margin-left: 10px;
+    }
+    .logo-enlinea{
+        width: 24px;
+        margin: 12px -35px;
+    }
+    
+    
+}
+@media(min-width: 401px) and (max-width:800px){
+    body{
+        overflow: scroll;
+        height: 100%;
+    }
+    .bienvenido{
+        position: fixed;
+        display: grid;
+        justify-items: center;
+        width: 102vw;
+        
+    }
+    .bienvenido-img{
+        width: 220px;
+        height: 105px;
+    }
+    .titulo-bienvenido{
+        position: fixed;
+        margin: 25px 68px;
+        font-size: 20px;
+    }
+    .titulo-user{
+        position: fixed;
+        margin: 44px 85px;
+        font-size: 15px;
+    }   
+    .campos{
+        position: fixed;
+        display: grid;
+        justify-self: center;
+        top: 40%;
+        height: 130px;
+        gap: 15px;
+    }
+    .solitario{
+        display: grid;
+        grid-row-start: 1;
+        width: 260px;
+        justify-content: center;
+        background-size: 260px;
+    }
+    .multijugador{
+        display: grid;
+        grid-row-start: 2;
+        width: 260px;
+        justify-content: center;
+        background-size: 260px;
+    }
+    .titulo-multijugador, .titulo-solitario{
+        font-size: 28px;
+        height: 115%;
+        margin-top: -10px;
     }
 
     a{

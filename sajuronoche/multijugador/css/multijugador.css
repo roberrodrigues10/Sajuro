@@ -10,30 +10,53 @@ html{
     touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
 
 }
-.contenido-multijugador{
+.logo{
+    position: fixed;
+    width: 14vw;
+    top: 3.5vh;
+    left: 43vw;
+}
+.contenido-home-modalidad {
     display: flex;
     width: 100vw;
     justify-content: center;
-    height: 100vh;
-    align-items: center;
+    margin-top: 70px;
+}
+.img-multijugador{
+    width: 20vw;
+    position: fixed;
+    height: 15vh;
+    align-items: start;
+    display: grid;
+}
+.crear{
+    margin-left: -0.3vw;
+}
+.campos{
+    display: grid;
+    position: fixed;
+    top: 34vh;
+    gap: 5vh;
+    grid-template-rows: 50% 50%;
+    height: 20vh;
+    left: 40vw;
 }
 .titulo-crear{
     font-family: 'Metal Mania';
-    position: fixed;
-    margin: -70px 60px;
+    position: relative;
     color: rgb(52, 42, 34);
-    font-size: 30px;
+    font-size: 4.8vh;
     font-weight: bold;
     letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18vw;
+    margin-top: 4.4vh;
+    margin-left: 1vw;
 }
-.titulo-unir{
-    font-family: 'Metal Mania';
-    position: fixed;
-    margin: -70px 58px;
-    color: rgb(52, 42, 34);
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 1px;
+.titulo-unirse{
+    margin-left: 1vw;
 }
 /* Unirse*/
 .codigo-ingreso{
@@ -45,28 +68,28 @@ html{
 .codigo-ingreso {
     display: grid;
     border-bottom: 2px solid rgb(108, 75, 48);
-    width: 40px;
-    font-size: 30px;
-    margin-left: 20px;
+    width: 4vw;
+    font-size: 3.5vh;
+    margin-left: 1.2vw;
     text-align: center;
     color: rgba(232, 175, 129, 0.755);
-    height: 24px;
+    height: 4vh;
     font-family: 'Metal Mania';
     overflow: hidden;
-}
+}  
 .content-codigo{
     width: 100vw;
     display: flex;
     justify-content: center;
-    height: 72vh;
+    height: 77vh;
     align-items: center;
     overflow: hidden;
 }
 .titulo-mensaje{
     text-align: center;
-    font-size: 30px;
+    font-size: 2.1vw;
     color: rgba(232, 175, 129, 0.755);
-    margin: 4vh -2vw;
+    margin: 4vh 0vw;
     font-family: 'Metal Mania';
     overflow: hidden;
 
@@ -78,7 +101,7 @@ html{
     background: #7e6d42a2;
     border: 1px solid #c19a67;
     color: #d4c0a1;
-    font-size: 16px;
+    font-size: 2vh;
     cursor: pointer;
     transition: background 0.3s;
     font-family: 'Cinzel', serif;
@@ -87,9 +110,9 @@ html{
     grid-row-start: 5;
     padding-top: 3px;
     margin-top: -5vh;
-    height: 25px;
+    height: 3.2vh;
     overflow: hidden;
-
+    align-self: center;
 }
 .boton:hover {
     background: #9e8852;
@@ -97,9 +120,10 @@ html{
 .lineas-codigo{
     display: grid;
     grid-template-columns: repeat(4, 25%);
-    width: 20vw;
+    width: 25vw;
     justify-self: center;
     overflow: hidden;
+    column-gap: 0.002vw;
 }
 .codigo-final{
     display: grid;
@@ -118,9 +142,9 @@ html{
     display: grid;
     justify-self: center;
     font-family: 'Metal Mania';
-    font-size: 14px;
+    font-size: 1.2vw;
     color: rgba(232, 175, 129, 0.755);
-    margin-top: -25px;
+    margin-top: -1.8vw;
     overflow: hidden;
 }
 /* Finalizo unirse*/
@@ -184,7 +208,7 @@ html{
     justify-items: center;
     grid-template-rows: 82% 18%;
 }
-.contenido-usuarioMover{
+.contenido-usuarios-lista{
     margin: 6vh 2vw;
     width: 68vw;
     display: grid;
@@ -337,6 +361,7 @@ html{
     margin-top: 10vh;
     padding: 10px; 
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .nombreChat {
@@ -353,6 +378,7 @@ html{
     bottom: 10px; 
     left: 0;
     right: 0; 
+    height: 40vh;
 }
 
 .escribir input {
@@ -381,6 +407,61 @@ html{
 .enviarUnirse:hover{
     background-color: #9e8852;
 }
+.messages {
+    width: 100%;
+    height: 36dvh;
+    cursor: grab; /* Cambia el cursor cuando el mouse está sobre el contenedor */
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1vw;
+    box-sizing: border-box;
+    text-align: end;
+    overflow: auto; /* Permite el desplazamiento del contenido */
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+.messages.active {
+    cursor: grabbing; /* Cambia el cursor mientras arrastras */
+}
+
+.messages p {
+    margin: 5px 0;
+}
+
+.messages::-webkit-scrollbar {
+    display: none; /* Oculta las barras de desplazamiento en navegadores basados en WebKit */
+}
+
+.messages {
+    -ms-overflow-style: none; /* Oculta las barras en IE y Edge */
+    scrollbar-width: none; /* Oculta las barras en Firefox */
+}
+.usuario{
+    text-align: right; /* Alineación a la derecha */
+    width: 100%;
+    font-size: 1.2vw;
+    margin-top: 1dvh;
+}
+.contenidoUsuario {
+    width: 11vw; /* Puedes aumentar este ancho o usar un valor dinámico */
+    word-break: break-word; /* Para cortar palabras largas */
+    text-align: right;
+    margin-left: 12.5vw;
+    font-size: 0.9vw;
+}
+.contenidoCliente {
+    width: 11vw; /* Puedes aumentar este ancho o usar un valor dinámico */
+    word-break: break-word; /* Para cortar palabras largas */
+    text-align: start;
+    font-size: 0.9vw;
+}
+
+.cliente{
+    font-size: 1.2vw;
+    text-align: start;
+    margin-top: 1dvh;
+}
 /* Finalizo crear sala*/
 /*mediaqueries crear sala*/
 @media(max-width: 399px){
@@ -397,7 +478,7 @@ html{
         width: 100%;
         left: 60dvw;
     }
-    .contenido-usuarioMover{
+    .contenido-usuarios-lista{
         grid-template-columns: repeat(3, 40px);
         margin-top: 0;
         margin-left: 20px;
@@ -461,6 +542,9 @@ html{
         width: 150px;
         font-size: 16px;
     }
+    .escribir{
+        top: 3.5dvh;
+    }
     .chat{
         display: grid;
         margin: 25dvh 2dvw;
@@ -481,13 +565,13 @@ html{
         justify-content: center;
         font-size: 16px;
     }
-    .contenidoGeneral-usuarios{
-        height: 10px;
-    }
     .enviarUnirse{
         font-size: 15px;
         width: 20%;
         color: black;
+    }
+    .contenidoGeneral-usuarios{
+        height: 10px;
     }
     .codigoANDnumero{
         left: 18vw;
@@ -506,6 +590,78 @@ html{
         align-items: center;
         margin-top: 0.5dvh;
     }
+    .messages{
+        height: 213.5px;
+    }
+    .usuario, .cliente{
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    .contenidoUsuario{
+        font-size: 10px;
+        width: 50%;
+        margin-left: 115px;
+    }
+    .contenidoCliente{
+        font-size: 10px;
+        width: 50%;
+    }
+    .logo{
+        width: 180px;
+        left: 28%;
+        top: 10%;
+    }
+    .campos{
+        position: fixed;
+        left: 50px;
+        top: 37%;
+    }
+    .img-multijugador{
+        width: 280px;
+    }
+    .crear{
+        margin-left: -10px;
+    }
+    .titulo-crear{
+        width: 200px;
+        margin-left: 35px;
+    }
+    .titulo-unirse{
+        width: 220px;
+        margin-left: 27px;
+    }
+    .codigo-ingreso{
+        width: 30px;
+        border-radius: 0;
+    }
+    .lineas-codigo{
+        width: 300px;
+        position: fixed;
+        bottom: 60dvh;
+        left: 30px;
+        column-gap: 5px;
+    }
+    .titulo-mensaje{
+        position: fixed;
+        font-size: 19px;
+        width: 240px;
+        bottom: 50dvh;
+        left: 18vw;
+    }
+    .titulo-mensaje-2{
+        position: fixed;
+        font-size: 13px;
+        width: 240px;
+        bottom: 51dvh;
+        left: 28vw;
+    }
+    .boton{
+        display: flex;
+        width: 180px;
+        height: 25px;
+        align-items: center;
+        justify-content: center;
+    }
 }
 @media(min-width: 400px) and (max-width: 550px) and (min-height: 740px){
     .titulo-jugadores{
@@ -521,7 +677,7 @@ html{
         width: 100%;
         left: 55dvw;
     }
-    .contenido-usuarioMover{
+    .contenido-usuarios-lista{
         grid-template-columns: repeat(3, 45px);
         margin-top: 0;
         margin-left: 30px;
@@ -759,5 +915,142 @@ html{
 }
 /* Finalizo mediaqueries crear sala*/
 
-
-
+@media(min-width:401px) and (max-width: 500px){
+    .logo{
+        width: 210px;
+        left: 26%;
+        top: 10%;
+    }
+    .campos{
+        position: fixed;
+        left: 68px;
+        top: 37%;
+    }
+    .img-multijugador{
+        width: 300px;
+    }
+    .crear{
+        margin-left: -5px;
+    }
+    .titulo-crear{
+        width: 220px;
+        margin-left: 35px;
+    }
+    .titulo-unirse{
+        width: 240px;
+        margin-left: 27px;
+    }
+    .codigo-ingreso{
+        width: 50px;
+        border-radius: 0;
+    }
+    .lineas-codigo{
+        width: 350px;
+        position: fixed;
+        bottom: 60dvh;
+        left: 30px;
+        column-gap: 5px;
+    }
+    .titulo-mensaje{
+        position: fixed;
+        font-size: 23px;
+        width: 280px;
+        bottom: 51dvh;
+        left: 17vw;
+    }
+    .titulo-mensaje-2{
+        position: fixed;
+        font-size: 16px;
+        width: 240px;
+        bottom: 52dvh;
+        left: 26vw;
+    }
+    .boton{
+        position: fixed;
+        display: flex;
+        width: 230px;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        bottom: 40dvh;
+    }
+    .escribir{
+        margin-bottom: 25px;
+    }
+    .messages{
+        height: 40dvh;
+    }
+    .usuario, .cliente{
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    .contenidoUsuario{
+        font-size: 10px;
+        width: 50%;
+        margin-left: 125px;
+    }
+    .contenidoCliente{
+        font-size: 10px;
+        width: 50%;
+    }
+}
+@media(min-width:600px) and (max-width: 940px){
+    .logo{
+        width: 280px;
+        left: 32%;
+        top: 10%;
+    }
+    .campos{
+        position: fixed;
+        left: 23.5%;
+        top: 37%;
+    }
+    .img-multijugador{
+        width: 400px;
+    }
+    .crear{
+        margin-left: -5px;
+    }
+    .titulo-crear{
+        width: 300px;
+        margin-left: 45px;
+        font-size: 58px;
+    }
+    .titulo-unirse{
+        width: 300px;
+        margin-left: 42px;
+    }
+    .codigo-ingreso{
+        width: 70px;
+    }
+    .lineas-codigo{
+        width: 510px;
+        position: fixed;
+        margin-left: 20px;
+        bottom: 60dvh;
+    }
+    .titulo-mensaje{
+        position: fixed;
+        font-size: 33px;
+        width: 550px;
+        bottom: 50dvh;
+        left: 14vw;
+    }
+    .titulo-mensaje-2{
+        position: fixed;
+        font-size: 22px;
+        width: 550px;
+        bottom: 51dvh;
+        left: 31vw;
+    }
+    .boton{
+        position: fixed;
+        display: flex;
+        width: 330px;
+        height: 33px;
+        align-items: center;
+        justify-content: center;
+        bottom: 40dvh;
+    }
+}
+   

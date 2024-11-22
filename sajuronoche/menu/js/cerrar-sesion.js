@@ -1,9 +1,22 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const cerrarSesion = document.querySelector('.cerrar-sesion');
-    cerrarSesion.addEventListener('click', () => {
+function cerrarSesion() {
+    // Primero limpiamos localStorage
+    localStorage.clear();
+    
+    // Luego hacemos la petición al servidor para limpiar la sesión PHP
+    fetch('http://192.168.1.35/sajuro/sajuronoche/iniciosesion/php/logout.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Redirigir al login solo después de que todo se haya limpiado
+                window.location.href = '../iniciosesion/iniciarsesion.html';
+            }
+        })
+        .catch(error => {
+            console.error('Error al cerrar sesión:', error);
+            // Redirigir de todos modos en caso de error
+            window.location.href = '../iniciosesion/iniciarsesion.html';
+        });
+}
 
-        sessionStorage.clear();
-
-        window.location.href = '../index.html';
-    });
-});
+// Agregar el evento al botón
+document.getElementById('cerrar').addEventListener('click', cerrarSesion);

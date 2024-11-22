@@ -202,14 +202,15 @@ a{
         background-size: 300px;
         width: 300px;
         top: 0;
-        height: 300px;
+        height: 380px;
         display: grid;
         grid-template-rows: 20% 200px;
-        margin-top: 12vh;
+        margin-top: 7vh;
+        z-index: 1000;
     }
     .contenidoSuperior-ranking{
         position: relative;
-        margin: 0px 0px;
+        margin: 40px 0px;
         width: 300px;
         display: grid;
         grid-template-columns: 48% 52%;
@@ -275,6 +276,7 @@ a{
     .ranking-dentro,.ranking-dentroMundial{
         height: 190px;
         margin: 0;
+        margin-top: 20px;
     }
     .usuario{
         font-size: 16px;

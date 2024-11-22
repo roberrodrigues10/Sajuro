@@ -1,53 +1,84 @@
 <?php
-require 'conexion.php'; // Incluir la configuración de la base de datos
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+header('Access-Control-Allow-Methods: GET');
 
-// Crear una instancia de la clase Database y obtener la conexión
-$db = new Database();
-$conn = $db->getConnection();
+require 'conexion.php';
 
-// Verificar si la conexión se realizó correctamente
-if ($conn === null) {
-    echo json_encode(['status' => 'error', 'message' => 'No se pudo conectar a la base de datos.']);
-    exit;
-}
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if (!isset($_GET['email']) || !isset($_GET['token'])) {
+        echo json_encode(['status' => 'error', 'message' => 'Faltan parámetros requeridos']);
+        exit;
+    }
 
-// Obtener los parámetros de la URL
-$email = isset($_GET['email']) ? $_GET['email'] : '';
-$token = isset($_GET['token']) ? $_GET['token'] : '';
+    $email = $_GET['email'];
+    $token = $_GET['token'];
 
-// Validar que el email y el token no estén vacíos
-if (empty($email) || empty($token)) {
-    echo json_encode(['status' => 'error', 'message' => 'El email o el token no son válidos.']);
-    exit;
-}
+    $db = new Database();
+    $conn = $db->getConnection();
 
-// Buscar el usuario en la base de datos
-$sql = "SELECT * FROM usuario WHERE email = ? AND token = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('ss', $email, $token);
-$stmt->execute();
-$result = $stmt->get_result();
+    if ($conn === null) {
+        echo json_encode(['status' => 'error', 'message' => 'Error de conexión a la base de datos']);
+        exit;
+    }
 
-// Verificar si se encontró el usuario
-if ($result->num_rows === 1) {
-    // Actualizar el estado de verificación del usuario
-    $sql_update = "UPDATE usuario SET is_verified = 1, token = NULL WHERE email = ?";
-    $stmt_update = $conn->prepare($sql_update);
-    $stmt_update->bind_param('s', $email);
-    
-    if ($stmt_update->execute()) {
-        echo json_encode(['status' => 'success', 'message' => 'Tu cuenta ha sido verificada con éxito.']);
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'Error al verificar la cuenta.']);
+    try {
+        // Validar el token en usuario_temporal
+        $sql = "SELECT * FROM usuario_temporal WHERE email = ? AND token = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ss', $email, $token);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 0) {
+            echo json_encode(['status' => 'error', 'message' => 'Token inválido o ya utilizado']);
+            exit;
+        }
+
+        // Obtener los datos de usuario temporal
+        $usuario_data = $result->fetch_assoc();
+        
+        // Mover datos a la tabla de usuarios
+        $sql_insert = "INSERT INTO usuario (nombre_usuario, contrasena, email, is_verified) VALUES (?, ?, ?, 1)";
+        $stmt_insert = $conn->prepare($sql_insert);
+        $stmt_insert->bind_param('sss', $usuario_data['nombre_usuario'], $usuario_data['contrasena'], $usuario_data['email']);
+        
+        if ($stmt_insert->execute()) {
+            // Si la inserción es exitosa, marcar como verificado y eliminar de usuario_temporal
+            $sql_update = "UPDATE usuario_temporal SET is_verified = 1 WHERE email = ? AND token = ?";
+            $stmt_update = $conn->prepare($sql_update);
+            $stmt_update->bind_param('ss', $email, $token);
+            $stmt_update->execute();
+            
+            // Eliminar el registro de usuario temporal
+            $sql_delete = "DELETE FROM usuario_temporal WHERE email = ? AND token = ?";
+            $stmt_delete = $conn->prepare($sql_delete);
+            $stmt_delete->bind_param('ss', $email, $token);
+            $stmt_delete->execute();
+
+            echo json_encode(['status' => 'success', 'message' => 'Email verificado y cuenta registrada correctamente.']);
+        } else {
+            throw new Exception('Error al registrar la cuenta en la tabla usuario');
+        }
+
+    } catch (Exception $e) {
+        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    } finally {
+        if (isset($stmt)) {
+            $stmt->close();
+        }
+        if (isset($stmt_insert)) {
+            $stmt_insert->close();
+        }
+        if (isset($stmt_update)) {
+            $stmt_update->close();
+        }
+        if (isset($stmt_delete)) {
+            $stmt_delete->close();
+        }
+        $conn->close();
     }
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'El email o el token son incorrectos.']);
+    echo json_encode(['status' => 'error', 'message' => 'Método no permitido']);
 }
-
-// Cerrar los statements
-$stmt->close();
-$stmt_update->close();
-
-// Cerrar la conexión
-$conn->close();
 ?>

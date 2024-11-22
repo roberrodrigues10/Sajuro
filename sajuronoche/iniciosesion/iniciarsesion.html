@@ -7,6 +7,48 @@
     <title>Sajuro</title>
     <link rel="stylesheet" href="../css/inicio.css">
     <link rel="stylesheet" href="../iniciosesion/css/sesion.css">
+    
+    <script>
+        (function() {
+            function verificarSesion() {
+                // Cambiado a localStorage
+                const usuarioId = localStorage.getItem('usuarioId');
+                const nombreUsuario = localStorage.getItem('nombreUsuario');
+                
+                console.log('Verificando sesión...');
+                console.log('Usuario ID:', usuarioId);
+                console.log('Nombre Usuario:', nombreUsuario);
+                
+                if (usuarioId || nombreUsuario) {
+                    console.log('Sesión activa detectada. Iniciando redirección...');
+                    try {
+                        const redirectURL = 'http://192.168.1.35/sajuro/sajuronoche/menu/amigos-suge.html';
+                        console.log('Redirigiendo a:', redirectURL);
+                        window.location.href = redirectURL;
+                        return true;
+                    } catch (error) {
+                        console.error('Error durante la redirección:', error);
+                    }
+                } else {
+                    console.log('No hay sesión activa, mostrando formulario de login');
+                    return false;
+                }
+            }
+
+            // Verificar sesión inmediatamente
+            verificarSesion();
+
+            // Verificar nuevamente cuando el DOM esté listo
+            document.addEventListener('DOMContentLoaded', verificarSesion);
+
+            // Y una última vez cuando todos los recursos estén cargados
+            window.addEventListener('load', function() {
+                if (!verificarSesion()) {
+                    console.log('Carga completa - No hay sesión activa');
+                }
+            });
+        })();
+    </script>
 </head>
 <body>
     <div class="contenedor">
@@ -41,7 +83,7 @@
                         <br>
                         <button class="login-button" type="submit">Iniciar sesión</button>
                     </form>
-                    <div id="login-message"></div> <!-- Contenedor para mensajes -->
+                    <div id="login-message"></div>
                 </div>
             </div>
         </div>

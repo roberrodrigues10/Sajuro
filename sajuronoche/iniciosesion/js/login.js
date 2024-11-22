@@ -1,10 +1,8 @@
 function inicioSesion(event) {
-    event.preventDefault(); // Evitar el envío normal del formulario
+    event.preventDefault();
 
-    const form = document.getElementById('iniciosesion'); // Asegúrate de que este ID sea correcto
-    const messageContainer = document.getElementById('login-message'); // Asegúrate de que este ID sea correcto
-
-    // Crear un objeto FormData a partir del formulario
+    const form = document.getElementById('iniciosesion');
+    const messageContainer = document.getElementById('login-message');
     const formData = new FormData(form);
 
     // Imprimir el contenido del FormData en la consola
@@ -12,26 +10,23 @@ function inicioSesion(event) {
         console.log(`${pair[0]}: ${pair[1]}`);
     }
 
-    // Enviar los datos al servidor usando fetch
-    fetch('php/validacion.php', { // Coloca aquí la ruta correcta a tu archivo PHP
+    fetch('http://192.168.1.35/sajuro/sajuronoche/iniciosesion/php/validacion.php', {
         method: 'POST',
-        body: formData // Enviar el objeto FormData
+        body: formData
     })
-    .then(response => response.json()) // Convertir la respuesta a JSON
+    .then(response => response.json())
     .then(data => {
         if (data.status === 'success') {
-            // Si el inicio de sesión es exitoso
             messageContainer.style.color = 'green';
             messageContainer.textContent = data.message;
-
-            // Guardar el userId en sessionStorage
-            sessionStorage.setItem('usuarioId', data.usuarioId);
-            sessionStorage.setItem('nombreUsuario', data.nombreUsuario);
-
-            // Redirigir a otra página
-            window.location.href = '../iniciosesion/cargando.html'; // Cambia esta ruta según sea necesario
+            
+            // Cambiar sessionStorage por localStorage aquí
+            localStorage.setItem('usuarioId', data.usuarioId);
+            localStorage.setItem('nombreUsuario', data.nombreUsuario);
+    
+            // Redirigir a la página de carga
+            window.location.href = '../iniciosesion/cargando.html';
         } else {
-            // Si hubo un error (usuario o contraseña incorrectos)
             messageContainer.style.color = 'rgb(224, 183, 106)';
             messageContainer.textContent = data.message;
         }
@@ -39,12 +34,9 @@ function inicioSesion(event) {
     .catch(error => {
         console.error('Error:', error);
         messageContainer.style.color = 'rgb(224, 183, 106)';
-        messageContainer.textContent = 'Hubo un error en el servidor. Inténtalo de nuevo.';
+        messageContainer.textContent = 'Cierra la cuenta que esta activa';
     });
 }
-// Cuando el usuario inicia sesión, guarda una bandera en localStorage
-
-
 
 // Vincular la función al evento de envío del formulario
 document.getElementById('iniciosesion').addEventListener('submit', inicioSesion);

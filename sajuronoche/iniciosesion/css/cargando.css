@@ -14,7 +14,6 @@ body{
 }
 .puzzle-piece {
   position: absolute; 
-  display: none; /* Ocultamos inicialmente las piezas */
   transition: opacity 0.5s ease; /* Transición para hacer más suave la aparición */
 }
 /* Asegúrate de ajustar las posiciones de las piezas según necesites */

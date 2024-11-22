@@ -3,192 +3,645 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, usuario-mundial-scalable=no">
-    <link rel="shortcut icon" href="../../css/img/logo-login.png">
+    <link rel="shortcut icon" href="../css/img/logo.png">
     <title>Sajuro</title>
     <link rel="stylesheet" href="css/deportes.css">
     <link rel="stylesheet" href="../../../css/inicio.css">
 </head>
 <body>
-    <div class="contenidoGeneral-juegoDeportes">
-        <div class="tarjetas">
-            <div class="var">
-                <img src="img/tarjeta-var.png" class="img-var" alt="">
-            </div>
-            <div class="bloqueo-var">
-                <img src="img/tarjeta-bloqueoVar.png" class="img-bloqueoVar" alt="">
-            </div>
-            <div class="ajustes">
-                <img src="img/Vector.png" class="img-ajustes" alt="">
-            </div>
+    <div id="contador"></div>
+    <div id="modalContainerInicio" class="modal-container">
+        <div id="modalInicio" class="modalRonda1">
+          <h2 id="modalTextInicio">Iniciando Partida...</h2>
         </div>
+    </div>
+    <div class="contenidoGeneral-juegoDeportes">
         <div class="derecho">
             <div class="porteros titulo-deportes">jugadores a
                 <div class="jugadores-A">
-                    <div class="jugadoresA-1 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-1">
+                        <img id="jugadoresA-1"  src="img/judadoresBorussia/lat-2.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">ryerson</div>
                     </div>
-                    <div class="jugadoresA-2 jugadoresGeneral" alt="">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-2">
+                        <img id="jugadoresA-2" src="img/realmadrid/vol-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">camavinga</div>
                     </div>
-                    <div class="jugadoresA-3 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-3">
+                        <img id="jugadoresA-3" src="img/judadoresBorussia/del-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">füllkrug</div>
                     </div>
-                    <div class="jugadoresA-4 jugadoresGeneral" alt="">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-4">
+                        <img id="jugadoresA-4" src="img/equipo-randono/df-2.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">konate</div>
                     </div>
-                    <div class="jugadoresA-5 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-5">
+                        <img id="jugadoresA-5" src="img/equipo-randono/vol-3.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">gravenberch</div>
                     </div>
-                    <div class="jugadoresA-6 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-6">
+                        <img id="jugadoresA-6" src="img/judadoresBorussia/lat-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">maatsen</div>
                     </div>
-                    <div class="jugadoresA-7 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-7">
+                        <img id="jugadoresA-7" src="img/equipo-randono/po.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">kelleher</div>
                     </div>
-                    <div class="jugadoresA-8 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-8">
+                        <img id="jugadoresA-8" src="img/randonve/df-2.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">kalulu</div>
                     </div>
-                    <div class="jugadoresA-9 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-9">
+                        <img id="jugadoresA-9" src="img/randonve/df-4.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">cabal</div>
                     </div>
-                    <div class="jugadoresA-10 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-10">
+                        <img id="jugadoresA-10" src="img/realmadrid/lat-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">mendy</div>
                     </div>
-                    <div class="jugadoresA-11 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-11">
+                        <img id="jugadoresA-11" src="img/judadoresBorussia/vol-centro.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">brandt</div>
                     </div>
-                    <div class="jugadoresA-12 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadoresA-12">
+                        <img id="jugadoresA-12" src="img/randonve/df-3.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">danilo</div>
                     </div>
                 </div>
-            </div>
-            <div class="porteros titulo-deportes">jugadores b
+            </div>            
+            <div class="defensas titulo-deportes">jugadores b
                 <div class="jugadores-B">
-                    <div class="jugadores-B-1 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-1">
+                        <img id="jugadores-B-1" src="img/judadoresBorussia/ex-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">adeyemi</div>
                     </div>
-                    <div class="jugadores-B-2 jugadoresGeneral" alt="">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-2" alt="">
+                        <img id="jugadores-B-2" src="img/equipo-randono/del-2.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">d. jota</div>
                     </div>
-                    <div class="jugadores-B-3 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-3">
+                        <img id="jugadores-B-3" src="img/realmadrid/vol-3.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">valverde</div>
                     </div>
-                    <div class="jugadores-B-4 jugadoresGeneral" alt="">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-4" alt="">
+                        <img id="jugadores-B-4" src="img/judadoresBorussia/df-2.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">hummels</div>
                     </div>
-                    <div class="jugadores-B-5 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-5">
+                        <img id="jugadores-B-5" src="img/equipo-randono/lat-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">robertson</div>
                     </div>
-                    <div class="jugadores-B-6 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-6">
+                        <img id="jugadores-B-6" src="img/realmadrid/vol-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">kross</div>
                     </div>
-                    <div class="jugadores-B-7 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-7">
+                        <img id="jugadores-B-7" src="img/judadoresBorussia/df-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">schlotter..</div>
                     </div>
-                    <div class="jugadores-B-8 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-8">
+                        <img id="jugadores-B-8" src="img/equipo-randono/vol-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">szoboszlai</div>
                     </div>
-                    <div class="jugadores-B-9 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-9">
+                        <img id="jugadores-B-9" src="img/randonve/ex-2.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">f conceicao</div>
                     </div>
-                    <div class="jugadores-B-11 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-10">
+                        <img  id="jugadores-B-1"src="img/equipo-randono/del-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">salah</div>
                     </div>
-                    <div class="jugadores-B-10 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-11">
+                        <img  id="jugadores-B-11"src="img/randonve/del-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">vlahovic</div>
                     </div>
-                    <div class="jugadores-B-12 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-B-12">
+                        <img  id="jugadores-B-12"src="img/realmadrid/df-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">rudiger</div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="contenidoCampo">
-            <div class="img-contenido"><img src="img/cancha.png" alt="" width="530px"></div>
+            <div class="timer-deportes"></div> <!-- Temporizador -->
+            <div class="timer-deportes-2"></div> <!-- Temporizador -->
+            <div class="img-contenido">
+                <img src="img/cancha.png" alt="">
+                <div class="equipoUno"> 
+                    <div class="jugadores"> 
+                        <div class="Alineacion-1">
+                            <div class="jugadorUno invisible" id="jEquipoUno-uno" >
+                                <img src="img/judadoresBorussia/po.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">kobel</div>
+                            </div>
+                        </div>
+                        <div class="Alineacion-4">
+                            <div class="jugadorDos invisible" id="jEquipoUno-dos">
+                                <img src="img/judadoresBorussia/lat-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">maatsen</div>
+                            </div>
+                            <div class="jugadorTres invisible" id="jEquipoUno-tres">
+                                <img src="img/judadoresBorussia/df-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">schlotter</div>
+                            </div>
+                            <div class="jugadorCuatro invisible" id="jEquipoUno-cuatro">
+                                <img src="img/judadoresBorussia/df-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">hummels</div>
+                            </div>
+                            <div class="jugadorCinco invisible" id="jEquipoUno-cinco">
+                                <img src="img/judadoresBorussia/lat-2.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">ryerson</div>
+                            </div>
+                        </div>
+                        <div class="Alineacion-2">
+                            <div class="jugadorSeis invisible" id="jEquipoUno-seis">
+                                <img src="img/judadoresBorussia/vol-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">sabitzer</div>
+                            </div>
+                            <div class="jugadorSiete invisible" id="jEquipoUno-siete">
+                                <img src="img/judadoresBorussia/vol-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">can</div>
+                            </div>
+                        </div>
+                        <div class="Alineacion-3">
+                            <div class="jugadorOcho invisible" id="jEquipoUno-ocho">
+                                <img src="img/judadoresBorussia/ex-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">adeyemi</div>
+                            </div>
+                            <div class="jugadorNueve invisible" id="jEquipoUno-nueve">
+                                <img src="img/judadoresBorussia/vol-centro.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">brandt</div>
+                            </div>
+                            <div class="jugadorDiez invisible" id="jEquipoUno-diez">
+                                <img src="img/judadoresBorussia/ex-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">sancho</div>
+                            </div>
+                        </div>
+                        <div class="Alineacion-1">
+                            <div class="jugadorOnce invisible" id="jEquipoUno-once">
+                                <img src="img/judadoresBorussia/del-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">füllkrug</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipoUnoEstatico"> 
+                    <div class="jugadores">
+                        <div class="Alineacion-1">
+                            <div class="jugadorUno-E desaparecerCampo" id="jEquipoUno-uno-E" >
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                        <div class="Alineacion-4">
+                            <div class="jugadorDos-E desaparecerCampo" id="jEquipoUno-dos-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorTres-E desaparecerCampo" id="jEquipoUno-tres-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorCuatro-E desaparecerCampo" id="jEquipoUno-cuatro-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorCinco-E desaparecerCampo" id="jEquipoUno-cinco-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                        <div class="Alineacion-2">
+                            <div class="jugadorSeis-E desaparecerCampo" id="jEquipoUno-seis-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorSiete-E desaparecerCampo" id="jEquipoUno-siete-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                        <div class="Alineacion-3">
+                            <div class="jugadorOcho-E desaparecerCampo" id="jEquipoUno-ocho-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorNueve-E desaparecerCampo" id="jEquipoUno-nueve-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorDiez-E desaparecerCampo" id="jEquipoUno-diez-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                        <div class="Alineacion-1">
+                            <div class="jugadorOnce-E desaparecerCampo" id="jEquipoUno-once-E">
+                                <img src="img/1.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipoDos">
+                    <div class="jugadores">
+                        <div class="Alineacion-2">
+                            <div class="jugadorSeis invisible" id="jEquipoDos-once">
+                                <img src="./img/realmadrid/del-2.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">vini jr</div>
+                            </div>
+                            <div class="jugadorSiete invisible" id="jEquipoDos-diez">
+                                <img src="img/realmadrid/dl-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">rodrigo</div>
+                            </div>
+                        </div>
+                        <div class="Alineacion-1">
+                            <div class="jugadorOnce invisible" id="jEquipoDos-nueve">
+                                <img src="img/realmadrid/vol-ce.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">bellingham</div>
+                            </div>
+                        </div>
+                        <div class="Alineacion-3">
+                            <div class="jugadorOcho invisible" id="jEquipoDos-ocho">
+                                <img src="img/realmadrid/vol-3.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">valverde</div>
+                            </div>
+                            <div class="jugadorNueve invisible" id="jEquipoDos-siete">
+                                <img src="img/realmadrid/vol-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">camavinga</div>
+                            </div>
+                            <div class="jugadorDiez invisible" id="jEquipoDos-seis">
+                                <img src="img/realmadrid/vol-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">kross</div>
+                            </div>
+                        </div>
+                        <div class="Alineacion-4">
+                            <div class="jugadorDos invisible" id="jEquipoDos-cinco">
+                                <img src="img/realmadrid/lat-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">carvajal</div>
+                            </div>
+                            <div class="jugadorTres invisible" id="jEquipoDos-cuatro">
+                                <img src="img/realmadrid/df-2 .png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">nacho</div>
+                            </div>
+                            <div class="jugadorCuatro invisible" id="jEquipoDos-tres">
+                                <img src="img/realmadrid/df-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">rudiger</div>
+                            </div>
+                            <div class="jugadorCinco invisible" id="jEquipoDos-dos">
+                                <img src="img/realmadrid/lat-1.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">mendy</div>
+                            </div>
+                        </div>
+                        <div class="Alineacion-1">
+                            <div class="jugadorUno invisible" id="jEquipoDos-uno">
+                                <img src="img/realmadrid/port.png" alt="" class="jugadoresEquipos">
+                                <div class="nombreJugador">courtois </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipoDosEstatico">
+                    <div class="jugadores">
+                        <div class="Alineacion-2">
+                            <div class="jugadorSeis-E desaparecerCampo" id="jEquipoDos-once-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorSiete-E desaparecerCampo" id="jEquipoDos-diez-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                        <div class="Alineacion-1">
+                            <div class="jugadorOnce-E desaparecerCampo" id="jEquipoDos-nueve-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                        <div class="Alineacion-3">
+                            <div class="jugadorOcho-E desaparecerCampo" id="jEquipoDos-ocho-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorNueve-E desaparecerCampo" id="jEquipoDos-siete-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorDiez-E desaparecerCampo" id="jEquipoDos-seis-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                        <div class="Alineacion-4">
+                            <div class="jugadorDos-E desaparecerCampo" id="jEquipoDos-cinco-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorTres-E desaparecerCampo" id="jEquipoDos-cuatro-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorCuatro-E desaparecerCampo" id="jEquipoDos-tres-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                            <div class="jugadorCinco-E desaparecerCampo" id="jEquipoDos-dos-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                        <div class="Alineacion-1">
+                            <div class="jugadorUno-E desaparecerCampo" id="jEquipoDos-uno-E">
+                                <img src="img/2.png" alt="" class="jugadoresEquipos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="integradoDeportes">
+                <div class="puntos-deportes">
+                    <div>puntos:</div>
+                    <span id="puntos"></span>
+                </div>
+                <div class="tarjetas">
+                    <div class="var">
+                        <img src="img/tarjeta-var.png" class="img-var" alt="">
+                    </div>
+                    <div class="bloqueo-var">
+                        <img src="img/tarjeta-bloqueoVar.png" class="img-bloqueoVar" alt="">
+                    </div>
+                    <div class="ajustes">
+                        <img src="img/Vector.png" class="img-ajustes" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="jugadoresDentro-deportes">
+                <div class="tituloJugadores">jugadores</div>
+            </div>
         </div>
         <div class="izquierda"> 
             <div class="mediocampo titulo-deportes">jugadores c
                 <div class="jugadores-C">
-                    <div class="jugadores-C-1 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-1">
+                        <img id="jugadores-C-1" src="img/equipo-randono/del-3.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">diaz</div>
                     </div>
-                    <div class="jugadores-C-2 jugadoresGeneral" alt="">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-2">
+                        <img id="jugadores-C-2" src="img/randonve/ex-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">weah</div>
                     </div>
-                    <div class="jugadores-C-3 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-3">
+                        <img id="jugadores-C-3" src="img/judadoresBorussia/vol-1.png" class="img-tamaPortero" alt="" id="jugadores-C-1" >
+                        <div class="nombres">can</div>
                     </div>
-                    <div class="jugadores-C-4 jugadoresGeneral" alt="">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-4">
+                        <img id="jugadores-C-4" src="img/equipo-randono/df-1.png" class="img-tamaPortero" alt="" id="jugadores-C-1" >
+                        <div class="nombres">v. dijk</div>
                     </div>
-                    <div class="jugadores-C-5 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-5">
+                        <img id="jugadores-C-5" src="img/randonve/po.png" class="img-tamaPortero" alt="" id="jugadores-C-1" >
+                        <div class="nombres">di gregorio</div>
                     </div>
-                    <div class="jugadores-C-6 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-6">
+                        <img id="jugadores-C-6" src="img/equipo-randono/lat-2.png" class="img-tamaPortero" alt="" id="jugadores-C-1" >
+                        <div class="nombres">arnold</div>
                     </div>
-                    <div class="jugadores-C-7 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-7">
+                        <img id="jugadores-C-7" src="img/judadoresBorussia/ex-1.png" class="img-tamaPortero" alt="" id="jugadores-C-1" >
+                        <div class="nombres">sancho</div>
                     </div>
-                    <div class="jugadores-C-8 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-8">
+                        <img id="jugadores-C-8" src="img/randonve/vol-1.png" class="img-tamaPortero" alt="" id="jugadores-C-1" >
+                        <div class="nombres">mckennie</div>
                     </div>
-                    <div class="jugadores-C-9 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-9">
+                        <img id="jugadores-C-9" src="img/judadoresBorussia/vol-1.png" class="img-tamaPortero" alt="" id="jugadores-C-1" >
+                        <div class="nombres">sabitzer</div>
                     </div>
-                    <div class="jugadores-C-10 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-10">
+                        <img id="jugadores-C-10" src="img/randonve/med-1.png" class="img-tamaPortero" alt="" id="jugadores-C-1" >
+                        <div class="nombres">fagioli</div>
                     </div>
-                    <div class="jugadores-C-11 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-11">
+                        <img id="jugadores-C-11" src="img/realmadrid/df-2 .png" class="img-tamaPortero" alt="" id="jugadores-C-1" >
+                        <div class="nombres">nacho</div>
                     </div>
-                    <div class="jugadores-C-12 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-C-12">
+                        <img id="jugadores-C-12" src="img/realmadrid/lat-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">carvajal</div>
                     </div>
                 </div>
             </div>
-            <div class="mediocampo titulo-deportes">jugadores d
+            <div class="delantero titulo-deportes">jugadores d
                 <div class="jugadores-D ">
-                    <div class="jugadores-D-1 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-1">
+                        <img id="jugadores-D-1" src="img/randonve/med-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">locatelli</div>
                     </div>
-                    <div class="jugadores-D-2 jugadoresGeneral" alt="">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-2">
+                        <img id="jugadores-D-2" src="img/randonve/del-m.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">mbappe</div>
                     </div>
-                    <div class="jugadores-D-3 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-3">
+                        <img id="jugadores-D-3" src="img/realmadrid/del-2.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">vinicius</div>
                     </div>
-                    <div class="jugadores-D-4 jugadoresGeneral" alt="">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-4">
+                        <img id="jugadores-D-4" src="img/realmadrid/port.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">courtois</div>
                     </div>
-                    <div class="jugadores-D-5 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-5">
+                        <img id="jugadores-D-5" src="img/randonve/del-i.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">messi</div>
                     </div>
-                    <div class="jugadores-D-6 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-6">
+                        <img id="jugadores-D-6" src="img/randonve/del-j.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">james</div>
                     </div>
-                    <div class="jugadores-D-7 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-7">
+                        <img id="jugadores-D-7" src="img/equipo-randono/vol-2.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">macallister</div>
                     </div>
-                    <div class="jugadores-D-8 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-8">
+                        <img id="jugadores-D-8" src="img/realmadrid/dl-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">rodrigo</div>
                     </div>
-                    <div class="jugadores-D-9 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-9">
+                        <img id="jugadores-D-9" src="img/randonve/df-1.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">cambiaso</div>
                     </div>
-                    <div class="jugadores-D-10 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-10">
+                        <img id="jugadores-D-10" src="img/judadoresBorussia/po.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">kobel</div>
                     </div>
-                    <div class="jugadores-D-11 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-11">
+                        <img id="jugadores-D-11" src="img/randonve/del-s.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">suarez</div>
                     </div>
-                    <div class="jugadores-D-12 jugadoresGeneral">
-                        <img src="../../../menu/css/img/avatar.png" class="img-tamaPortero" alt="">
+                    <div class="jugadoresGeneral" draggable="true" id="jugadores-D-12">
+                        <img id="jugadores-D-12" src="img/realmadrid/vol-ce.png" class="img-tamaPortero" alt="">
+                        <div class="nombres">bellingham</div>
                     </div>
                 </div>       
             </div>
         </div>
     </div>
+    <div class="descripciones-equipos">
+        <!-- Equipo 1 -->
+        <div class="equipo" id="equipo-uno">
+            <div class="descripciones-jugadores">
+                <div class="descripcion" id="desc-jEquipoUno-uno">
+                    <h3>Jugador 1</h3>
+                    <p>Portero - VfB Stuttgart, TSG Hoffenheim - Suiza</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-dos">
+                    <h3>Jugador 2</h3>
+                    <p>Lateral Izquierdo - Burnley FC, Chelsea FC, Feyenoord</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-tres">
+                    <h3>Jugador 3</h3>
+                    <p>Defensa Central - SC Freiburg, Union Berlín - Alemania</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-cuatro">
+                    <h3>Jugador 4</h3>
+                    <p>Defensa Central - Bayern Múnich, Borussia Dortmund II, BVB</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-cinco">
+                    <h3>Jugador 5</h3>
+                    <p>Lateral Derecho - Lillestrøm SK, Stabæk IF - Noruega</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-seis">
+                    <h3>Jugador 6</h3>
+                    <p>Mediocampista - RB Leipzig, M. United, Bayern Múnich</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-siete">
+                    <h3>Jugador 7</h3>
+                    <p>Mediocampista - Liverpool FC, Juventus - Alemania</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-ocho">
+                    <h3>Jugador 8</h3>
+                    <p>Extremo - Salzburgo - Alemania </p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-nueve">
+                    <h3>Jugador 9</h3>
+                    <p>Mediocampista - Bayer Leverkusen, VfL Wolfsburg - Alemania</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-diez">
+                    <h3>Jugador 10</h3>
+                    <p>Extremo - Manchester United, Watford FC, M. City</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoUno-once">
+                    <h3>Jugador 11</h3>
+                    <p>Delantero - Werder Bremen, West Ham - Alemania</p>
+                </div>
+            </div>
+        </div>
+        
+        
+    
+        <!-- Equipo 2 -->
+        <div class="equipo" id="equipo-dos">
+            <div class="descripciones-jugadores">
+                <div class="descripcion" id="desc-jEquipoDos-uno">
+                    <h3>Jugador 1</h3>
+                    <p>Portero - Chelsea FC, Atlético de Madrid - Bélgica</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-dos">
+                    <h3>Jugador 2</h3>
+                    <p>Lateral Izquierdo - Olympique Lyonnais, Le Havre, Brest</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-tres">
+                    <h3>Jugador 3</h3>
+                    <p>Defensa Central - Chelsea FC, AS Roma - Alemania</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-cuatro">
+                    <h3>Jugador 4</h3>
+                    <p>Defensa Central - Real Madrid Castilla, Al-Qadisiya, España</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-cinco">
+                    <h3>Jugador 5</h3>
+                    <p>Lateral Derecho - Bayer Leverkusen, Deportivo La Coruña - España</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-seis">
+                    <h3>Jugador 6</h3>
+                    <p>Mediocampista - Bayern Múnich, Bayer Leverkusen, Greifswalder </p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-siete">
+                    <h3>Jugador 7</h3>
+                    <p>Mediocampista - Stade Rennais - Francia</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-ocho">
+                    <h3>Jugador 8</h3>
+                    <p>Mediocampista - Deportivo La Coruña - Montevideo</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-nueve">
+                    <h3>Jugador 9</h3>
+                    <p>Mediocampista - Birmingham City, Dortmund - Inglaterra</p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-diez">
+                    <h3>Jugador 10</h3>
+                    <p>Delantero - Santos FC </p>
+                </div>
+                <div class="descripcion" id="desc-jEquipoDos-once">
+                    <h3>Jugador 11</h3>
+                    <p>Delantero - Flamengo - Brasil</p>
+                </div>
+            </div>
+        </div>   
+    </div>
+    
+    <div class="img-var" id="imgVar" style="opacity: 0.5; pointer-events: none;">VAR</div>
 
+    <div id="modalContainer" class="modal-container">
+        <div id="modal" class="modalRonda1">
+          <h2 id="modalText"></h2>
+        </div>
+    </div>
+    
+    <!-- Modal para .img-var -->
+    <div class="modal-hover" data-target="img-var" style="display: none;">
+        <div class="modal-content">
+          <p>¡Prepárate para ser el espía de la partida! Con esta carta podrás echar un vistazo secreto a los aciertos de otros jugadores. ¿Listo para ver sus mejores movimientos? Usa esta ventaja para completar tu alineación y asegurarte de que nada se te escape. ¡La estrategia está en tus manos!</p>
+        </div>
+    </div>
+      
+      <!-- Modal para .img-bloqueoVar -->
+    <div class="modal-hover hidden" data-target="img-bloqueoVar" style="display: none;"> 
+        <div class="modal-content">
+          <p>¡Es hora de frenar a tus rivales! Con la carta de Bloqueo, podrás ponerle una pausa estratégica al turno de otro jugador, obligándolo a esperar mientras tú avanzas. Usa esta carta para ganar tiempo y llevar la delantera. ¡El poder de ralentizar el juego está en tus manos</p>
+        </div>
+    </div>
+    <!-- Modal de alerta -->
+    <div id="modalAlerta" class="modalAlerta" style="display: none;">
+        <div class="modal-contenidoAlerta">
+          <p>Este jugador no pertenece a esta posición.</p>
+        </div>
+    </div>
+    <!-- Modal de alerta 2 -->
+    <div id="modalAlerta2" class="modalAlerta2" style="display: none;">
+        <div class="modal-contenidoAlerta2">
+          <p>Este campo no está habilitado.</p>
+        </div>
+      </div>
+    
+    <div id="nextModalContainerGanaste" class="modal-containerFinalGanaste" style="display: none;">
+        <div class="modalFinalGanaste">
+            <h2>Has Ganado!</h2>
+            <img src="./img/CaraGanaste.png" alt="emoji feliz" class="emoji">
+            <p>¡Felicitaciones!</p>
+            <p>
+                <span class="correcto">✔<span id="correctos">0</span> Correctos</span>
+            </p>
+            <p>
+                <span class="incorrecto">✘ <span id="incorrectos">0</span> Incorrectos</span>
+            </p>
+            <a href="Sala.html">
+                <button class="volver" onclick="volverASala()">VOLVER A LA SALA</button>
+            </a>    
+        </div>
+    </div>
+    
+    <div id="nextModalContainerPerdiste" class="modal-containerFinalPerdiste" style="display: none;">
+        <div class="modalFinalPerdiste">
+            <h2>Has Perdido!</h2>
+            <img src="./img/CaraPerdiste.png" alt="emoji triste" class="emojiPerdiste">
+            <p>De 22 posibles aciertos:</p>
+            <p>
+                <span class="correcto2">✔<span id="correctos2">0</span> Correctos</span>
+            </p>
+            <p>
+                <span class="incorrecto2">✘ <span id="incorrectos2">0</span> Incorrectos</span>
+            </p>
+            <a href="Sala.html">
+                <button class="volver2" onclick="volverASala()">VOLVER A LA SALA</button>
+            </a>
+        </div>
+    </div>
+    <div id="countdownModal" class="modal-countdown" style="display: none;">
+        <div class="countdown-number" id="countdownNumber">3</div>
+    </div>
+<script src="./js/arrastrar.js"></script>
+<script src="./js/descripcionJugadores.js"></script>
+<script src="js/HoverCartas.js"></script>
 </body>
 </html>

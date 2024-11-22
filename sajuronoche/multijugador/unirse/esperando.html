@@ -7,7 +7,6 @@
     <title>Sajuro</title>
     <link rel="stylesheet" href="css/esperando.css">
     <link rel="stylesheet" href="../../css/inicio.css">
-
 </head>
 <body>
     <div class="contenidoGeneral-crearSala">
@@ -15,95 +14,48 @@
             <div class="contenido-superior-crear">
                 <div class="titulo-jugadores">jugadores</div>
             </div>
-            <div class="contenido-usuarioMover">
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
-                </div>
-                <div class="username-multi">username</div>
-            </div>
+            <div class="contenido-usuarios-lista" >6
             </div>
             <div class="codigoANDnumero">
                 <div class="numero-codigo" id="numero-codigo"></div>
-                <div class="codigo-aleatorio">CODIGO</div>
+                <div class="codigo-aleatorio">CÓDIGO</div>
             </div>
             <div class="chat">
-                    <div class="chatContenido">
-                        <div class="nombreChat">chat</div>
-                        <div class="escribir">
-                            <input type="text" placeholder="Escribe un mensaje...">
-                            <button class="enviarUnirse">enviar</button>
-                        </div>                
+                <div class="chatContenido">
+                    <div class="nombreChat">chat</div>
+                    <div class="escribir">
+                        <div id="messages" class="messages"></div>
+                        <input type="text" id="message" placeholder="Escribe un mensaje...">
+                        <button class="enviarUnirse" type="button" id="send">enviar</button>
                     </div>
+                </div>
             </div>
         </div>
         
         <div class="contenidoGeneral-configuraciones">
             <div class="titulo-configurar">configuración sala</div>
             <div class="contenido-configurar">
-            <div class="rondas">
-                <button id="modo-juego"> rondas de juego</button>
-                <div class="opciones">
-                    <div class="ronda-tomada"> </div>
+                <div class="rondas">
+                    <button id="modo-juego">rondas de juego</button>
+                    <div class="opciones">
+                        <div class="ronda-tomada" id="rondas"></div>
+                    </div>
+                </div>
+                <div class="tiempo">
+                    <button id="tiempo-juego">tiempo de juego</button>
+                    <div class="opciones-tiempo">
+                        <div class="tiempo-tomado" id="tiempo"></div>
+                    </div>
+                </div>
+                <div class="modalidad">
+                    <button id="modalidad-juego">modo de juego</button>
+                    <div class="opciones-modalidad">
+                        <div class="modo-tomado"></div>
+                    </div>
                 </div>
             </div>
-            <div class="tiempo">
-                <button id="tiempo-juego">tiempo de juego</button>
-                <div class="opciones-tiempo">
-                    <div class="tiempo-tomado">holaaaa</div>
-                </div>
-            </div>
-            <div class="modalidad" >
-                <button id="modalidad-juego"> modo de juego</button>
-                <div class="opciones-modalidad">
-                    <div class="modo-tomado"></div>
-                </div>
-            </div>
-            </div>
-            <button id="iniciar"> iniciar</button>
-
         </div>
+    </div>
+    <script type="module" src="../js/esperando.js"></script>
 </body>
 </html>

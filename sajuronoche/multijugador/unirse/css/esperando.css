@@ -4,7 +4,7 @@
 }
 @font-face {
     font-family: 'Metal Mania';
-    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+    src: url('../../../css/fonts/MetalMania-Regular.ttf') format('truetype');
 }
 html{
     touch-action: manipulation; /* Evita el zoom mediante gestos táctiles */
@@ -44,12 +44,10 @@ html{
 }
 .username-multi{
     font-family: 'Metal Mania';
-    height: 2vh;
     color: white;
     font-size: 0.9vw;
     display: grid;
-    grid-row-start: 2;
-    align-self: flex-start;
+    grid-row-start: 2;    margin-top: 2%; /* Relativo al contenedor */
 }
 .contenido-usuarios{
     display: grid;
@@ -57,6 +55,16 @@ html{
     width: 10vw;
     justify-items: center;
     grid-template-rows: 82% 18%;
+}
+.contenido-usuarios-lista{
+    margin: 6vh 2vw;
+    width: 68vw;
+    display: grid;
+    grid-template-columns: repeat(6, 10%);
+    column-gap: 15px;
+    row-gap: 2vh;
+    justify-self: center;
+    position: fixed;
 }
 .contenido-usuarioMover{
     margin: 6vh 2vw;
@@ -213,7 +221,61 @@ html{
 .enviarUnirse:hover{
     background-color: #9e8852;
 }
+.messages {
+    width: 100%;
+    height: 60dvh;
+    cursor: grab; /* Cambia el cursor cuando el mouse está sobre el contenedor */
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1vw;
+    box-sizing: border-box;
+    text-align: end;
+    overflow: auto; /* Permite el desplazamiento del contenido */
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
 
+.messages.active {
+    cursor: grabbing; /* Cambia el cursor mientras arrastras */
+}
+
+.messages p {
+    margin: 5px 0;
+}
+
+.messages::-webkit-scrollbar {
+    display: none; /* Oculta las barras de desplazamiento en navegadores basados en WebKit */
+}
+
+.messages {
+    -ms-overflow-style: none; /* Oculta las barras en IE y Edge */
+    scrollbar-width: none; /* Oculta las barras en Firefox */
+}
+.usuario{
+    text-align: right; /* Alineación a la derecha */
+    width: 100%;
+    font-size: 1.2vw;
+    margin-top: 1dvh;
+}
+.contenidoUsuario {
+    width: 11vw; /* Puedes aumentar este ancho o usar un valor dinámico */
+    word-break: break-word; /* Para cortar palabras largas */
+    text-align: right;
+    margin-left: 9.5vw;
+    font-size: 0.9vw;
+}
+.contenidoCliente {
+    width: 11vw; /* Puedes aumentar este ancho o usar un valor dinámico */
+    word-break: break-word; /* Para cortar palabras largas */
+    text-align: start;
+    font-size: 0.9vw;
+}
+
+.cliente{
+    font-size: 1.2vw;
+    text-align: start;
+    margin-top: 1dvh;
+}
 @media(max-width: 399px){
     .titulo-jugadores{
         font-size: 20px;
@@ -234,6 +296,10 @@ html{
         margin-top: 0;
         margin-left: 20px;
         width: 120px;
+    }
+    .contenido-usuarios-lista{
+        top: 2dvh;
+        grid-template-columns: repeat(4, 10%);
     }
     .contenido-usuarios{
         height: 50px;
@@ -306,6 +372,7 @@ html{
     }
     .codigoANDnumero{
         left: 18vw;
+        top: 92dvh;
     }
     .codigo-aleatorio{
         font-size: 16px;
@@ -313,9 +380,23 @@ html{
     .numero-codigo{
         font-size: 10px;
     }
+    .messages{
+        height: 32dvh;
+    }
+    .usuario, .cliente{
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    .contenidoUsuario{
+        font-size: 10px;
+        width: 50%;
+        margin-left: 115px;
+    }
+    .contenidoCliente{
+        font-size: 10px;
+        width: 50%;
+    }
 /* Finalizo crear sala*/
-
-
 
 }
 @media(min-width: 400px) and (max-width: 550px) and (min-height: 740px){
@@ -338,6 +419,10 @@ html{
         margin-top: 0;
         margin-left: 30px;
         width: 130px;
+    }
+    .contenido-usuarios-lista{
+        top: 2dvh;
+        grid-template-columns: repeat(4, 12%);
     }
     .contenido-usuarios{
         height: 55px;
@@ -410,6 +495,7 @@ html{
     }
     .codigoANDnumero{
         left: 18vw;
+        top: 92dvh;
     }
     .codigo-aleatorio{
         font-size: 16px;
@@ -424,6 +510,22 @@ html{
         justify-content: center;
         align-items: center;
         margin-top: 0.5dvh;
+    }
+    .messages{
+        height: 40dvh;
+    }
+    .usuario, .cliente{
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    .contenidoUsuario{
+        font-size: 10px;
+        width: 50%;
+        margin-left: 125px;
+    }
+    .contenidoCliente{
+        font-size: 10px;
+        width: 50%;
     }
 }
 @media(min-width: 700px) and (max-width: 1000px) and (min-height: 740px){

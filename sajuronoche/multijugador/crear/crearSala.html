@@ -16,55 +16,55 @@
                 <div class="titulo-expulsar" id="expulsar">expulsar</div>
                 <div class="titulo-jugadores">jugadores</div>
             </div>
-            <div class="contenido-usuarioMover">
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+            <div class="contenido-usuarios-lista" >
+                <div class="contenido-usuarios">
+                    <div class="imagen-usuario">
+                        <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                    </div>
+                    <div class="username-multi">username</div>
                 </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                <div class="contenido-usuarios">
+                    <div class="imagen-usuario">
+                        <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                    </div>
+                    <div class="username-multi">username</div>
                 </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                <div class="contenido-usuarios">
+                    <div class="imagen-usuario">
+                        <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                    </div>
+                    <div class="username-multi">username</div>
                 </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                <div class="contenido-usuarios">
+                    <div class="imagen-usuario">
+                        <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                    </div>
+                    <div class="username-multi">username</div>
                 </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                <div class="contenido-usuarios">
+                    <div class="imagen-usuario">
+                        <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                    </div>
+                    <div class="username-multi">username</div>
                 </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                <div class="contenido-usuarios">
+                    <div class="imagen-usuario">
+                        <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                    </div>
+                    <div class="username-multi">username</div>
                 </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                <div class="contenido-usuarios">
+                    <div class="imagen-usuario">
+                        <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                    </div>
+                    <div class="username-multi">username</div>
                 </div>
-                <div class="username-multi">username</div>
-            </div>
-            <div class="contenido-usuarios">
-                <div class="imagen-usuario">
-                    <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                <div class="contenido-usuarios">
+                    <div class="imagen-usuario">
+                        <img src="../../menu/css/img/avatar.png" alt="" class="imgUsuariounirse">
+                    </div>
+                    <div class="username-multi">username</div>
                 </div>
-                <div class="username-multi">username</div>
-            </div>
             </div>
             <div class="codigoANDnumero">
                 <div class="numero-codigo" id="numero-codigo"></div>
@@ -74,29 +74,30 @@
                 <div class="chatContenido">
                     <div class="nombreChat">chat</div>
                     <div class="escribir">
-                        <input type="text" placeholder="Escribe un mensaje...">
-                        <button class="enviarUnirse">enviar</button>
-                    </div>                
+                        <div id="messages" class="messages"></div>
+                        <input type="text" id="message" placeholder="Escribe un mensaje...">
+                        <button class="enviarUnirse" type="button" id="send">enviar</button>
+                    </div>
                 </div>
-        </div>
+            </div>
         </div>
         <div class="contenidoGeneral-configuraciones">
             <div class="titulo-configurar">configurar sala</div>
             <div class="contenido-configurar">
-            <div class="rondas">
+            <div class="rondas" >
                 <button id="modo-juego"> rondas de juego</button>
                 <div class="opciones">
-                    <div class="ronda-1-2 color-seleccionado " id="rondas-1-2"> rondas 2</div>
-                    <div class="ronda-2-4 color-seleccionado " id="rondas-2-4"> rondas 4</div>
-                    <div class="ronda-4-6 color-seleccionado " id="rondas-4-6"> rondas 6</div>
+                    <div class="ronda-1-2 color-seleccionado" id="rondas-1-2" data-rondas="2">rondas 2</div>
+                    <div class="ronda-2-4 color-seleccionado" id="rondas-2-4" data-rondas="4">rondas 4</div>
+                    <div class="ronda-4-6 color-seleccionado" id="rondas-4-6" data-rondas="6">rondas 6</div>
                 </div>
             </div>
             <div class="tiempo">
                 <button id="tiempo-juego"> tiempo de juego</button>
                 <div class="opciones-tiempo">
-                    <div class="tiempo-4" id="tiempo-1" > 4 minutos</div>
-                    <div class="tiempo-6" id="tiempo-2" > 6 minutos</div>
-                    <div class="tiempo-8" id="tiempo-3" > 8 minutos</div>
+                    <div class="tiempo-4" id="tiempo-1" data-tiempo="4"> 4 minutos</div>
+                    <div class="tiempo-6" id="tiempo-2" data-tiempo="6"> 6 minutos</div>
+                    <div class="tiempo-8" id="tiempo-3" data-tiempo="8"> 8 minutos</div>
                 </div>
             </div>
             <div class="modalidad" >
@@ -121,7 +122,7 @@
             <button id="iniciar"> iniciar</button>
 
         </div>
-        <script src="../crear/js/crear.js"></script>
-         <script src="./js/multijugador.js"></script>
+         <script  src="../crear/js/multijugador.js"></script>
+         <script type="module" src="../js/esperando.js"></script>
 </body>
 </html>

@@ -8,26 +8,34 @@
     <link rel="stylesheet" href="css/multijugador.css">
     <link rel="stylesheet" href="../css/inicio.css">
 
+
 </head>
 <body>
-    <div class="contenido-multijugador">
-        <div class="contenidoMulti">
-            <div class="crear" >
-                <button class="btn button-crear" href="./crear/crearSala.html" >
-                <img src="../menu/css/img/campo-modalidad.png" alt="" width="270px">
-                <div class="titulo-crear" id="crear-sala">crear a sala</div>
-                </button>
-            </div>  
-                
-                <div class="unirse">
-                    <button class="btn button-unirse" href="../multijugador/unirse/codigo.html">
-                    <img src="../menu/css/img/campo-modalidad.png" alt="" width="270px">
-                    <div class="titulo-unir">unirse a sala</div>
+    <div class="logo">
+        <a href="../menu/amigos-suge.html">
+        <img src="logo-login.png" alt="" class="logo">
+        </a>
+    </div>
+    <div class="nuevo-contenido-home">
+        <div class="contenido-home-modalidad">
+            <div class="campos">
+                <div class="crear">
+                    <button class="btn button-crear" href="./crear/crearSala.html" >
+                    <img src="../menu/css/img/campo-modalidad.png" alt="" class="img-multijugador">
+                    <div class="titulo-crear"  id="crear-sala" >crear sala</div>
+                    </button>
                 </div>
-                </a>
+                <div class="unirse">
+                    <a class="btn button-unirse" href="./unirse/unirseSala.html">
+                        <img src="../menu/css/img/campo-modalidad.png" alt="" class="img-multijugador">
+                        <div class="titulo-crear titulo-unirse">unirse a sala</div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    <script src="./crear/js/crear.js"></script>
+
+    <script type="module" src="./js/esperando.js"></script>
+    <script type="module" src="./js/audio-system.js"></script>
 </body>
 </html>

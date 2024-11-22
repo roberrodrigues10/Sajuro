@@ -1,18 +1,25 @@
-const socket =  new WebSocket('ws://localhost:8080')
+// Selecciona todos los inputs con la clase "codigo-ingreso"
+const inputs = document.querySelectorAll('.codigo-ingreso');
 
-socket.onopen = () => {
-    console.log('conectado al servidor');
-};
+inputs.forEach((input, index) => {
+    input.addEventListener('input', (event) => {
+        const value = event.target.value.trim();
+        // Si se ingresa un número, pasa al siguiente input
+        if (value.length === 1 && !isNaN(value)) {
+            const nextInput = inputs[index + 1];
+            if (nextInput) {
+                nextInput.focus(); // Mueve el foco al siguiente input
+            }
+        }
+    });
 
-
-const unirseSalaBtn = document.getElementById('unirse-sala')
-if(unirseSalaBtn){
-    unirseSalaBtn.addEventListener('click', async () =>{
-        const codigoSalaInput = document.getElementById('codigo-sala-input')
-        const codigoSala = codigoSalaInput.value;
-        console.log('codigo ingresado: ', codigoSala)
-
-        const usuarioId = sessionStorage.getItem('usuarioId')
-    })
-
-}
+    // Permite regresar con la tecla Backspace
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Backspace' && input.value === '') {
+            const previousInput = inputs[index - 1];
+            if (previousInput) {
+                previousInput.focus(); // Mueve el foco al input anterior
+            }
+        }
+    });
+});
