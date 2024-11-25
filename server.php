@@ -109,6 +109,15 @@ class Chat implements MessageComponentInterface {
                             'modo' => $data['modo']
                         ]));
                         break;
+                        case 'iniciar_partida':
+                            if (isset($this->salas[$codigoSala])) {
+                                $this->broadcastToSala($codigoSala, json_encode([
+                                    'action' => 'partida_iniciada',
+                                    'codigo_sala' => $codigoSala,
+                                    'mensaje' => 'La partida ha comenzado'
+                                ]));
+                            }
+                            break;
                         
             }
         }

@@ -127,6 +127,13 @@ socket.onmessage = (event) => {
                 }
             }
             break; 
+
+            case 'partida_iniciada':
+                if (data.codigo_sala === salaActual) {
+                    alert(data.mensaje); // Notifica a los jugadores que la partida ha comenzado
+                    window.location.href = '../juego/deportes/deportes.html?codigo=' + salaActual;
+                }
+                break;
     }
 };
 
@@ -400,6 +407,21 @@ function inicializarEventListeners() {
 // Asegurarse de que el código se ejecute solo una vez cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     inicializarEventListeners();
+});
+
+document.getElementById('iniciar').addEventListener('click', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const codigoSala = urlParams.get('codigo'); // Obtener el código de sala desde la URL
+    console.log("jugando")
+    if (codigoSala) {
+        sendWebSocketMessage({
+            action: 'iniciar_partida',
+            codigo_sala: codigoSala
+        });
+        
+    } else {
+        console.error('Código de sala no encontrado');
+    }
 });
 
 
