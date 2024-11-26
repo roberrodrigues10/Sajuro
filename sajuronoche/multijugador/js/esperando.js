@@ -101,14 +101,27 @@ socket.onmessage = (event) => {
                     mostrarMensajeChat(data);
                 }
             break;
-            case 'actualizar_rondas':
+            case 'actualizar_limite_jugadores':
             if (data.codigo_sala === salaActual) {
-                // Actualizar el número de rondas en la interfaz de usuario
-                const rondasElement = document.getElementById('rondas');
-                if (rondasElement) {
-                    rondasElement.textContent = `rondas ${data.numRondas}`;
+                 console.log(`Límite de jugadores actualizado: ${message.numJugadores}`);
+
+                // Actualizar el mensaje en el HTML con el nuevo límite
+                const jugadoresElement = document.getElementById('rondas');
+                if (jugadoresElement) {
+                    jugadoresElement.textContent = `Límite de jugadores: ${message.numJugadores}`;
                 }
-            }
+
+                // Mostrar mensaje si el límite de jugadores ha sido alcanzado
+                if (message.numJugadores === 0) {
+                    if (mensajeLimite) {
+                        mensajeLimite.textContent = 'Límite de jugadores alcanzado. No se puede unir más jugadores.';
+                    }
+                } else {
+                    if (mensajeLimite) {
+                        mensajeLimite.textContent = '';  // Limpiar el mensaje
+                    }
+                }
+                    }
             break;
             case 'actualizar_tiempo':
             if(data.codigo_sala === salaActual) {
@@ -261,42 +274,90 @@ function mostrarMensajeChat(data) {
     }
 }
 
-// Selección de los elementos de opciones de rondas
-const rondaUno = document.getElementById('rondas-1-2');
-const rondaDos = document.getElementById('rondas-2-4');
-const rondaTres = document.getElementById('rondas-4-6');
+const jugadorUno = document.getElementById('rondas-1-2');
+const jugadorDos = document.getElementById('rondas-2-4');
+const jugadorTres = document.getElementById('rondas-4-6');
 
-const rondas = [rondaUno, rondaDos, rondaTres];
+const player = [jugadorUno, jugadorDos, jugadorTres];
 
-// Selección de rondas y actualización en pantalla y servidor
-rondas.forEach(ronda => {
-    ronda.addEventListener('click', () => {
+const mensajeLimite = document.getElementById('mensaje-limite');  // Elemento para mostrar el mensaje
+
+player.forEach(jugador => {
+    jugador.addEventListener('click', async () => {
         // Desmarcar cualquier selección previa
-        rondas.forEach(r => {
-            r.style.backgroundColor = ''; 
+        player.forEach(j => {
+            j.style.backgroundColor = ''; 
         });
+
         // Marcar la opción seleccionada
-       ronda.style.backgroundColor = '#c19a67';
+        jugador.style.backgroundColor = '#c19a67';
 
-        console.log(`Ronda seleccionada: ${ronda.id}`);
+        console.log(`Límite de jugadores seleccionado: ${jugador.id}`);
 
-        // Obtener el número de rondas desde el atributo `data-rondas`
-        const numRondas = parseInt(ronda.getAttribute('data-rondas'));
+        // Obtener el número de jugadores desde el atributo `data-jugadores`
+        const numJugadores = parseInt(jugador.getAttribute('data-jugadores'));
 
-        // Mostrar la selección en el segundo div
-        const rondasElement = document.getElementById('rondas');
-        if (rondasElement) {
-            rondasElement.textContent = `Rondas: ${numRondas}`;
+        // Mostrar la selección en pantalla
+        const jugadoresElement = document.getElementById('rondas');
+        if (jugadoresElement) {
+            jugadoresElement.textContent = `Límite de jugadores: ${numJugadores}`;
         }
 
-        // Enviar la actualización de rondas al servidor
+        // Actualizar el límite de jugadores en la base de datos y mostrarlo en HTML
+        try {
+            await actualizarYMostrarLimite(salaActual, numJugadores); // Llamamos a una sola función
+        } catch (error) {
+            console.error('Error al actualizar y mostrar el límite:', error);
+        }
         sendWebSocketMessage({
-            action: 'actualizar_rondas',
+            action: 'actualizar_limite_jugadores',
             codigo_sala: salaActual,
-            numRondas: numRondas
+            numJugadores: numJugadores
         });
     });
 });
+
+// Función para actualizar el límite en la base de datos y mostrarlo en el HTML
+const actualizarYMostrarLimite = async (codigoSala, limiteJugadores) => {
+    try {
+        // Actualizar el límite de jugadores en la base de datos
+        const response = await fetch('http://localhost/Sajuro/sajuronoche/multijugador/php/actualizar-limite.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'actualizar',
+                codigo_sala: codigoSala,
+                limite_jugadores: limiteJugadores
+            })
+        });
+        const data = await response.json();
+        console.log(data.message);
+
+        // Ahora que se actualizó el límite, obtenemos el límite actualizado
+        if (data.status === 'success') {
+            // Actualizamos el límite mostrado en el HTML
+            const jugadoresElement = document.getElementById('rondas');
+            if (jugadoresElement) {
+                jugadoresElement.textContent = `Límite de jugadores: ${limiteJugadores}`;
+            }
+
+            // Mostrar el mensaje si el límite ha sido alcanzado
+            if (limiteJugadores > 0) {
+                if (mensajeLimite) {
+                    mensajeLimite.textContent = '';  // Limpiar cualquier mensaje previo
+                }
+            } else {
+                if (mensajeLimite) {
+                    mensajeLimite.textContent = 'Límite de jugadores alcanzado. No se puede unir más jugadores.';
+                }
+            }
+        } else {
+            console.error(data.message);
+        }
+    } catch(error) {
+        console.error('Error al actualizar el límite:', error );
+    }
+};
 
 const tiempoUno = document.getElementById('tiempo-1');
 const tiempoDos = document.getElementById('tiempo-2');
