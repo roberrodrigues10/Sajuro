@@ -23,6 +23,7 @@ function inicioSesion(event) {
             // Cambiar sessionStorage por localStorage aquí
             localStorage.setItem('usuarioId', data.usuarioId);
             localStorage.setItem('nombreUsuario', data.nombreUsuario);
+            localStorage.setItem('avatar', data.avatar);
     
             // Redirigir a la página de carga
             window.location.href = '../iniciosesion/cargando.html';

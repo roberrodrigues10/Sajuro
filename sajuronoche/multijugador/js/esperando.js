@@ -1,7 +1,7 @@
 import { mostrarJugadores } from './jugadores.js';
 import SajuroAudioSystem from './audio-System.js';
 let audioSystem = null;
-const socket = new WebSocket('ws://172.20.10.6:8080');
+const socket = new WebSocket('ws://192.168.1.35:8080');
 let jugadores = [];
 let pendingMessages = [];
 let salaActual = null;
@@ -20,10 +20,11 @@ function sendWebSocketMessage(message) {
 
 function actualizarJugadores(nuevoJugador = null) {
     const urlParams = new URLSearchParams(window.location.search);
-    salaActual = urlParams.get('codigo');
-
+    const salaActual = urlParams.get('codigo');
 
     if (nuevoJugador && nuevoJugador.username && !jugadores.some(j => j.username === nuevoJugador.username)) {
+        const avatar = localStorage.getItem('avatar') || 'ruta/por/defecto/avatar.png';
+        nuevoJugador.avatar = avatar;
         jugadores.push(nuevoJugador);
     }
 
@@ -39,7 +40,8 @@ function actualizarJugadores(nuevoJugador = null) {
 async function inicializarSala() {
     const urlParams = new URLSearchParams(window.location.search);
     salaActual = urlParams.get('codigo');
-    const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+    const nombreUsuario = localStorage.getItem('nombreUsuario');
+    const avatar = localStorage.getItem('avatar');
 
     const codigoSalaElemento = document.getElementById('numero-codigo');
     if (codigoSalaElemento && salaActual) {
@@ -54,18 +56,16 @@ async function inicializarSala() {
     }
 
     if (nombreUsuario && jugadores.length === 0) {
-        const nuevoJugador = { 
-            username: nombreUsuario, 
-            avatar: '../../menu/css/img/avatar.png' 
-        };
+        const nuevoJugador = { username: nombreUsuario, avatar: avatar };
         actualizarJugadores(nuevoJugador);
     }
+
     // Inicializar el sistema de audio
     audioSystem = new SajuroAudioSystem(socket, salaActual);
     
     // Verificar si el usuario es admin (anfitrión)
-    const usuarioId = sessionStorage.getItem('usuarioId');
-    const response = await fetch('http://172.20.10.6/sajuro/sajuronoche/multijugador/crear/php/verificar-admin.php', {
+    const usuarioId = localStorage.getItem('usuarioId');
+    const response = await fetch('http://192.168.1.35/sajuro/sajuronoche/multijugador/crear/php/verificar-admin.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -171,13 +171,13 @@ socket.onclose = (event) => {
 document.addEventListener("DOMContentLoaded", function () {
     const crearSalaBtn = document.getElementById('crear-sala');
     if (crearSalaBtn) {
-        crearSalaBtn.addEventListener('click', async () => {
+        crearSalaBtn.addEventListener('click', async () => {    
             const codigoSala = generarCodigoSala();
-            const usuarioId = sessionStorage.getItem('usuarioId');
-            const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+            const usuarioId = localStorage.getItem('usuarioId');
+            const nombreUsuario = localStorage.getItem('nombreUsuario');
 
             try {
-                const response = await fetch('http://172.20.10.6/sajuro/sajuronoche/multijugador/crear/php/crear-sala.php', {
+                const response = await fetch('http://192.168.1.35/sajuro/sajuronoche/multijugador/crear/php/crear-sala.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -214,8 +214,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (unirseSalaBtn) {
         unirseSalaBtn.addEventListener('click', async () => {
             const codigoSala = obtenerCodigoSala();
-            const usuarioId = sessionStorage.getItem('usuarioId');
-            const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+            const usuarioId = localStorage.getItem('usuarioId');
+            const nombreUsuario = localStorage.getItem('nombreUsuario');
 
             if (!codigoSala) {
                 console.error('Por favor, ingresa un código de sala válido.');
@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             try {
-                const response = await fetch('http://172.20.10.6/sajuro/sajuronoche/multijugador/unirse/php/unirse-sala.php', {
+                const response = await fetch('http://192.168.1.35/sajuro/sajuronoche/multijugador/unirse/php/unirse-sala.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('message').addEventListener('keydown', (event) => {
         if (event.key === 'Enter') { // Verifica si la tecla presionada es Enter
             const messageInput = document.getElementById('message');
-            const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+            const nombreUsuario = localStorage.getItem('nombreUsuario');
             const message = messageInput.value.trim();
             if (message) {
                 // Enviar el mensaje al servidor WebSocket
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Agregar evento para el botón Send
     document.getElementById('send').addEventListener('click', () => {
         const messageInput = document.getElementById('message');
-        const nombreUsuario = sessionStorage.getItem('nombreUsuario');
+        const nombreUsuario = localStorage.getItem('nombreUsuario');
         const message = messageInput.value.trim();
         if (message) {
             // Enviar el mensaje al servidor WebSocket
@@ -295,7 +295,7 @@ function mostrarMensajeChat(data) {
     if (chatContainer) {
         const mensajeElemento = document.createElement('div');
         const mensajeElemento2 = document.createElement('div');
-        const nombreUsuarioActual = sessionStorage.getItem('nombreUsuario');
+        const nombreUsuarioActual = localStorage.getItem('nombreUsuario');
         
         // Diferenciar entre mensajes propios y ajenos
         if (data.nombreUsuario === nombreUsuarioActual) {

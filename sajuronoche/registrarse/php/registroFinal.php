@@ -32,11 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception('Email no verificado o token inválido');
         }
 
-        // Insertar en la tabla usuario
-        $sql_insert = "INSERT INTO usuario (nombre_usuario, contrasena, email, is_verified) VALUES (?, ?, ?, 1)";
-        $stmt_insert = $conn->prepare($sql_insert);
-        $stmt_insert->bind_param('sss', $nombre_usuario, $contrasena, $email);
-
         if (!$stmt_insert->execute()) {
             throw new Exception('Error al registrar el usuario');
         }

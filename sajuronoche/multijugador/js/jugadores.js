@@ -11,20 +11,21 @@ export function mostrarJugadores(jugadores) {
 
     jugadores.forEach(jugador => {
         const jugadorDiv = document.createElement('div');
-        jugadorDiv.classList.add('contenido-usuarios'); // Cambia esta clase si necesitas un estilo específico
+        jugadorDiv.classList.add('contenido-usuarios'); // Cambia esta clase si necesits un estilo específico
 
         const avatarDiv = document.createElement('div');
         avatarDiv.classList.add('imagen-usuario');
+
+        // Verifica si el jugador tiene un avatar y asigna la URL del avatar
         const avatarImg = document.createElement('img');
-        avatarImg.src = '../../menu/css/img/avatar.png'; 
-        avatarImg.alt = 'Avatar';
+        avatarImg.src = jugador.avatar; // Aquí asignamos la URL del avatar desde el objeto jugador
         avatarImg.classList.add('imgUsuariounirse');
         avatarImg.width = 100;
         avatarDiv.appendChild(avatarImg);
 
         const usernameDiv = document.createElement('div');
         usernameDiv.classList.add('username-multi');
-        usernameDiv.textContent = jugador.username;
+        usernameDiv.textContent = jugador.username; // Muestra el nombre del jugador
 
         jugadorDiv.appendChild(avatarDiv);
         jugadorDiv.appendChild(usernameDiv);
