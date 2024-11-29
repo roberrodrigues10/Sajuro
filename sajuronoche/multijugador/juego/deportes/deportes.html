@@ -343,7 +343,7 @@
                     <span id="puntos"></span>
                 </div>
                 <div class="tarjetas">
-                    <div class="var">
+                    <div class="var" onclick="mostrarModalJugadores()">
                         <img src="img/tarjeta-var.png" class="img-var" alt="">
                     </div>
                     <div class="bloqueo-var">
@@ -355,9 +355,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="jugadoresDentro-deportes">
-                <div class="tituloJugadores">jugadores</div>
             </div>
         </div>
         <div class="izquierda"> 
@@ -580,6 +577,49 @@
       <h2 id="modalText"></h2>
     </div>
 </div>
+<div class="contenedorJugadores" id="modalJugadoresVar">
+    <div id="cerrar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+          </svg>
+    </div>
+    <div class="contenidoJugadores">
+        <div class="Jugador">
+            <img src="img/CaraGanaste.png" alt="">
+        </div>
+        <div class="Jugador">
+            <img src="img/CaraGanaste.png" alt="">
+        </div>
+        <div class="Jugador">
+            <img src="img/CaraGanaste.png" alt="">
+        </div>
+        <div class="Jugador">
+            <img src="img/CaraGanaste.png" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="contenedorJugadores" id="modalJugadoresBloqueo">
+    <div id="cerrar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+          </svg>
+    </div>
+    <div class="contenidoJugadores">
+        <div class="Jugador">
+            <img src="img/CaraGanaste.png" alt="">
+        </div>
+        <div class="Jugador">
+            <img src="img/CaraGanaste.png" alt="">
+        </div>
+        <div class="Jugador">
+            <img src="img/CaraGanaste.png" alt="">
+        </div>
+        <div class="Jugador">
+            <img src="img/CaraGanaste.png" alt="">
+        </div>
+    </div>
+</div>
 
 <!-- Modal para .img-var -->
 <div class="modal-hover" data-target="img-var" style="display: none;">
@@ -644,6 +684,15 @@
     <div class="countdown-number" id="countdownNumber">3</div>
 </div>
 
+<div id="modal-jugadores" class="modals">
+    <div class="modals-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <h2>Jugadores en la sala</h2>
+        <ul id="lista-jugadores"></ul>
+    </div>
+</div>
+
+<script type="module" src="../../js/juego.js"></script>
 <script src="js/arrastrar.js"></script>
 <script src="./js/descripcionJugadores.js"></script>
 <script src="./js/HoverCartas.js"></script>

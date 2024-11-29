@@ -103,16 +103,16 @@ socket.onmessage = (event) => {
             break;
             case 'actualizar_limite_jugadores':
             if (data.codigo_sala === salaActual) {
-                 console.log(`Límite de jugadores actualizado: ${message.numJugadores}`);
+                 console.log(`Límite de jugadores actualizado: ${data.numJugadores}`);
 
                 // Actualizar el mensaje en el HTML con el nuevo límite
                 const jugadoresElement = document.getElementById('rondas');
                 if (jugadoresElement) {
-                    jugadoresElement.textContent = `Límite de jugadores: ${message.numJugadores}`;
+                    jugadoresElement.textContent = `Límite de jugadores: ${data.numJugadores}`;
                 }
 
                 // Mostrar mensaje si el límite de jugadores ha sido alcanzado
-                if (message.numJugadores === 0) {
+                if (data.numJugadores === 0) {
                     if (mensajeLimite) {
                         mensajeLimite.textContent = 'Límite de jugadores alcanzado. No se puede unir más jugadores.';
                     }
@@ -123,23 +123,16 @@ socket.onmessage = (event) => {
                 }
                     }
             break;
-            case 'actualizar_tiempo':
-            if(data.codigo_sala === salaActual) {
-
-                const tiemposElement = document.getElementById('tiempo');
-                if (tiemposElement) {
-                    tiemposElement.textContent = `tiempo ${data.numTiempo}`;
-                }
-            } 
-            break;
             case 'actualizar_modo_juego':
-            if (data.codigo_sala === salaActual) {
-                const modoTomado = document.querySelector('.modo-tomado');
-                if (modoTomado) {
-                    modoTomado.textContent = `Modo seleccionado: ${data.modo}`;
+                if (data.codigo_sala === salaActual) {
+                    const modoTomado = document.getElementById('modo-tomado');
+                    if (modoTomado) {
+                        modoTomado.textContent = `Modo seleccionado: ${data.modo}`;
+                    }
+                    console.log(`Modo de juego actualizado a: ${data.modo}`);
                 }
-            }
-            break; 
+                break;
+
 
             case 'partida_iniciada':
                 if (data.codigo_sala === salaActual) {
@@ -317,7 +310,6 @@ player.forEach(jugador => {
     });
 });
 
-// Función para actualizar el límite en la base de datos y mostrarlo en el HTML
 const actualizarYMostrarLimite = async (codigoSala, limiteJugadores) => {
     try {
         // Actualizar el límite de jugadores en la base de datos
@@ -325,7 +317,7 @@ const actualizarYMostrarLimite = async (codigoSala, limiteJugadores) => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                action: 'actualizar',
+                action: 'actualizar_limite',
                 codigo_sala: codigoSala,
                 limite_jugadores: limiteJugadores
             })
@@ -335,10 +327,9 @@ const actualizarYMostrarLimite = async (codigoSala, limiteJugadores) => {
 
         // Ahora que se actualizó el límite, obtenemos el límite actualizado
         if (data.status === 'success') {
-            // Actualizamos el límite mostrado en el HTML
             const jugadoresElement = document.getElementById('rondas');
             if (jugadoresElement) {
-                jugadoresElement.textContent = `Límite de jugadores: ${limiteJugadores}`;
+                jugadoresElement.textContent = `Límite de jugadores: ${data.limiteJugadores}`;
             }
 
             // Mostrar el mensaje si el límite ha sido alcanzado
@@ -359,42 +350,11 @@ const actualizarYMostrarLimite = async (codigoSala, limiteJugadores) => {
     }
 };
 
-const tiempoUno = document.getElementById('tiempo-1');
-const tiempoDos = document.getElementById('tiempo-2');
-const tiempoTres = document.getElementById('tiempo-3');
-
-const tiempos = [tiempoUno, tiempoDos, tiempoTres];
-
-tiempos.forEach(tiempo => {
-    tiempo.addEventListener('click', () => {
-
-        tiempos.forEach(t => {
-            t.style.backgroundColor = ''; 
-        });
-        
-        tiempo.style.backgroundColor = '#c19a67';
-
-        console.log(`Tiempo seleccionado: ${tiempo.id}`);
-
-        const numTiempo = parseInt(tiempo.getAttribute('data-tiempo'));
-
-        const tiemposElement = document.getElementById('tiempo');
-        if(tiemposElement){
-            tiemposElement.textContent = `tiempo: ${numTiempo}`;
-        }
-
-        sendWebSocketMessage({
-            action: 'actualizar_tiempo',
-            codigo_sala: salaActual,
-            numTiempo: numTiempo
-        });
-    });
-});
 
 const modalidadAleatorio = document.getElementById('modalidad-aleatorio');
 const aparecerOdesaparecerModalidad = document.getElementById('aparecerOdesaparecer-modalidad');
 const modoAleatorio = document.getElementById('modo-aleatorio');
-const modoTomado = document.querySelector('.modo-tomado');
+
 
 // Función para limpiar event listeners anteriores
 function removeAllEventListeners(element) {
@@ -403,20 +363,39 @@ function removeAllEventListeners(element) {
     return newElement;
 }
 
-// Función para actualizar el modo de juego
 function actualizarModoJuego(modo) {
     console.log('Actualizando modo de juego:', modo);
     
+    fetch('http://localhost/Sajuro/sajuronoche/multijugador/php/actualizar-limite.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            action: 'actualizar_modo',
+            codigo_sala: salaActual,
+            modo_juego: modo
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            console.log('Modo de juego actualizado:', modo);
+            const modoTomado = document.getElementById('modo-tomado');
+            if (modoTomado) {
+                modoTomado.textContent = `Modo seleccionado: ${data.modo}`;
+            }
+        } else {
+            console.error('Error al actualizar el modo de juego:', data.message);
+        }
+    })
+    .catch(error => console.error('Error en la solicitud:', error));
+
     sendWebSocketMessage({
         action: 'actualizar_modo_juego',
         codigo_sala: salaActual,
         modo: modo
     });
-
-    if (modoTomado) {
-        modoTomado.textContent = `Modo seleccionado: ${modo}`;
-    }
 }
+
 
 // Inicializar los event listeners una sola vez
 function inicializarEventListeners() {

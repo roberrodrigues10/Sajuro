@@ -33,8 +33,7 @@ class Chat implements MessageComponentInterface {
                 case 'sala_creada':
                     // Crear la sala con el límite inicial
                     $this->salas[$codigoSala] = [
-                        'jugadores' => [],
-                        'limite' => $data['limite_jugadores']
+                        'jugadores' => []
                     ];
                     $this->broadcastToSala($codigoSala, $msg);
                     break;
@@ -76,6 +75,15 @@ class Chat implements MessageComponentInterface {
                         }
                     }
                     break;
+                    case 'mensaje_chat':
+                        $mensaje = [
+                        'action' => 'mensaje_chat',
+                        'codigo_sala' => $codigoSala,
+                        'nombreUsuario' => $data['nombreUsuario'],
+                        'mensaje' => $data['mensaje']
+                        ];
+                        $this->broadcastToSala($codigoSala, json_encode($mensaje));
+                        break;
 
                 case 'solicitar_jugadores':
                     // Enviar la lista de jugadores actuales
@@ -85,6 +93,27 @@ class Chat implements MessageComponentInterface {
                         'jugadores' => $this->salas[$codigoSala]['jugadores'] ?? []
                     ]));
                     break;
+
+                    case 'actualizar_modo_juego':
+                        // Validar que la sala exista
+                        if (isset($this->salas[$codigoSala])) {
+                            // Guardar el modo de juego en la sala
+                            $this->salas[$codigoSala]['modo_juego'] = $data['modo'];
+                    
+                            // Notificar a todos los jugadores de la sala el nuevo modo
+                            $this->broadcastToSala($codigoSala, json_encode([
+                                'action' => 'actualizar_modo_juego',
+                                'codigo_sala' => $codigoSala,
+                                'modo' => $data['modo']
+                            ]));
+                        } else {
+                            // Notificar al cliente que la sala no existe
+                            $this->broadcastToClient($from, json_encode([
+                                'action' => 'error',
+                                'mensaje' => 'La sala no existe.'
+                            ]));
+                        }
+                        break;
 
                 default:
                     echo "Acción desconocida: {$data['action']}\n";
