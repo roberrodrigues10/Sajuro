@@ -132,14 +132,14 @@ socket.onmessage = (event) => {
                     console.log(`Modo de juego actualizado a: ${data.modo}`);
                 }
                 break;
-
-
-            case 'partida_iniciada':
-                if (data.codigo_sala === salaActual) {
-                    alert(data.mensaje); // Notifica a los jugadores que la partida ha comenzado
-                    window.location.href = '../juego/deportes/deportes.html?codigo=' + salaActual;
-                }
-                break;
+                case 'partida_iniciada':
+                    if (data.codigo_sala === salaActual) {
+                        alert(data.mensaje); // Mensaje para jugadores
+                        window.location.href = '../juego/deportes/deportes.html?codigo=' + salaActual;
+                    } else {
+                        console.error('Código de sala no coincide');
+                    }
+                    break;
     }
 };
 
@@ -455,7 +455,7 @@ document.getElementById('iniciar').addEventListener('click', () => {
     console.log("jugando")
     if (codigoSala) {
         sendWebSocketMessage({
-            action: 'iniciar_partida',
+            action: 'partida_iniciada',
             codigo_sala: codigoSala
         });
         
