@@ -58,29 +58,37 @@ class Chat implements MessageComponentInterface {
                     case 'jugador_unido':
                         if (isset($this->salas[$codigoSala])) {
                             $sala = &$this->salas[$codigoSala];
-                            if (count($sala['jugadores']) < $sala['limite']) {
-                                $sala['jugadores'][] = [
-                                    'username' => $data['nombreUsuario'],
-                                    'avatar' => $data['avatar'] // Guardar avatar enviado por el cliente
-                                ];
-                    
-                                // Notificar a todos en la sala
-                                $this->broadcastToSala($codigoSala, json_encode([
-                                    'action' => 'jugador_unido',
-                                    'codigo_sala' => $codigoSala,
-                                    'nombreUsuario' => $data['nombreUsuario'],
-                                    'avatar' => $data['avatar']
-                                ]));
-                            } else {
-                                $this->broadcastToClient($from, json_encode([
-                                    'action' => 'sala_llena',
-                                    'codigo_sala' => $codigoSala,
-                                    'mensaje' => 'La sala ha alcanzado el límite de jugadores.'
-                                ]));
+                            
+                            // Verificar si el jugador ya está en la lista
+                            foreach ($sala['jugadores'] as $jugador) {
+                                if ($jugador['username'] === $data['nombreUsuario']) {
+                                    // No hacer nada si el jugador ya está en la lista
+                                    return;
+                                }
                             }
+                    
+                            // Agregar al nuevo jugador
+                            $sala['jugadores'][] = [
+                                'username' => $data['nombreUsuario'],
+                                'avatar' => $data['avatar'] ?? '../../menu/css/img/avatar.png' // Avatar por defecto
+                            ];
+                    
+                            // Enviar la lista de jugadores actualizada a todos los jugadores en la sala
+                            $this->broadcastToSala($codigoSala, json_encode([
+                                'action' => 'actualizar_jugadores',
+                                'codigo_sala' => $codigoSala,
+                                'jugadores' => $sala['jugadores']
+                            ]));
+                        } else {
+                            // Sala no existe
+                            $this->broadcastToClient($from, json_encode([
+                                'action' => 'sala_llena',
+                                'codigo_sala' => $codigoSala,
+                                'mensaje' => 'La sala ha alcanzado el límite de jugadores.'
+                            ]));
                         }
                         break;
-
+                        
                 case 'mensaje_chat':
                     $mensaje = [
                         'action' => 'mensaje_chat',
@@ -92,14 +100,10 @@ class Chat implements MessageComponentInterface {
                     break;
 
                     case 'solicitar_jugadores':
-                        // Verificar si la sala existe y enviar los jugadores
+                        // Verificar si la sala existe
                         if (isset($this->salas[$codigoSala])) {
                             // Obtener los jugadores de la sala solicitada
                             $jugadores = $this->salas[$codigoSala]['jugadores'] ?? [];
-                    
-                            // Depuración
-                            echo "Sala encontrada: $codigoSala\n";
-                            echo "Jugadores: " . json_encode($jugadores) . "\n";
                     
                             // Enviar la lista de jugadores al cliente que hizo la solicitud
                             $this->broadcastToClient($from, json_encode([
@@ -109,7 +113,6 @@ class Chat implements MessageComponentInterface {
                             ]));
                         } else {
                             // Enviar mensaje de error si la sala no existe
-                            echo "Sala no encontrada: $codigoSala\n";
                             $this->broadcastToClient($from, json_encode([
                                 'action' => 'error',
                                 'codigo_sala' => $codigoSala,
@@ -117,7 +120,6 @@ class Chat implements MessageComponentInterface {
                             ]));
                         }
                         break;
-
                 case 'actualizar_modo_juego':
                     // Validar que la sala exista
                     if (isset($this->salas[$codigoSala])) {
@@ -149,6 +151,8 @@ class Chat implements MessageComponentInterface {
                     }
                     error_log('Sala encontrada para iniciar partida: ' . $codigoSala);
                     break;
+
+                    
             }
         }
     }

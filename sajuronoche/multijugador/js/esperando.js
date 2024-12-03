@@ -81,7 +81,12 @@ socket.onmessage = (event) => {
                     username: data.nombreUsuario,
                     avatar: '../../menu/css/img/avatar.png'
                 };
-                actualizarJugadores(nuevoJugador);
+                // Verificar si el jugador ya está en la lista antes de agregarlo
+                if (!jugadores.some(j => j.username === nuevoJugador.username)) {
+                    actualizarJugadores(nuevoJugador);
+                } else {
+                    console.warn(`El jugador ${nuevoJugador.username} ya está en la lista.`);
+                }
             }
             break;
 
