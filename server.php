@@ -235,13 +235,12 @@ class Chat implements MessageComponentInterface {
                             }
                             break;
 
-                            case 'mostrar_streaming':
-                                // Obtener la sala y el jugador que está solicitando el streaming
+                            case 'espiar_partida':
                                 $codigoSala = $data['codigo_sala'] ?? null;
                                 $usuario = $data['usuario'] ?? null;
-                            
+            
+                                // Verificar si la sala y la partida existen
                                 if (isset($this->salas[$codigoSala])) {
-                                    // Buscar el jugador en la sala
                                     $jugadores = $this->salas[$codigoSala]['jugadores'];
                                     $jugador = null;
                                     foreach ($jugadores as $j) {
@@ -250,26 +249,51 @@ class Chat implements MessageComponentInterface {
                                             break;
                                         }
                                     }
-                            
+            
                                     if ($jugador) {
-                                        // Aquí puedes definir la URL o la lógica para obtener el streaming en vivo del jugador
-                                        $urlStreaming = "ruta_del_streaming_en_vivo_" . $jugador['username'] . ".mp4"; // O la URL dinámica
-                            
-                                        // Enviar a todos los jugadores de la sala que hay un nuevo streaming disponible
-                                        $this->broadcastToSala($codigoSala, json_encode([
-                                            'action' => 'mostrar_streaming',
-                                            'codigo_sala' => $codigoSala,
-                                            'usuario' => $usuario,
-                                            'url_streaming' => $urlStreaming // La URL del video en vivo
+                                        // Obtener el estado de la partida del jugador
+                                        $estadoPartida = $this->obtenerPartida($codigoSala, $usuario);
+            
+                                        if ($estadoPartida) {
+                                            // Enviar el estado de la partida del jugador para que lo vea el "espía"
+                                            $this->broadcastToSala($codigoSala, json_encode([
+                                                'action' => 'mostrar_partida_espiada',
+                                                'codigo_sala' => $codigoSala,
+                                                'usuario' => $usuario,
+                                                'estado_partida' => $estadoPartida
+                                            ]));
+            
+                                            // Enviar también la partida al jugador que está espiando
+                                            $this->broadcastToClient($from, json_encode([
+                                                'action' => 'mostrar_partida_espiada',
+                                                'codigo_sala' => $codigoSala,
+                                                'usuario' => $usuario,
+                                                'estado_partida' => $estadoPartida
+                                            ]));
+                                        } else {
+                                            // Si no hay una partida en curso
+                                            $this->broadcastToClient($from, json_encode([
+                                                'action' => 'error',
+                                                'mensaje' => 'No hay una partida en curso para espiar.'
+                                            ]));
+                                        }
+                                    } else {
+                                        $this->broadcastToClient($from, json_encode([
+                                            'action' => 'error',
+                                            'mensaje' => 'El jugador no está en la sala.'
                                         ]));
                                     }
+                                } else {
+                                    $this->broadcastToClient($from, json_encode([
+                                        'action' => 'error',
+                                        'mensaje' => 'La sala no existe.'
+                                    ]));
                                 }
                                 break;
                                                                            
             }
         }
     }
-
     public function onClose(ConnectionInterface $conn) {
         echo "Conexión cerrada: {$conn->resourceId}\n";
         $this->clients->detach($conn);
@@ -281,9 +305,11 @@ class Chat implements MessageComponentInterface {
     }
 
     // Enviar mensaje a todos en la sala
-    protected function broadcastToSala($codigoSala, $msg) {
+    private function broadcastToSala($codigoSala, $msg) {
         foreach ($this->clients as $client) {
-            $client->send($msg);
+            if (isset($client->sala) && $client->sala === $codigoSala) {
+                $client->send($msg);
+            }
         }
     }
 
