@@ -1,4 +1,8 @@
 <?php
+// Mostrar todos los errores
+ini_set('display_errors', 1);
+error_reporting(E_ALL); // Reportar todos los errores (warnings, notices, etc.)
+
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use Ratchet\Http\HttpServer;
@@ -9,7 +13,28 @@ require __DIR__ . '/vendor/autoload.php';
 
 class Chat implements MessageComponentInterface {
     protected $clients;
-    protected $salas; // Mantener información de las salas, incluyendo el límite de jugadores
+    protected $salas;
+    private $obtenerPartida = []; // Mantener información de las salas, incluyendo el límite de jugadores
+
+    private function obtenerPartida($codigoSala, $usuario) {
+        // Verificar si la sala existe
+        if (isset($this->salas[$codigoSala])) {
+            error_log('Sala encontrada: ' . json_encode($this->salas[$codigoSala]));
+            
+            // Verificar si la partida está asociada a la sala
+            if (isset($this->salas[$codigoSala]['partida'])) {
+                error_log('Partida encontrada: ' . json_encode($this->salas[$codigoSala]['partida']));
+                return $this->salas[$codigoSala]['partida'];
+            } else {
+                error_log('No se encontró partida asociada a la sala: ' . $codigoSala);
+            }
+        } else {
+            error_log('No se encontró la sala con el código: ' . $codigoSala);
+        }
+        
+        return null; // Si no se encuentra la partida
+    }
+    
 
     public function __construct() {
         $this->clients = new \SplObjectStorage;
@@ -32,7 +57,8 @@ class Chat implements MessageComponentInterface {
                 case 'sala_creada':
                     // Crear la sala con la lista inicial de jugadores
                     $this->salas[$codigoSala] = [
-                        'jugadores' => []
+                        'jugadores' => [], 
+                        'estado' => 'espera'
                     ];
                     $this->broadcastToSala($codigoSala, json_encode([
                         'action' => 'actualizar_jugadores',
@@ -141,18 +167,105 @@ class Chat implements MessageComponentInterface {
                     }
                     break;
 
-                case 'partida_iniciada':
-                    if (isset($this->salas[$codigoSala])) {
-                        $this->broadcastToSala($codigoSala, json_encode([
-                            'action' => 'partida_iniciada',
-                            'codigo_sala' => $codigoSala,
-                            'mensaje' => 'La partida ha comenzado'
-                        ]));
-                    }
-                    error_log('Sala encontrada para iniciar partida: ' . $codigoSala);
-                    break;
-
+                    case 'partida_iniciada':
+                        if (isset($this->salas[$codigoSala])) {
+                            // Verificar si la partida ya está en curso o no
+                            if (!isset($this->salas[$codigoSala]['partida'])) {
+                                // Inicializar la partida si no está creada aún
+                                $this->salas[$codigoSala]['partida'] = [
+                                    'estado' => 'espera', // Estado de espera antes de comenzar
+                                    'jugadores' => $this->salas[$codigoSala]['jugadores'], // Asigna los jugadores
+                                    'movimientos' => [] // Inicializar movimientos
+                                ];
+                            }
                     
+                            // Cambiar el estado de la partida a "en curso" si hay jugadores
+                            if (count($this->salas[$codigoSala]['jugadores']) > 0) {
+                                $this->salas[$codigoSala]['partida']['estado'] = 'en curso';
+                                $this->broadcastToSala($codigoSala, json_encode([
+                                    'action' => 'partida_iniciada',
+                                    'codigo_sala' => $codigoSala,
+                                    'mensaje' => 'La partida ha comenzado'
+                                ]));
+                            } else {
+                                // Si no hay jugadores, no inicies la partida
+                                $this->broadcastToSala($codigoSala, json_encode([
+                                    'action' => 'error',
+                                    'codigo_sala' => $codigoSala,
+                                    'mensaje' => 'No hay suficientes jugadores para iniciar la partida.'
+                                ]));
+                            }
+                        }
+                        break;
+                        case 'oferta':
+                            // Enviar la oferta a todos los jugadores excepto al que la envió
+                            foreach ($this->salas[$codigoSala]['jugadores'] as $jugador) {
+                                if ($jugador['username'] !== $data['nombreUsuario']) {
+                                    $this->broadcastToClient($jugador['client'], json_encode([
+                                        'action' => 'oferta',
+                                        'codigo_sala' => $codigoSala,
+                                        'oferta' => $data['oferta'],
+                                        'origen' => $data['nombreUsuario']
+                                    ]));
+                                }
+                            }
+                            break;
+                        
+                        case 'respuesta':
+                            // Enviar la respuesta a la persona que hizo la oferta
+                            $this->broadcastToClient($this->salas[$codigoSala]['jugadores'][$data['destino']]['client'], json_encode([
+                                'action' => 'respuesta',
+                                'codigo_sala' => $codigoSala,
+                                'respuesta' => $data['respuesta'],
+                                'origen' => $data['nombreUsuario']
+                            ]));
+                            break;
+                        
+                        case 'nuevo_ICE_candidate':
+                            // Enviar el candidato ICE a los demás jugadores
+                            foreach ($this->salas[$codigoSala]['jugadores'] as $jugador) {
+                                if ($jugador['username'] !== $data['origen']) {
+                                    $this->broadcastToClient($jugador['client'], json_encode([
+                                        'action' => 'nuevo_ICE_candidate',
+                                        'codigo_sala' => $codigoSala,
+                                        'candidate' => $data['candidate'],
+                                        'origen' => $data['origen']
+                                    ]));
+                                }
+                            }
+                            break;
+
+                            case 'mostrar_streaming':
+                                // Obtener la sala y el jugador que está solicitando el streaming
+                                $codigoSala = $data['codigo_sala'] ?? null;
+                                $usuario = $data['usuario'] ?? null;
+                            
+                                if (isset($this->salas[$codigoSala])) {
+                                    // Buscar el jugador en la sala
+                                    $jugadores = $this->salas[$codigoSala]['jugadores'];
+                                    $jugador = null;
+                                    foreach ($jugadores as $j) {
+                                        if ($j['username'] === $usuario) {
+                                            $jugador = $j;
+                                            break;
+                                        }
+                                    }
+                            
+                                    if ($jugador) {
+                                        // Aquí puedes definir la URL o la lógica para obtener el streaming en vivo del jugador
+                                        $urlStreaming = "ruta_del_streaming_en_vivo_" . $jugador['username'] . ".mp4"; // O la URL dinámica
+                            
+                                        // Enviar a todos los jugadores de la sala que hay un nuevo streaming disponible
+                                        $this->broadcastToSala($codigoSala, json_encode([
+                                            'action' => 'mostrar_streaming',
+                                            'codigo_sala' => $codigoSala,
+                                            'usuario' => $usuario,
+                                            'url_streaming' => $urlStreaming // La URL del video en vivo
+                                        ]));
+                                    }
+                                }
+                                break;
+                                                                           
             }
         }
     }
