@@ -4,9 +4,10 @@ session_start(); // Iniciar sesión para verificar si el usuario ya está loguea
 // Verificar si ya hay una sesión activa
 if (isset($_SESSION['nombre_usuario'])) {
     // Si ya está logueado, redirigir a la página principal o la página deseada
-    header('Location: http://192.168.1.35/sajuro/sajuronoche/menu/amigos-suge.html');
+    header('Location: https://localhost/sajuro/sajuronoche/menu/amigos-suge.html');
     exit; // Detener el script después de la redirección
 }
+
 
 require 'conexion.php'; // Incluir la configuración de la base de datos
 
@@ -50,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($contrasena, $hashed_contrasena)) {
             if ($is_verified == 1) {
                 $_SESSION['nombre_usuario'] = $nombre_usuario;
-
+                $_SESSION['id_usuario'] = $user_id;  // Almacenar también el ID de usuario
                 // Realizar la consulta para obtener la URL del avatar usando el avatar_id
                 $sql_avatar = "SELECT img_avatar FROM avatar WHERE id_avatar = ?";
                 $stmt_avatar = $conn->prepare($sql_avatar);
@@ -66,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 if ($stmt_avatar->num_rows > 0) {
                     $stmt_avatar->bind_result($avatar_url);
-                    $stmt_avatar->fetch();
+                    $stmt_avatar->fetch(); 
 
                     // Obtener el host actual (localhost o IP)
                     $host_actual = $_SERVER['HTTP_HOST'];
@@ -77,10 +78,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $avatar_url = "http://localhost/sajuro/sajuronoche/perfil/img/" . $avatar_url; // Ajusta el path según sea necesario
                     } elseif (strpos($host_actual, '192.168.') !== false) {
                         // Si es la IP local, ajustar la URL al IP de tu computadora
-                        $avatar_url = "http://192.168.1.35/sajuro/sajuronoche/perfil/img/" . $avatar_url; // Ajusta el path según sea necesario
+                        $avatar_url = "http://localhost/sajuro/sajuronoche/perfil/img/" . $avatar_url; // Ajusta el path según sea necesario
                     } else {
                         // Si es otro host, mantener la URL original
-                        $avatar_url = "http://192.168.1.35/sajuro/sajuronoche/perfil/img/" . $avatar_url; // Asegúrate de modificar este valor para otros entornos
+                        $avatar_url = "http://localhost/sajuro/sajuronoche/perfil/img/" . $avatar_url; // Asegúrate de modificar este valor para otros entornos
                     }
 
                     // Incluir el avatar en la respuesta JSON

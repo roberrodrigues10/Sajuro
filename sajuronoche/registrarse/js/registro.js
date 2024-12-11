@@ -15,7 +15,7 @@ function registrarUsuario(event) {
     mensajeCorreoOusuario.textContent = '';
     if (mensajeError) mensajeError.textContent = '';
 
-    fetch('http://192.168.1.35/sajuro/sajuronoche/registrarse/php/registro.php', {
+    fetch('http://localhost/sajuro/sajuronoche/registrarse/php/registro.php', {
         method: 'POST',
         body: formData
     })

@@ -10,6 +10,8 @@
 
 </head>
 <body>
+    <div class="IniciarJugadores" id="IniciarJugadores">
+    </div>
     <div class="contenidoGeneral-crearSala">
         <div class="contenidoGeneral-usuarios">
             <div class="contenido-superior-crear">
@@ -37,19 +39,11 @@
             <div class="titulo-configurar">configurar sala</div>
             <div class="contenido-configurar">
             <div class="rondas" >
-                <button id="modo-juego"> rondas de juego</button>
+                <button id="modo-juego">Límite de jugadores</button>
                 <div class="opciones">
-                    <div class="ronda-1-2 color-seleccionado" id="rondas-1-2" data-rondas="2">rondas 2</div>
-                    <div class="ronda-2-4 color-seleccionado" id="rondas-2-4" data-rondas="4">rondas 4</div>
-                    <div class="ronda-4-6 color-seleccionado" id="rondas-4-6" data-rondas="6">rondas 6</div>
-                </div>
-            </div>
-            <div class="tiempo">
-                <button id="tiempo-juego"> tiempo de juego</button>
-                <div class="opciones-tiempo">
-                    <div class="tiempo-4" id="tiempo-1" data-tiempo="4"> 4 minutos</div>
-                    <div class="tiempo-6" id="tiempo-2" data-tiempo="6"> 6 minutos</div>
-                    <div class="tiempo-8" id="tiempo-3" data-tiempo="8"> 8 minutos</div>
+                    <div class="ronda-1-2 color-seleccionado" id="rondas-1-2" data-jugadores="2">Jugadores: 2</div>
+                    <div class="ronda-2-4 color-seleccionado" id="rondas-2-4" data-jugadores="4">Jugadores: 4</div>
+                    <div class="ronda-4-6 color-seleccionado" id="rondas-4-6" data-jugadores="6">Jugadores: 6</div>
                 </div>
             </div>
             <div class="modalidad" >
@@ -72,7 +66,9 @@
             </div>
             </div>
             <button id="iniciar"> iniciar</button>
-
+            <div id="countdownModal">
+                <div id="countdownNumber">10</div>
+            </div>
         </div>
          <script  src="../crear/js/multijugador.js"></script>
          <script type="module" src="../js/esperando.js"></script>

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../../css/inicio.css">
 </head>
 <body>
-    <div id="contador"></div>
+    <div id="contador">ewjef</div>
     <div id="modalContainerInicio" class="modal-container">
         <div id="modalInicio" class="modalRonda1">
           <h2 id="modalTextInicio">Iniciando Partida...</h2>
@@ -123,7 +123,7 @@
             </div>
         </div>
         <div class="contenidoCampo">
-            <div class="timer-deportes"></div> <!-- Temporizador -->
+            <div class="timer-deportes">cdfdds</div> <!-- Temporizador -->
             <div class="timer-deportes-2"></div> <!-- Temporizador -->
             <div class="img-contenido">
                 <img src="img/cancha.png" alt="">
@@ -345,13 +345,15 @@
                 </div>
                 <div class="tarjetas">
                     <div class="var">
-                        <img src="img/tarjeta-var.png" class="img-var" alt="">
+                        <img src="img/tarjeta-var.png" class="img-var" id="var" alt="">
                     </div>
                     <div class="bloqueo-var">
                         <img src="img/tarjeta-bloqueoVar.png" class="img-bloqueoVar" alt="">
                     </div>
                     <div class="ajustes">
-                        <img src="img/Vector.png" class="img-ajustes" alt="">
+                        <a href="Configuraciones.html">
+                            <img src="img/Vector.png" class="img-ajustes" alt="">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -440,7 +442,7 @@
                     </div>
                     <div class="jugadoresGeneral" draggable="true" id="jugadores-D-7">
                         <img id="jugadores-D-7" src="img/equipo-randono/vol-2.png" class="img-tamaPortero" alt="">
-                        <div class="nombres">macallister</div>
+                        <div class="nombres">macaluer</div>
                     </div>
                     <div class="jugadoresGeneral" draggable="true" id="jugadores-D-8">
                         <img id="jugadores-D-8" src="img/realmadrid/dl-1.png" class="img-tamaPortero" alt="">
@@ -570,7 +572,6 @@
         </div>   
     </div>
     
-    <div class="img-var" id="imgVar" style="opacity: 0.5; pointer-events: none;">VAR</div>
 
     <div id="modalContainer" class="modal-container">
         <div id="modal" class="modalRonda1">
@@ -578,18 +579,42 @@
         </div>
     </div>
     
-    <!-- Modal para .img-var -->
-    <div class="modal-hover" data-target="img-var" style="display: none;">
-        <div class="modal-content">
-          <p>¡Prepárate para ser el espía de la partida! Con esta carta podrás echar un vistazo secreto a los aciertos de otros jugadores. ¿Listo para ver sus mejores movimientos? Usa esta ventaja para completar tu alineación y asegurarte de que nada se te escape. ¡La estrategia está en tus manos!</p>
+    <div class="contenedorJugadores" id="modalJugadoresVar" style="display: none">
+        <div id="cerrar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+              </svg>
+        </div>
+        <div class="jugadores-lista"></div>
+    </div>
+    <div id="recintoPartida">
+        <!-- Este div contendrá la escena de Three.js -->
+    </div>
+    
+    <div class="contenedorJugadores" id="modalJugadoresBloqueo">
+        <div id="cerrar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+              </svg>
+        </div>
+        <div class="contenidoJugadores">
+            <div class="Jugador">
+                <img src="img/CaraGanaste.png" alt="">
+            </div>
+            <div class="Jugador">
+                <img src="img/CaraGanaste.png" alt="">
+            </div>
+            <div class="Jugador">
+                <img src="img/CaraGanaste.png" alt="">
+            </div>
+            <div class="Jugador">
+                <img src="img/CaraGanaste.png" alt="">
+            </div>
         </div>
     </div>
-      
-      <!-- Modal para .img-bloqueoVar -->
-    <div class="modal-hover hidden" data-target="img-bloqueoVar" style="display: none;"> 
-        <div class="modal-content">
-          <p>¡Es hora de frenar a tus rivales! Con la carta de Bloqueo, podrás ponerle una pausa estratégica al turno de otro jugador, obligándolo a esperar mientras tú avanzas. Usa esta carta para ganar tiempo y llevar la delantera. ¡El poder de ralentizar el juego está en tus manos</p>
-        </div>
+    <div id="recintoPartida" style="display: none;">
+        <div id="streamingContainer"></div>
+        <button id="cerrarModal">Cerrar</button>
     </div>
     <!-- Modal de alerta -->
     <div id="modalAlerta" class="modalAlerta" style="display: none;">
@@ -638,10 +663,13 @@
         </div>
     </div>
     <div id="countdownModal" class="modal-countdown" style="display: none;">
-        <div class="countdown-number" id="countdownNumber">3</div>
+        <div class="countdown-number" id="countdownNumber"></div>
     </div>
+<script src="../../js/juego.js"></script>   
 <script src="./js/arrastrar.js"></script>
 <script src="./js/descripcionJugadores.js"></script>
 <script src="js/HoverCartas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 </body>
 </html>

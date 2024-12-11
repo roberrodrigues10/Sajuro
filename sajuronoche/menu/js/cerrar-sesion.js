@@ -3,7 +3,7 @@ function cerrarSesion() {
     localStorage.clear();
     
     // Luego hacemos la petición al servidor para limpiar la sesión PHP
-    fetch('http://172.20.10.6/sajuro/sajuronoche/iniciosesion/php/logout.php')
+    fetch('http://localhost/sajuro/sajuronoche/iniciosesion/php/logout.php')
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {

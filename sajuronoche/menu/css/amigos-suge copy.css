@@ -128,4 +128,6 @@ input[type="text"] {
 }
 a{
     cursor: url('../../css/img/cursor.png'), auto;
+    color: black;
 }
+

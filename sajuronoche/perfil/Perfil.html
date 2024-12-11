@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/perfil.css">
+</head>
+<body>
+    <div class="contenedorGeneralPerfil" id="afuera">
+        <div class="contenedorFlechaAtras">
+            <button onclick="history.back()" class="botton">
+            <img src="../configuraciones/img/flechaAtras.png" alt="Volver atrás" class="flechaAtras">
+            </button>
+        </div>        
+        <div class="contenedorCuadrosPerfil">
+            <div class="contenedorPerfilGen">
+            <div class="contenedorInformacionPerfil">
+                <div class="ContenidoFilaPrimeroPerfil">
+                    <div class="ContenedorAvatarNombrePerfil">
+                        <div class="contenidoAvatarPerfil">
+                            <img src="img/avatar9.png" id="avatarPerfil" class="avatarPerfil">
+                        </div>
+                        <div class="contenidoNombrePerfil">
+                            <h1 id="username" class="username">rober2110</h1>
+                        </div>
+                    </div>
+                    <div class="ContenedorEsferasPerfil">
+                        <div class="contenidoEsferaDoradaPerfil">
+                            <img src="img/EsferaDorada.png" class="imgesferas" alt="" >
+                        </div>
+                        <div class="ContenidoEsferaAzulPerfil">  
+                            <img src="img/EsferaAzul.png" class="imgesferas" alt="">
+                        </div> 
+                        <div class="contenidoEsferaRojaPerfil">
+                            <img src="img/EsferaRoja.png" class="imgesferas" alt="">
+                        </div>
+                    </div>
+                    <div class="contedorCantidad">
+                    <div class="contenidoCantidadEsferasDoradas">
+                        <h1></h1>
+                    </div>
+                    <div class="contenidoCantidadEsferasAzules">
+                        <h1></h1>
+                    </div>
+                    <div class="contenidoCantidadEsferasRojas">
+                        <h1></h1>
+                    </div>
+                    </div>
+                </div>
+                <div class="ContenidoFilaSegundoPerfil">
+                    <div class="NivelPerfil">
+                        <h4 class="">nivel:    <span id="nivel"></span> </h4>
+                    </div>
+                    <div class="estadoCuentaPerfil">
+                        <h4>estado</h4>
+                        <img src="img/encendido.png" class="funcionEstadoEncendido" id="ON">
+                        <img src="img/apagado.png" class="funcionEstadoapagado" id="OFF">
+                    </div>
+                    <div class="ConfiguracionesPerfil">
+                        <h4>configuraciones</h4>
+                        <a href="Configuraciones.html " class="aConfi">
+                            <h4></h4>
+                        </a>
+                    </div>
+                    <div id="InvitarPerfil">
+                            <h4 onclick="compartir()">invitar amigo</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="atributGe">
+                <img src="img/atri.png" class="imgAtri">
+            </div>
+            <div class="alertaAvatar"></div>
+            <div class="contenedorAvataresgeneral">
+            <div class="contenedorAvatares">
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar1.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar2.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar3.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar4.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar5.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar6.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar7.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar8.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar9.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar10.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar11.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar12.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar13.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar14.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar15.png" class="contenidoAvatar1">
+                </div>
+                <div class="ContenidoAvatar1">
+                    <img src="img/avatar16.png" class="contenidoAvatar1">
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenedorGeneralPerfil2Movil">
+        <div class="contenedorFlechaAtras">
+            <a href="Jugadores.html">
+                <img src="img/flechaAtras.png" alt="">
+            </a>
+        </div>
+    </div>
+<div class="modales">
+    <!--MODAL NIVEL-->
+    <div id="contenedorModalNivel" style="display: none;">
+        <div id="containerNivelModal">
+            <div class="NumeroNivelModal">
+                <span>0</span>
+                <div class="Nivelbarra">
+                    <div class="barraNivel"></div>
+                </div>
+                <span>1</span>
+            </div>
+            <div class="EsferasModalNivel">
+                <div class="EsferaDoradaModalNivel">
+                    <img src="img/EsferaDorada.png">
+                </div>
+                <div class="EsferaAzulModalNivel">
+                    <img src="img/EsferaAzul.png">
+                </div>
+                <div class="EsferaRojaModalNivel">
+                    <img src="img/EsferaRoja.png">
+                </div>
+            </div>
+            <div class="CantidadEsferasModalNivel">
+                <div class="CantidadEsferaDoradaModalNivel">
+                    <h1></h1>
+                </div>
+                <div class="CantidadEsferaAzulModalNivel">
+                    <h1></h1>
+                </div>
+                <div class="CantidadEsferaRojaModalNivel">
+                    <h1></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="gameAudio" loop>
+        <source src="../configuraciones/MUSICA de TERROR sin copyright para VIDEOS🆘 RealSound.mp4" type="">
+    </audio>
+    <!--MODAL TEMATICA-->
+    <label id="switchTematica">
+        <input type="checkbox" id="interruptorTematica">
+        <span class="sliderTematica">
+            <span class="slider-textTematica dayTematica">
+                <span class="mainTematica">SAJURO</span>
+                <span class="subTematica">Day</span>
+            </span>
+            <span class="slider-textTematicanoche nightTematica">
+                <span class="mainTematica">SAJURO</span>
+                <span class="subTematica">Night</span>
+            </span>
+        </span>
+    </label>
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        // Obtener el nombre de usuario del sessionStorage
+        const nombreUsuario = localStorage.getItem('nombreUsuario');
+        const Avatar = localStorage.getItem('avatar');
+
+        // Mostrar el nombre de usuario en el elemento correspondiente
+        if (nombreUsuario) {
+            document.getElementById('username').textContent = nombreUsuario;
+        }
+        if (Avatar) {
+            document.getElementById('avatarPerfil').src = Avatar;
+        }
+        
+    });
+    </script>
+    <script src="js/obtenerNivel.js"></script>
+    <script src="js/cerrarSesion.js"></script>
+    <script src="js/avatar.js"></script>
+    <script src="js/invitarAmigos.js"></script>
+    <script src="js/NivelModal.js"></script>
+    <script src="js/avatarSelection.js"></script>
+    <script src="js/TematicaModal.js"></script>
+    <script src="js/interruptorON.js"></script>
+    <script src="js/veriAvatar.js"></script>
+    <script src="../configuraciones/js/volLlamar.js"></script>
+    <script src="../configuraciones/js/volumen.js"></script>
+</body>
+</html>

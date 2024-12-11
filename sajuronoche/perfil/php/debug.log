@@ -1,0 +1,264 @@
+Sesión actual: Array
+(
+    [nombre_usuario] => rober
+)
+Sesión actual: Array
+(
+    [nombre_usuario] => rober
+)
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 0
+    [esfera_roja] => 0
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 15
+    [esfera_roja] => 1
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 15
+    [esfera_roja] => 1
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 0
+    [esfera_roja] => 0
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 0
+    [esfera_roja] => 0
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 0
+    [esfera_roja] => 0
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 15
+    [esfera_roja] => 1
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 15
+    [esfera_roja] => 1
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 0
+    [esfera_roja] => 0
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Resultado de execute: true
+Filas afectadas: 0
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 15
+    [esfera_roja] => 1
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Resultado de execute: true
+Filas afectadas: 1
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 15
+    [esfera_roja] => 1
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Resultado de execute: true
+Filas afectadas: 0
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 0
+    [esfera_roja] => 0
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Resultado de execute: true
+Filas afectadas: 1
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 15
+    [esfera_roja] => 1
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Resultado de execute: true
+Filas afectadas: 1
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 15
+    [esfera_roja] => 1
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Resultado de execute: true
+Filas afectadas: 0
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 0
+    [esfera_roja] => 0
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Resultado de execute: true
+Filas afectadas: 1
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 20
+    [esfera_roja] => 2
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Resultado de execute: true
+Filas afectadas: 1
+Inicio de la solicitud
+Datos recibidos: Array
+(
+    [esfera_azul] => 20
+    [esfera_roja] => 2
+    [esfera_dorada] => 0
+)
+
+ID Usuario: 3
+SQL: UPDATE perfil SET 
+            esfera_azul = ?, 
+            esfera_roja = ?, 
+            esfera_dorada = ? 
+            WHERE usuario = ?
+Resultado de execute: true
+Filas afectadas: 0

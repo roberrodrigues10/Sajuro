@@ -76,7 +76,6 @@ html{
 .bienvenido{
     display: grid;
     justify-self: center;
-    
 }
 .content-bienvenido{
     display: grid;
@@ -86,20 +85,23 @@ html{
 }
 
 .bienvenido-img{
-    width: 400px;
-    height: 150px;
+    width: 320px;
+    height: 180px;
+    opacity: 100%;
 }
 .titulo-bienvenido{
     position: fixed;
-    margin: 37px 146px;
-    color: rgb(143, 102, 68);
+    margin: 70px 105px;
+    color: rgba(33, 26, 20, 0.777);
     font-size: 25px;
     font-family: 'Metal Mania';
+    font-weight: 900;
+    letter-spacing: 1.5px;
 }
 .titulo-user{
     position: fixed;
-    margin: 60px 165px;
-    color: rgb(143, 102, 68);
+    margin: 93px 130px;
+    color: rgb(33, 26, 20);
     font-size: 17px;
     font-family: 'Metal Mania';
 }
@@ -118,10 +120,11 @@ html{
     display: grid;
     justify-items: start;
     height: 10px;
-    margin: 0px 92vw;
+    margin: 0.6vh 83vw;
 }
 .logo-perfi{
     margin: 0px 1.5vw;
+    z-index: 100;
 }
 .modalidad-juego{
     width: 330px;
@@ -176,14 +179,14 @@ html{
 
 .usuario-conectado{
     position: fixed;
-    margin: -62px 57px;
+    margin: -62px 62px;
     font-family: 'Metal Mania';
     transform: rotate(-3deg); /* Rota 45 grados hacia arriba */
     font-size: 18px;
 }
 .point-conectados{
     position: fixed;
-    margin: -74px 125px;
+    margin: -74px 140px;
 }
 .point-color-conectados{
     color: rgb(0, 0, 0);
@@ -196,7 +199,7 @@ html{
 }
 .estado{
     position: fixed;
-    margin: -26px 80px;
+    margin: -26px 65px;
     z-index: 1000;
 }
 .logo-enlinea{
@@ -228,15 +231,11 @@ html{
     color: #8b6946;
     font-family: 'Metal Mania';
     font-size: 22px;
-    background-color: #e4c5a5;
     width: 130px;
     text-align: center;
-    border: 2px solid #8b6946;
 }
-.objetos-espada{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.imgCerrar{
+    width: 17vh;
 }
 .objetos-logo{
     width: 70px;
@@ -249,6 +248,9 @@ html{
     margin: -6.5vh 3.3vw ;
     font-family: 'Metal Mania';
     font-size: 20px;
+    color: rgb(33, 26, 20);
+    font-weight: 900;
+    letter-spacing: 0.5px;
 }
 .titulo-friend{
     margin: 0px 2vw;
@@ -304,7 +306,29 @@ a{
     width: 650px;
     height: 150px;
 }
-
+.imgAmigo{
+    width: 9vw;
+    position: fixed;
+    top: 18%;
+    right: 0%;
+    opacity: 90%;
+    transform: rotate(-20deg); /* Gira 45 grados */
+}
+.imgAjuste{
+    width: 6.8vw;
+    position: fixed;
+    top: 1%;
+    right: 0.3%;
+    opacity: 90%;
+    z-index: 100;
+}
+.imgCarrito{
+    width: 7vw;
+    position: fixed;
+    top: 38%;
+    right: 0.3%;
+    opacity: 90%;
+}
 
 @media(max-width: 400px) and (max-width:800px){
     body{
@@ -315,20 +339,20 @@ a{
         position: fixed;
         display: grid;
         justify-items: center;
-        width: 102vw; 
+        left: 23%;
     }
     .bienvenido-img{
-        width: 220px;
-        height: 105px;
+        width: 200px;
+        height: 100px;
     }
     .titulo-bienvenido{
         position: fixed;
-        margin: 25px 68px;
+        margin: 33px 52px;
         font-size: 20px;
     }
     .titulo-user{
         position: fixed;
-        margin: 44px 85px;
+        margin: 50px 72px;
         font-size: 15px;
     }   
     .campos{
@@ -362,19 +386,35 @@ a{
         font-size: 20px;
         height: 115%;
     }
-
     a{
         width: 200px;
     }
     .img-logoPerfil{
-        width: 80px;
+        width: 70px;
+        margin-top: 15px;
     }
     .ranking-logo{
-        width: 78px;
+        width: 63px;
+        margin: 80px 5px;
     }
     .logo-ranking{
        margin: 0px 79vw;
-
+    }
+    .imgAjuste{
+        width: 65px;
+        margin: 15px 8px;
+    }
+    .imgAmigo{
+        width: 65px;
+        margin: 30px 10px;
+    }
+    .imgCarrito{
+        width: 60px;
+        top: 32%;
+        right: 3%;
+    }
+    .imgCerrar{
+        width: 100px;
     }
     .ranking-conte{
         margin: 4px 0;
@@ -450,8 +490,8 @@ a{
         
     }
     .bienvenido-img{
-        width: 220px;
-        height: 105px;
+        width: 200px;
+        height: 95px;
     }
     .titulo-bienvenido{
         position: fixed;
@@ -498,14 +538,16 @@ a{
         width: 80px;
     }
     .ranking-logo{
-        width: 78px;
+        width: 63px;
+        margin: 80px 5px;
     }
     .logo-ranking{
-       margin: 0px 80vw;
-
+       margin: 0px 79vw;
     }
-    .ranking-conte{
-        margin: 4px 0;
+    .imgAjuste{
+        width: 70px;
+        margin: 0px 0px 0px 140px;
+        right: 15px;
     }
     .usuariosAmigos{
         display: none;
@@ -562,7 +604,10 @@ a{
         width: 24px;
         margin: 12px -35px;
     }
-    
+    .imgAmigo{
+        width: 70px;
+        margin: 10px 10px;
+    }
     
 }
 

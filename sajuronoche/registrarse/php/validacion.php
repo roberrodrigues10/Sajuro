@@ -39,9 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $usuario_data = $result->fetch_assoc();
         
         // Mover datos a la tabla de usuarios
-        $sql_insert = "INSERT INTO usuario (nombre_usuario, contrasena, email, is_verified, avatar) VALUES (?, ?, ?, 1, 4)";
+        $sql_insert = "INSERT INTO usuario (nombre_usuario, contrasena, email, is_verified, avatar) VALUES (?, ?, ?, 1, ?)";
         $stmt_insert = $conn->prepare($sql_insert);
-        $stmt_insert->bind_param('sss', $usuario_data['nombre_usuario'], $usuario_data['contrasena'], $usuario_data['email']);
+        $avatar_url = 1;
+        $stmt_insert->bind_param('ssss', $usuario_data['nombre_usuario'], $usuario_data['contrasena'], $usuario_data['email'], $avatar_url);
         
         if ($stmt_insert->execute()) {
             // Si la inserción es exitosa, marcar como verificado y eliminar de usuario_temporal

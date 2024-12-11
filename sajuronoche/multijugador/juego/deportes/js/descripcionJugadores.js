@@ -35,3 +35,4 @@ function iniciarJuego() {
     console.log('Iniciando el juego...');
     arrastrarSoltar(0); // Llama a la función que habilita los campos
 }
+

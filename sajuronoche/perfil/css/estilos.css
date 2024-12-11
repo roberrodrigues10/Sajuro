@@ -1,0 +1,297 @@
+*{
+    font-family: 'Metal Mania';
+}
+body {
+    height: 100vh;
+    background-image: url('../../css/img/nuevo-fondo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+@font-face {
+    font-family: 'Metal Mania';
+    src: url('../../css/fonts/MetalMania-Regular.ttf') format('truetype');
+}
+.contenedorPerfilGen{
+    width: 35vw;
+    height: 81vh;
+    background-image: url('../img/desPerfil.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    top: 10%;
+    position: fixed;
+}
+.contenedorInformacionPerfil {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 35% 55% 10%;
+    width: 35vw;
+    height: 70vh;
+    min-width: 183px;
+    min-height: 477px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 20%;
+}
+.contenedorAvataresgeneral{
+    width: 60vw;
+    height: 80vh;
+    background-image: url('../img/desavatar.png');
+    background-repeat: no-repeat;
+    background-size: 60vw 80vh;
+    left: 35%;
+    top: 9%;
+    position: fixed;
+}
+.contenedorAvatares {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    width: 53vw;
+    height: 70vh;
+    padding: 10px;
+    position: fixed;
+    left: 39%;
+    top: 19%;
+}
+.contenidoAvatar1{
+    width: 6.5vw;
+}
+#avatarPerfil{
+    position: fixed;
+    width: 14vw;
+    height: 14vw;
+    margin-left: 9%;
+    margin-top: -3%;
+}
+.ContenidoFilaSegundoPerfil {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-left: 4%;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.NivelPerfil{
+    color: #241b19;
+    font-size: 1.5vw;
+}
+#nivel{
+    color: white;
+    font-size: 1.2vw;
+}
+.contenedorAvatares :nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(1).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(2).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(3) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(3).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(4) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(4).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(5) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(5).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(6) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(6).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(7) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(7).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(8) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(8).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(9) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(9).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(10) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(10).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(11) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(11).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(12) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(12).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(13) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(13).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(14) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(14).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(15) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(15).fade {
+    opacity: 0.3;
+}
+.contenedorAvatares :nth-child(16) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+.contenedorAvatares :nth-child(16).fade {
+    opacity: 0.3;
+}
+.contenedorGeneralPerfil, 
+.contenedorGeneralPerfil2Movil {
+    display: none;
+}
+@media screen and (min-width: 711px) {
+    .contenedorGeneralPerfil {
+        display: block;
+    }
+}
+input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}

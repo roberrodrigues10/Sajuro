@@ -12,10 +12,10 @@ if ($conn === null) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     error_log(print_r($data, true)); // Para depuración
-    $codigo_sala = (int) ($data['codigo_sala'] ?? null);
+    $codigoSala = (int) ($data['codigoSala'] ?? null);
     $id_anfitrion = (int) ($data['id_anfitrion'] ?? null);
 
-    if (!$codigo_sala || !$id_anfitrion) {
+    if (!$codigoSala || !$id_anfitrion) {
         echo json_encode(['status' => 'error', 'message' => 'Faltan datos requeridos.']);
         exit;
     }
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $stmt->bind_param('iis', $codigo_sala, $id_anfitrion, $estado); // Agregamos el estado como tercer parámetro
+    $stmt->bind_param('iis', $codigoSala, $id_anfitrion, $estado); // Agregamos el estado como tercer parámetro
     
     if ($stmt->execute()) {
         $id_sala = $stmt->insert_id;

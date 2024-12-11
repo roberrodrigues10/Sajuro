@@ -1,0 +1,26 @@
+Array
+(
+)
+POST: Array
+(
+    [id_jugador] => undefined
+)
+
+SESSION: 
+POST: Array
+(
+    [id_jugador] => undefined
+)
+
+SESSION: 
+POST: Array
+(
+)
+
+SESSION: 
+POST: Array
+(
+    [id_jugador] => undefined
+)
+
+SESSION: 

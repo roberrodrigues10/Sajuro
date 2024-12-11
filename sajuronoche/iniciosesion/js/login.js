@@ -10,7 +10,7 @@ function inicioSesion(event) {
         console.log(`${pair[0]}: ${pair[1]}`);
     }
 
-    fetch('http://192.168.1.35/sajuro/sajuronoche/iniciosesion/php/validacion.php', {
+    fetch('http://localhost/sajuro/sajuronoche/iniciosesion/php/validacion.php', {
         method: 'POST',
         body: formData
     })
@@ -24,7 +24,7 @@ function inicioSesion(event) {
             localStorage.setItem('usuarioId', data.usuarioId);
             localStorage.setItem('nombreUsuario', data.nombreUsuario);
             localStorage.setItem('avatar', data.avatar);
-    
+            
             // Redirigir a la página de carga
             window.location.href = '../iniciosesion/cargando.html';
         } else {

@@ -17,7 +17,7 @@ function verificarCuenta(email, token) {
         return;
     }
 
-    const url = `http://192.168.1.35/sajuro/sajuronoche/registrarse/php/validacion.php?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+    const url = `http://localhost/sajuro/sajuronoche/registrarse/php/validacion.php?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
 
     fetch(url)
         .then(response => {

@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </p>
                         
                         <div style="text-align: center; margin: 30px 0;">
-                            <a href="http://192.168.1.35/sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '" 
+                            <a href="http://localhost/sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '" 
                             style="background-color: #4F46E5; 
                                     color: white; 
                                     padding: 12px 30px; 
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </p>
                         
                         <p style="color: #666; font-size: 12px; word-break: break-all; margin-bottom: 25px;">
-                            http://192.168.1.35/sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '
+                            http://localhost/sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token . '
                         </p>
                         
                         <p style="color: #666; font-size: 14px; margin-bottom: 25px;">
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </body>
         </html>';
 
-        $mail->AltBody = 'Haz clic en el siguiente enlace para verificar tu cuenta: http://192.168.1.35/sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token;
+        $mail->AltBody = 'Haz clic en el siguiente enlace para verificar tu cuenta: http://localhost/sajuro/sajuronoche/registrarse/verificacion.html?email=' . $email . '&token=' . $token;
 
         if (!$mail->send()) {
             throw new Exception('Error al enviar el correo de verificación: ' . $mail->ErrorInfo);

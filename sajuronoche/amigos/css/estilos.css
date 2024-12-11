@@ -1,0 +1,323 @@
+*{
+    margin: 0;
+    font-family: 'Metal Mania';
+}
+body {
+    height: 100vh;
+    background-image: url('../../css/img/nuevo-fondo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+@font-face {
+    font-family: 'Metal Mania';
+    src: url('../../../sajuronoche/css/fonts/MetalMania-Regular.ttf') format('truetype');
+}
+.input {
+    margin-bottom: 20px; 
+}
+/*CSS AMIGOS */
+.contenedorAmigos {
+    width: 37vw;
+    height: 90vh;
+    overflow: auto;
+    scrollbar-width: none;
+    gap: 5%;
+    background-image: url('../img/fondoAmigo.png');
+    background-size: 37vw 90vh;
+    background-repeat: no-repeat;
+    position: fixed;
+    left: 31%;
+}
+.cuadroAmigos {
+    position: fixed;
+    width: 33vw;
+    height: 57vh;
+    background-size: 37vw 60vh;
+    background-repeat: no-repeat;
+    left: 33%;
+    top: 18%;
+}
+.contenedorTituloAmigos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    min-height: 30px;
+    margin-bottom: 5%;
+}
+.contenedorTituloAmigos h1 {
+    color: #5c4033;
+    font-weight: normal;
+    font-size: clamp(28px, 3vw, 28vw);
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+.contenedorBarraBusquedaAmigos {
+    display: flex;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    min-height: 30px;
+}
+.contenedorBarraBusquedaAmigos input {
+    width: 100%;
+}
+.contenedorBarraBusquedaAmigos input::placeholder {
+    color: #5c4033 ;
+}
+.contenedorBarraBusquedaAmigos input[type="text"] {
+    color: #5c4033;
+    font-size: 1.2vw;
+}
+.contenedorBusquedaAmigos {
+    display: flex;
+    width: 60%;
+    height: 40%;
+    border-radius: 2vw;
+    padding-left: 1vw;
+    border: 0.2vw solid #5c4033;
+}
+.contenedorIconosBusquedaAmigos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 80%;
+    gap: 5%;
+}
+.iconoBusquedaAmigos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+#iconoSolicitudesAmigos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    cursor: pointer;
+}
+#iconoSolicitudesAmigos:hover path{
+    box-shadow: 0 0 10px #fff;
+}
+.ContenedorAmigosAmigos {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+    min-height: 50px;
+    margin-bottom: 3%;
+    overflow: auto;
+    scrollbar-width: none;
+    height: 82%;
+}
+.amigo {
+    width: 100%;
+    display: flex;
+    height: 10vh;
+    margin-top: 1.5vh;
+}
+.iconoAmigosAmigos {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+.iconoAmigosAmigos svg {
+    display: flex;
+    width: 12vw;
+    height: 7vh;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+.nombreAmigoAmigos {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nombreAmigoAmigos h3 {
+    text-align: center;
+    font-size: clamp(16px, 2vw, 26px);
+    font-weight: normal;
+    color: rgb(203, 195, 186) ;
+    font-size: 2vw;
+    color: #5c4033;
+    display: grid;
+    align-items: center;
+    margin-top: 3vh;
+    margin-right: 3vw;
+}
+.imgAmigos{
+    width: 5vw;
+    height: 10vh;
+    margin-left: 4vw;
+}
+.contenedorIconosAmigosAmigos {
+    display: flex;
+    width: 15%;
+    gap: 7%;
+    left: 0vw;
+    right: 20vw;
+}
+.iconoVis{
+    margin-left: -6vw;
+    margin-top: 3vh;
+}
+.iconoAgre{
+    margin-left: -5vw;
+    margin-top: 3vh;
+}
+.iconoVistaAmigos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    cursor: pointer;
+}
+.iconoMensajeAmigos {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+}
+.iconoMensajeAmigos label{
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+}
+.img-atras{
+    position: fixed;
+    width: 20px;
+}
+.cuadroSolicitudes {
+    background-image: url('../img/fondoSolicitud.png');
+    background-size: 35vw 50vh;
+    width: 35vw;
+    height: 50vh;
+    position: fixed;
+    right: 5%;
+    top: 18%;
+}
+
+.tituloSolicitudes h1 {
+    position: fixed; /* Cambiado de fixed */
+    color: #af9080;
+    margin-left: 14%;
+    font-size: 2.1vw;
+    top: 29.5%;
+}
+
+.contenidoGeneralInfoSoli {
+    width: 50%;
+    margin-top: 15.5vh;
+    margin-left: 8vw;
+    height: 20vh; /* Ajustar altura para permitir scroll */
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.infoSolicitudSolicitudes {
+    display: grid; /* Retirado display: flex */
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%; /* Asegura que use todo el ancho disponible */
+    margin-top: 1.5vh;
+}
+
+.contenidoGeneralInfoSoli p {
+    position: relative; /* Cambiado de fixed */
+    font-size: 1.2vw;
+    color: #af9080;
+    margin-top: 22%;
+    margin-left: 12%;
+}
+
+.avatarSoli {
+    width: 3.5vw;
+}
+
+.nombreSolicitud {
+    color: #af9080;
+    display: flex;
+    height: auto;
+    align-items: center;
+    margin-left: 2vw;
+}
+
+.iconosRevision {
+    display: grid;
+    height: auto;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    width: 3vw;
+    margin-left: 3vw;
+}
+
+/* Media queries */
+@media screen and (min-width: 711px) {
+    .contenedorGeneralPerfil {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .contenedorGeneralPerfil2Movil {
+        display: block;
+    }
+    #containerNivelModal {
+        top: 13%;
+        left: 35%;
+    }
+    #switchTematica {
+        top: 15%;
+        left: 40%;
+    }
+}
+@media(max-width: 400px){
+    .contenedorAmigos{
+        background-image: url('../img/fondoAmigo.png');
+        width: 270px;
+        height: 340px;
+        background-size: 270px 340px;
+        display: grid;
+        left: 14%;
+    }
+    .cuadroAmigos{
+        width: 250px;
+        left: 15%;
+    }
+    .imgAmigos{
+        width: 50px;
+        height: 40px;
+    }
+    .nombreAmigoAmigos{
+        display: grid;
+        height: 100%;
+        align-items: start;
+    }
+    .nombreAmigoAmigos h3{
+        font-size: 15px;
+    }
+    .iconoVis{
+        margin-top: 0;
+        width: 25px;
+    }
+    .iconoAgre{
+        width: 25px;
+        margin-top: 0;
+        left: 0;
+    }
+}

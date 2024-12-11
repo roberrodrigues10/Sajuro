@@ -24,10 +24,10 @@ html{
     width: 100%;
 }
 .porteros, .defensas, .mediocampo, .delantero{
-    background-image: url('../img/pngegg.png');
-    background-size: 23dvw 36dvh;
-    width: 23dvw;
-    height: 36dvh;
+    background-image: url('../img/juga.png');
+    background-size: 28dvw 42dvh;
+    width: 28dvw;
+    height: 42dvh;
     text-align: center;
     grid-template-rows: 15% 85%;
     background-repeat: no-repeat;
@@ -39,6 +39,7 @@ html{
     align-items: center;
     gap: 20px;
     margin-top: 60px;
+    
 }
 .porteros{
     display: grid;
@@ -52,10 +53,11 @@ html{
 .mediocampo{
     display: grid;
     align-self: center;
-    margin-left: 0.7vw;
+    margin-left: -3vw;
 }
 .delantero{
     display: grid;
+    margin-left: -3vw;
 }
 .titulo-deportes{
     font-family: 'Metal Mania';
@@ -85,6 +87,9 @@ html{
     width: 23dvw;
     grid-template-columns: repeat(4,25%);
     justify-content: center;
+    margin-left: 2.2vw;
+    height: 30dvh;
+    margin-top: 1dvh;
 }
 .nombres{
     font-size: 0.8vw;
@@ -554,8 +559,9 @@ html{
     font-family: 'Metal Mania';
     text-align: center;
     border: 1px solid #a2671a;
-    justify-self: center;
-    margin-top: 40px;
+    position: fixed;
+    bottom: 2vh;
+    left: 47vw;
 }
 .tituloJugadores{
     display: flex;
@@ -578,11 +584,10 @@ html{
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 1000;
-    bottom: 11dvh;
+    bottom: 9dvh;
     left: 42%;
     width: 15vw;
     height: 9vh;
-
 }
 
 .descripciones-jugadores .descripcion h3 {
@@ -627,7 +632,7 @@ html{
     font-family: 'Metal Mania';
     color: #ffffff;
     top: 10%;
-    left: 44.5%;
+    left: 40%;
     font-size: 1.2vw;
 }
 #contador {
@@ -1046,6 +1051,46 @@ html{
     from { transform: scale(1.2); opacity: 1; }
     to { transform: scale(1.4); opacity: 0; }
 }
+.contenedorJugadores {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #00FF7F;
+    opacity: 0.5;
+    display: none;
+    justify-content: center;
+    align-content: center;
+    z-index: 10000;
+}
+.contenidoJugadores {
+    display: flex;
+    margin: auto;
+}
+#cerrar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 12px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+#listaJugadores{
+    position: fixed;
+    left: 8%;
+    top: 0;
+}
+.opacity{
+}
+#recintoPartida {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: none;
+}
 @media(max-width: 400px){
     *{
         margin: 0;
@@ -1054,10 +1099,12 @@ html{
         z-index: 0;
     }
     .porteros, .defensas, .mediocampo, .delantero{
-        width: 150px;
-        height: 130px;
+        background-image: url('../img/pngegg.png');
+        width: 155px;
+        height: 158px;
         z-index: 1;
         overflow: hidden;
+        background-size: 160px;
     }
     .derecho, .izquierda{
         position: fixed;
@@ -1116,7 +1163,7 @@ html{
         position: fixed;
         width: 300px;
         height: 100px;
-        top: 10%;
+        top: 7%;
         margin: 0;
         left: 10%;
     }
@@ -1190,10 +1237,10 @@ html{
     }
     .descripciones-jugadores .descripcion{
         display: grid;
-        width: 130px;
-        height: 30px;
-        font-size: 9px;
-        bottom: 47dvh;
+        width: 120px;
+        height: 20px;
+        font-size: 8px;
+        bottom: 51dvh;
         left: 30vw;
     }
     .descripciones-jugadores .descripcion h3 {
@@ -1356,12 +1403,12 @@ html{
         z-index: 1;
     }
     .timer-deportes{
-        top: 5%;
+        top: 3%;
         font-size: 12px;
         left: 38%;
     }
     .timer-deportes-2{
-        top: 5%;
+        top: 3%;
         font-size: 12px;
         left: 36%;
     }

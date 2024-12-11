@@ -1,0 +1,58 @@
+Array
+(
+    [id_jugador] => undefined
+)
+Array
+(
+    [MIBDIRS] => /xampp/php/extras/mibs
+    [MYSQL_HOME] => \xampp\mysql\bin
+    [OPENSSL_CONF] => /xampp/apache/bin/openssl.cnf
+    [PHP_PEAR_SYSCONF_DIR] => \xampp\php
+    [PHPRC] => \xampp\php
+    [TMP] => \xampp\tmp
+    [HTTP_HOST] => 127.0.0.1
+    [HTTP_CONNECTION] => keep-alive
+    [CONTENT_LENGTH] => 20
+    [HTTP_SEC_CH_UA_PLATFORM] => "Windows"
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+    [HTTP_SEC_CH_UA] => "Chromium";v="130", "Google Chrome";v="130", "Not?A_Brand";v="99"
+    [CONTENT_TYPE] => application/x-www-form-urlencoded
+    [HTTP_SEC_CH_UA_MOBILE] => ?0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ORIGIN] => http://127.0.0.1
+    [HTTP_SEC_FETCH_SITE] => same-origin
+    [HTTP_SEC_FETCH_MODE] => cors
+    [HTTP_SEC_FETCH_DEST] => empty
+    [HTTP_REFERER] => http://127.0.0.1/Sajuro/sajuronoche/amigos/Amigos.html
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate, br, zstd
+    [HTTP_ACCEPT_LANGUAGE] => es-ES,es;q=0.9
+    [HTTP_COOKIE] => PHPSESSID=r5t411eajkguqjgmd6ttq2d6dt
+    [PATH] => C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\NetMake\v9-php81\components\php;C:\Program Files\Git\cmd;C:\Users\X\AppData\Local\Microsoft\WindowsApps;
+    [SystemRoot] => C:\Windows
+    [COMSPEC] => C:\Windows\system32\cmd.exe
+    [PATHEXT] => .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+    [WINDIR] => C:\Windows
+    [SERVER_SIGNATURE] => <address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 127.0.0.1 Port 80</address>
+
+    [SERVER_SOFTWARE] => Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4
+    [SERVER_NAME] => 127.0.0.1
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 80
+    [REMOTE_ADDR] => 127.0.0.1
+    [DOCUMENT_ROOT] => C:/xampp/htdocs
+    [REQUEST_SCHEME] => http
+    [CONTEXT_PREFIX] => 
+    [CONTEXT_DOCUMENT_ROOT] => C:/xampp/htdocs
+    [SERVER_ADMIN] => postmaster@localhost
+    [SCRIPT_FILENAME] => C:/xampp/htdocs/Sajuro/sajuronoche/amigos/php/bloquear_jugador.php
+    [REMOTE_PORT] => 56356
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [REQUEST_METHOD] => POST
+    [QUERY_STRING] => 
+    [REQUEST_URI] => /Sajuro/sajuronoche/amigos/php/bloquear_jugador.php
+    [SCRIPT_NAME] => /Sajuro/sajuronoche/amigos/php/bloquear_jugador.php
+    [PHP_SELF] => /Sajuro/sajuronoche/amigos/php/bloquear_jugador.php
+    [REQUEST_TIME_FLOAT] => 1732035555.1672
+    [REQUEST_TIME] => 1732035555
+)

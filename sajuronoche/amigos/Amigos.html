@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <div class="ContenedorTotalGeneralSolicitudes" id="afuera">
+        <div class="contenedorFlechaAtras">
+            <button onclick="history.back()" class="bottonAtras">
+                <img src="img/atras.png" class="img-atras" alt="">
+            </button>
+        </div>
+        <div class="contenedorAmigos" >
+            <div class="cuadroAmigos" >
+                <div class="contenedorBarraBusquedaAmigos">
+                    <div class="contenedorBusquedaAmigos">
+                        <input type="text" id="buscarAmigos" placeholder="Buscar Amigo">
+                    </div>
+                    <div class="contenedorIconosBusquedaAmigos">
+                        <div class="iconoBusquedaAmigos">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16vh" height="17vh" fill="#5c4033" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </div> 
+                        <div id="iconoSolicitudesAmigos">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17vh" height="17vh" fill="#5c4033" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="ContenedorAmigosAmigos" id="listaAmigos">
+                    <div class="amigo" data-id="3">
+                        <div class="iconoAmigosAmigos">
+                            <img src="http://localhost/sajuro/sajuronoche/perfil/img//avatar1.png" class="imgAmigos" alt>
+                         </div>
+                        <div class="nombreAmigoAmigos">
+                            <h3>rober2110</h3>
+                        </div>
+                        <div class="contenedorIconosAmigosAmigos">
+                            <div class="iconoVistaAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16vw" height="16vh" fill="rgb(203, 195, 186) " viewBox="0 0 16 16"></svg>
+                            </div>
+                            <div id="iconoSolicitudesAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(203, 195, 186) " viewBox="0 0 16 16">…</svg></div>
+                            </div>
+                    </div>
+                    <div class="amigo" data-id="3">
+                        <div class="iconoAmigosAmigos">
+                            <img src="http://localhost/sajuro/sajuronoche/perfil/img//avatar1.png" class="imgAmigos" alt>
+                         </div>
+                        <div class="nombreAmigoAmigos">
+                            <h3>rober2110</h3>
+                        </div>
+                        <div class="contenedorIconosAmigosAmigos">
+                            <div class="iconoVistaAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16vw" height="16vh" fill="rgb(203, 195, 186) " viewBox="0 0 16 16"></svg>
+                            </div>
+                            <div id="iconoSolicitudesAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(203, 195, 186) " viewBox="0 0 16 16">…</svg></div>
+                            </div>
+                    </div>
+                    <div class="amigo" data-id="3">
+                        <div class="iconoAmigosAmigos">
+                            <img src="http://localhost/sajuro/sajuronoche/perfil/img//avatar1.png" class="imgAmigos" alt>
+                         </div>
+                        <div class="nombreAmigoAmigos">
+                            <h3>rober2110</h3>
+                        </div>
+                        <div class="contenedorIconosAmigosAmigos">
+                            <div class="iconoVistaAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg"class="iconoVis" width="5vh" height="5vh" fill="#5c4033" viewBox="0 0 16 16">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"></path>
+                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"></path>
+                                </svg>                            
+                            </div>
+                            <div id="iconoSolicitudesAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="iconoAgre" width="5vh" fill="#5c4033" viewBox="0 0 16 16">
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="amigo" data-id="3">
+                        <div class="iconoAmigosAmigos">
+                            <img src="http://localhost/sajuro/sajuronoche/perfil/img//avatar1.png" class="imgAmigos" alt>
+                         </div>
+                        <div class="nombreAmigoAmigos">
+                            <h3>rober2110</h3>
+                        </div>
+                        <div class="contenedorIconosAmigosAmigos">
+                            <div class="iconoVistaAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg"class="iconoVis" width="5vh" height="5vh" fill="#5c4033" viewBox="0 0 16 16">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"></path>
+                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"></path>
+                                </svg>                            
+                            </div>
+                            <div id="iconoSolicitudesAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="iconoAgre" width="5vh" fill="#5c4033" viewBox="0 0 16 16">
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="amigo" data-id="3">
+                        <div class="iconoAmigosAmigos">
+                            <img src="http://localhost/sajuro/sajuronoche/perfil/img//avatar1.png" class="imgAmigos" alt>
+                         </div>
+                        <div class="nombreAmigoAmigos">
+                            <h3>rober2110</h3>
+                        </div>
+                        <div class="contenedorIconosAmigosAmigos">
+                            <div class="iconoVistaAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16vw" height="16vh" fill="rgb(203, 195, 186) " viewBox="0 0 16 16"></svg>
+                            </div>
+                            <div id="iconoSolicitudesAmigos" data-id="3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(203, 195, 186) " viewBox="0 0 16 16">…</svg></div>
+                            </div>
+                    </div>
+                        <div class="iconoMensajeAmigos">
+                            <label for="">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--MODALES-->
+        <div id="ContenedorGeneralSolicitudes" style="display: none;">
+            <div class="cuadroSolicitudes">
+                <div class="tituloSolicitudes">
+                    <h1>solicitudes</h1>
+                </div>
+                <div class="contenidoGeneralInfoSoli">
+                </div>
+            </div>
+        </div>
+        <input type="text" style="background-image: url('img/Avatar.png'); background-size: cover;">
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+        // Obtener el nombre de usuario del sessionStorage
+        const nombreUsuario = localStorage  .getItem('nombreUsuario');
+
+        // Mostrar el nombre de usuario en el elemento correspondiente
+        if (nombreUsuario) {
+            document.getElementById('username').textContent = nombreUsuario;
+        }
+    });
+        </script>
+    <script src="js/mostrarSolicitudes.js"></script>
+    <script src="js/buscarJugadores.js"></script>
+    <script src="Js/script.js"></script>
+    <script src="Js/muestraInterruptor.js"></script>
+</body>
+</html>

@@ -11,13 +11,13 @@ if ($conn === null) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
-    $codigo_sala = $data['codigo_sala'];
+    $codigoSala = $data['codigoSala'];
     $id_usuario = $data['id_usuario']; // El ID del jugador que se quiere unir
 
     // Verificar si la sala existe
     $query = "SELECT id_sala FROM sala WHERE codigo_sala = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('s', $codigo_sala);
+    $stmt->bind_param('s', $codigoSala);
     $stmt->execute();
     $stmt->store_result();
 

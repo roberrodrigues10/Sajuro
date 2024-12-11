@@ -1,7 +1,7 @@
 function startCountdown() {
     const countdownModal = document.getElementById('countdownModal');
     const countdownNumber = document.getElementById('countdownNumber');
-    let count = 3;
+    let count = 0;
 
     // Mostrar el modal de cuenta regresiva
     countdownModal.style.display = 'flex';
@@ -21,7 +21,7 @@ function startCountdown() {
             // Iniciar la partida después de un breve retraso para que se vea el mensaje
             setTimeout(() => {
                 countdownModal.style.display = 'none'; // Ocultar modal
-            }, 500); // Puedes ajustar el tiempo de retraso si deseas que el mensaje dure más
+            }, 1000); // Puedes ajustar el tiempo de retraso si deseas que el mensaje dure más
         }
 
         count--;
@@ -325,7 +325,14 @@ setTimeout(function arrastrarSoltar() {
                         let puntos = parseInt(puntosElemento.textContent) || 0; // Obtener el valor numérico actual
                         puntos++; // Incrementar puntos
                         puntosElemento.textContent = puntos; // Actualizar el contenido de texto en el DOM
-                        verificarPuntos(puntos);               
+                        verificarPuntos(puntos); 
+                        if (JugadoresCorrectos === 2) {
+                            const Var = document.getElementById('var');
+                            Var.addEventListener( 'click', function(){
+                                const ModalJug = document.getElementById('modalJugadoresVar');
+                                ModalJug.style.display = 'flex';
+                            })                          
+                        }              
 
                         imgVar.addEventListener('click', function() {
                             ApereceJugadores();
@@ -341,7 +348,7 @@ setTimeout(function arrastrarSoltar() {
                             imgBloqueo.style.opacity = '0.5';
                         }
 
-                        if(puntos > 4) {
+                        if(puntos > 2) {
                             imgVar.style.opacity = '1';
                             imgVar.style.cursor = 'pointer';
                         } else {
@@ -571,7 +578,7 @@ setTimeout(function arrastrarSoltar() {
         // Redirigir al usuario a otra sección
         window.location.href = "ruta-del-apartado.html"; // Cambia por la URL que necesites
     }
-}, 3500);
+}, 1000);
 
 const originalHTML = document.body.innerHTML;
 

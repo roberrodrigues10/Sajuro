@@ -1,7 +1,8 @@
 import { mostrarJugadores } from './jugadores.js';
 import SajuroAudioSystem from './audio-System.js';
+
 let audioSystem = null;
-const socket = new WebSocket('ws://192.168.1.35:8080');
+const socket = new WebSocket('ws://localhost:8080');
 let jugadores = [];
 let pendingMessages = [];
 let salaActual = null;
@@ -20,22 +21,35 @@ function sendWebSocketMessage(message) {
 
 function actualizarJugadores(nuevoJugador = null) {
     const urlParams = new URLSearchParams(window.location.search);
-    const salaActual = urlParams.get('codigo');
+    salaActual = urlParams.get('codigo');
+    console.log("Código de sala:", salaActual); // Verifica que salaActual esté correctamente asignada
 
-    if (nuevoJugador && nuevoJugador.username && !jugadores.some(j => j.username === nuevoJugador.username)) {
-        const avatar = localStorage.getItem('avatar') || 'ruta/por/defecto/avatar.png';
-        nuevoJugador.avatar = avatar;
-        jugadores.push(nuevoJugador);
+    let jugadores = JSON.parse(localStorage.getItem('jugadores')) || [];
+
+    // Filtrar jugadores de la misma sala
+    let jugadoresDeSala = jugadores.filter(jugador => jugador.codigoSala === salaActual);
+
+    // Si se recibe un nuevo jugador, añadirlo si no existe ya en la lista
+    if (nuevoJugador && !jugadoresDeSala.some(j => j.username === nuevoJugador.username)) {
+        // Usa el avatar del nuevo jugador, o busca en localStorage, o usa avatar por defecto
+        nuevoJugador.avatar = nuevoJugador.avatar || 
+                               localStorage.getItem('avatar') || 
+                               '../../menu/css/img/avatar.png';
+        nuevoJugador.codigoSala = salaActual;
+        jugadoresDeSala.push(nuevoJugador);
     }
 
-    mostrarJugadores(jugadores);
+    // Actualizar localStorage
+    localStorage.setItem('jugadores', JSON.stringify(jugadoresDeSala));
 
-    sendWebSocketMessage({
-        action: 'actualizar_jugadores',
-        codigo_sala: salaActual,
-        jugadores: jugadores
-    });
+    // Mostrar los jugadores
+    mostrarJugadores(jugadoresDeSala);
 }
+
+window.addEventListener('load', function() {
+    const jugadores = JSON.parse(localStorage.getItem('jugadores')) || [];
+    console.log("Jugadores cargados desde localStorage:", jugadores);
+});
 
 async function inicializarSala() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -47,13 +61,17 @@ async function inicializarSala() {
     if (codigoSalaElemento && salaActual) {
         codigoSalaElemento.textContent = salaActual;
     }
-
-    if (salaActual) {
-        sendWebSocketMessage({
-            action: 'solicitar_jugadores',
-            codigo_sala: salaActual
-        });
+    // Verifica que salaActual no sea null o undefined antes de continuar
+    if (!salaActual) {
+        console.error("Código de sala no disponible.");
+        return; // Detiene la ejecución si no hay un código de sala
     }
+
+    // Enviar mensaje WebSocket con el código de sala
+    sendWebSocketMessage({
+        action: 'solicitar_jugadores',
+        codigoSala: salaActual
+    });
 
     if (nombreUsuario && jugadores.length === 0) {
         const nuevoJugador = { username: nombreUsuario, avatar: avatar };
@@ -62,14 +80,14 @@ async function inicializarSala() {
 
     // Inicializar el sistema de audio
     audioSystem = new SajuroAudioSystem(socket, salaActual);
-    
+
     // Verificar si el usuario es admin (anfitrión)
     const usuarioId = localStorage.getItem('usuarioId');
-    const response = await fetch('http://192.168.1.35/sajuro/sajuronoche/multijugador/crear/php/verificar-admin.php', {
+    const response = await fetch('http://localhost/sajuro/sajuronoche/multijugador/crear/php/verificar-admin.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            codigo_sala: salaActual,
+            codigoSala: salaActual,
             id_usuario: usuarioId
         })
     });
@@ -79,11 +97,13 @@ async function inicializarSala() {
     await audioSystem.initialize(isAdmin);
 }
 
+
 // En el evento de cierre de la ventana
 window.addEventListener('beforeunload', () => {
     if (audioSystem) {
         audioSystem.cleanup();
-    }});
+    }
+});
 
 socket.onopen = () => {
     console.log('Conectado al servidor WebSocket');
@@ -96,69 +116,145 @@ socket.onopen = () => {
 
 socket.onmessage = (event) => {
     const data = JSON.parse(event.data);
+    console.log("Mensaje recibido del servidor:", data); // Registra los mensajes entrantes
 
     switch (data.action) {
         case 'jugador_unido':
-            if (data.codigo_sala === salaActual && data.nombreUsuario) {
-                console.log('Nuevo jugador unido:', data.nombreUsuario);
+            if (data.codigoSala === salaActual) {
                 const nuevoJugador = {
                     username: data.nombreUsuario,
-                    avatar: '../../menu/css/img/avatar.png'
+                    avatar: data.avatar || '../../menu/css/img/avatar.png'
                 };
                 actualizarJugadores(nuevoJugador);
+                actualizarYMostrarLimite(data);
+            }
+            break;
+        
+        case 'lista_jugadores':
+            if (data.codigoSala === salaActual) {
+                // Reemplazar completamente la lista de jugadores
+                jugadores = data.jugadores.map(jugador => ({
+                    ...jugador,
+                    codigoSala: salaActual
+                }));
+
+                localStorage.setItem('jugadores', JSON.stringify(jugadores));
+                mostrarJugadores(jugadores);
+            }
+            break;         
+        
+        case 'mensaje_chat':
+            if (data.action === 'mensaje_chat' && data.codigoSala === salaActual) {
+                guardarMensajeEnSessionStoragePorSala(data.codigoSala, data);
+                mostrarMensajeChat(data);
             }
             break;
 
-        case 'actualizar_jugadores':
-        case 'lista_jugadores':
-            if (data.codigo_sala === salaActual) {
-                console.log('Lista de jugadores actualizada');
-                const nuevosJugadores = data.jugadores.filter(nuevo =>
-                    nuevo.username && !jugadores.some(j => j.username === nuevo.username)
-                );
-                jugadores = [...jugadores, ...nuevosJugadores];
-                mostrarJugadores(jugadores);
-            }
-            break;
-            case 'mensaje_chat':
-                if (data.action === 'mensaje_chat') {
-                    mostrarMensajeChat(data);
-                }
-            break;
-            case 'actualizar_rondas':
-            if (data.codigo_sala === salaActual) {
-                // Actualizar el número de rondas en la interfaz de usuario
+        case 'actualizar_rondas':
+            if (data.codigoSala === salaActual) {
                 const rondasElement = document.getElementById('rondas');
                 if (rondasElement) {
                     rondasElement.textContent = `rondas ${data.numRondas}`;
                 }
             }
             break;
-            case 'actualizar_tiempo':
-            if(data.codigo_sala === salaActual) {
 
+        case 'actualizar_tiempo':
+            if (data.codigoSala === salaActual) {
                 const tiemposElement = document.getElementById('tiempo');
                 if (tiemposElement) {
                     tiemposElement.textContent = `tiempo ${data.numTiempo}`;
                 }
-            } 
+            }
             break;
-            case 'actualizar_modo_juego':
-            if (data.codigo_sala === salaActual) {
+
+        case 'actualizar_modo_juego':
+            if (data.codigoSala === salaActual) {
                 const modoTomado = document.querySelector('.modo-tomado');
                 if (modoTomado) {
                     modoTomado.textContent = `Modo seleccionado: ${data.modo}`;
                 }
             }
             break;
-            case 'partida_iniciada':
-                if (data.codigo_sala === salaActual) {
-                    alert(data.mensaje); // Notifica a los jugadores que la partida ha comenzado
-                    window.location.href = '../juego/deportes/deportes.html?codigo=' + salaActual;
+            case 'actualizar_limite_jugadores':
+                if (data.action === 'actualizar_limite_jugadores' && data.codigoSala === salaActual) {
+                    console.log(`Límite de jugadores actualizado: ${data.limite_jugadores}`);
+
+                // Actualizar el mensaje en el HTML con el nuevo límite
+                const jugadoresElement = document.getElementById('rondas');
+                if (jugadoresElement) {
+                    jugadoresElement.textContent = `Límite de jugadores: ${data.numJugadores}`;
                 }
-                break; 
+
+                // Mostrar mensaje si el límite de jugadores ha sido alcanzado
+                if (data.numJugadores === 0) {
+                    if (mensajeLimite) {
+                        mensajeLimite.textContent = 'Límite de jugadores alcanzado. No se puede unir más jugadores.';
+                    }
+                } else {
+                    if (mensajeLimite) {
+                        mensajeLimite.textContent = '';  // Limpiar el mensaje
+                    }
+                }
+                    }
+            break;
+
+        case 'partida_iniciada':
+            if (data.codigoSala === salaActual) {
+                startCountdown(); // Inicia el conteo regresivo
+
+                setTimeout(() => {
+                    window.location.href = '../juego/deportes/deportes.html?codigo=' + salaActual;
+                }, 10500); // Ajusta el tiempo según la duración del conteo regresivo
+            }
+            break;
+        case 'audio_user_joined':
+            console.log('Nuevo usuario unido al audio:', data);
+            break;
+
+        case 'audio_offer':
+        case 'audio_answer':
+        case 'audio_ice_candidate':
+            // Llama a los métodos de audioSystem correspondientes
+            audioSystem.handleWebSocketMessage(event);
+            break;
+
+        default:
+            console.warn("Acción desconocida en el mensaje WebSocket:", data.action);
     }
 };
+function startCountdown() {
+    const countdownModal = document.getElementById('countdownModal');
+    const countdownNumber = document.getElementById('countdownNumber');
+    let count = 9;
+
+    // Mostrar el modal de cuenta regresiva
+    countdownModal.style.display = 'flex';
+
+    // Iniciar el conteo regresivo
+    const countdownInterval = setInterval(() => {
+        countdownNumber.textContent = count;
+        countdownNumber.classList.remove('animate');
+        void countdownNumber.offsetWidth;  // Forzar reflow para reiniciar la animación
+        countdownNumber.classList.add('animate');
+
+        // Cambiar a "Inicia Partida" al final
+        if (count === 0) {
+            countdownNumber.classList.add("final");
+            
+            // Iniciar la partida después de un breve retraso
+            setTimeout(() => {
+                countdownModal.style.display = 'none';
+                // Aquí puedes redirigir a los jugadores después del conteo
+                window.location.href = '../juego/deportes/deportes.html?codigo=' + salaActual;
+            }, 500);
+
+            clearInterval(countdownInterval);
+        }
+
+        count--;
+    }, 1000);
+}
 
 socket.onerror = (error) => {
     console.error('Error en la conexión WebSocket:', error);
@@ -175,13 +271,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const codigoSala = generarCodigoSala();
             const usuarioId = localStorage.getItem('usuarioId');
             const nombreUsuario = localStorage.getItem('nombreUsuario');
+            const avatar = localStorage.getItem('avatar')
 
             try {
-                const response = await fetch('http://192.168.1.35/sajuro/sajuronoche/multijugador/crear/php/crear-sala.php', {
+                const response = await fetch('http://localhost/sajuro/sajuronoche/multijugador/crear/php/crear-sala.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        codigo_sala: codigoSala,
+                        codigoSala: codigoSala,
                         id_anfitrion: usuarioId
                     })
                 });
@@ -192,14 +289,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     salaActual = codigoSala;
                     const nuevoJugador = {
                         username: nombreUsuario,
-                        avatar: '../../menu/css/img/avatar.png'
+                        avatar: avatar  
                     };
 
                     jugadores = [nuevoJugador];
 
                     sendWebSocketMessage({
                         action: 'sala_creada',
-                        codigo_sala: codigoSala,
+                        codigoSala: codigoSala,
                         jugadores: jugadores
                     });
                     window.location.href = `./crear/crearSala.html?codigo=${codigoSala}`;
@@ -216,33 +313,66 @@ document.addEventListener("DOMContentLoaded", function () {
             const codigoSala = obtenerCodigoSala();
             const usuarioId = localStorage.getItem('usuarioId');
             const nombreUsuario = localStorage.getItem('nombreUsuario');
-
+    
             if (!codigoSala) {
                 console.error('Por favor, ingresa un código de sala válido.');
                 return;
             }
-
+    
             try {
-                const response = await fetch('http://192.168.1.35/sajuro/sajuronoche/multijugador/unirse/php/unirse-sala.php', {
+                // Comprobar si el límite de jugadores está establecido
+                const responseLimite = await fetch(`http://localhost/sajuro/sajuronoche/multijugador/unirse/php/obtener_limite.php?codigoSala=${codigoSala}`);
+                const limiteData = await responseLimite.json();
+                const salaLlena = document.getElementById('salaLlena');          
+                const establecerLimite = document.getElementById('establecerLimite');          
+                // Verificar si la respuesta contiene un error
+                if (limiteData.tipo_error === 'sala_llena') {
+                    salaLlena.textContent = limiteData.mensaje;
+                    salaLlena.style.display = 'block'
+                    setTimeout( ( )=> {
+                        salaLlena.style.display = 'none'
+                    }, 5000);
+                    return;
+                }
+                
+                // Verificar si el límite de jugadores está establecido y si la sala está llena
+                if (limiteData.tipo_error === 'limite_no_definido') {
+                    establecerLimite.textContent = limiteData.mensaje;
+                    establecerLimite.style.display = 'block'
+                    setTimeout( ( )=> {
+                        establecerLimite.style.display = 'none'
+                    }, 5000);
+                    return;
+                }
+                
+    
+                // Validar si el número de jugadores es menor que el límite
+                const response = await fetch('http://localhost/sajuro/sajuronoche/multijugador/unirse/php/unirse-sala.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        codigo_sala: codigoSala,
+                        codigoSala: codigoSala,
                         id_usuario: usuarioId
                     })
                 });
-
+    
                 const data = await response.json();
-
+    
+                if (data.status === 'error') {
+                    alert(data.mensaje);  // Mostrar el mensaje de error si la sala está llena
+                    return;
+                }
+    
                 if (data.status === 'success') {
                     salaActual = codigoSala;
-
+    
                     sendWebSocketMessage({
                         action: 'jugador_unido',
-                        codigo_sala: codigoSala,
-                        nombreUsuario: nombreUsuario
+                        codigoSala: codigoSala,
+                        nombreUsuario: nombreUsuario,
+                        avatar: localStorage.getItem('avatar') // Añade esta línea
                     });
-
+    
                     window.location.href = `./esperando.html?codigo=${codigoSala}`;
                 }
             } catch (error) {
@@ -250,18 +380,20 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
+    
     document.getElementById('message').addEventListener('keydown', (event) => {
         if (event.key === 'Enter') { // Verifica si la tecla presionada es Enter
             const messageInput = document.getElementById('message');
             const nombreUsuario = localStorage.getItem('nombreUsuario');
             const message = messageInput.value.trim();
+            const codigoSala = salaActual;
             if (message) {
                 // Enviar el mensaje al servidor WebSocket
                 socket.send(JSON.stringify({
                     action: 'mensaje_chat',
                     nombreUsuario: nombreUsuario, // Ajusta esto según el nombre de usuario que uses
-                    mensaje: message
+                    mensaje: message,
+                    codigoSala : codigoSala
                 }));
                 messageInput.value = ''; // Limpia el campo de entrada de texto
                 console.log('mensaje', message);
@@ -273,17 +405,34 @@ document.addEventListener("DOMContentLoaded", function () {
         const messageInput = document.getElementById('message');
         const nombreUsuario = localStorage.getItem('nombreUsuario');
         const message = messageInput.value.trim();
+        const codigoSala = salaActual;
         if (message) {
             // Enviar el mensaje al servidor WebSocket
             socket.send(JSON.stringify({
                 action: 'mensaje_chat',
                 nombreUsuario: nombreUsuario, // Ajusta esto según el nombre de usuario que uses
-                mensaje: message
+                mensaje: message,
+                codigoSala: codigoSala // Agregar código de sala
             }));
             messageInput.value = ''; // Limpia el campo de entrada de texto
             console.log('mensaje', message);
         }
     });      
+});
+const urlParams = new URLSearchParams(window.location.search);
+
+if (salaActual) {
+    sessionStorage.setItem('codigoSala', salaActual); // Guarda sala en sessionStorage
+}
+
+window.addEventListener('load', function() {
+    const salaActual = urlParams.get('codigo') || sessionStorage.getItem('codigoSala') || null;
+    if (!salaActual) {
+        console.error('No se ha definido una sala actual. No se pueden cargar los mensajes.');
+        return;
+    }
+    console.log('Cargando mensajes al iniciar la página para sala:', salaActual);
+    cargarMensajesDeSessionStoragePorSala(salaActual);
 });
 
 function obtenerCodigoSala() {
@@ -296,18 +445,17 @@ function mostrarMensajeChat(data) {
         const mensajeElemento = document.createElement('div');
         const mensajeElemento2 = document.createElement('div');
         const nombreUsuarioActual = localStorage.getItem('nombreUsuario');
-        
+
         // Diferenciar entre mensajes propios y ajenos
         if (data.nombreUsuario === nombreUsuarioActual) {
             mensajeElemento.className = 'usuario';
             mensajeElemento.textContent = `Tú:`;
-            mensajeElemento2.className = 'contenidoUsuario'
+            mensajeElemento2.className = 'contenidoUsuario';
             mensajeElemento2.textContent = `${data.mensaje}`;
-
         } else {
             mensajeElemento.className = 'cliente';
             mensajeElemento.textContent = `${data.nombreUsuario}:`;
-            mensajeElemento2.className = 'contenidoCliente'
+            mensajeElemento2.className = 'contenidoCliente';
             mensajeElemento2.textContent = `${data.mensaje}`;
         }
 
@@ -318,76 +466,121 @@ function mostrarMensajeChat(data) {
         console.error("No se encontró el contenedor de mensajes en el HTML.");
     }
 }
+function cargarMensajesDeSessionStoragePorSala(codigoSala) {
+    const salas = JSON.parse(sessionStorage.getItem('mensajesPorSala')) || {};
+    const mensajes = salas[codigoSala] || [];
+    
+    console.log('Mensajes encontrados para sala:', codigoSala, mensajes);
 
-// Selección de los elementos de opciones de rondas
-const rondaUno = document.getElementById('rondas-1-2');
-const rondaDos = document.getElementById('rondas-2-4');
-const rondaTres = document.getElementById('rondas-4-6');
+    mensajes.forEach(mensaje => {
+        mostrarMensajeChat(mensaje);
+    });
+}
 
-const rondas = [rondaUno, rondaDos, rondaTres];
 
-// Selección de rondas y actualización en pantalla y servidor
-rondas.forEach(ronda => {
-    ronda.addEventListener('click', () => {
+
+function guardarMensajeEnSessionStoragePorSala(codigoSala, mensaje) {
+    // Recuperar el objeto de salas almacenado, o crear uno vacío si no existe
+    let salas = JSON.parse(sessionStorage.getItem('mensajesPorSala')) || {};
+
+    // Si no existe la sala en el objeto, inicializarla con un array vacío
+    if (!salas[codigoSala]) {
+        salas[codigoSala] = [];
+    }
+
+    // Agregar el mensaje a la sala correspondiente
+    salas[codigoSala].push(mensaje);
+
+    // Guardar el objeto actualizado en sessionStorage
+    sessionStorage.setItem('mensajesPorSala', JSON.stringify(salas));
+    console.log('Mensajes guardados para sala', codigoSala, ':', salas[codigoSala]);
+}
+
+
+
+const jugadorUno = document.getElementById('rondas-1-2');
+const jugadorDos = document.getElementById('rondas-2-4');
+const jugadorTres = document.getElementById('rondas-4-6');
+
+const player = [jugadorUno, jugadorDos, jugadorTres];
+
+const mensajeLimite = document.getElementById('mensaje-limite');  // Elemento para mostrar el mensaje
+
+player.forEach(jugador => {
+    jugador.addEventListener('click', async () => {
         // Desmarcar cualquier selección previa
-        rondas.forEach(r => {
-            r.style.backgroundColor = ''; 
+        player.forEach(j => {
+            j.style.backgroundColor = ''; 
         });
+
         // Marcar la opción seleccionada
-       ronda.style.backgroundColor = '#c19a67';
+        jugador.style.backgroundColor = '#c19a67';
 
-        console.log(`Ronda seleccionada: ${ronda.id}`);
+        console.log(`Límite de jugadores seleccionado: ${jugador.id}`);
 
-        // Obtener el número de rondas desde el atributo `data-rondas`
-        const numRondas = parseInt(ronda.getAttribute('data-rondas'));
+        // Obtener el número de jugadores desde el atributo `data-jugadores`
+        const numJugadores = parseInt(jugador.getAttribute('data-jugadores'));
 
-        // Mostrar la selección en el segundo div
-        const rondasElement = document.getElementById('rondas');
-        if (rondasElement) {
-            rondasElement.textContent = `Rondas: ${numRondas}`;
+        // Mostrar la selección en pantalla
+        const jugadoresElement = document.getElementById('rondas');
+        const codigoSala = salaActual;
+        if (jugadoresElement) {
+            jugadoresElement.textContent = `Límite de jugadores: ${numJugadores}`;
         }
 
-        // Enviar la actualización de rondas al servidor
+        // Actualizar el límite de jugadores en la base de datos y mostrarlo en HTML
+        try {
+            await actualizarYMostrarLimite(salaActual, numJugadores); // Llamamos a una sola función
+        } catch (error) {
+            console.error('Error al actualizar y mostrar el límite:', error);
+        }
         sendWebSocketMessage({
-            action: 'actualizar_rondas',
-            codigo_sala: salaActual,
-            numRondas: numRondas
+            action: 'actualizar_limite_jugadores',
+            codigoSala: codigoSala,
+            numJugadores: numJugadores
         });
     });
 });
 
-const tiempoUno = document.getElementById('tiempo-1');
-const tiempoDos = document.getElementById('tiempo-2');
-const tiempoTres = document.getElementById('tiempo-3');
-
-const tiempos = [tiempoUno, tiempoDos, tiempoTres];
-
-tiempos.forEach(tiempo => {
-    tiempo.addEventListener('click', () => {
-
-        tiempos.forEach(t => {
-            t.style.backgroundColor = ''; 
+const actualizarYMostrarLimite = async (codigoSala, limiteJugadores) => {
+    try {
+        // Actualizar el límite de jugadores en la base de datos
+        const response = await fetch('http://localhost/Sajuro/sajuronoche/multijugador/php/actualizar-limite.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'actualizar_limite',
+                codigoSala: codigoSala,
+                limite_jugadores: limiteJugadores
+            })
         });
-        
-        tiempo.style.backgroundColor = '#c19a67';
+        const data = await response.json();
+        console.log(data.message);
 
-        console.log(`Tiempo seleccionado: ${tiempo.id}`);
+        // Ahora que se actualizó el límite, obtenemos el límite actualizado
+        if (data.status === 'success') {
+            const jugadoresElement = document.getElementById('rondas');
+            if (jugadoresElement) {
+                jugadoresElement.textContent = `Límite de jugadores: ${data.limiteJugadores}`;
+            }
 
-        const numTiempo = parseInt(tiempo.getAttribute('data-tiempo'));
-
-        const tiemposElement = document.getElementById('tiempo');
-        if(tiemposElement){
-            tiemposElement.textContent = `tiempo: ${numTiempo}`;
+            // Mostrar el mensaje si el límite ha sido alcanzado
+            if (limiteJugadores > 0) {
+                if (mensajeLimite) {
+                    mensajeLimite.textContent = '';  // Limpiar cualquier mensaje previo
+                }
+            } else {
+                if (mensajeLimite) {
+                    mensajeLimite.textContent = 'Límite de jugadores alcanzado. No se puede unir más jugadores.';
+                }
+            }
+        } else {
+            console.error(data.message);
         }
-
-        sendWebSocketMessage({
-            action: 'actualizar_tiempo',
-            codigo_sala: salaActual,
-            numTiempo: numTiempo
-        });
-    });
-});
-
+    } catch(error) {
+        console.error('Error al actualizar el límite:', error );
+    }
+};
 const modalidadAleatorio = document.getElementById('modalidad-aleatorio');
 const aparecerOdesaparecerModalidad = document.getElementById('aparecerOdesaparecer-modalidad');
 const modoAleatorio = document.getElementById('modo-aleatorio');
@@ -406,7 +599,7 @@ function actualizarModoJuego(modo) {
     
     sendWebSocketMessage({
         action: 'actualizar_modo_juego',
-        codigo_sala: salaActual,
+        codigoSala: salaActual,
         modo: modo
     });
 
@@ -470,16 +663,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.getElementById('iniciar').addEventListener('click', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const codigoSala = urlParams.get('codigo'); // Obtener el código de sala desde la URL
-    console.log("jugando")
+    const jugadores = JSON.parse(localStorage.getItem('jugadores')) || [];
+    const IniciarJugadores = document.getElementById('IniciarJugadores')
+    // Verificar si hay al menos 2 jugadores
+    if (jugadores.length < 2) {
+        IniciarJugadores.textContent = 'Necesitas al menos 2 jugadores para iniciar la partida.'
+        IniciarJugadores.style.display = 'block'
+        setTimeout( ( )=> {
+            IniciarJugadores.style.display = 'none'
+        }, 5000);
+        return;
+    }
+
+    const codigoSala = urlParams.get('codigo');
     if (codigoSala) {
         sendWebSocketMessage({
             action: 'iniciar_partida',
-            codigo_sala: codigoSala
+            codigoSala: codigoSala
         });
-        
     } else {
         console.error('Código de sala no encontrado');
     }
 });
+
+
